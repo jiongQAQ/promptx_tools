@@ -70,8 +70,6 @@ class ProjectManager {
             this.createProject();
         });
 
-        // 文件上传区域
-        this.setupFileUpload();
 
         // 刷新模板按钮
         document.getElementById('btn-refresh-templates').addEventListener('click', () => {
@@ -79,59 +77,6 @@ class ProjectManager {
         });
     }
 
-    // 设置文件上传
-    setupFileUpload() {
-        const dropZone = document.getElementById('file-drop-zone');
-        const fileInput = document.getElementById('source-file');
-
-        // 点击上传
-        dropZone.addEventListener('click', () => {
-            fileInput.click();
-        });
-
-        // 文件选择
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                this.handleFileSelect(e.target.files[0]);
-            }
-        });
-
-        // 拖拽上传
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('dragover');
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-
-            if (e.dataTransfer.files.length > 0) {
-                this.handleFileSelect(e.dataTransfer.files[0]);
-            }
-        });
-    }
-
-    // 处理文件选择
-    handleFileSelect(file) {
-        if (file.type !== 'application/zip' && !file.name.endsWith('.zip')) {
-            utils.showMessage('请选择ZIP文件', 'error');
-            return;
-        }
-
-        const dropZone = document.getElementById('file-drop-zone');
-        dropZone.innerHTML = `
-            <p>📁 ${file.name}</p>
-            <p>${utils.formatFileSize(file.size)}</p>
-        `;
-
-        // 存储文件引用
-        this.selectedFile = file;
-    }
 
     // 显示新建项目模态框
     showNewProjectModal() {
@@ -158,12 +103,6 @@ class ProjectManager {
             return;
         }
 
-        // 检查是否选择了文件
-        if (!this.selectedFile) {
-            utils.showMessage('请选择源码文件', 'error');
-            return;
-        }
-
         utils.showLoading('创建项目中...');
 
         try {
@@ -177,12 +116,12 @@ class ProjectManager {
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString(),
                 status: 'planning',
-                sourceFile: this.selectedFile.name,
-                sourceSize: this.selectedFile.size
+                sourceFile: '手动解压',
+                sourceSize: 0
             };
 
-            // 解压源码文件
-            await this.extractSourceCode(project, this.selectedFile);
+            // 创建项目目录结构
+            await this.createProjectStructure(project);
 
             // 复制模板文件
             await this.copyTemplates(project);
@@ -197,8 +136,6 @@ class ProjectManager {
 
             // 重置表单
             document.getElementById('new-project-form').reset();
-            document.getElementById('file-drop-zone').innerHTML = '<p>拖拽文件到此处或点击选择</p>';
-            this.selectedFile = null;
 
             // 刷新项目列表
             this.renderProjectList();
@@ -208,6 +145,122 @@ class ProjectManager {
             utils.hideLoading();
             utils.showMessage('创建项目失败: ' + error.message, 'error');
         }
+    }
+
+    // 创建项目目录结构（无文件上传时）
+    async createProjectStructure(project) {
+        const projectPath = `./project/${project.name}`;
+        const sourcePath = `${projectPath}/source`;
+
+        console.log(`创建项目目录结构: ${sourcePath}`);
+
+        try {
+            // 方案1: 使用 File System Access API
+            if ('showDirectoryPicker' in window) {
+                await this.createDirectoryWithFileSystemAPI(project);
+            }
+            // 方案2: 使用服务端API
+            else if (this.canUseServerAPI()) {
+                await this.createDirectoryWithServerAPI(project);
+            }
+            // 方案3: 生成创建脚本
+            else {
+                await this.generateCreationScript(project);
+            }
+        } catch (error) {
+            console.log('自动创建目录失败，生成手动指令:', error.message);
+            await this.generateCreationScript(project);
+        }
+
+        // 生成解压指令供用户参考
+        project.extractInstructions = this.generateExtractInstructions(project, { files: {} });
+        project.extractPath = `/Users/pc/Documents/promptx_tools/web/project/${project.name}/source`;
+
+        console.log('项目配置完成');
+    }
+
+    // 使用 File System Access API 创建目录
+    async createDirectoryWithFileSystemAPI(project) {
+        try {
+            // 请求访问web目录
+            const webDirHandle = await window.showDirectoryPicker({
+                mode: 'readwrite',
+                startIn: 'downloads'
+            });
+
+            // 创建project目录
+            const projectDirHandle = await webDirHandle.getDirectoryHandle('project', { create: true });
+
+            // 创建项目子目录
+            const projectNameDirHandle = await projectDirHandle.getDirectoryHandle(project.name, { create: true });
+
+            // 创建source和paper目录
+            await projectNameDirHandle.getDirectoryHandle('source', { create: true });
+            await projectNameDirHandle.getDirectoryHandle('paper', { create: true });
+
+            console.log('✅ 目录结构创建成功 (File System Access API)');
+            utils.showMessage('项目目录创建成功', 'success');
+        } catch (error) {
+            console.log('File System Access API 创建失败:', error);
+            throw error;
+        }
+    }
+
+    // 检查是否可以使用服务端API
+    canUseServerAPI() {
+        // 检查是否在支持的端口上运行
+        return window.location.port === '8001' || window.location.hostname === 'localhost';
+    }
+
+    // 使用服务端API创建目录
+    async createDirectoryWithServerAPI(project) {
+        try {
+            const response = await fetch('http://localhost:8001/api/create-directory', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ projectName: project.name })
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || '服务端API创建目录失败');
+            }
+
+            console.log('✅ 目录结构创建成功 (Server API):', result.path);
+            utils.showMessage('项目目录创建成功', 'success');
+        } catch (error) {
+            console.error('Server API 创建失败:', error);
+            throw error;
+        }
+    }
+
+    // 生成创建脚本
+    async generateCreationScript(project) {
+        const absolutePath = `/Users/pc/Documents/promptx_tools/web/project/${project.name}`;
+
+        const script = `#!/bin/bash
+# 项目目录创建脚本
+echo "创建项目目录: ${project.name}"
+mkdir -p "${absolutePath}/source"
+mkdir -p "${absolutePath}/paper"
+echo "✅ 目录创建完成: ${absolutePath}"
+`;
+
+        // 创建一个可下载的脚本文件
+        const blob = new Blob([script], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `create-${project.name}-directories.sh`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        console.log('📜 已生成目录创建脚本');
+        utils.showMessage('已下载目录创建脚本，请执行该脚本创建项目目录', 'info');
     }
 
     // 解压源码文件
@@ -282,11 +335,52 @@ class ProjectManager {
             contentTemplate.meta.theme = project.theme;
         }
 
-        // 保存到项目中（实际应该保存到文件系统）
+        // 保存到项目中（内存）
         project.outline = outlineTemplate;
         project.content = contentTemplate;
 
-        console.log('Templates copied for project:', project.name);
+        // 如果支持服务端API，写入实际文件
+        if (this.canUseServerAPI()) {
+            try {
+                const projectPath = `/Users/pc/Documents/promptx_tools/web/project/${project.name}`;
+
+                // 写入大纲文件
+                await this.writeFileToServer(
+                    `${projectPath}/paper/outline.json`,
+                    JSON.stringify(outlineTemplate, null, 2)
+                );
+
+                // 写入内容文件
+                await this.writeFileToServer(
+                    `${projectPath}/paper/content.json`,
+                    JSON.stringify(contentTemplate, null, 2)
+                );
+
+                console.log('✅ 模板文件已写入文件系统:', project.name);
+            } catch (error) {
+                console.error('写入模板文件失败:', error);
+                // 不抛出错误，继续项目创建流程
+            }
+        } else {
+            console.log('📝 模板已复制到内存，文件写入需要手动操作');
+        }
+    }
+
+    // 写入文件到服务器
+    async writeFileToServer(filePath, content) {
+        const response = await fetch('http://localhost:8001/api/write-file', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ filePath, content })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.error || '写入文件失败');
+        }
+
+        return result;
     }
 
     // 渲染项目列表

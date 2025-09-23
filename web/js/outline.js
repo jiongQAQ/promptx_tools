@@ -15,9 +15,9 @@ class OutlineEditor {
     // 绑定事件
     bindEvents() {
         // 项目选择器变化
-        document.getElementById('current-project-outline').addEventListener('change', (e) => {
+        document.getElementById('current-project-outline').addEventListener('change', async (e) => {
             if (e.target.value) {
-                this.loadProjectOutline(e.target.value);
+                await this.loadProjectOutline(e.target.value);
             }
         });
 
@@ -46,15 +46,37 @@ class OutlineEditor {
     }
 
     // 加载项目大纲
-    loadProjectOutline(projectId) {
+    async loadProjectOutline(projectId) {
         const project = projectManager.setCurrentProject(projectId);
         if (!project) {
             utils.showMessage('项目不存在', 'error');
             return;
         }
 
-        // 如果项目有大纲数据，加载它；否则使用模板
-        this.outline = project.outline || utils.deepClone(projectManager.templates.outline);
+        try {
+            // 尝试从文件系统加载大纲
+            const outlinePath = `/Users/pc/Documents/promptx_tools/web/project/${project.name}/paper/outline.json`;
+            const response = await fetch('http://localhost:8001/api/read-file', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ filePath: outlinePath })
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                this.outline = JSON.parse(result.content);
+                console.log('✅ 从文件系统加载大纲:', project.name);
+            } else {
+                // 如果文件不存在，使用内存中的数据或模板
+                this.outline = project.outline || utils.deepClone(projectManager.templates.outline);
+                console.log('📝 使用内存或模板大纲:', project.name);
+            }
+        } catch (error) {
+            console.error('加载大纲文件失败:', error);
+            // 使用内存中的数据或模板作为备选
+            this.outline = project.outline || utils.deepClone(projectManager.templates.outline);
+        }
+
         this.renderOutlineTree();
         this.isDirty = false;
 
