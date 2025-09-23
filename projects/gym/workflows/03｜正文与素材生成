@@ -1,0 +1,102 @@
+【流程 03｜正文与素材生成（不覆盖原文件｜统一使用 luban-uml）】
+
+目标
+1 基于 ./paper/outline.json 与 ./paper/content.json，逐章节生成正文、UML 代码与表格数据。
+2 不覆盖 ./paper/content.json，改为生成一份新的运行产物：
+   - 默认写入 ./paper/content.run.json
+   - 若该文件已存在，则写入 ./paper/content.run.<YYYYMMDD-HHMMSS>.json
+3 所有 UML 图片必须调用工具 luban-uml 渲染，UML 源码文件与图片文件同名（仅后缀不同），统一存放在 ./paper/exports/uml/。
+
+输入
+- ./paper/outline.json
+- ./paper/content.json
+- ./source/ 源码目录
+- ./CLAUDE.md （若存在）
+
+目录与命名规范
+- 产物根：./paper/exports/
+- UML 目录：./paper/exports/uml/        （存放 .puml 与 .png）
+- 表格目录：./paper/exports/tables/     （存放三线表 JSON）
+- 文件命名规则：
+  - 基础名：Fig-<chapter>-<index>__<slug>
+  - slug：来源于 figureTitle（转小写，空格→-，去除非法字符，≤60 字符）
+  - UML 源码路径：./paper/exports/uml/Fig-<chapter>-<index>__<slug>.puml
+  - 图片路径：  ./paper/exports/uml/Fig-<chapter>-<index>__<slug>.png
+  - 表格文件名：Tab-<chapter>-<index>__<slug>.json
+- luban-uml 调用方式：
+  - 写入 .puml 文件后执行：
+    luban-uml render --in "<pumlPath>" --out "<pngPath>" --format png
+  - .puml 与 .png 文件名必须相同，仅扩展名不同。
+
+执行规则
+1 文本生成
+   - 对 plan.wantText=true 的节点（含 list.items），使用 textPrompt，结合 ./source/ 与 ./CLAUDE.md 生成正文，写入 node.text。
+   - 学术化表达；字数参考 length.target，无需严格硬限制。
+
+2 图生成
+   - 对 plan.wantFigure=true 的节点，逐个执行 figurePlan。
+   - 输出合法完整的 PlantUML 代码 → 保存到 .puml。
+   - 调用 luban-uml 渲染为 .png，文件名与 .puml 同名。
+   - 写回运行产物：
+     - figures[i].umlCodePath = "<.puml 路径>"
+     - figures[i].imagePath   = "<.png 路径>"
+     - figures[i].status      = "done" | "failed"
+
+3 表生成
+   - 对 plan.wantTable=true 的节点，逐个执行 tablePlan。
+   - 按 schema 输出 JSON 数组 → 保存到 ./paper/exports/tables/Tab-<chapter>-<index>__<slug>.json
+   - 写回运行产物：
+     - tables[i].dataPath = "<.json 路径>"
+     - tables[i].status   = "done" | "failed"
+
+4 列表型章节（mode=list）
+   - 遍历 items[]，对子项逐一执行上述逻辑。
+   - items 渲染为编号段落，不当作新标题。
+
+5 数据库设计章节（必须完整覆盖）
+   - 判定条件：标题包含“数据库设计/数据库概念设计/数据库逻辑设计/ER”
+   - 要求：
+     1. 从 ./source/ 中完整提取所有实体定义（ORM/建表 SQL/实体类），**一个不漏**。
+     2. 为每个实体生成一个子项：
+        - 单体结构图（.puml + .png）
+        - 三线表 JSON（字段=字段名/类型/约束/说明）
+        - 文本描述（实体业务定位、关键字段、约束、关系）
+     3. 在章节级别必须生成一张“数据库总体 ER 图”，包含所有实体及它们的关系（不得遗漏）。
+   - 失败时：报告“未发现实体定义”，并标记章节 status=failed。
+
+6 写入产物
+   - 生成的运行产物落盘为 ./paper/content.run.json（或带时间戳的新文件）。
+   - 原始 ./paper/content.json 不得修改。
+
+输出
+1 新文件：
+   - ./paper/content.run.json
+   - ./paper/exports/uml/*.puml + *.png
+   - ./paper/exports/tables/*.json
+2 机器可读 JSON（stdout 单行）：
+   {
+     "status": "success",
+     "project": "<projectName>",
+     "outlinePath": "./paper/outline.json",
+     "contentPath": "./paper/content.json",
+     "runContentPath": "./paper/content.run.json",
+     "chaptersDone": <int>,
+     "figures": { "generated": <int>, "failed": <int> },
+     "tables":  { "generated": <int>, "failed": <int> },
+     "failList": [
+       {"sectionId":"<id>","type":"figure|table|text","name":"<标题或文件名>","reason":"<摘要>"}
+     ]
+   }
+3 人类可读检查报告：
+   - 正文生成统计：成功/失败数量
+   - 图/表生成统计：生成数、失败数
+   - 数据库设计覆盖情况：实体总数、单体图/三线表生成情况、总体 ER 图状态
+   - 失败清单：节/子项 → 失败类型 → 文件名 → 原因
+   - 文件清单预览：uml/ 和 tables/ 目录下新文件数
+   - 下一步建议：可进入“流程 04 导出 Word”
+
+注意
+- 必须用 luban-uml 渲染所有 UML 图片；禁止只保留 .puml 而无 .png。
+- 数据库实体类必须完整覆盖，不得省略任何一个实体；总体 ER 图必须包含所有实体。
+- 若生成失败，保留 .puml 或 .json 文件，status=failed，不影响整体流程。
+- 禁止修改 ./paper/outline.json 与 ./paper/content.json。

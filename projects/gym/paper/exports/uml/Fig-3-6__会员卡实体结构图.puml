@@ -1,0 +1,41 @@
+@startuml
+title 会员卡实体结构图
+
+class MembershipCard {
+  - Long id
+  - Long userId
+  - String cardType
+  - String cardNumber
+  - Integer remainingSessions
+  - LocalDate startDate
+  - LocalDate endDate
+  - String status
+  - BigDecimal purchasePrice
+  - String description
+  - LocalDateTime createTime
+  - LocalDateTime updateTime
+  - Boolean isDelete
+
+  + getId(): Long
+  + getUserId(): Long
+  + getCardType(): String
+  + getCardNumber(): String
+  + getRemainingSessions(): Integer
+  + getStartDate(): LocalDate
+  + getEndDate(): LocalDate
+  + getStatus(): String
+  + getPurchasePrice(): BigDecimal
+  + getDescription(): String
+  + getCreateTime(): LocalDateTime
+  + getUpdateTime(): LocalDateTime
+  + getIsDelete(): Boolean
+}
+
+note right of MembershipCard
+会员卡实体管理用户的会员权益
+支持次卡、月卡、年卡等类型
+追踪剩余次数和有效期
+提供会员卡状态管理
+end note
+
+@enduml

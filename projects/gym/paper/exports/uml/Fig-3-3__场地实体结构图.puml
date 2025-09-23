@@ -1,0 +1,37 @@
+@startuml
+title 场地实体结构图
+
+class Venue {
+  - Long id
+  - String name
+  - String description
+  - String location
+  - String equipment
+  - Integer capacity
+  - BigDecimal hourlyRate
+  - String status
+  - LocalDateTime createTime
+  - LocalDateTime updateTime
+  - Boolean isDelete
+
+  + getId(): Long
+  + getName(): String
+  + getDescription(): String
+  + getLocation(): String
+  + getEquipment(): String
+  + getCapacity(): Integer
+  + getHourlyRate(): BigDecimal
+  + getStatus(): String
+  + getCreateTime(): LocalDateTime
+  + getUpdateTime(): LocalDateTime
+  + getIsDelete(): Boolean
+}
+
+note right of Venue
+场地实体用于管理健身房内的
+各种运动场地和设施信息
+包括容量、设备、位置等
+支持按小时计费的预约管理
+end note
+
+@enduml

@@ -1,0 +1,106 @@
+【流程 02｜基于大纲预填 content.json（证据驱动、模块化）】
+
+目标
+1 读取 ./paper/outline.json 与 ./templates/content.template.json
+2 对大纲中每个章节创建对应的内容项（./paper/content.json），并根据章节类型自动决定：
+   - single / list 模式
+   - 是否需要正文 / 图 / 表
+   - （若为 list）生成顺序子项 items[]，仅渲染为编号段落，不新增标题层级
+3 同步替换大纲中的技术与功能占位符（如 {{jishu1}}/{{jishu2}}/{{jishu3}}、{{functionname}}/{{funname}}），写回 outline.json，并在 content.json 使用替换后的标题
+
+输入
+- ./paper/outline.json
+- ./templates/content.template.json
+- ./source/ 与 ./CLAUDE.md（若存在）
+
+通用规则
+1 严格基于源码与文档证据自行判断；不要臆造技术或功能
+2 content.json 必须一一覆盖大纲里的每个章节 id/title
+3 list 模式的 items[] 为顺序项（render.as=numbered），不是新标题；导出用编号段落
+4 图/表编号仍按模板 figureLabelTemplate/tableLabelTemplate 的“章-序”生成
+5 不生成正文，只生成写作计划（plan）、提示词（textPrompt/figurePlan/tablePlan）与空的 figures/tables 占位
+6 失败不阻断：若某图/表无法生成，标记 status=failed，后续导出时提示“可重试”
+
+—— 模块提示词（按章节类型/关键词匹配） ——
+
+[模块：相关技术介绍（占位符替换）]
+任务：
+1 定位标题含“相关技术介绍/技术介绍”等的章节及其子项（可能包含 {{jishu1}}/{{jishu2}}/{{jishu3}}）
+2 基于 ./source/ 与 ./CLAUDE.md 的证据，识别 3 项最具代表性的技术（不同维度优先：后端框架/数据访问/缓存/认证/数据库/前端等）
+3 生成 3–4 个候选并自动采纳最佳项，替换占位符文本；写回 outline.json
+4 在 content.json 对应章节设置 plan.wantText=true，生成 textPrompt
+
+输出（需在报告中列明）：每个占位符的候选、采纳理由与证据文件（路径+关键词或行号范围）
+
+[模块：系统用例图（列表型 + 图）]
+判定条件：标题包含“用例图/Use Case”
+任务：
+1 设置章节为 list 模式（itemType=actorUseCase）
+2 基于源码/文档识别系统角色（≤5）；为每个角色生成一个 item：
+   - order 连续编号；title=“<角色>角色”；render.as=numbered
+   - plan.wantText=true；plan.wantFigure=true
+   - figurePlan[0]: figureTitle=“<角色>用例图”；figureFocus=“UML 用例图，强调参与者、用例、关系（extend/include）、系统边界”
+   - textPrompt：描述该角色目标、关键用例、边界与约束
+3 章节本身可写一段总述（textPrompt），无强制图/表
+4 不当标题，只渲染为编号段落
+
+[模块：数据库设计（列表型 + 表 + 图）]
+判定条件：标题包含“数据库设计/数据库概念设计/数据库逻辑设计/ER”
+任务：
+1 设置章节为 list 模式（itemType=entity）
+2 从源码（DDL/ORM/实体定义/migrations）提取实体（≤10，优先核心 ≤5）：为每个实体生成 item：
+   - order 连续编号；title=“<entity> 实体”；render.as=numbered
+   - plan.wantText=true；plan.wantFigure=true（实体局部结构图）；plan.wantTable=true（字段三线表）
+   - figurePlan[0]: figureTitle=“<entity> 实体局部结构图”；figureFocus=“主外键、字段、约束、关系”
+   - tablePlan[0]: tableTitle=“<entity> 字段三线表”；schema=["字段名","类型","约束","说明"]
+   - textPrompt：描述业务定位、关键字段、约束、与其他实体关系
+3 章节级别增加一张“数据库整体ER图”（放在 section.figures 中）
+4 items 仅渲染为编号段落
+
+[模块：系统功能详细设计 / 系统功能实现 / 系统功能测试（联动 ≤5）]
+判定条件：标题包含“系统功能详细设计 / 系统功能实现 / 系统功能测试”
+任务：
+1 若“系统功能详细设计”存在：从源码/文档识别系统核心功能模块（≤5）
+2 分别在以上三个章节下，按相同功能顺序生成对子项（或单节子标题内容）：
+   - 详细设计： 《<功能名>的详细设计》
+   - 实现： 《<功能名>的实现》
+   - 测试： 《<功能名>功能测试》（测试章节可默认 wantTable=true，tablePlan=测试用例表）
+3 若仅存在其中一类章节（如只有“实现”），仍基于源码推断功能模块并生成对应内容
+4 保证三类章节的功能顺序完全一致
+
+[模块：软件逻辑架构 / 功能框图（单节 + 图）]
+判定条件：标题包含“软件逻辑架构/架构/框图/功能框图”
+任务：
+1 单节模式；plan.wantText=true；plan.wantFigure=true
+2 figurePlan：figureTitle=“系统架构/功能图”；figureFocus=“分层结构、依赖关系、接口边界或模块调用关系”
+
+[模块：功能测试/性能测试（单节 + 表/图）]
+判定条件：标题包含“系统功能测试/功能测试/系统性能测试/性能测试”
+任务：
+1 功能测试：单节；plan.wantText=true；plan.wantTable=true；tablePlan=测试用例表（['用例ID','测试点','输入','预期输出','结果']）
+2 性能测试：单节；plan.wantText=true；plan.wantTable=true；tablePlan=性能指标表（['指标项','测试条件','数值/范围','结果']）
+
+输出
+A) 机器可读 JSON（stdout 单行）：
+{
+  "status": "success",
+  "project": "<projectName>",
+  "outlinePath": "./paper/outline.json",
+  "contentPath": "./paper/content.json",
+  "sectionCount": <int>,
+  "withFigures": ["..."], "withTables": ["..."],
+  "listSections": [{"id":"<secId>","itemType":"actorUseCase|entity|custom","itemCount":<int>}],
+  "placeholdersResolved": {"jishu1":"...","jishu2":"...","jishu3":"...","functionname":"...","funname":"..."}
+}
+
+B) 人类可读检查报告：
+1 覆盖统计：章节总数、list 节点与 item 个数
+2 模块化判定：哪些章节被识别为“用例图/数据库/架构/测试”等
+3 图表计划：列出章节级与子项级计划
+4 占位符替换：列出候选、采纳项与证据来源（文件路径与关键词/行号）
+5 文件写入确认：./paper/content.json 与（若有替换）./paper/outline.json
+
+容错
+- 文件缺失/非法：报错并停止，不写入损坏文件
+- 证据不足：仍输出候选并在报告标注“依据不足”
+- 图/表生成失败时标记 status=failed，不影响后续 Word 合成
