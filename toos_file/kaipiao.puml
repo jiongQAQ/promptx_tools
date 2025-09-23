@@ -1,0 +1,68 @@
+@startuml 开票功能流程图
+!define RECTANGLE class
+
+actor 用户 as User
+participant "客户端" as Frontend
+participant "拓采API" as API
+participant "OMS系统" as OMS
+participant "财务人员" as Finance
+participant "消息通知" as Notification
+
+== 发票申请流程 ==
+User -> Frontend: 进入开通记录
+Frontend -> API: 获取订单列表
+API -> API: 判断订单开票支持性
+API --> Frontend: 返回订单列表（含开票状态）
+
+User -> Frontend: 点击"开票"按钮
+Frontend -> API: 获取订单开票信息
+API --> Frontend: 返回订单金额等基础信息
+
+User -> Frontend: 填写发票信息
+alt 企业发票
+    User -> Frontend: 输入企业名称
+    Frontend -> API: 查询企业纳税人识别号
+    API -> API: 调用统一公司库接口
+    API --> Frontend: 返回纳税人识别号
+    Frontend -> Frontend: 自动填充纳税人识别号
+end
+Frontend -> API: 提交开票申请
+API -> API: 校验发票信息
+API -> API: 创建发票记录
+API -> API: 更新订单状态为"开票中"
+API -> OMS: 发送开票通知
+OMS --> API: 返回通知结果
+API --> Frontend: 返回申请成功
+Frontend --> User: 显示"开票申请中"状态
+
+== 财务处理流程 ==
+Finance -> OMS: 审核开票申请
+alt 审核通过
+    Finance -> OMS: 去税务系统开票
+    Finance -> OMS: 上传电子发票
+    OMS -> API: 通知开票完成(Webhook)
+    API -> API: 更新发票状态为"已开票"
+    API -> API: 更新订单状态为"已开票"
+    API -> Notification: 发送开票成功通知
+else 审核不通过
+    Finance -> OMS: 填写失败原因
+    OMS -> API: 通知开票失败(Webhook)
+    API -> API: 更新发票状态为"开票失败"
+    API -> API: 更新订单状态为"开票失败"
+    API -> Notification: 发送开票失败通知
+end
+
+== 状态查询流程 ==
+User -> Frontend: 查看开票状态
+Frontend -> API: 获取开票信息
+API --> Frontend: 返回开票详情
+Frontend --> User: 显示开票信息
+
+== 重开发票流程 ==
+User -> Frontend: 点击"申请重开发票"
+Frontend -> API: 校验重开条件
+API -> API: 创建重开发票记录
+API -> OMS: 发送重开通知
+note right: 重开流程同新申请流程
+
+@enduml

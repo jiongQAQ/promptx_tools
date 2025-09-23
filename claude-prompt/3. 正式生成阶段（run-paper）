@@ -1,0 +1,45 @@
+/run-paper
+请你读取 projects/<name>/paper/content.json 和源码 projects/<name>/source，
+根据 content.json.plan 配置逐章生成论文内容，要求：
+
+1. 正文生成：
+   - 对 plan.wantText = true 的章节，生成正文 text。
+   - 正文必须围绕论文主题和源码结构，语言学术化，避免空话和口语化。
+   - 正文字数参考 length.target。
+
+2. 图生成：
+   - 对每个 plan.figurePlan.enabled=true 的项：
+     a) 渲染 promptTemplate（替换 {{sectionTitle}}、{{论文主题}}、{{figureFocus}}）。
+     b) 生成合法的 PlantUML 代码，保存到 paper/exports/images/Fig-<sectionId>-<idx>.puml。
+     c) 调用鲁班 UML 工具渲染 PNG，路径 paper/exports/images/Fig-<sectionId>-<idx>.png。
+     d) 在 content.json.contents[<id>].figures[] 追加：
+        {
+          "id": "Fig-<id>-<idx>",
+          "label": "图<chapter>-<idx> <figureTitle>",
+          "type": "uml",
+          "umlCodePath": "...",
+          "imagePath": "...",
+          "status": "success|failed"
+        }
+
+3. 表生成：
+   - 对每个 plan.tablePlan.enabled=true 的项：
+     a) 渲染 promptTemplate（替换 {{sectionTitle}}、{{论文主题}}、{{schema}}）。
+     b) 输出 JSON 格式数据，包含 schema 和 rows。
+     c) 写入 content.json.contents[<id>].tables[]：
+        {
+          "id": "Tab-<id>-<idx>",
+          "label": "表<chapter>-<idx> <tableTitle>",
+          "schema": [...],
+          "rows": [...],
+          "status": "success|failed"
+        }
+
+4. 容错：
+   - 图/表生成失败时 status=failed，不要中断，继续生成正文和其他章节。
+
+5. 导出：
+   - 调用 Word 工具，消费 content.json 和 outline.json，
+     生成 paper/exports/docx/paper.docx。
+   - 插入正文 text；图用 imagePath；表用 schema+rows 渲染三线表。
+   - 失败的图/表插入占位符。

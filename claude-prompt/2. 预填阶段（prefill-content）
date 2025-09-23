@@ -1,0 +1,18 @@
+/prefill-content
+请你读取 projects/<name>/paper/outline.json 和 /templates/content.template.json，
+生成 projects/<name>/paper/content.json，要求：
+
+1. 为每个章节生成一个条目，复制模板 defaults。
+2. 每个章节都写入：
+   - status = "planning"
+   - plan.wantText = true
+   - textPrompt = 根据 defaults.textPromptTemplate 渲染，替换 {{sectionTitle}} 和 {{论文主题}}。
+3. 根据章节标题和源码理解，判断是否需要图或表：
+   - 如果标题包含 “用例图/架构/框图/ER图/时序/部署” → plan.wantFigure=true，启用 figurePlan[0] 并设置 figureTitle/figureFocus。
+   - 如果标题包含 “数据库/测试/性能/指标” → plan.wantTable=true，启用 tablePlan[0] 并设置 tableTitle/schema。
+4. figures[] 和 tables[] 留空，正文 text 留空。
+5. 保持章节 id 与 outline.json 一致。
+
+注意：
+- 不要写正文，也不要生成图表，只写 plan 和提示词。
+- 输出结果写入 content.json 文件，供我后续人工审查。

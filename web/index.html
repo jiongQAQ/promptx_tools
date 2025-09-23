@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论文生成系统</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 顶部导航 -->
+        <header class="header">
+            <h1>📄 论文生成系统</h1>
+            <nav class="nav">
+                <button class="nav-btn active" data-page="projects">项目管理</button>
+                <button class="nav-btn" data-page="templates">模板库</button>
+                <button class="nav-btn" data-page="outline">大纲编辑</button>
+                <button class="nav-btn" data-page="content">内容编辑</button>
+                <button class="nav-btn" data-page="console">执行控制</button>
+                <button class="nav-btn" data-page="export">导出预览</button>
+            </nav>
+        </header>
+
+        <!-- 主内容区 -->
+        <main class="main">
+            <!-- 项目管理页面 -->
+            <div id="page-projects" class="page active">
+                <div class="page-header">
+                    <h2>项目管理</h2>
+                    <button id="btn-new-project" class="btn btn-primary">📁 新建项目</button>
+                </div>
+
+                <div class="project-list" id="project-list">
+                    <!-- 项目列表将在这里动态生成 -->
+                </div>
+            </div>
+
+            <!-- 模板库页面 -->
+            <div id="page-templates" class="page">
+                <div class="page-header">
+                    <h2>模板库</h2>
+                    <button id="btn-refresh-templates" class="btn">🔄 刷新</button>
+                </div>
+
+                <div class="template-grid">
+                    <div class="template-card" data-template="outline">
+                        <h3>📋 大纲模板</h3>
+                        <p>outline.template.json</p>
+                        <div class="template-actions">
+                            <button class="btn btn-sm" onclick="viewTemplate('outline')">查看</button>
+                            <button class="btn btn-sm" onclick="editTemplate('outline')">编辑</button>
+                        </div>
+                    </div>
+                    <div class="template-card" data-template="content">
+                        <h3>📝 内容模板</h3>
+                        <p>content.template.json</p>
+                        <div class="template-actions">
+                            <button class="btn btn-sm" onclick="viewTemplate('content')">查看</button>
+                            <button class="btn btn-sm" onclick="editTemplate('content')">编辑</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 大纲编辑页面 -->
+            <div id="page-outline" class="page">
+                <div class="page-header">
+                    <h2>大纲编辑</h2>
+                    <div class="project-selector">
+                        <select id="current-project-outline">
+                            <option value="">选择项目...</option>
+                        </select>
+                        <button id="btn-save-outline" class="btn btn-primary">💾 保存大纲</button>
+                    </div>
+                </div>
+
+                <div class="editor-container">
+                    <div class="outline-toolbar">
+                        <button class="btn btn-sm" onclick="addNode()">➕ 添加节点</button>
+                        <button class="btn btn-sm" onclick="deleteNode()">🗑️ 删除节点</button>
+                        <button class="btn btn-sm" onclick="expandAll()">📖 展开全部</button>
+                        <button class="btn btn-sm" onclick="collapseAll()">📕 折叠全部</button>
+                    </div>
+                    <div id="outline-tree" class="outline-tree">
+                        <!-- 大纲树将在这里渲染 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 内容编辑页面 -->
+            <div id="page-content" class="page">
+                <div class="page-header">
+                    <h2>内容编辑</h2>
+                    <div class="project-selector">
+                        <select id="current-project-content">
+                            <option value="">选择项目...</option>
+                        </select>
+                        <button id="btn-save-content" class="btn btn-primary">💾 保存内容</button>
+                    </div>
+                </div>
+
+                <div class="content-editor">
+                    <div class="section-sidebar" id="section-sidebar">
+                        <!-- 章节列表 -->
+                    </div>
+                    <div class="section-editor" id="section-editor">
+                        <div class="section-tabs">
+                            <button class="tab-btn active" data-tab="plan">📋 计划</button>
+                            <button class="tab-btn" data-tab="text">📝 正文</button>
+                            <button class="tab-btn" data-tab="figures">🖼️ 图表</button>
+                            <button class="tab-btn" data-tab="tables">📊 表格</button>
+                        </div>
+                        <div class="tab-content" id="tab-content">
+                            <!-- 选项卡内容 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 执行控制页面 -->
+            <div id="page-console" class="page">
+                <div class="page-header">
+                    <h2>执行控制</h2>
+                    <div class="project-selector">
+                        <select id="current-project-console">
+                            <option value="">选择项目...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="console-container">
+                    <div class="control-panel">
+                        <div class="control-buttons">
+                            <button id="btn-init" class="btn btn-lg">🔄 Init</button>
+                            <button id="btn-prefill" class="btn btn-lg">📝 Prefill</button>
+                            <button id="btn-run" class="btn btn-lg">▶️ Run</button>
+                        </div>
+                        <div class="execution-status">
+                            <div class="status-item">
+                                <span class="status-label">状态:</span>
+                                <span id="execution-status" class="status-value">就绪</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="command-display">
+                        <h3>生成的命令</h3>
+                        <div id="command-output" class="command-box">
+                            <p>选择操作后，将在此显示Claude Code命令</p>
+                        </div>
+                        <button id="btn-copy-command" class="btn btn-sm">📋 复制命令</button>
+                    </div>
+
+                    <div class="log-display">
+                        <h3>执行日志</h3>
+                        <div id="execution-log" class="log-box">
+                            <p>执行日志将在此显示...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 导出预览页面 -->
+            <div id="page-export" class="page">
+                <div class="page-header">
+                    <h2>导出预览</h2>
+                    <div class="project-selector">
+                        <select id="current-project-export">
+                            <option value="">选择项目...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="export-container">
+                    <div class="export-settings">
+                        <h3>导出设置</h3>
+                        <div class="form-group">
+                            <label>文件名:</label>
+                            <input type="text" id="export-filename" placeholder="paper.docx">
+                        </div>
+                        <button id="btn-export" class="btn btn-primary">📄 导出Word</button>
+                    </div>
+
+                    <div class="export-history">
+                        <h3>导出记录</h3>
+                        <div id="export-list" class="export-list">
+                            <!-- 导出历史记录 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 模态框 -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <div id="modal-body">
+                    <!-- 模态框内容 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 新建项目模态框 -->
+        <div id="new-project-modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h3>新建项目</h3>
+                <form id="new-project-form">
+                    <div class="form-group">
+                        <label>项目名称:</label>
+                        <input type="text" id="project-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>论文题目:</label>
+                        <input type="text" id="paper-title">
+                    </div>
+                    <div class="form-group">
+                        <label>论文主题:</label>
+                        <input type="text" id="paper-theme">
+                    </div>
+                    <div class="form-group">
+                        <label>选择模板:</label>
+                        <select id="template-select">
+                            <option value="default">默认模板</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>上传源码 (ZIP):</label>
+                        <div id="file-drop-zone" class="file-drop-zone">
+                            <p>拖拽文件到此处或点击选择</p>
+                            <input type="file" id="source-file" accept=".zip" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn" onclick="closeModal('new-project-modal')">取消</button>
+                        <button type="submit" class="btn btn-primary">创建项目</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript -->
+    <script src="lib/jszip.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/project.js"></script>
+    <script src="js/outline.js"></script>
+    <script src="js/content.js"></script>
+    <script src="js/executor.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
