@@ -1,0 +1,36 @@
+{
+  "runId": "wf-20250923-001",
+  "docId": "paper-001",
+  "workflowFile": "workflow.json",
+  "status": "completed",
+  "startedAt": "2025-09-23T09:00:00Z",
+  "endedAt": "2025-09-23T09:05:30Z",
+
+  "steps": [
+    {
+      "id": "ctx",
+      "type": "compose_context",
+      "status": "success",
+      "durationMs": 2100,
+      "targets": [
+        { "sectionId": "1.1", "status": "success", "log": "合成上下文 300 tokens" }
+      ]
+    },
+    {
+      "id": "uml-gen",
+      "type": "generate_uml_code",
+      "status": "failed",
+      "targets": [
+        { "sectionId": "3.2", "figureId": "Fig-3-2-1", "status": "failed", "errorMessage": "UML 语法错误" }
+      ]
+    },
+    {
+      "id": "docx",
+      "type": "export_docx",
+      "status": "success",
+      "targets": [
+        { "output": "exports/paper-001.docx" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "docId": "paper-001",
+  "defaultLength": { "unit": "char", "target": 900 },
+  "contents": {
+    "1.1": {
+      "text": "",
+      "textPrompt": "撰写‘研究背景与意义’正文。",
+      "length": { "unit": "char", "target": 800 },
+      "useFiles": [
+        { "fileId": "file-001", "descriptor": "提取背景数据支撑本节论述" }
+      ],
+      "contextChapters": ["1"],
+      "figures": [
+        {
+          "id": "Fig-1-1-1",
+          "label": "图1-1-1 研究背景图",
+          "type": "uml",
+          "umlPrompt": "生成研究背景的示意图。",
+          "code": "",
+          "renderPath": "",
+          "status": "pending",
+          "errorMessage": ""
+        }
+      ],
+      "tables": [
+        {
+          "id": "Tab-1-1-1",
+          "label": "表1-1-1 背景数据表",
+          "type": "data",
+          "dataPrompt": "生成研究背景数据的三线表。",
+          "schema": ["字段", "描述"],
+          "rows": [],
+          "status": "pending",
+          "errorMessage": ""
+        }
+      ]
+    }
+  }
+}

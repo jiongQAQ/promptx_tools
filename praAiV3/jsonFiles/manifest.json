@@ -1,0 +1,38 @@
+{
+  "docId": "paper-001",
+  "title": "基于微信小程序的系统设计与实现",
+  "outlineOrder": ["1", "1.1", "1.2", "2"],
+
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "研究背景与意义",
+      "level": 2,
+      "text": "这里是正文内容...",
+      "figures": [
+        {
+          "id": "Fig-1-1-1",
+          "label": "图1-1-1 研究背景图",
+          "path": "exports/Fig-1-1-1.png",
+          "status": "success"
+        }
+      ],
+      "tables": [
+        {
+          "id": "Tab-1-1-1",
+          "label": "表1-1-1 背景数据表",
+          "schema": ["字段", "描述"],
+          "rows": [["用户", "系统使用者"], ["订单", "交易单元"]],
+          "status": "success"
+        }
+      ]
+    }
+  ],
+
+  "styles": {
+    "heading1": { "font": "Times New Roman", "size": 28, "bold": true, "alignment": "center" },
+    "heading2": { "font": "Times New Roman", "size": 24, "bold": true },
+    "body": { "font": "Times New Roman", "size": 22, "line": 1.5 }
+  },
+  "page": { "margin": { "top": 1440, "right": 1440, "bottom": 1440, "left": 1440 } }
+}

@@ -1,0 +1,18 @@
+{
+  "title": "论文大纲",
+  "nodes": [
+    {
+      "id": "1",
+      "title": "第1章 绪论",
+      "children": [
+        { "id": "1.1", "title": "研究背景与意义", "children": [] },
+        { "id": "1.2", "title": "国内外研究现状", "children": [] }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "第2章 系统分析",
+      "children": []
+    }
+  ]
+}
