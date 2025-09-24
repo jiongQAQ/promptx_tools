@@ -1,0 +1,14 @@
+[
+  ["字段名", "类型", "约束", "说明"],
+  ["id", "BIGINT", "PRIMARY KEY, AUTO_INCREMENT", "场地唯一标识主键"],
+  ["name", "VARCHAR(100)", "NOT NULL", "场地名称"],
+  ["type", "VARCHAR(50)", "NOT NULL", "场地类型：泳池、器械区、团课教室等"],
+  ["capacity", "INT", "NOT NULL", "场地容纳人数上限"],
+  ["description", "TEXT", "NULL", "场地详细描述信息"],
+  ["images", "JSON", "NULL", "场地图片URL数组，JSON格式存储"],
+  ["price", "DECIMAL(10,2)", "NOT NULL", "场地单价，按小时计费"],
+  ["status", "TINYINT", "DEFAULT 1", "场地状态：1-开放，0-维护，2-关闭"],
+  ["create_time", "DATETIME", "AUTO_FILL", "记录创建时间"],
+  ["update_time", "DATETIME", "AUTO_FILL", "记录更新时间"],
+  ["is_delete", "TINYINT", "DEFAULT 0", "逻辑删除标志：0-未删除，1-已删除"]
+]

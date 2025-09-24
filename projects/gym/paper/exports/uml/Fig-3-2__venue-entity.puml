@@ -1,0 +1,22 @@
+@startuml
+!define RECTANGLE class
+!theme plain
+
+entity Venue {
+  * id : Long <<PK, AUTO_INCREMENT>>
+  --
+  * name : String <<NOT NULL>>
+  * type : String <<NOT NULL>>
+  * capacity : Integer <<NOT NULL>>
+  description : String
+  images : String <<JSON>>
+  * price : BigDecimal <<NOT NULL>>
+  status : Integer <<1-开放,0-维护,2-关闭>>
+  create_time : LocalDateTime <<AUTO_FILL>>
+  update_time : LocalDateTime <<AUTO_FILL>>
+  is_delete : Integer <<LOGICAL_DELETE>>
+}
+
+note right of Venue : 场地实体类\n管理健身房各种场地信息\n支持泳池、器械区、团课教室等
+
+@enduml

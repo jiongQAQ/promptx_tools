@@ -1,0 +1,26 @@
+@startuml
+!define RECTANGLE class
+!theme plain
+
+entity CheckIn {
+  * id : Long <<PK, AUTO_INCREMENT>>
+  --
+  * reservation_id : Long <<FK>>
+  * user_id : Long <<FK>>
+  * venue_id : Long <<FK>>
+  course_id : Long <<FK>>
+  * check_in_time : LocalDateTime <<NOT NULL>>
+  check_out_time : LocalDateTime
+  qr_code : String
+  check_method : Integer <<1-二维码扫码,2-手动签到>>
+  location : String
+  remark : String
+  status : Integer <<1-正常签到,2-迟到签到,0-异常签到>>
+  create_time : LocalDateTime <<AUTO_FILL>>
+  update_time : LocalDateTime <<AUTO_FILL>>
+  is_delete : Integer <<LOGICAL_DELETE>>
+}
+
+note right of CheckIn : 签到实体类\n管理用户签到签退记录\n支持二维码扫码和手动签到
+
+@enduml

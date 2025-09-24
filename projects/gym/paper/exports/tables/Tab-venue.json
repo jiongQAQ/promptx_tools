@@ -1,0 +1,18 @@
+{
+  "tableName": "venue",
+  "tableCnName": "场地表",
+  "columns": [
+    ["字段名", "字段中文名", "类型", "约束", "说明"],
+    ["id", "编号", "BIGINT", "PK, AUTO_INCREMENT, NOT NULL", "主键ID"],
+    ["name", "场地名称", "VARCHAR(100)", "", "场地名称"],
+    ["type", "场地类型", "VARCHAR(50)", "", "场地类型（泳池/器械区/团课教室）"],
+    ["capacity", "容纳人数", "INT", "", "容纳人数"],
+    ["description", "场地描述", "TEXT", "", "场地描述"],
+    ["images", "场地图片", "TEXT", "", "场地图片（JSON数组）"],
+    ["price", "单价", "DECIMAL(10,2)", "", "单价（每小时）"],
+    ["status", "状态", "TINYINT", "", "状态：1-开放 0-维护 2-关闭"],
+    ["create_time", "创建时间", "DATETIME", "", "创建时间"],
+    ["update_time", "更新时间", "DATETIME", "", "更新时间"],
+    ["is_delete", "是否删除", "TINYINT", "", "是否删除：0-未删除，1-已删除"]
+  ]
+}

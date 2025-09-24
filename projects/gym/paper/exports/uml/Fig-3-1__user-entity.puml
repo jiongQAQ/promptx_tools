@@ -1,0 +1,25 @@
+@startuml
+!define RECTANGLE class
+!theme plain
+
+entity User {
+  * id : Long <<PK, AUTO_INCREMENT>>
+  --
+  * username : String <<UNIQUE, NOT NULL>>
+  * password : String <<NOT NULL>>
+  real_name : String
+  phone : String <<UNIQUE>>
+  email : String <<UNIQUE>>
+  gender : Integer <<0-未知,1-男,2-女>>
+  birthday : LocalDate
+  role_id : Long <<FK>>
+  status : Integer <<0-禁用,1-正常>>
+  avatar : String
+  create_time : LocalDateTime <<AUTO_FILL>>
+  update_time : LocalDateTime <<AUTO_FILL>>
+  is_delete : Integer <<LOGICAL_DELETE>>
+}
+
+note right of User : 用户实体类\n管理系统中所有用户信息\n支持多角色权限控制
+
+@enduml

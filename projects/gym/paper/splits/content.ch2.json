@@ -1,0 +1,333 @@
+{
+  "docId": "gym-reservation-system-paper-ch2",
+  "meta": {
+    "title": "健身房预约管理系统设计与实现",
+    "theme": "健身房预约管理系统"
+  },
+  "defaults": {
+    "length": {
+      "unit": "char",
+      "target": 900
+    },
+    "textPromptTemplate": "撰写《{{sectionTitle}}》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+    "figurePromptTemplate": "为《{{sectionTitle}}》生成 PlantUML 代码，仅输出合法完整代码。重点：{{figureFocus}}。",
+    "tablePromptTemplate": "为《{{sectionTitle}}》生成三线表 JSON 数据。字段：{{schema}}。仅输出 JSON。",
+    "figureLabelTemplate": "图{{chapter}}-{{index}} {{figureTitle}}",
+    "tableLabelTemplate": "表{{chapter}}-{{index}} {{tableTitle}}"
+  },
+  "contents": {
+    "2": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《第2章 系统分析》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.1": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统的目标》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.2": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《功能需求分析》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.2.1": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统需求概述》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.2.2": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《用户角色和权限》，基于源码中的多角色系统(普通用户、教练、管理员)进行分析。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.2.3": {
+      "mode": "list",
+      "itemType": "actorUseCase",
+      "subNumbering": "numeric",
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 600
+      },
+      "textPrompt": "撰写《系统用例图》总述，围绕\"健身房预约管理系统\"的角色和用例关系。",
+      "text": "",
+      "items": [
+        {
+          "order": 1,
+          "title": "普通用户角色",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 300
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "普通用户用例图",
+                "figureFocus": "UML 用例图，强调参与者、用例、关系（extend/include）、系统边界",
+                "promptTemplate": "为《系统用例图—普通用户角色》生成 PlantUML 代码，仅输出合法完整代码。重点：UML 用例图，强调参与者、用例、关系（extend/include）、系统边界。"
+              }
+            ],
+            "wantTable": false,
+            "tablePlan": []
+          },
+          "textPrompt": "撰写《系统用例图—普通用户角色》的用例说明：目标、主要用例、边界与约束。",
+          "text": "",
+          "figures": [],
+          "tables": [],
+          "meta": {
+            "role": "user"
+          }
+        },
+        {
+          "order": 2,
+          "title": "教练角色",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 300
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "教练用例图",
+                "figureFocus": "UML 用例图，强调参与者、用例、关系（extend/include）、系统边界",
+                "promptTemplate": "为《系统用例图—教练角色》生成 PlantUML 代码，仅输出合法完整代码。重点：UML 用例图，强调参与者、用例、关系（extend/include）、系统边界。"
+              }
+            ],
+            "wantTable": false,
+            "tablePlan": []
+          },
+          "textPrompt": "撰写《系统用例图—教练角色》的用例说明：目标、主要用例、边界与约束。",
+          "text": "",
+          "figures": [],
+          "tables": [],
+          "meta": {
+            "role": "coach"
+          }
+        },
+        {
+          "order": 3,
+          "title": "管理员角色",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 300
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "管理员用例图",
+                "figureFocus": "UML 用例图，强调参与者、用例、关系（extend/include）、系统边界",
+                "promptTemplate": "为《系统用例图—管理员角色》生成 PlantUML 代码，仅输出合法完整代码。重点：UML 用例图，强调参与者、用例、关系（extend/include）、系统边界。"
+              }
+            ],
+            "wantTable": false,
+            "tablePlan": []
+          },
+          "textPrompt": "撰写《系统用例图—管理员角色》的用例说明：目标、主要用例、边界与约束。",
+          "text": "",
+          "figures": [],
+          "tables": [],
+          "meta": {
+            "role": "admin"
+          }
+        }
+      ],
+      "figures": [],
+      "tables": []
+    },
+    "2.3": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统的非功能性需求分析》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.4": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统可行性分析》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.4.1": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《技术可行性分析》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.4.2": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《经济可行性分析》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.4.3": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《操作可行性分析》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "2.5": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《本章小结》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    }
+  }
+}

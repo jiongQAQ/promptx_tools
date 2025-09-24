@@ -1,114 +1,84 @@
-【流程 03｜正文与素材生成（不覆盖原文件｜统一使用 luban-uml）】
+【流程 01｜大纲确认→生成→功能章节扩展＋技术占位符实填｜通用】
 
-目标
-1 基于 ./paper/outline.json 与 ./paper/content.json，逐章节生成正文、UML 代码与表格数据。
-2 绝不覆盖 ./paper/content.json，改为生成一份新的运行产物：./paper/content.run.json（如已存在则生成 ./paper/content.run.<YYYYMMDD-HHMMSS>.json）。
-3 所有 UML 图片由工具 luban-uml 渲染；UML 源码文件与图片文件 **同名**（仅扩展名不同），且**统一保存在同一 uml 目录**下。
+你的当前工作目录为 ./（例如 projects/gym）。请仅操作大纲文件，不生成正文或图表。
 
-输入
-- ./paper/outline.json
-- ./paper/content.json
-- ./source/（与 ./CLAUDE.md，如存在）
+—— 阶段一：大纲确认与生成 ——
+目标：
+1. 读取模板：./templates/outline.template.json
+2. 与我确认使用方式（A/B/C 三选一），生成大纲文件：
+   - 输出到 ./paper/outline.json （若 ./paper/ 不存在请创建）
+   - 选择模式：
+     A) 直接使用模板原样生成
+     B) 使用模板 + 你根据 ./source/ 的代码提出“建议新增章节”，待我确认后再写入
+     C) 我将粘贴“自定义大纲”（文本或 JSON），你据此规范化为最终大纲
+3. 生成完成后输出：
+   - 机器可读摘要（stdout 单行 JSON）
+   - 人类可读检查报告（校验结果、差异、新增、占位符待确认等）
 
-目录与命名规范（必须遵守）
-- 产物根：./paper/exports/
-- UML 目录：./paper/exports/uml/        （UML 源码与图片均放此处）
-- 表格目录：./paper/exports/tables/     （三线表 JSON）
-- 命名规则：同一图的 UML 源码与图片同名（仅扩展名不同）
-  - 基础文件名：Fig-<chapter>-<index>__<slug>
-  - slug：来源于 figureTitle 的安全短名（小写，空格→-，去除非法字符，<=60 字符）
-  - UML 源码路径：./paper/exports/uml/Fig-<chapter>-<index>__<slug>.puml
-  - 图片路径：  ./paper/exports/uml/Fig-<chapter>-<index>__<slug>.png   （或 .svg）
-- 表格文件名：Tab-<chapter>-<index>__<slug>.json  → ./paper/exports/tables/
+—— 阶段二：功能章节扩展（编号不固定，按标题匹配） ——
+目标：
+1. 在 ./paper/outline.json 中，查找标题包含以下关键词的章节：
+   - “系统功能详细设计”
+   - “系统功能实现”
+   - “系统功能测试”
+2. 若存在“系统功能详细设计”：
+   - 基于 ./source/ 与（如存在）./CLAUDE.md，自行分析识别系统核心功能模块（≤5）。
+   - 在“系统功能详细设计”下生成子节点：《<功能名>的详细设计》
+   - 在“系统功能实现”下生成子节点：《<功能名>的实现》
+   - 在“系统功能测试”下生成子节点：《<功能名>功能测试》
+   - 三类子节点必须一一对应、顺序一致；子节点 id 以父 id 为前缀，.1 起连续编号。
+3. 若仅存在其中一类章节（例如只有“系统功能实现”），同样基于源码推断功能模块并生成对应子节点。
+4. 若三类均不存在，则跳过扩展并说明原因。
 
-生成规则
-1 文本（text）
-   - 对 plan.wantText=true 的节点（含 list.items），使用 textPrompt，结合源码/CLAUDE.md 生成正文，写入目标运行产物的相应 node.text。
-   - 长度以 length.target 为参考，允许±合理浮动；不做严格硬限制。
-   - 保持学术写作风格。
+—— 阶段三：技术占位符实填（“相关技术介绍”中的 {{jishu1}}/{{jishu2}}/{{jishu3}}） ——
+目标：
+1. 在 ./paper/outline.json 中定位“相关技术介绍”章节下的 1.4.1 / 1.4.2 / 1.4.3（或任何等价的小节标题中包含 {{jishu1}} / {{jishu2}} / {{jishu3}} 的节点，编号位置可能不同）。
+2. 基于项目的**真实证据**自行分析（读取 ./source/ 与 ./CLAUDE.md，如存在），识别该项目最具代表性的三项技术（例如后端框架/数据访问层/缓存/认证/数据库/前端等不同维度各取其一），并按“相关性与重要性”排序为 jishu1、jishu2、jishu3：
+   - 对每个 {{jishuX}} 生成 3–4 个候选（来源于你的证据分析），并在**不等待确认**的前提下自动选定 1 项用于替换。
+   - 仅替换标题占位符文本，不改变节点结构/id/顺序。
+3. 若未找到占位符节点，输出说明并跳过本阶段；不得新建“相关技术介绍”节点。
 
-2 图（figures）
-   - 对 plan.wantFigure=true 的节点（含 list.items），逐条执行 figurePlan。
-   - 仅生成合法且完整的 PlantUML 代码，保存到 .puml，然后**调用 luban-uml 渲染图片**，并将两个路径写回运行产物：
-     - figures[i].umlCodePath = "./paper/exports/uml/Fig-<chapter>-<index>__<slug>.puml"
-     - figures[i].imagePath   = "./paper/exports/uml/Fig-<chapter>-<index>__<slug>.png"
-     - figures[i].status      = "done" | "failed"
-   - 渲染命令（示例，务必按“同名不同后缀”落盘；格式自行判断 png/svg）：
-     - 写入 UML 源码文件后，调用：
-       luban-uml render --in "./paper/exports/uml/Fig-<chapter>-<index>__<slug>.puml" --out "./paper/exports/uml/Fig-<chapter>-<index>__<slug>.png" --format png
-     - 成功则记录 stdout 的 JSON 摘要到 figures[i].renderLog，可选。
-   - 若任一图失败，保留 .puml，标记 status=failed，并在报告中列出；**失败不阻塞流程**。
-
-⚠️ 数据库设计章节专属要求
-   - 如果章节标题包含“数据库设计/数据库概念设计/数据库逻辑设计/ER”：
-     1. 必须完整扫描 ./source/，提取全部实体类/表定义（SQL/ORM/实体类），**一个不漏**。
-     2. 每个实体生成一个子项，包含：
-        - 实体单体结构图（.puml + .png）
-        - 实体字段三线表（JSON）
-        - 文本描述（业务定位、关键字段、约束、关系）
-     3. 在章节级别必须额外生成一张“数据库总体 ER 图”，包含所有实体及其关系。
-     4. 如果源码中未发现实体定义，标记章节 status=failed，并在报告中写明“未发现实体”。
-
-3 表（tables）
-   - 对 plan.wantTable=true 的节点（含 list.items），逐条执行 tablePlan，生成符合 schema 的 JSON 数组数据：
-     - tables[i].dataPath = "./paper/exports/tables/Tab-<chapter>-<index>__<slug>.json"
-     - tables[i].status   = "done" | "failed"
-   - 不进行渲染（渲染到三线表样式由后续导出工具负责）。
-
-4 列表型章节（mode=list）
-   - 仅将 items[] 渲染为编号段落（render.as="numbered"），不是标题层级。
-   - item 下的 text / figures / tables 按上述同样规则生成与落盘。
-
-5 写入产物（不覆盖）
-   - 读取 ./paper/content.json 为基底，拷贝为内存副本，填充 text/figures/tables/status 等；最终落盘到：
-     - 若 ./paper/content.run.json 不存在：写入该文件
-     - 若已存在：写入 ./paper/content.run.<YYYYMMDD-HHMMSS>.json
-   - **绝不修改原始 ./paper/content.json**
-
-数据字段写回规范（运行产物）
-- 每个生成的图表项必须包含：
-  {
-    "id": "<保持原 id 或自动编号>",
-    "label": "图<chapter>-<index> <figureTitle>",
-    "type": "uml" | "table",
-    "umlCodePath": "./paper/exports/uml/Fig-...__.puml",   // 仅图有
-    "imagePath":   "./paper/exports/uml/Fig-...__.png",     // 仅图有
-    "dataPath":    "./paper/exports/tables/Tab-...__.json", // 仅表有
-    "status": "done" | "failed",
-    "errors": []   // 失败时填充
-  }
-
-输出
-1 生成文件：
-   - ./paper/content.run.json   或  ./paper/content.run.<YYYYMMDD-HHMMSS>.json
-   - 多个 .puml/.png（或 .svg）置于 ./paper/exports/uml/
-   - 多个表格 JSON 置于 ./paper/exports/tables/
-2 机器可读 JSON（stdout 单行）：
+—— 阶段四：输出 ——
+1. 覆盖写回 ./paper/outline.json（UTF-8）
+2. 机器可读摘要（stdout 单行 JSON），示例字段：
    {
      "status": "success",
      "project": "<projectName>",
      "outlinePath": "./paper/outline.json",
-     "contentPath": "./paper/content.json",
-     "runContentPath": "./paper/content.run.json",
-     "chaptersDone": <int>,
-     "figures": { "generated": <int>, "failed": <int> },
-     "tables":  { "generated": <int>, "failed": <int> },
-     "failList": [
-       {"sectionId":"<id>","type":"figure|table|text","name":"<标题或文件名>","reason":"<摘要>"}
-     ]
+     "nodeCount": <整数>,
+     "rootIds": ["1","2","3",...],
+     "mode": "template | template+suggest | custom",
+     "addedNodes": ["3.3 …", ...],
+     "functions": ["…","…"],                         // 若做了功能扩展
+     "expandedChapters": {                           // 若做了功能扩展
+       "系统功能详细设计": ["…", "..."],
+       "系统功能实现": ["…", "..."],
+       "系统功能测试": ["…", "..."]
+     },
+     "techPlaceholders": {                           // 技术占位符替换结果（若存在）
+       "jishu1": { "picked":"…", "candidates":["…","…","…"], "evidence":["…","…"] , "nodeId":"<如 1.4.1>" },
+       "jishu2": { "picked":"…", "candidates":["…","…","…"], "evidence":["…"]      , "nodeId":"<如 1.4.2>" },
+       "jishu3": { "picked":"…", "candidates":["…","…","…"], "evidence":["…"]      , "nodeId":"<如 1.4.3>" }
+     }
    }
-3 人类可读检查报告：
-   - 正文生成统计：成功/失败数量
-   - 图/表生成统计：生成数、失败数
-   - 数据库设计覆盖情况：实体总数、单体图/三线表生成情况、总体 ER 图状态
-   - 失败清单：节/子项 → 失败类型 → 文件名（含 .puml/.png/.json） → 失败原因
-   - 文件清单预览：uml 目录与 tables 目录下新文件条目数
-   - 下一步建议：可进行“流程 04 导出 Word”
+3. 人类可读检查报告（普通文本）：
+   - 模式选择与结构校验结果（A/B/C）
+   - 新增或修改的章节（含 id 映射）
+   - 功能模块扩展（如适用）：
+     • 识别出的功能模块（≤5）及证据来源
+     • 扩展子节点清单（按三类章节分组）
+     • 对应关系与编号校验结果
+   - 技术占位符替换（如适用）：
+     • 每个 {{jishuX}} 的候选清单（编号 1/2/3/4）
+     • 采纳项与采纳理由
+     • 证据清单（来源文件/模块/配置/说明）
+     • 被替换节点的 id 与新标题
+   - 覆盖写入确认：./paper/outline.json
 
-注意
-- 必须使用 luban-uml 渲染所有 UML 图片；**图片与 UML 源码同名且同目录**（./paper/exports/uml/）。
-- 数据库设计章节必须完整覆盖所有实体，不得遗漏；总体 ER 图必须包含全部实体。
-- 若你选择 .svg，请保持同名规则，只是扩展名不同（.puml ↔ .svg）。
-- 同名文件会被覆盖（工具默认行为）；如需保留版本请在文件名中加入时间戳或版本号。
-- 禁止修改 ./paper/outline.json 与 ./paper/content.json；仅生成新的运行产物与导出资产。
-- 若任一关键输入缺失或解析失败，打印错误并停止；不要写入损坏文件。
+—— 约束与容错 ——
+- 全流程仅操作 ./paper/outline.json；不得读写/创建其他文件（content.json、images、docx 等）。
+- 功能与技术的判定必须来源于项目真实证据；若证据不足，仍需给出候选并在报告中标注“依据不足”。
+- 不得增删无关节点与层级，不得变更已有节点 id 或顺序；仅允许：
+  • 在“系统功能详细设计/实现/测试”三类章节下新增其**直接子节点**（如执行了功能扩展）；
+  • 在存在 {{jishuX}} 的节点中替换标题占位符文本（技术占位符实填）。
+- 模板缺失/非法或写入失败时，明确报错并停止，不写损坏文件。

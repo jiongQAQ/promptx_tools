@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#ffffff"/>
+  <rect x="510" y="410" width="180" height="80" fill="#fff" stroke="#333" stroke-width="3"/>
+  <text x="600" y="456" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" font-weight="bold" fill="#333">课程表</text>
+  <line x1="690" y1="450" x2="800" y2="450" stroke="#666" stroke-width="2"/>
+  <ellipse cx="880" cy="450" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="880" y="456" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">字段中文名</text>
+  <line x1="689.8414709561687" y1="490" x2="775.7927281399283" y2="528.2679652365412" stroke="#666" stroke-width="2"/>
+  <ellipse cx="855.7927281399283" cy="563.886260061224" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="855.7927281399283" y="569.886260061224" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">编号</text>
+  <line x1="636.0161617719136" y1="490" x2="751.3404080085667" y2="618.0805511336704" stroke="#666" stroke-width="2"/>
+  <ellipse cx="787.3565697804803" cy="658.0805511336704" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="787.3565697804803" y="664.0805511336704" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">课程名称</text>
+  <line x1="612.9967878493162" y1="490" x2="673.5279705756691" y2="676.295824562643" stroke="#666" stroke-width="2"/>
+  <ellipse cx="686.5247584249853" cy="716.295824562643" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="686.5247584249853" y="722.295824562643" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">课程描述</text>
+  <line x1="595.7958305893729" y1="490" x2="574.9361996956841" y2="688.4661307031165" stroke="#666" stroke-width="2"/>
+  <ellipse cx="570.732030285057" cy="728.4661307031165" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="570.732030285057" y="734.4661307031165" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">教练编号</text>
+  <line x1="576.905989232415" y1="490" x2="483.0940107675851" y2="652.4871130596429" stroke="#666" stroke-width="2"/>
+  <ellipse cx="460.00000000000006" cy="692.4871130596429" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="460.00000000000006" y="698.4871130596429" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">场地编号</text>
+  <line x1="544.9447231811531" y1="490" x2="428.53051839386166" y2="574.5798706418925" stroke="#666" stroke-width="2"/>
+  <ellipse cx="373.4752415750147" cy="614.5798706418925" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="373.4752415750147" y="620.5798706418925" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">开始时间</text>
+  <line x1="510" y1="469.13009055030204" x2="406.11867179453446" y2="491.2107484953709" stroke="#666" stroke-width="2"/>
+  <ellipse cx="326.11867179453446" cy="508.21527342897275" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="326.11867179453446" y="514.2152734289728" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">结束时间</text>
+  <line x1="510" y1="430.869909449698" x2="406.1186717945344" y2="408.7892515046292" stroke="#666" stroke-width="2"/>
+  <ellipse cx="326.1186717945344" cy="391.7847265710275" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="326.1186717945344" y="397.7847265710275" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">最大人数</text>
+  <line x1="544.944723181153" y1="410" x2="428.53051839386166" y2="325.42012935810754" stroke="#666" stroke-width="2"/>
+  <ellipse cx="373.4752415750147" cy="285.42012935810754" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="373.4752415750147" y="291.42012935810754" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">已报名人数</text>
+  <line x1="576.905989232415" y1="410" x2="483.09401076758496" y2="247.51288694035722" stroke="#666" stroke-width="2"/>
+  <ellipse cx="459.9999999999999" cy="207.51288694035722" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="459.9999999999999" y="213.51288694035722" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">价格</text>
+  <line x1="595.7958305893729" y1="410" x2="574.9361996956839" y2="211.5338692968835" stroke="#666" stroke-width="2"/>
+  <ellipse cx="570.7320302850568" cy="171.5338692968835" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="570.7320302850568" y="177.5338692968835" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">状态</text>
+  <line x1="612.9967878493162" y1="410" x2="673.527970575669" y2="223.70417543735698" stroke="#666" stroke-width="2"/>
+  <ellipse cx="686.5247584249852" cy="183.70417543735698" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="686.5247584249852" y="189.70417543735698" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建时间</text>
+  <line x1="636.0161617719135" y1="410" x2="751.3404080085667" y2="281.9194488663295" stroke="#666" stroke-width="2"/>
+  <ellipse cx="787.3565697804802" cy="241.91944886632953" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="787.3565697804802" y="247.91944886632953" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新时间</text>
+  <line x1="689.8414709561685" y1="410" x2="775.7927281399282" y2="371.73203476345867" stroke="#666" stroke-width="2"/>
+  <ellipse cx="855.7927281399282" cy="336.1137399387757" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="855.7927281399282" y="342.1137399387757" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">是否删除</text>
+</svg>

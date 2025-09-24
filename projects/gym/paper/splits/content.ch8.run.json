@@ -1,0 +1,47 @@
+{
+  "docId": "gym-reservation-system-paper-ch8",
+  "meta": {
+    "title": "健身房预约管理系统设计与实现",
+    "theme": "健身房预约管理系统",
+    "generatedAt": "2025-01-28T16:35:00.000Z",
+    "status": "generated"
+  },
+  "defaults": {
+    "length": {
+      "unit": "char",
+      "target": 900
+    },
+    "textPromptTemplate": "撰写《{{sectionTitle}}》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+    "figurePromptTemplate": "为《{{sectionTitle}}》生成 PlantUML 代码，仅输出合法完整代码。重点：{{figureFocus}}。",
+    "tablePromptTemplate": "为《{{sectionTitle}}》生成三线表 JSON 数据。字段：{{schema}}。仅输出 JSON。",
+    "figureLabelTemplate": "图{{chapter}}-{{index}} {{figureTitle}}",
+    "tableLabelTemplate": "表{{chapter}}-{{index}} {{tableTitle}}"
+  },
+  "contents": {
+    "8": {
+      "status": "done",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《参考文献》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "[1] Craig Walls. Spring Boot实战[M]. 北京: 人民邮电出版社, 2016.\n\n[2] 尤雨溪, 蒋豪群. Vue.js权威指南[M]. 北京: 电子工业出版社, 2017.\n\n[3] 翟永超. Spring Boot 2精髓: 从构建小系统到架构分布式大系统[M]. 北京: 电子工业出版社, 2018.\n\n[4] Redisson Team. Redisson: Redis Java client with features of In-Memory Data Grid[EB/OL]. https://redisson.org, 2024.\n\n[5] Oracle Corporation. JSON Web Token (JWT) RFC 7519[S]. Internet Engineering Task Force, 2015.\n\n[6] Google Inc. ZXing (\"Zebra Crossing\") barcode scanning library for Java, Android[EB/OL]. https://github.com/zxing/zxing, 2024.\n\n[7] 闫宏飞, 杨晓春. 软件工程: 理论、方法与实践[M]. 3版. 北京: 清华大学出版社, 2019.\n\n[8] Martin Fowler. 企业应用架构模式[M]. 北京: 机械工业出版社, 2010.\n\n[9] Robert C. Martin. 架构整洁之道[M]. 北京: 电子工业出版社, 2018.\n\n[10] 李智慧. 大型网站技术架构: 核心原理与案例分析[M]. 北京: 电子工业出版社, 2013.\n\n[11] 张开涛. Spring Boot + Vue全栈开发实战[M]. 北京: 机械工业出版社, 2019.\n\n[12] Element Plus Team. Element Plus: A Vue.js 3 UI Library[EB/OL]. https://element-plus.org, 2024.\n\n[13] 许令波. MyBatis从入门到精通[M]. 北京: 清华大学出版社, 2017.\n\n[14] 高洪岩. Redis设计与实现[M]. 北京: 机械工业出版社, 2014.\n\n[15] 周志明. 深入理解Java虚拟机: JVM高级特性与最佳实践[M]. 3版. 北京: 机械工业出版社, 2019.",
+      "figures": [],
+      "tables": [],
+      "meta": {
+        "length": {
+          "actual": 617,
+          "target": 900,
+          "ok": false
+        }
+      }
+    }
+  }
+}

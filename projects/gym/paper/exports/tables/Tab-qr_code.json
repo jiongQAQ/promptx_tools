@@ -1,0 +1,27 @@
+{
+  "tableName": "qr_code",
+  "tableCnName": "二维码表",
+  "columns": [
+    ["字段名", "字段中文名", "类型", "约束", "说明"],
+    ["id", "编号", "BIGINT", "PK, AUTO_INCREMENT, NOT NULL", "主键ID"],
+    ["qr_id", "二维码编号", "VARCHAR(50)", "", "二维码ID"],
+    ["venue_id", "场地编号", "BIGINT", "", "场地ID"],
+    ["qr_content", "二维码内容", "TEXT", "", "二维码内容"],
+    ["qr_code_data", "二维码数据", "TEXT", "", "二维码数据"],
+    ["valid_hours", "有效小时数", "INT", "", "有效小时数"],
+    ["size", "尺寸", "INT", "", "二维码尺寸"],
+    ["format", "格式", "VARCHAR(10)", "", "图片格式"],
+    ["background_color", "背景色", "VARCHAR(20)", "", "背景颜色"],
+    ["foreground_color", "前景色", "VARCHAR(20)", "", "前景颜色"],
+    ["with_logo", "是否包含LOGO", "TINYINT", "", "是否包含LOGO"],
+    ["valid_start_time", "有效期开始时间", "DATETIME", "", "有效期开始时间"],
+    ["valid_end_time", "有效期结束时间", "DATETIME", "", "有效期结束时间"],
+    ["usage_count", "使用次数", "INT", "", "使用次数"],
+    ["status", "状态", "TINYINT", "", "状态：1-有效 2-已失效 0-已撤销"],
+    ["created_by", "创建者编号", "BIGINT", "", "创建者ID"],
+    ["create_time", "创建时间", "DATETIME", "", "创建时间"],
+    ["expire_time", "过期时间", "DATETIME", "", "过期时间"],
+    ["is_active", "是否激活", "TINYINT", "", "是否激活：1-激活，0-未激活"],
+    ["is_delete", "是否删除", "TINYINT", "", "是否删除：0-未删除，1-已删除"]
+  ]
+}

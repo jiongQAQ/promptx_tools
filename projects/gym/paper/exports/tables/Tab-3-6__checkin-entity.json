@@ -1,0 +1,18 @@
+[
+  ["字段名", "类型", "约束", "说明"],
+  ["id", "BIGINT", "PRIMARY KEY, AUTO_INCREMENT", "签到记录唯一标识主键"],
+  ["reservation_id", "BIGINT", "FOREIGN KEY, NOT NULL", "关联预约表，对应的预约记录"],
+  ["user_id", "BIGINT", "FOREIGN KEY, NOT NULL", "关联用户表，签到用户"],
+  ["venue_id", "BIGINT", "FOREIGN KEY, NOT NULL", "关联场地表，签到场地"],
+  ["course_id", "BIGINT", "FOREIGN KEY", "关联课程表，团课签到时使用"],
+  ["check_in_time", "DATETIME", "NOT NULL", "签到时间"],
+  ["check_out_time", "DATETIME", "NULL", "签退时间"],
+  ["qr_code", "VARCHAR(255)", "NULL", "签到二维码内容"],
+  ["check_method", "TINYINT", "DEFAULT 1", "签到方式：1-二维码扫码，2-手动签到"],
+  ["location", "VARCHAR(200)", "NULL", "签到位置描述"],
+  ["remark", "TEXT", "NULL", "签到备注"],
+  ["status", "TINYINT", "DEFAULT 1", "签到状态：1-正常签到，2-迟到签到，0-异常签到"],
+  ["create_time", "DATETIME", "AUTO_FILL", "记录创建时间"],
+  ["update_time", "DATETIME", "AUTO_FILL", "记录更新时间"],
+  ["is_delete", "TINYINT", "DEFAULT 0", "逻辑删除标志：0-未删除，1-已删除"]
+]

@@ -1,0 +1,21 @@
+{
+  "tableName": "user",
+  "tableCnName": "用户表",
+  "columns": [
+    ["字段名", "字段中文名", "类型", "约束", "说明"],
+    ["id", "编号", "BIGINT", "PK, AUTO_INCREMENT, NOT NULL", "主键ID"],
+    ["username", "用户名", "VARCHAR(50)", "NOT NULL", "用户名"],
+    ["password", "密码", "VARCHAR(255)", "NOT NULL", "密码"],
+    ["real_name", "真实姓名", "VARCHAR(100)", "", "真实姓名"],
+    ["phone", "手机号", "VARCHAR(20)", "", "手机号"],
+    ["email", "邮箱", "VARCHAR(100)", "", "邮箱"],
+    ["gender", "性别", "TINYINT", "", "性别：0-未知 1-男 2-女"],
+    ["birthday", "生日", "DATE", "", "生日"],
+    ["role_id", "角色编号", "BIGINT", "", "用户角色ID"],
+    ["status", "状态", "TINYINT", "", "用户状态：0-禁用，1-正常"],
+    ["avatar", "头像", "VARCHAR(255)", "", "头像URL"],
+    ["create_time", "创建时间", "DATETIME", "", "创建时间"],
+    ["update_time", "更新时间", "DATETIME", "", "更新时间"],
+    ["is_delete", "是否删除", "TINYINT", "", "是否删除：0-未删除，1-已删除"]
+  ]
+}

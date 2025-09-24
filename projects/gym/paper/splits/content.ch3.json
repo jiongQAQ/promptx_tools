@@ -1,0 +1,658 @@
+{
+  "docId": "gym-reservation-system-paper-ch3",
+  "meta": {
+    "title": "健身房预约管理系统设计与实现",
+    "theme": "健身房预约管理系统"
+  },
+  "defaults": {
+    "length": {
+      "unit": "char",
+      "target": 900
+    },
+    "textPromptTemplate": "撰写《{{sectionTitle}}》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+    "figurePromptTemplate": "为《{{sectionTitle}}》生成 PlantUML 代码，仅输出合法完整代码。重点：{{figureFocus}}。",
+    "tablePromptTemplate": "为《{{sectionTitle}}》生成三线表 JSON 数据。字段：{{schema}}。仅输出 JSON。",
+    "figureLabelTemplate": "图{{chapter}}-{{index}} {{figureTitle}}",
+    "tableLabelTemplate": "表{{chapter}}-{{index}} {{tableTitle}}"
+  },
+  "contents": {
+    "3": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《第3章 系统概要设计》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "3.1": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统设计原则》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "3.2": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": true,
+        "figurePlan": [
+          {
+            "enabled": true,
+            "figureTitle": "系统架构图",
+            "figureFocus": "分层结构、依赖关系、接口边界或模块调用关系",
+            "promptTemplate": "为《系统软件逻辑架构》生成 PlantUML 代码，仅输出合法完整代码。重点：分层结构、依赖关系、接口边界或模块调用关系。"
+          }
+        ],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统软件逻辑架构》，说明系统的分层结构、模块依赖关系和技术架构选择。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "3.3": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": true,
+        "figurePlan": [
+          {
+            "enabled": true,
+            "figureTitle": "系统功能框图",
+            "figureFocus": "分层结构、依赖关系、接口边界或模块调用关系",
+            "promptTemplate": "为《系统功能框图》生成 PlantUML 代码，仅输出合法完整代码。重点：分层结构、依赖关系、接口边界或模块调用关系。"
+          }
+        ],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统功能框图》，说明系统各功能模块的组织结构和调用关系。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "3.4": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统数据库设计》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "3.4.1": {
+      "mode": "list",
+      "itemType": "entity",
+      "subNumbering": "numeric",
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 600
+      },
+      "textPrompt": "撰写《数据库概念设计》总述，说明数据库实体设计的整体思路。",
+      "text": "",
+      "items": [
+        {
+          "order": 1,
+          "title": "user 实体（用户表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 400
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "用户表局部结构图",
+                "figureFocus": "字段、约束及与其他实体的关系",
+                "promptTemplate": "为《数据库概念设计—user 实体（用户表）》生成 PlantUML 代码，仅输出合法完整代码。重点：字段、约束及与其他实体的关系。"
+              }
+            ],
+            "wantTable": true,
+            "tablePlan": [
+              {
+                "enabled": true,
+                "tableTitle": "用户表字段三线表",
+                "schema": [
+                  "字段名",
+                  "类型",
+                  "约束",
+                  "说明"
+                ],
+                "promptTemplate": "为《数据库概念设计—user 实体（用户表）》生成三线表 JSON 数据。字段：[\"字段名\",\"类型\",\"约束\",\"说明\"]。仅输出 JSON。"
+              }
+            ]
+          },
+          "textPrompt": "撰写《数据库概念设计—user 实体（用户表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "",
+          "figures": [
+            {
+              "id": "Fig-user",
+              "label": "图3-1 用户表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-user.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-user",
+              "label": "表3-1 用户表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-user.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "user"
+          }
+        },
+        {
+          "order": 2,
+          "title": "venue 实体（场地表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 400
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "场地表局部结构图",
+                "figureFocus": "字段、约束及与其他实体的关系",
+                "promptTemplate": "为《数据库概念设计—venue 实体（场地表）》生成 PlantUML 代码，仅输出合法完整代码。重点：字段、约束及与其他实体的关系。"
+              }
+            ],
+            "wantTable": true,
+            "tablePlan": [
+              {
+                "enabled": true,
+                "tableTitle": "场地表字段三线表",
+                "schema": [
+                  "字段名",
+                  "类型",
+                  "约束",
+                  "说明"
+                ],
+                "promptTemplate": "为《数据库概念设计—venue 实体（场地表）》生成三线表 JSON 数据。字段：[\"字段名\",\"类型\",\"约束\",\"说明\"]。仅输出 JSON。"
+              }
+            ]
+          },
+          "textPrompt": "撰写《数据库概念设计—venue 实体（场地表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "",
+          "figures": [
+            {
+              "id": "Fig-venue",
+              "label": "图3-2 场地表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-venue.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-venue",
+              "label": "表3-2 场地表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-venue.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "venue"
+          }
+        },
+        {
+          "order": 3,
+          "title": "reservation 实体（预约表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 400
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "预约表局部结构图",
+                "figureFocus": "字段、约束及与其他实体的关系",
+                "promptTemplate": "为《数据库概念设计—reservation 实体（预约表）》生成 PlantUML 代码，仅输出合法完整代码。重点：字段、约束及与其他实体的关系。"
+              }
+            ],
+            "wantTable": true,
+            "tablePlan": [
+              {
+                "enabled": true,
+                "tableTitle": "预约表字段三线表",
+                "schema": [
+                  "字段名",
+                  "类型",
+                  "约束",
+                  "说明"
+                ],
+                "promptTemplate": "为《数据库概念设计—reservation 实体（预约表）》生成三线表 JSON 数据。字段：[\"字段名\",\"类型\",\"约束\",\"说明\"]。仅输出 JSON。"
+              }
+            ]
+          },
+          "textPrompt": "撰写《数据库概念设计—reservation 实体（预约表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "",
+          "figures": [
+            {
+              "id": "Fig-reservation",
+              "label": "图3-3 预约表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-reservation.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-reservation",
+              "label": "表3-3 预约表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-reservation.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "reservation"
+          }
+        },
+        {
+          "order": 4,
+          "title": "course 实体（课程表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 400
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "课程表局部结构图",
+                "figureFocus": "字段、约束及与其他实体的关系",
+                "promptTemplate": "为《数据库概念设计—course 实体（课程表）》生成 PlantUML 代码，仅输出合法完整代码。重点：字段、约束及与其他实体的关系。"
+              }
+            ],
+            "wantTable": true,
+            "tablePlan": [
+              {
+                "enabled": true,
+                "tableTitle": "课程表字段三线表",
+                "schema": [
+                  "字段名",
+                  "类型",
+                  "约束",
+                  "说明"
+                ],
+                "promptTemplate": "为《数据库概念设计—course 实体（课程表）》生成三线表 JSON 数据。字段：[\"字段名\",\"类型\",\"约束\",\"说明\"]。仅输出 JSON。"
+              }
+            ]
+          },
+          "textPrompt": "撰写《数据库概念设计—course 实体（课程表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "",
+          "figures": [
+            {
+              "id": "Fig-course",
+              "label": "图3-4 课程表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-course.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-course",
+              "label": "表3-4 课程表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-course.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "course"
+          }
+        },
+        {
+          "order": 5,
+          "title": "membership_card 实体（会员卡表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 400
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "会员卡表局部结构图",
+                "figureFocus": "字段、约束及与其他实体的关系",
+                "promptTemplate": "为《数据库概念设计—membership_card 实体（会员卡表）》生成 PlantUML 代码，仅输出合法完整代码。重点：字段、约束及与其他实体的关系。"
+              }
+            ],
+            "wantTable": true,
+            "tablePlan": [
+              {
+                "enabled": true,
+                "tableTitle": "会员卡表字段三线表",
+                "schema": [
+                  "字段名",
+                  "类型",
+                  "约束",
+                  "说明"
+                ],
+                "promptTemplate": "为《数据库概念设计—membership_card 实体（会员卡表）》生成三线表 JSON 数据。字段：[\"字段名\",\"类型\",\"约束\",\"说明\"]。仅输出 JSON。"
+              }
+            ]
+          },
+          "textPrompt": "撰写《数据库概念设计—membership_card 实体（会员卡表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "",
+          "figures": [
+            {
+              "id": "Fig-membership_card",
+              "label": "图3-5 会员卡表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-membership_card.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-membership_card",
+              "label": "表3-5 会员卡表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-membership_card.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "membership_card"
+          }
+        },
+        {
+          "order": 6,
+          "title": "check_in 实体（签到表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 400
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "签到表局部结构图",
+                "figureFocus": "字段、约束及与其他实体的关系",
+                "promptTemplate": "为《数据库概念设计—check_in 实体（签到表）》生成 PlantUML 代码，仅输出合法完整代码。重点：字段、约束及与其他实体的关系。"
+              }
+            ],
+            "wantTable": true,
+            "tablePlan": [
+              {
+                "enabled": true,
+                "tableTitle": "签到表字段三线表",
+                "schema": [
+                  "字段名",
+                  "类型",
+                  "约束",
+                  "说明"
+                ],
+                "promptTemplate": "为《数据库概念设计—check_in 实体（签到表）》生成三线表 JSON 数据。字段：[\"字段名\",\"类型\",\"约束\",\"说明\"]。仅输出 JSON。"
+              }
+            ]
+          },
+          "textPrompt": "撰写《数据库概念设计—check_in 实体（签到表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "",
+          "figures": [
+            {
+              "id": "Fig-check_in",
+              "label": "图3-6 签到表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-check_in.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-check_in",
+              "label": "表3-6 签到表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-check_in.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "check_in"
+          }
+        },
+        {
+          "order": 7,
+          "title": "qr_code 实体（二维码表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "planning",
+          "length": {
+            "unit": "char",
+            "target": 400
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "figurePlan": [
+              {
+                "enabled": true,
+                "figureTitle": "二维码表局部结构图",
+                "figureFocus": "字段、约束及与其他实体的关系",
+                "promptTemplate": "为《数据库概念设计—qr_code 实体（二维码表）》生成 PlantUML 代码，仅输出合法完整代码。重点：字段、约束及与其他实体的关系。"
+              }
+            ],
+            "wantTable": true,
+            "tablePlan": [
+              {
+                "enabled": true,
+                "tableTitle": "二维码表字段三线表",
+                "schema": [
+                  "字段名",
+                  "类型",
+                  "约束",
+                  "说明"
+                ],
+                "promptTemplate": "为《数据库概念设计—qr_code 实体（二维码表）》生成三线表 JSON 数据。字段：[\"字段名\",\"类型\",\"约束\",\"说明\"]。仅输出 JSON。"
+              }
+            ]
+          },
+          "textPrompt": "撰写《数据库概念设计—qr_code 实体（二维码表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "",
+          "figures": [
+            {
+              "id": "Fig-qr_code",
+              "label": "图3-7 二维码表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-qr_code.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-qr_code",
+              "label": "表3-7 二维码表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-qr_code.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "qr_code"
+          }
+        }
+      ],
+      "figures": [
+        {
+          "id": "Fig-ER-Overview",
+          "label": "图3-8 数据库总体ER图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/tables/ER-overview.puml",
+          "imagePath": "./paper/exports/tables/ER-overview.svg",
+          "status": "failed",
+          "meta": {
+            "source": "step-2-auto",
+            "reason": "PlantUML render failed"
+          }
+        }
+      ],
+      "tables": []
+    },
+    "3.4.2": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《数据库逻辑设计》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "3.5": {
+      "status": "planning",
+      "length": {
+        "unit": "char",
+        "target": 900
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《本章小结》，围绕\"健身房预约管理系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    }
+  }
+}

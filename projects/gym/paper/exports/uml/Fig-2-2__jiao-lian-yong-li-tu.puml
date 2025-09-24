@@ -1,0 +1,55 @@
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam roundCorner 10
+skinparam packageStyle rectangle
+
+title 教练用例图
+
+left to right direction
+
+actor "教练" as Coach
+rectangle "健身房预约管理系统" {
+    usecase "用户登录" as UC1
+    usecase "个人信息管理" as UC2
+    usecase "课程管理" as UC3
+    usecase "学员管理" as UC4
+    usecase "考勤统计" as UC5
+    usecase "课程安排" as UC6
+    usecase "教学评价查看" as UC7
+    usecase "场馆预约" as UC8
+    usecase "创建课程" as UC9
+    usecase "修改课程信息" as UC10
+    usecase "查看报名学员" as UC11
+    usecase "课程签到管理" as UC12
+    usecase "生成课程报告" as UC13
+    usecase "身份验证" as UC14
+}
+
+Coach --> UC1
+Coach --> UC2
+Coach --> UC3
+Coach --> UC4
+Coach --> UC5
+Coach --> UC6
+Coach --> UC7
+Coach --> UC8
+
+UC3 <.. UC9 : <<extend>>
+UC3 <.. UC10 : <<extend>>
+UC4 <.. UC11 : <<extend>>
+UC5 <.. UC12 : <<extend>>
+UC5 <.. UC13 : <<extend>>
+
+UC3 .> UC14 : <<include>>
+UC4 .> UC14 : <<include>>
+UC5 .> UC14 : <<include>>
+UC6 .> UC14 : <<include>>
+UC8 .> UC14 : <<include>>
+
+note right of UC3 : 仅能管理授权课程
+note right of UC5 : 支持多维度统计
+note right of UC14 : 教练角色权限验证
+
+@enduml

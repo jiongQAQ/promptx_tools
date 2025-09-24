@@ -1,0 +1,17 @@
+[
+  ["字段名", "类型", "约束", "说明"],
+  ["id", "BIGINT", "PRIMARY KEY, AUTO_INCREMENT", "用户唯一标识主键"],
+  ["username", "VARCHAR(50)", "UNIQUE, NOT NULL", "用户登录名，系统内唯一"],
+  ["password", "VARCHAR(255)", "NOT NULL", "用户密码，BCrypt加密存储"],
+  ["real_name", "VARCHAR(100)", "NULL", "用户真实姓名"],
+  ["phone", "VARCHAR(20)", "UNIQUE", "手机号码，用于登录和通知"],
+  ["email", "VARCHAR(100)", "UNIQUE", "电子邮箱地址"],
+  ["gender", "TINYINT", "DEFAULT 0", "性别：0-未知，1-男，2-女"],
+  ["birthday", "DATE", "NULL", "出生日期"],
+  ["role_id", "BIGINT", "FOREIGN KEY", "关联角色表，控制用户权限"],
+  ["status", "TINYINT", "DEFAULT 1", "用户状态：0-禁用，1-正常"],
+  ["avatar", "VARCHAR(500)", "NULL", "头像URL地址"],
+  ["create_time", "DATETIME", "AUTO_FILL", "记录创建时间"],
+  ["update_time", "DATETIME", "AUTO_FILL", "记录更新时间"],
+  ["is_delete", "TINYINT", "DEFAULT 0", "逻辑删除标志：0-未删除，1-已删除"]
+]

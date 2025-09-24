@@ -1,0 +1,21 @@
+{
+  "tableName": "course",
+  "tableCnName": "课程表",
+  "columns": [
+    ["字段名", "字段中文名", "类型", "约束", "说明"],
+    ["id", "编号", "BIGINT", "PK, AUTO_INCREMENT, NOT NULL", "主键ID"],
+    ["name", "课程名称", "VARCHAR(100)", "", "课程名称"],
+    ["description", "课程描述", "TEXT", "", "课程描述"],
+    ["coach_id", "教练编号", "BIGINT", "", "教练ID"],
+    ["venue_id", "场地编号", "BIGINT", "", "场地ID"],
+    ["start_time", "开始时间", "DATETIME", "", "开始时间"],
+    ["end_time", "结束时间", "DATETIME", "", "结束时间"],
+    ["capacity", "最大人数", "INT", "", "最大人数"],
+    ["enrolled_count", "已报名人数", "INT", "", "已报名人数"],
+    ["price", "价格", "DECIMAL(10,2)", "", "课程价格"],
+    ["status", "状态", "TINYINT", "", "状态：1-开放报名 2-报名满员 3-已开始 4-已结束 0-已取消"],
+    ["create_time", "创建时间", "DATETIME", "", "创建时间"],
+    ["update_time", "更新时间", "DATETIME", "", "更新时间"],
+    ["is_delete", "是否删除", "TINYINT", "", "是否删除：0-未删除，1-已删除"]
+  ]
+}

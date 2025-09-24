@@ -1,0 +1,26 @@
+@startuml
+!define RECTANGLE class
+!theme plain
+
+entity MembershipCard {
+  * id : Long <<PK, AUTO_INCREMENT>>
+  --
+  * user_id : Long <<FK>>
+  * type : Integer <<1-次卡,2-月卡,3-年卡>>
+  * name : String <<NOT NULL>>
+  total_times : Integer
+  remaining_times : Integer
+  * start_date : LocalDate <<NOT NULL>>
+  * end_date : LocalDate <<NOT NULL>>
+  * price : BigDecimal <<NOT NULL>>
+  status : Integer <<1-正常,2-即将到期,3-已到期,0-已禁用>>
+  purchase_time : LocalDateTime
+  remark : String
+  create_time : LocalDateTime <<AUTO_FILL>>
+  update_time : LocalDateTime <<AUTO_FILL>>
+  is_delete : Integer <<LOGICAL_DELETE>>
+}
+
+note right of MembershipCard : 会员卡实体类\n管理各类会员卡信息\n支持次卡、月卡、年卡等多种类型
+
+@enduml

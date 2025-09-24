@@ -1,0 +1,17 @@
+[
+  ["字段名", "类型", "约束", "说明"],
+  ["id", "BIGINT", "PRIMARY KEY, AUTO_INCREMENT", "课程唯一标识主键"],
+  ["name", "VARCHAR(100)", "NOT NULL", "课程名称"],
+  ["description", "TEXT", "NULL", "课程详细描述"],
+  ["coach_id", "BIGINT", "FOREIGN KEY, NOT NULL", "关联用户表，授课教练"],
+  ["venue_id", "BIGINT", "FOREIGN KEY, NOT NULL", "关联场地表，上课地点"],
+  ["start_time", "DATETIME", "NOT NULL", "课程开始时间"],
+  ["end_time", "DATETIME", "NOT NULL", "课程结束时间"],
+  ["capacity", "INT", "NOT NULL", "课程容纳人数上限"],
+  ["enrolled_count", "INT", "DEFAULT 0", "已报名人数"],
+  ["price", "DECIMAL(10,2)", "NOT NULL", "课程价格"],
+  ["status", "TINYINT", "DEFAULT 1", "课程状态：1-开放报名，2-报名满员，3-已开始，4-已结束，0-已取消"],
+  ["create_time", "DATETIME", "AUTO_FILL", "记录创建时间"],
+  ["update_time", "DATETIME", "AUTO_FILL", "记录更新时间"],
+  ["is_delete", "TINYINT", "DEFAULT 0", "逻辑删除标志：0-未删除，1-已删除"]
+]

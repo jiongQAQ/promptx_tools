@@ -1,0 +1,18 @@
+[
+  ["字段名", "类型", "约束", "说明"],
+  ["id", "BIGINT", "PRIMARY KEY, AUTO_INCREMENT", "会员卡唯一标识主键"],
+  ["user_id", "BIGINT", "FOREIGN KEY, NOT NULL", "关联用户表，卡片所有者"],
+  ["type", "TINYINT", "NOT NULL", "卡类型：1-次卡，2-月卡，3-年卡"],
+  ["name", "VARCHAR(100)", "NOT NULL", "会员卡名称"],
+  ["total_times", "INT", "NULL", "总次数，仅次卡使用"],
+  ["remaining_times", "INT", "NULL", "剩余次数，仅次卡使用"],
+  ["start_date", "DATE", "NOT NULL", "生效日期"],
+  ["end_date", "DATE", "NOT NULL", "到期日期"],
+  ["price", "DECIMAL(10,2)", "NOT NULL", "购买价格"],
+  ["status", "TINYINT", "DEFAULT 1", "卡状态：1-正常，2-即将到期，3-已到期，0-已禁用"],
+  ["purchase_time", "DATETIME", "NULL", "购买时间"],
+  ["remark", "TEXT", "NULL", "备注信息"],
+  ["create_time", "DATETIME", "AUTO_FILL", "记录创建时间"],
+  ["update_time", "DATETIME", "AUTO_FILL", "记录更新时间"],
+  ["is_delete", "TINYINT", "DEFAULT 0", "逻辑删除标志：0-未删除，1-已删除"]
+]

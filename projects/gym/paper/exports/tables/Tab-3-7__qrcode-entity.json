@@ -1,0 +1,23 @@
+[
+  ["字段名", "类型", "约束", "说明"],
+  ["id", "BIGINT", "PRIMARY KEY, AUTO_INCREMENT", "二维码记录唯一标识主键"],
+  ["qr_id", "VARCHAR(100)", "UNIQUE, NOT NULL", "二维码唯一标识符"],
+  ["venue_id", "BIGINT", "FOREIGN KEY, NOT NULL", "关联场地表，二维码对应场地"],
+  ["qr_content", "TEXT", "NOT NULL", "二维码内容数据"],
+  ["qr_code_data", "LONGTEXT", "NULL", "二维码图片数据，Base64编码"],
+  ["valid_hours", "INT", "NULL", "有效时长（小时）"],
+  ["size", "INT", "DEFAULT 300", "二维码尺寸（像素）"],
+  ["format", "VARCHAR(10)", "DEFAULT 'PNG'", "图片格式"],
+  ["background_color", "VARCHAR(20)", "DEFAULT 'WHITE'", "背景颜色"],
+  ["foreground_color", "VARCHAR(20)", "DEFAULT 'BLACK'", "前景颜色"],
+  ["with_logo", "TINYINT", "DEFAULT 0", "是否包含LOGO：0-无，1-有"],
+  ["valid_start_time", "DATETIME", "NULL", "有效期开始时间"],
+  ["valid_end_time", "DATETIME", "NULL", "有效期结束时间"],
+  ["usage_count", "INT", "DEFAULT 0", "使用次数统计"],
+  ["status", "TINYINT", "DEFAULT 1", "状态：1-有效，2-已失效，0-已撤销"],
+  ["created_by", "BIGINT", "FOREIGN KEY", "创建者用户ID"],
+  ["create_time", "DATETIME", "AUTO_FILL", "记录创建时间"],
+  ["expire_time", "DATETIME", "NULL", "过期时间"],
+  ["is_active", "TINYINT", "DEFAULT 1", "是否激活：1-激活，0-未激活"],
+  ["is_delete", "TINYINT", "DEFAULT 0", "逻辑删除标志：0-未删除，1-已删除"]
+]

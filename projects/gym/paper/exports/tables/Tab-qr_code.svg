@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#ffffff"/>
+  <rect x="510" y="410" width="180" height="80" fill="#fff" stroke="#333" stroke-width="3"/>
+  <text x="600" y="456" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" font-weight="bold" fill="#333">二维码表</text>
+  <line x1="690" y1="450" x2="800" y2="450" stroke="#666" stroke-width="2"/>
+  <ellipse cx="880" cy="450" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="880" y="456" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">字段中文名</text>
+  <line x1="690" y1="477.76132340346066" x2="787.5603856201194" y2="507.85471692086594" stroke="#666" stroke-width="2"/>
+  <ellipse cx="867.5603856201194" cy="532.5314488350532" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="867.5603856201194" y="538.5314488350532" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">编号</text>
+  <line x1="658.6692245368389" y1="490" x2="772.6776322716397" y2="567.7296162578142" stroke="#666" stroke-width="2"/>
+  <ellipse cx="831.3468568084786" cy="607.7296162578142" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="831.3468568084786" y="613.7296162578142" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">二维码编号</text>
+  <line x1="631.8989355552961" y1="490" x2="742.6782089651493" y2="628.9128150910483" stroke="#666" stroke-width="2"/>
+  <ellipse cx="774.5771445204455" cy="668.9128150910483" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="774.5771445204455" y="674.9128150910483" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">场地编号</text>
+  <line x1="615.6988431524042" y1="490" x2="686.5966436701865" y2="670.6446496203772" stroke="#666" stroke-width="2"/>
+  <ellipse cx="702.2954868225906" cy="710.6446496203772" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="702.2954868225906" y="716.6446496203772" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">二维码内容</text>
+  <line x1="602.9975856007635" y1="490" x2="617.9268406034353" y2="689.2170632107304" stroke="#666" stroke-width="2"/>
+  <ellipse cx="620.9244262041988" cy="729.2170632107304" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="620.9244262041988" y="735.2170632107304" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">二维码数据</text>
+  <line x1="590.870261024394" y1="490" x2="546.823877467838" y2="682.9798154109105" stroke="#666" stroke-width="2"/>
+  <ellipse cx="537.694138492232" cy="722.9798154109105" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="537.694138492232" y="728.9798154109105" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">有效小时数</text>
+  <line x1="576.905989232415" y1="490" x2="483.094010767585" y2="652.4871130596428" stroke="#666" stroke-width="2"/>
+  <ellipse cx="459.99999999999994" cy="692.4871130596428" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="459.99999999999994" y="698.4871130596428" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">尺寸</text>
+  <line x1="556.8902526595109" y1="490" x2="437.8552232281377" y2="600.4483665758574" stroke="#666" stroke-width="2"/>
+  <ellipse cx="394.74547588764864" cy="640.4483665758574" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="394.74547588764864" y="646.4483665758574" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">格式</text>
+  <line x1="516.9391441371066" y1="490" x2="427.7287169873227" y2="532.961477448314" stroke="#666" stroke-width="2"/>
+  <ellipse cx="347.7287169873227" cy="571.4874469529163" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="347.7287169873227" y="577.4874469529163" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">背景色</text>
+  <line x1="510" y1="463.56531734256606" x2="403.127368656964" y2="479.6737746692701" stroke="#666" stroke-width="2"/>
+  <ellipse cx="323.127368656964" cy="491.7318345293288" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="323.127368656964" y="497.7318345293288" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">前景色</text>
+  <line x1="510" y1="436.4346826574339" x2="403.127368656964" y2="420.32622533072987" stroke="#666" stroke-width="2"/>
+  <ellipse cx="323.127368656964" cy="408.26816547067114" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="323.127368656964" y="414.26816547067114" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">是否包含LOGO</text>
+  <line x1="516.9391441371065" y1="410" x2="427.7287169873226" y2="367.03852255168607" stroke="#666" stroke-width="2"/>
+  <ellipse cx="347.7287169873226" cy="328.51255304708377" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="347.7287169873226" y="334.51255304708377" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">有效期开始时间</text>
+  <line x1="556.8902526595109" y1="410" x2="437.85522322813773" y2="299.55163342414255" stroke="#666" stroke-width="2"/>
+  <ellipse cx="394.7454758876487" cy="259.55163342414255" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="394.7454758876487" y="265.55163342414255" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">有效期结束时间</text>
+  <line x1="576.905989232415" y1="410" x2="483.09401076758513" y2="247.51288694035713" stroke="#666" stroke-width="2"/>
+  <ellipse cx="460.0000000000001" cy="207.51288694035713" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="460.0000000000001" y="213.51288694035713" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">使用次数</text>
+  <line x1="590.870261024394" y1="410" x2="546.8238774678379" y2="217.0201845890894" stroke="#666" stroke-width="2"/>
+  <ellipse cx="537.6941384922319" cy="177.0201845890894" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="537.6941384922319" y="183.0201845890894" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">状态</text>
+  <line x1="602.9975856007635" y1="410" x2="617.9268406034354" y2="210.78293678926957" stroke="#666" stroke-width="2"/>
+  <ellipse cx="620.9244262041989" cy="170.78293678926957" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="620.9244262041989" y="176.78293678926957" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建者编号</text>
+  <line x1="615.6988431524042" y1="410" x2="686.5966436701865" y2="229.35535037962285" stroke="#666" stroke-width="2"/>
+  <ellipse cx="702.2954868225906" cy="189.35535037962285" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="702.2954868225906" y="195.35535037962285" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建时间</text>
+  <line x1="631.8989355552961" y1="410" x2="742.6782089651492" y2="271.0871849089516" stroke="#666" stroke-width="2"/>
+  <ellipse cx="774.5771445204454" cy="231.08718490895163" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="774.5771445204454" y="237.08718490895163" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">过期时间</text>
+  <line x1="658.669224536839" y1="410" x2="772.6776322716396" y2="332.27038374218586" stroke="#666" stroke-width="2"/>
+  <ellipse cx="831.3468568084786" cy="292.27038374218586" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="831.3468568084786" y="298.27038374218586" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">是否激活</text>
+  <line x1="690" y1="422.23867659653934" x2="787.5603856201194" y2="392.1452830791342" stroke="#666" stroke-width="2"/>
+  <ellipse cx="867.5603856201194" cy="367.4685511649469" rx="80" ry="40" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="867.5603856201194" y="373.4685511649469" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">是否删除</text>
+</svg>
