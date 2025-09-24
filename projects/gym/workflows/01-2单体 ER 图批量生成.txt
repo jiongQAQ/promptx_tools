@@ -1,0 +1,64 @@
+【流程 1-2｜单体 ER 图批量生成（基于 1-1 三线表 JSON | 使用 1-1-single-er 工具）】
+
+目标
+1 扫描 ./paper/exports/tables/ 目录下全部 Tab-*.json（来自【1-1｜实体→三线表 JSON】）。
+2 逐个调用工具 @tool://1-1-single-er 将每个 JSON 转换为同名 SVG 单体 ER 图：
+   - 输入：Tab-<tableName>.json
+   - 输出：Tab-<tableName>.svg（与 JSON 同目录、同名，仅后缀不同）
+3 生成机器可读摘要 + 人类可读报告。
+
+前置条件
+- 目录 ./paper/exports/tables/ 存在，且包含 ≥1 个 Tab-*.json。
+- 每个 JSON 满足格式：
+  {
+    "tableName": "check_in",
+    "tableCnName": "签到表",
+    "columns": [
+      ["字段名","字段中文名","类型","约束","说明"],
+      ["id","签到编号","BIGINT","PK, AUTO_INCREMENT, NOT NULL","签到记录主键ID"],
+      ...
+    ]
+  }
+
+执行要求
+1 严禁修改 JSON 原文件；SVG 必须与 JSON 同目录、同名（仅扩展名 .svg）。
+2 若某 JSON 无法解析或生成失败，应继续处理其他文件，并在报告 failList 中记录。
+3 支持中文表名/字段名；要求边到边精确连线。
+
+调用模版（逐文件）
+{
+  "tool_resource": "@tool://1-1-single-er",
+  "mode": "execute",
+  "parameters": {
+    "inputPath": "<绝对或相对路径>/paper/exports/tables/Tab-<tableName>.json"
+  }
+}
+
+可选：目录批量（一次性）
+{
+  "tool_resource": "@tool://1-1-single-er",
+  "mode": "execute",
+  "parameters": {
+    "inputPath": "<绝对或相对路径>/paper/exports/tables"
+  }
+}
+
+输出（stdout 单行 JSON）
+{
+  "status": "success",
+  "project": "<projectName>",
+  "tablesDir": "./paper/exports/tables/",
+  "jsonCount": <int>,
+  "svgGenerated": <int>,
+  "failList": [
+    {"file":"Tab-xxx.json","reason":"parse error"},
+    {"file":"Tab-yyy.json","reason":"render timeout"}
+  ]
+}
+
+人类可读检查报告
+- 扫描目录：./paper/exports/tables/
+- 发现 JSON：N 个；生成 SVG：M 个；失败：K 个
+- 成功清单（前若干个）：Tab-*.svg
+- 失败清单：文件名 + 原因
+- 下一步建议：进入【流程 02】预填 content.json（将 figures[].imagePath 指向这些 SVG）
