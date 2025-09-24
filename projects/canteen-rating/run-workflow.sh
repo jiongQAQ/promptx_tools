@@ -12,7 +12,7 @@ PAPER_DIR="$WORKDIR/paper"
 SPLITS_DIR="$PAPER_DIR/splits"
 
 # 可用环境变量覆盖（例如：CLAUDE_CMD="claude -m sonnet -p" ./run-workflow.sh 01）
-CLAUDE_CMD="${CLAUDE_CMD:-claude -p}"
+CLAUDE_CMD="${CLAUDE_CMD:claude1 -p}"
 
 mkdir -p "$LOG_DIR"
 

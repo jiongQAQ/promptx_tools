@@ -1,0 +1,15 @@
+{
+  "tableName": "canteens",
+  "tableCnName": "食堂表",
+  "columns": [
+    ["字段名", "字段中文名", "类型", "约束", "说明"],
+    ["id", "编号", "BIGINT", "PK, AUTO_INCREMENT, NOT NULL", "主键ID"],
+    ["name", "食堂名称", "VARCHAR(255)", "", "食堂名称"],
+    ["location", "位置信息", "VARCHAR(255)", "", "位置信息"],
+    ["open_time", "开放时间", "VARCHAR(50)", "", "开放时间"],
+    ["close_time", "关闭时间", "VARCHAR(50)", "", "关闭时间"],
+    ["created_time", "创建时间", "DATETIME", "", "创建时间"],
+    ["updated_time", "更新时间", "DATETIME", "", "更新时间"],
+    ["is_deleted", "逻辑删除标记", "INT", "", "逻辑删除标记（0-未删除，1-已删除）"]
+  ]
+}
