@@ -1,0 +1,24 @@
+# 任务：基于源码与已填充内容，生成“写作提示词（prompt）”清单（仅产出 prompt）
+
+你要做的事：读取 **已填充的内容计划 JSON**（如 `./paper/content-plan.json` 或分章 `./paper/splits/content.chN.plan.json`），并结合 **源码目录 `./source/`**（含后端/前端/数据库/迁移/脚本等）与（如存在）**`./CLAUDE.md`** 的证据，为 **所有需要撰写正文的节点** 自动生成 **写作提示词（prompt）**。
+注意：**只输出 prompt 字段**（以及必要的定位字段 `id` 与 `title` 便于落盘），不生成正文、不生成图/表数据，不增删结构。
+
+---
+
+## 输入
+1. `content-plan.json`（或分章 `content.chN.plan.json`）：
+   - 每个节点可能含：`id`, `title`, `plan`, `length`, `textPrompt`（旧字段名，若存在）、`items`（列表型子项）、`figurePlan`、`tablePlan`、`imagePath`、`tablePath` 等。
+   - **你要基于这些信息，结合源码证据，写出“写作提示词（prompt）”**。
+2. `./source/`：源码、ORM/DDL、实体/模型、接口/路由、前端路由与页面、配置、CI/脚本等。
+3. `./CLAUDE.md`（如有）：对领域、数据字典、命名规范、模块边界的说明。
+
+---
+
+## 输出（仅 prompt）
+- 扁平化 JSON 数组，每一项**只**包含：
+  ```json
+  {
+    "id": "<与输入保持一致>",
+    "title": "<与输入保持一致>",
+    "prompt": "<用于生成正文的写作提示词>"
+  }

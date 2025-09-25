@@ -1,209 +1,90 @@
-【流程 02｜基于大纲预填 content.json（证据驱动、模块化｜复用 1.1/1.2 产物并自动生成总体ER图）】
+【任务类型】内容计划填充（非成文）｜对齐大纲与模板并自动补齐
 
-=== 路径定义 ===
-<projectRoot> = $(pwd)  # 当前工作目录的绝对路径
-使用说明：执行前请确保在项目根目录下运行，所有相对路径将基于此目录解析
-
-目标
-1 读取 ./paper/outline.json 与 ./templates/content.template.json
-2 对大纲中每个章节创建对应的内容项（写入 ./paper/content.json），并根据章节类型自动决定：
-   - single / list 模式
-   - 是否需要正文 / 图 / 表
-   - （若为 list）生成顺序子项 items[]，仅渲染为编号段落，不新增标题层级
-3 同步替换大纲中的技术与功能占位符（如 {{jishu1}}/{{jishu2}}/{{jishu3}}、{{functionname}}/{{funname}}），写回 outline.json，并在 content.json 使用替换后的标题
-4 数据库设计章节直接复用步骤 1.1 的三线表 JSON 与步骤 1.2 的同名 SVG；若总体 ER 图不存在则自动生成（PlantUML + luban-uml）
+你的目标：
+基于「大纲文件」与「content 模板文件」以及源码证据，生成一份“扁平化论文 JSON 填充计划”。该计划用于后续正式生成，不得直接产出正文或真实图片/表格文件。若发现“大纲（outline）”与“content 模板（content.template）”不一致，必须以“大纲”为准进行对齐；对模板中存在但大纲缺失的模块，按大纲结构与通用规则补齐同等语义的内容项。
 
 输入
-- <projectRoot>/paper/outline.json
-- <projectRoot>/templates/content.template.json
-- <projectRoot>/source/ 与 <projectRoot>/CLAUDE.md（若存在）
-- （来自 1.1）<projectRoot>/paper/exports/tables/Tab-*.json
-- （来自 1.2）<projectRoot>/paper/exports/tables/Tab-*.svg
-
-通用规则
-1 严格基于源码/文档/1.1+1.2 产物判断；不要臆造技术或功能
-2 content.json 必须一一覆盖大纲里的每个章节 id/title
-3 list 模式的 items[] 为顺序项（render.as=numbered），不是新标题；导出用编号段落
-4 图/表编号按模板 figureLabelTemplate/tableLabelTemplate 的“章-序”生成
-5 不生成正文，只生成写作计划（plan）、提示词（textPrompt/figurePlan/tablePlan）与 figures/tables 的占位（或直接引用 1.1/1.2 产物）
-6 若发现缺失文件（某表无 JSON 或 SVG），对应项标记 status=failed，并在报告中提示；流程不阻断
-
-—— 模块提示词（按章节类型/关键词匹配） ——
-
-[模块：相关技术介绍（占位符替换）]
-任务：
-1 定位标题含“相关技术介绍/技术介绍”等的章节及其子项（可能包含 {{jishu1}}/{{jishu2}}/{{jishu3}}）
-2 基于 <projectRoot>/source/ 与 <projectRoot>/CLAUDE.md 的证据，识别 3 项最具代表性的技术（后端框架/数据访问/缓存/认证/数据库/前端等维度优先）
-3 生成 3–4 个候选并自动采纳最佳项，替换占位符文本；写回 <projectRoot>/paper/outline.json
-4 在 content.json 对应章节设置 plan.wantText=true，生成 textPrompt
-输出（需在报告中列明）：每个占位符的候选、采纳理由与证据文件（路径+关键词或行号范围）
-
-[模块：系统用例图（列表型 + 图）]
-判定条件：标题包含“用例图/Use Case”
-任务：
-1 设置章节为 list 模式（itemType=actorUseCase）
-2 基于源码/文档识别系统角色（≤5）；为每个角色生成一个 item：
-   - order 连续编号；title=“<角色>角色”；render.as=numbered
-   - plan.wantText=true；plan.wantFigure=true
-   - figurePlan[0]: figureTitle=“<角色>用例图”；figureFocus=“UML 用例图，强调参与者、用例、关系（extend/include）、系统边界”
-   - textPrompt：描述该角色目标、关键用例、边界与约束
-3 章节本身可写一段总述（textPrompt），无强制图/表
-4 不当标题，只渲染为编号段落
-
-[模块：数据库概念设计（列表型 + 图｜复用 1.2，并自动生成总体ER图）]
-判定条件：标题包含"数据库概念设计"
-任务：
-1 设置章节为 list 模式（itemType=entity）
-2 遍历 ./paper/exports/tables/ 下全部 Tab-*.json，为每个表生成一个 item（一个不漏）：
-   - order 连续编号
-   - 解析 JSON 的 tableName 与 tableCnName，title = "<tableName> 实体（<tableCnName>）"
-   - render.as=numbered
-   - plan.wantText=true；plan.wantFigure=true
-   - textPrompt：采用实体概念描述格式："<tableCnName>实体主要包括<业务领域>相关的字段，其中的属性有<主要属性列表>等。<tableCnName>实体图如下图，图{{chapter}}-{{index}} <tableCnName>实体图所示。"
-   - figures[0]（直接引用 1.2 产物）：
-       {
-         "id": "Fig-<tableName>",
-         "label": "图{{chapter}}-{{index}} <tableCnName>实体局部结构图",
-         "type": "uml",
-         "imagePath": "<projectRoot>/paper/exports/tables/Tab-<tableName>.svg",
-         "status": "ready",
-         "meta": { "source": "step-1.2" }
-       }
-   - 若某表缺少 SVG：仍创建 item，但将 figures[0] 的 status 置为 "failed"，并在报告列出缺失清单
-3 章节级别增加一张"数据库总体 ER 图"
-   - 目标文件（统一放 tables 目录）：
-     - UML 源码：<projectRoot>/paper/exports/tables/ER-overview.puml
-     - 图片：   <projectRoot>/paper/exports/tables/ER-overview.svg
-   - 若 <projectRoot>/paper/exports/tables/ER-overview.svg 已存在：直接引用并在 section.figures 增加：
-       {
-         "id": "Fig-ER-Overview",
-         "label": "图{{chapter}}-{{index}} 数据库总体ER图",
-         "type": "uml",
-         "umlCodePath": "<projectRoot>/paper/exports/tables/ER-overview.puml",
-         "imagePath": "<projectRoot>/paper/exports/tables/ER-overview.svg",
-         "status": "ready",
-         "meta": { "source": "step-1.2-or-auto" }
-       }
-   - 若不存在：自动生成
-     a) 读取全部 Tab-*.json，收集实体（tableName, tableCnName）与列（含 PK/FK 线索：约束含 PK/FK；或 *_id 命名；识别中间表如 user_role/order_item 推断多对多）
-     b) 以 PlantUML ER 语法组装总体图（实体框显示英文名（中文名）；只列 PK 与关键 FK 以控制密度；关系使用 crow’s foot：||--o{ 等）
-     c) 将文本写入 ER-overview.puml
-     d) 调用：
-        toolx("@tool://luban-uml", {
-          operation: "render",
-          input: "<projectRoot>/paper/exports/tables/ER-overview.puml",
-          output: "<projectRoot>/paper/exports/tables/ER-overview.svg",
-          format: "svg"
-        })
-        ⚠️ 重要：所有路径参数必须是绝对路径，如"/Users/pc/Documents/project/paper/exports/tables/ER-overview.svg"
-     e) 渲染成功则按上面的节级 figure 结构写回，status="ready"；失败则 status="failed" 并记录原因
-
-[模块：数据库逻辑设计/详细设计（列表型 + 表｜复用 1.1）]
-判定条件：标题包含"数据库逻辑设计"或"数据库详细设计"
-任务：
-1 设置章节为 list 模式（itemType=tableStructure）
-2 遍历 ./paper/exports/tables/ 下全部 Tab-*.json，为每个表生成一个 item（一个不漏）：
-   - order 连续编号
-   - 解析 JSON 的 tableName 与 tableCnName，title = "<tableName> 表（<tableCnName>）"
-   - render.as=numbered
-   - plan.wantText=true；plan.wantTable=true
-   - textPrompt：采用表结构详细描述格式："{{index}}. <tableCnName>表，主要储存了本系统<功能描述>的相关信息，其中包含<详细字段列举：字段中文名 (英文名)>，<tableCnName>表的数据库设计如下表，表{{chapter}}-{{index}} <tableCnName>表 <tableName>所示。"
-   - tables[0]（直接引用 1.1 产物）：
-       {
-         "id": "Tab-<tableName>",
-         "label": "表{{chapter}}-{{index}} <tableCnName>表 <tableName>",
-         "type": "table",
-         "dataPath": "<projectRoot>/paper/exports/tables/Tab-<tableName>.json",
-         "status": "ready",
-         "meta": { "source": "step-1.1" }
-       }
-   - 若某表缺少 JSON：仍创建 item，但将 tables[0] 的 status 置为 "failed"，并在报告列出缺失清单
-3 章节本身可写一段总述（textPrompt），描述数据库总体设计思路和表结构规范
-
-[模块：系统功能详细设计 / 系统功能实现 / 系统功能测试（联动 ≤5）]
-判定条件：标题包含“系统功能详细设计 / 系统功能实现 / 系统功能测试”
-任务：
-1 若“系统功能详细设计”存在：从源码/文档识别系统核心功能模块（≤5）
-2 分别在以上三个章节下，按相同功能顺序生成对子项（或单节子标题内容）：
-   - 详细设计： 《<功能名>的详细设计》
-     • 在该功能子项中**预置两个图计划**：活动图（业务流程，泳道图样式）与时序图（对象交互，时间顺序）
-       - figurePlan 示例：
-         [
-           {"figureTitle":"<功能名>活动图","figureFocus":"业务流程泳道，关键决策与异常路径"},
-           {"figureTitle":"<功能名>时序图","figureFocus":"参与对象、消息交互、时序约束"}
-         ]
-   - 实现： 《<功能名>的实现》
-   - 测试： 《<功能名>功能测试》（测试章节可默认 wantTable=true，tablePlan=测试用例表）
-3 若仅存在其中一类章节（如只有“实现”），仍基于源码推断功能模块并生成对应内容
-4 保证三类章节的功能顺序完全一致
-
-[模块：软件逻辑架构 / 功能框图（单节 + 图｜WBS）]
-判定条件：标题包含“软件逻辑架构/架构/功能框图”
-任务：
-1 单节模式；plan.wantText=true；plan.wantFigure=true
-2 figurePlan 使用 **WBS（工作分解结构）** 展示功能层次：
-   - 使用 @startwbs 与 @endwbs
-   - * 表示根节点，** 表示二级节点，*** 表示三级节点
-   - 层次清晰，样式简洁整洁，避免复杂连线关系
-   - 示例（仅作格式提示）：
-     @startwbs
-     * 系统功能结构
-     ** 模块A
-     *** 子功能A1
-     *** 子功能A2
-     ** 模块B
-     *** 子功能B1
-     @endwbs
-
-[模块：功能测试/性能测试（单节 + 表/图）]
-判定条件：标题包含“系统功能测试/功能测试/系统性能测试/性能测试”
-任务：
-1 功能测试：单节；plan.wantText=true；plan.wantTable=true；tablePlan=测试用例表（['用例ID','测试点','输入','预期输出','结果']）
-2 性能测试：单节；plan.wantText=true；plan.wantTable=true；tablePlan=性能指标表（['指标项','测试条件','数值/范围','结果']）
+1) 大纲：./paper/outline.json   （权威结构来源，含章节 id/title；可能含 items）
+2) 模板：./templates/content.template.json （内容模板与模块提示）
+3) 源码：./source/  （后端/前端/数据库/工程脚本等）
+4) 文档：./CLAUDE.md（如有，辅助证据）
 
 输出
-A) 机器可读 JSON（stdout 单行）：
-{
-  "status": "success",
-  "project": "<projectName>",
-  "outlinePath": "<projectRoot>/paper/outline.json",
-  "contentPath": "<projectRoot>/paper/content.json",
-  "sectionCount": <int>,
-  "withFigures": ["..."],
-  "withTables": ["..."],
-  "listSections": [{"id":"<secId>","itemType":"actorUseCase|entity|tableStructure|custom","itemCount":<int>}],
-  "placeholdersResolved": {"jishu1":"...","jishu2":"...","jishu3":"...","functionname":"...","funname":"..."},
-  "dbDesign": {
-    "conceptualDesign": {
-      "tablesJsonFound": <int>,
-      "tablesSvgFound": <int>,
-      "entityItemsLinked": <int>,
-      "overviewER": "ready|generated|failed"
-    },
-    "detailedDesign": {
-      "tablesJsonFound": <int>,
-      "tableItemsLinked": <int>
-    },
-    "tablesDir": "<projectRoot>/paper/exports/tables/"
-  }
-}
+- 单一 JSON 数组（扁平化），每个对象至少包含：
+  - id, title（完全沿用大纲）
+  - 可选字段：text, imagePath, tablePath, items（数组，元素含 title/text/imagePath/tablePath）
+- 禁止新增或删除章节，禁止改动 id/title；内容项与多媒体占位需按规则补齐
 
-B) 人类可读检查报告：
-1 覆盖统计：章节总数、list 节点与 item 个数
-2 模块化判定：哪些章节被识别为"用例图/数据库概念设计/数据库详细设计/架构/测试"等
-3 数据库设计覆盖：
-   - 概念设计模块：
-     • 发现的 SVG 数量（Tab-*.svg 清单）
-     • 为多少个实体生成了概念描述 item 并成功链接 SVG
-     • 总体 ER 图：沿用现有/自动生成/失败及原因
-   - 详细设计模块：
-     • 发现的三线表 JSON 数量（Tab-*.json 清单）
-     • 为多少个表生成了详细结构 item 并成功链接 JSON
-4 占位符替换：列出候选、采纳项与证据来源（文件路径与关键词/行号）
-5 文件写入确认：<projectRoot>/paper/content.json 与（若有替换）<projectRoot>/paper/outline.json
-6 失败清单：缺 JSON、缺 SVG、ER 图生成失败等
+统一路径规范
+- 图片：<projectRoot>/paper/pngs/<slug>.png
+- 三线表：<projectRoot>/paper/tables/<slug>.json
+- slug：小写、空格→-、去非法字符、简短可读
+
+对齐与补齐规则（重点）
+1) 以大纲为准：当大纲与 content 模板的章节/模块不一致时，保留大纲的结构与顺序；将模板中的计划“映射”到最接近的大纲位置。
+2) 语义映射：若名称不一致，基于源码证据（控制器/路由/服务/页面/实体/DDL）进行语义对齐；无法唯一确定时选择最接近的父级或并列位置，在 text 中标注“依据不足，待补充”。
+3) 模板缺失项补齐：若大纲存在而模板未覆盖的部分，按模块通用规则自动判断是否需要图/表并补齐相应字段（见下）。
+4) 保持“三处对齐”的功能模块集合 M（≤5）：在 4.1（功能详细设计）/ 5.2（功能实现）/ 6.3（功能测试）三处的功能模块必须一一对应、顺序一致；当大纲或模板与源码识别不一致时，最终以“源码证据优先 + 大纲章节容器位置”为准进行归并与命名。
+
+正文/图表需求判定（当模板未显式给出时）
+- 需要图：用例图、架构图、功能结构图（WBS）、活动图、时序图、实体概念图、总体 ER 图、关键流程/状态转换
+- 需要表：数据库表结构（三线表）、测试用例表、性能指标表、兼容性矩阵
+- 其余章节默认仅 text；若源码中存在明显图形结构证据（如状态机/流程 DSL），可补充 imagePath
+
+二/三级文本规则（按大纲层级语义理解并映射到扁平化对象）
+- 二级节点（如 2.2）：若其下有“三级或 items”→ 二级不写 text；若无 → 二级写 text
+- 三级节点/列表项（items 的元素）→ 必须写 text
+- 扁平化输出中仍以各自 id 记录，但遵守上述 text 填充规则
+
+模块化填充要点（结合模板提示并对齐大纲）
+A. 摘要 / 关键词 / Abstract / Keywords
+- 填写概述文本；若模板要求图/表则补齐占位（通常无需）
+
+B. 第1章 绪论
+- 1.1~1.3 按是否含下级决定 text 归属；1.4 相关技术介绍按源码/依赖识别 3 项代表性技术分别填充 text
+
+C. 第2章 系统分析
+- 2.2.3 “系统用例图” → items 列表，≤5 个角色：每项含 title+text+imagePath，图片为用例图占位
+- 非功能与可行性分解为 text（技术/经济/操作）
+
+D. 第3章 概要设计
+- 3.2 软件逻辑架构：text + 架构图 imagePath
+- 3.3 功能结构图：text + **WBS 图** imagePath（必须使用 @startwbs/@endwbs、*/**/*** 层级）
+- 3.4 数据库设计：
+  - 3.4.1 概念设计：以 list 形式枚举实体，items 每项写 title+text+imagePath（单体 ER 概念图）
+  - 3.4.2 逻辑设计：text + 总体 ER 图 imagePath
+
+E. 第4章 详细设计
+- 4.1 功能详细设计：从源码识别 ≤5 个核心模块（集合 M），每个模块包含活动图与时序图（两张 imagePath）与简述 text
+- 4.2 数据库详细设计：为核心表产出三线表 tablePath（占位路径）；若模板或大纲指定更多表，遵从大纲
+- 4.3 小结：text
+
+F. 第5章 实现
+- 5.1 环境与工具：text
+- 5.2 系统功能实现：与集合 M 一一对应；每模块补充实现截图 imagePath + text
+- 5.3 小结：text
+
+G. 第6章 测试
+- 6.1/6.2：text
+- 6.3 功能测试：与集合 M 一一对应；每模块测试用例三线表 tablePath + text
+- 6.4 性能测试：性能指标三线表 tablePath + text
+- 6.5 兼容性测试：兼容性矩阵三线表 tablePath + text
+- 6.6 小结：text
+
+证据与优先级
+- 代码与配置（Controller/Router/Service/Entity/DDL/迁移/前端路由与页面/工程脚本） > 文档 > 命名与目录启发 > 经验推断（需注明“依据不足”）
+
+输出要求
+- 生成**单一 JSON 数组（扁平化）**，每个对象严格包含：id、title，以及按规则选择性加入 text / imagePath / tablePath / items
+- 所有图片/表格路径使用统一规范的占位路径（不得留空）
+- 功能模块集合 M 在 4.1 / 5.2 / 6.3 中名称与顺序一致
 
 容错
-- 若缺少三线表 JSON 或 SVG，仍生成对应 item，占位 status=failed，并在报告中列出
-- 若总体 ER 图生成失败，status=failed；后续可单独重试生成 ER-overview
-- 其他非关键失败不阻断流程
+- 若遇到大纲与模板冲突：以大纲为准进行章节容器定位；模板内容按语义映射补齐
+- 若证据不足：仍填充占位，并在 text 中明确“依据不足，待补充”
+- 仅为“填充计划”，**不生成**实际 PNG/JSON 文件
+
+现在开始：
+1) 解析 ./paper/outline.json 与 ./templates/content.template.json，列出差异并建立映射计划（内部执行，不需要输出映射表）
+2) 解析 ./source 与 ./CLAUDE.md，识别功能模块集合 M（≤5），并对齐到 4.1/5.2/6.3
+3) 依据上述规则，输出最终“扁平化 JSON 填充计划”

@@ -1,0 +1,400 @@
+[
+  {
+    "id": "0",
+    "title": "摘要",
+    "text": "本文基于校园食堂评价管理的实际需求，设计并实现了一套完整的食堂评分系统。系统采用Spring Boot + Vue.js + MyBatis Plus技术栈，实现了用户认证管理、菜品评分管理、食堂档口管理、投诉建议管理和系统统计管理等核心功能，为师生提供便捷的食堂评价服务，为食堂管理者提供数据化决策支持。"
+  },
+  {
+    "id": "0.1",
+    "title": "关键词",
+    "text": "食堂评分系统；Spring Boot；Vue.js；系统设计；MyBatis Plus"
+  },
+  {
+    "id": "0.2",
+    "title": "Abstract",
+    "text": "Based on the actual needs of campus canteen evaluation management, this paper designs and implements a complete canteen rating system. The system uses Spring Boot + Vue.js + MyBatis Plus technology stack to realize core functions including user authentication management, dish rating management, canteen stall management, complaint management and system statistics management, providing convenient canteen evaluation services for teachers and students, and providing data-driven decision support for canteen managers."
+  },
+  {
+    "id": "0.3",
+    "title": "Keywords",
+    "text": "canteen rating system; Spring Boot; Vue.js; system design; MyBatis Plus"
+  },
+  {
+    "id": "1",
+    "title": "第1章 绪论"
+  },
+  {
+    "id": "1.1",
+    "title": "研究背景与意义"
+  },
+  {
+    "id": "1.1.1",
+    "title": "研究背景",
+    "text": "随着高校规模的不断扩大，校园食堂作为师生日常生活的重要场所，其服务质量直接影响师生的生活满意度。传统的食堂管理模式缺乏有效的反馈机制，难以及时了解师生对食堂服务的真实评价，导致食堂管理效率低下，服务质量提升缓慢。"
+  },
+  {
+    "id": "1.1.2",
+    "title": "研究意义",
+    "text": "构建食堂评分系统具有重要的实践意义：一方面为师生提供便捷的评价渠道，提升参与度和满意度；另一方面为食堂管理者提供数据化的决策依据，促进服务质量的持续改善。同时，该系统的设计与实现对类似的校园信息化系统建设具有参考价值。"
+  },
+  {
+    "id": "1.2",
+    "title": "国内外研究现状"
+  },
+  {
+    "id": "1.2.1",
+    "title": "国内研究现状",
+    "text": "国内高校信息化建设起步较晚，大多数院校的食堂管理仍依靠传统方式。近年来，部分高校开始探索基于移动互联网的食堂服务系统，但功能相对单一，缺乏系统性的评价机制和数据分析能力。"
+  },
+  {
+    "id": "1.2.2",
+    "title": "国外研究现状",
+    "text": "国外高校在校园信息化方面起步较早，形成了相对完善的数字化服务体系。在餐饮评价方面，注重用户体验和数据驱动的管理模式，但由于文化背景和管理体制差异，国外经验需要结合国内实际情况进行本土化改造。"
+  },
+  {
+    "id": "1.3",
+    "title": "研究内容和方法",
+    "text": "本研究采用系统工程方法，按照需求分析→概要设计→详细设计→系统实现→系统测试的流程开展。运用面向对象分析设计方法、UML建模技术和原型迭代开发模式，结合实际调研和用户访谈，确保系统设计的科学性和实用性。"
+  },
+  {
+    "id": "1.4",
+    "title": "相关技术介绍"
+  },
+  {
+    "id": "1.4.1",
+    "title": "Spring Boot框架",
+    "text": "Spring Boot是基于Spring框架的快速开发框架，通过自动配置和约定大于配置的理念，极大简化了Spring应用的开发和部署。本系统采用Spring Boot 2.7.18版本，充分利用其微服务架构支持、安全框架集成和丰富的生态系统。"
+  },
+  {
+    "id": "1.4.2",
+    "title": "Vue.js前端框架",
+    "text": "Vue.js是一套用于构建用户界面的渐进式JavaScript框架，具有易学易用、灵活高效的特点。本系统采用Vue 3.3.4版本，结合Element Plus UI框架，实现响应式的用户界面设计，支持管理后台和用户前端的双模式架构。"
+  },
+  {
+    "id": "1.4.3",
+    "title": "MyBatis Plus数据访问层",
+    "text": "MyBatis Plus是MyBatis的增强工具，在MyBatis基础上只做增强不做改变，提供了丰富的CRUD操作和分页插件。本系统采用MyBatis Plus 3.5.3.1版本，实现高效的数据访问层，简化数据库操作代码。"
+  },
+  {
+    "id": "2",
+    "title": "第2章 系统分析"
+  },
+  {
+    "id": "2.1",
+    "title": "系统的目标",
+    "text": "本系统旨在构建一个功能完备、性能稳定、安全可靠的校园食堂评分平台。主要目标包括：提供便捷的评分和投诉渠道，建立透明的反馈机制；实现数据化的食堂管理，支持科学决策；保障系统安全性和数据隐私；确保系统的可扩展性和可维护性。"
+  },
+  {
+    "id": "2.2",
+    "title": "功能需求分析"
+  },
+  {
+    "id": "2.2.1",
+    "title": "系统需求概述",
+    "text": "系统需要支持用户注册登录、食堂信息浏览、菜品评分、投诉建议提交等核心功能。管理端需要支持食堂档口管理、评分数据统计、投诉处理等后台管理功能。系统应支持多种用户角色，确保操作权限的合理分配。"
+  },
+  {
+    "id": "2.2.2",
+    "title": "用户角色和权限",
+    "text": "系统定义三类主要角色：普通用户（学生、教职工）可进行评分、投诉等操作；食堂管理员可管理所属食堂的基本信息和处理投诉；系统管理员拥有最高权限，负责系统配置和数据管理。各角色严格按照最小权限原则分配功能权限。"
+  },
+  {
+    "id": "2.2.3",
+    "title": "系统用例图",
+    "items": [
+      {
+        "title": "普通用户角色用例",
+        "text": "普通用户可以浏览食堂信息、查看菜品详情、提交评分评价、查看历史评价、提交投诉建议、查看投诉处理状态等。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/usecase-user.png"
+      },
+      {
+        "title": "食堂管理员角色用例",
+        "text": "食堂管理员可以管理食堂基本信息、管理档口信息、管理菜品信息、查看评分统计、处理投诉建议、回复用户评价等。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/usecase-canteen-admin.png"
+      },
+      {
+        "title": "系统管理员角色用例",
+        "text": "系统管理员可以管理用户账户、管理系统配置、查看全局统计数据、管理敏感词库、监控系统运行状态、处理系统级投诉等。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/usecase-system-admin.png"
+      }
+    ]
+  },
+  {
+    "id": "2.3",
+    "title": "系统的非功能性需求分析",
+    "text": "性能要求：系统应支持并发用户访问，响应时间不超过3秒；安全性要求：采用JWT身份认证，敏感数据加密存储，防止SQL注入等攻击；可靠性要求：系统可用性达99%以上，具备异常处理和数据备份机制；可维护性：代码结构清晰，文档完善，支持快速定位和修复问题。"
+  },
+  {
+    "id": "2.4",
+    "title": "系统可行性分析"
+  },
+  {
+    "id": "2.4.1",
+    "title": "技术可行性分析",
+    "text": "所选技术栈Spring Boot、Vue.js、MyBatis Plus均为成熟的开源技术，具有丰富的生态支持和完善的文档。开发团队具备相关技术经验，技术风险可控。系统架构设计合理，能够满足预期的性能和扩展性要求。"
+  },
+  {
+    "id": "2.4.2",
+    "title": "经济可行性分析",
+    "text": "系统采用开源技术栈，开发成本相对较低。硬件部署成本合理，运维成本可控。系统建成后能够提升食堂管理效率，改善师生就餐体验，具有良好的投入产出比。"
+  },
+  {
+    "id": "2.4.3",
+    "title": "操作可行性分析",
+    "text": "系统界面设计简洁直观，符合用户使用习惯。提供完善的用户手册和培训支持。系统部署和运维流程标准化，操作人员可以快速掌握。现有的IT基础设施能够支撑系统正常运行。"
+  },
+  {
+    "id": "2.5",
+    "title": "本章小结",
+    "text": "通过系统分析，明确了食堂评分系统的目标定位、功能需求和非功能性需求。可行性分析表明项目在技术、经济和操作层面均具备实施条件，为后续的系统设计工作奠定了基础。"
+  },
+  {
+    "id": "3",
+    "title": "第3章 系统概要设计"
+  },
+  {
+    "id": "3.1",
+    "title": "系统设计原则",
+    "text": "系统设计遵循以下原则：用户体验为中心，界面简洁友好；模块化设计，高内聚低耦合；数据安全优先，严格权限控制；可扩展性设计，支持功能迭代；标准化开发，保证代码质量；异常处理完善，提高系统稳定性。"
+  },
+  {
+    "id": "3.2",
+    "title": "系统软件逻辑架构",
+    "text": "采用经典的三层架构模式：表示层负责用户交互和界面展示，包括Vue.js前端应用；业务逻辑层负责核心业务处理，包括Spring Boot服务层；数据访问层负责数据持久化，包括MyBatis Plus数据访问组件。各层之间通过标准接口进行交互，确保松耦合。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/software-architecture.png"
+  },
+  {
+    "id": "3.3",
+    "title": "系统功能结构图",
+    "text": "系统功能按照模块化设计原则进行分解，形成清晰的层次结构：一级功能包括用户管理、食堂管理、评分管理、投诉管理、统计管理；各一级功能进一步细分为具体的功能子模块，确保职责明确，便于开发和维护。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/system-function-wbs.png"
+  },
+  {
+    "id": "3.4",
+    "title": "系统数据库设计"
+  },
+  {
+    "id": "3.4.1",
+    "title": "数据库概念设计",
+    "items": [
+      {
+        "title": "用户实体",
+        "text": "用户实体包含用户ID、用户名、密码、角色、邮箱、电话、创建时间、更新时间等字段，支持多角色管理和账户安全控制。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-user.png"
+      },
+      {
+        "title": "食堂实体",
+        "text": "食堂实体包含食堂ID、食堂名称、位置、营业时间、联系电话、管理员ID等字段，记录食堂的基本信息和管理关系。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-canteen.png"
+      },
+      {
+        "title": "档口实体",
+        "text": "档口实体包含档口ID、档口名称、所属食堂ID、营业状态、特色介绍等字段，管理食堂内各个档口的信息。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-stall.png"
+      },
+      {
+        "title": "菜品实体",
+        "text": "菜品实体包含菜品ID、菜品名称、所属档口ID、价格、分类、描述、图片等字段，记录菜品的详细信息。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-dish.png"
+      },
+      {
+        "title": "评分实体",
+        "text": "评分实体包含评分ID、用户ID、菜品ID、评分、评价内容、评价时间等字段，记录用户的评价信息和评分数据。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-rating.png"
+      },
+      {
+        "title": "投诉实体",
+        "text": "投诉实体包含投诉ID、用户ID、投诉类型、投诉内容、处理状态、处理结果、创建时间等字段，管理用户投诉和处理流程。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-complaint.png"
+      }
+    ]
+  },
+  {
+    "id": "3.4.2",
+    "title": "数据库逻辑设计",
+    "text": "系统数据库采用关系型设计，各实体间通过主外键建立关联关系。用户与评分、投诉为一对多关系；食堂与档口为一对多关系；档口与菜品为一对多关系；菜品与评分为一对多关系。设计中考虑了数据完整性约束和索引优化。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/er-overview.png"
+  },
+  {
+    "id": "3.5",
+    "title": "本章小结",
+    "text": "本章完成了系统的概要设计，确定了系统架构、功能结构和数据库设计方案。三层架构保证了系统的可维护性和可扩展性；模块化的功能设计便于开发和管理；合理的数据库设计保证了数据的完整性和一致性。"
+  },
+  {
+    "id": "4",
+    "title": "第4章 系统详细设计"
+  },
+  {
+    "id": "4.1",
+    "title": "系统功能详细设计"
+  },
+  {
+    "id": "4.1.1",
+    "title": "用户认证管理的详细设计",
+    "text": "用户认证管理模块包括用户注册、登录、权限验证等功能。采用JWT令牌机制实现无状态认证，通过活动图展示认证流程的各个步骤和异常处理。时序图描述前端、后端和数据库之间的交互过程，确保认证的安全性和可靠性。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-auth-management.png"
+  },
+  {
+    "id": "4.1.2",
+    "title": "菜品评分管理的详细设计",
+    "text": "菜品评分管理模块支持用户对菜品进行评分和评价，包括评分提交、评价展示、评分统计等功能。通过活动图展示评分流程，包括数据验证、敏感词过滤、评分计算等步骤。时序图描述评分数据的实时更新机制。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-rating-management.png"
+  },
+  {
+    "id": "4.1.3",
+    "title": "食堂档口管理的详细设计",
+    "text": "食堂档口管理模块支持食堂、档口、菜品信息的增删改查操作。通过活动图展示管理流程，包括信息录入、数据校验、状态更新等步骤。时序图描述多级关联数据的操作协调机制。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-canteen-management.png"
+  },
+  {
+    "id": "4.1.4",
+    "title": "投诉建议管理的详细设计",
+    "text": "投诉建议管理模块支持用户投诉提交和管理员处理功能。通过活动图展示投诉处理的完整流程，包括投诉分类、处理分配、状态跟踪等环节。时序图描述投诉处理的消息传递和状态同步。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-complaint-management.png"
+  },
+  {
+    "id": "4.1.5",
+    "title": "系统统计管理的详细设计",
+    "text": "系统统计管理模块提供各类数据统计和分析功能，包括评分统计、用户活跃度、食堂排名等。通过活动图展示数据统计的计算流程和缓存机制。时序图描述统计数据的定时更新和实时查询。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-statistics-management.png"
+  },
+  {
+    "id": "4.2",
+    "title": "数据库详细设计",
+    "text": "本节详细描述系统核心表的结构设计，包括字段定义、数据类型、约束条件和索引策略。重点关注数据完整性和查询性能的平衡。",
+    "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/database-design.json"
+  },
+  {
+    "id": "4.3",
+    "title": "本章小结",
+    "text": "本章完成了系统各核心功能模块的详细设计，通过活动图和时序图清晰描述了业务流程和交互逻辑。数据库详细设计确保了数据存储的规范性和高效性。这些设计为系统实现提供了详细的技术指导。"
+  },
+  {
+    "id": "5",
+    "title": "第5章 系统实现"
+  },
+  {
+    "id": "5.1",
+    "title": "系统开发环境和工具",
+    "text": "开发环境：操作系统为macOS/Windows，JDK 17，Node.js 16+，MySQL 8.0；开发工具：IntelliJ IDEA（后端开发），VSCode（前端开发），Git（版本控制），Postman（API测试）；构建工具：Maven（后端构建），Vite（前端构建）；其他工具：Docker（容器化部署），Nginx（反向代理）。"
+  },
+  {
+    "id": "5.2",
+    "title": "系统功能实现"
+  },
+  {
+    "id": "5.2.1",
+    "title": "用户认证管理的实现",
+    "text": "基于Spring Security和JWT实现用户认证系统。后端提供注册、登录、令牌刷新等接口，前端通过Axios拦截器自动处理令牌。实现了密码加密存储、登录状态保持、权限控制等安全机制。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/impl-auth-management.png"
+  },
+  {
+    "id": "5.2.2",
+    "title": "菜品评分管理的实现",
+    "text": "实现了评分提交、评价展示、统计计算等功能。采用异步处理机制更新评分数据，使用Redis缓存热点数据提升查询性能。前端使用Element Plus评分组件提供良好的用户体验。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/impl-rating-management.png"
+  },
+  {
+    "id": "5.2.3",
+    "title": "食堂档口管理的实现",
+    "text": "实现了食堂、档口、菜品的层级管理功能。采用树形结构展示层级关系，支持批量操作和级联删除。后端使用MyBatis Plus的条件构造器简化复杂查询，前端使用Element Plus的表格和表单组件。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/impl-canteen-management.png"
+  },
+  {
+    "id": "5.2.4",
+    "title": "投诉建议管理的实现",
+    "text": "实现了投诉提交、状态跟踪、处理回复等功能。采用状态机模式管理投诉处理流程，支持消息通知和邮件提醒。前端提供友好的投诉表单和状态展示界面。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/impl-complaint-management.png"
+  },
+  {
+    "id": "5.2.5",
+    "title": "系统统计管理的实现",
+    "text": "实现了多维度数据统计和图表展示功能。使用定时任务预计算统计数据，采用ECharts库生成各类图表。支持数据导出和自定义统计周期。",
+    "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/impl-statistics-management.png"
+  },
+  {
+    "id": "5.3",
+    "title": "本章小结",
+    "text": "本章详细描述了系统各功能模块的实现过程和技术要点。通过合理的技术选型和架构设计，确保了系统的功能完整性、性能稳定性和用户体验。实现过程中解决了认证安全、数据一致性、性能优化等关键技术问题。"
+  },
+  {
+    "id": "6",
+    "title": "第6章 系统测试"
+  },
+  {
+    "id": "6.1",
+    "title": "系统测试环境",
+    "text": "测试环境配置：服务器CPU 4核，内存8GB，硬盘200GB SSD；操作系统Ubuntu 20.04，JDK 17，MySQL 8.0，Node.js 16；网络环境：千兆局域网，模拟并发测试；测试工具：JMeter（性能测试），Selenium（自动化测试），Postman（接口测试）。"
+  },
+  {
+    "id": "6.2",
+    "title": "系统测试方法",
+    "text": "采用黑盒测试为主、白盒测试为辅的策略。功能测试覆盖所有用户场景和边界条件；性能测试验证并发能力和响应时间；安全测试检查权限控制和数据安全；兼容性测试验证多平台支持。建立缺陷跟踪机制，确保问题及时修复。"
+  },
+  {
+    "id": "6.3",
+    "title": "系统功能测试"
+  },
+  {
+    "id": "6.3.1",
+    "title": "用户认证管理功能测试",
+    "text": "测试用例覆盖用户注册、登录、权限验证等场景，包括正常流程、异常情况和边界条件。验证密码强度检查、令牌有效期、权限控制等安全机制。",
+    "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/test-auth-management.json"
+  },
+  {
+    "id": "6.3.2",
+    "title": "菜品评分管理功能测试",
+    "text": "测试评分提交、评价展示、统计计算等功能。验证数据验证机制、并发评分处理、统计数据准确性。测试敏感词过滤和评价审核功能。",
+    "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/test-rating-management.json"
+  },
+  {
+    "id": "6.3.3",
+    "title": "食堂档口管理功能测试",
+    "text": "测试食堂、档口、菜品的增删改查功能。验证数据关联性、级联操作、批量处理等场景。测试数据导入导出功能。",
+    "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/test-canteen-management.json"
+  },
+  {
+    "id": "6.3.4",
+    "title": "投诉建议管理功能测试",
+    "text": "测试投诉提交、状态跟踪、处理回复等功能。验证投诉分类、处理流程、通知机制等特性。测试投诉统计和报表功能。",
+    "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/test-complaint-management.json"
+  },
+  {
+    "id": "6.3.5",
+    "title": "系统统计管理功能测试",
+    "text": "测试各类数据统计和图表展示功能。验证统计算法正确性、数据更新及时性、图表交互性等特性。测试数据导出和自定义统计功能。",
+    "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/test-statistics-management.json"
+  },
+  {
+    "id": "6.4",
+    "title": "系统性能测试",
+    "text": "通过JMeter进行压力测试，验证系统在不同负载下的性能表现。测试结果显示系统能够支持500并发用户，平均响应时间小于2秒，CPU使用率不超过80%，满足预期性能要求。",
+    "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/performance-metrics.json"
+  },
+  {
+    "id": "6.5",
+    "title": "系统兼容性测试",
+    "text": "在多种浏览器和操作系统环境下测试系统兼容性。测试结果显示系统在Chrome、Firefox、Safari等主流浏览器以及Windows、macOS、iOS、Android等平台上均能正常运行。",
+    "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/compatibility-matrix.json"
+  },
+  {
+    "id": "6.6",
+    "title": "本章小结",
+    "text": "通过全面的测试验证，系统各功能模块运行稳定，性能指标满足预期要求，兼容性良好。测试过程中发现并修复了若干缺陷，确保了系统的质量和可靠性。测试结果表明系统已具备上线运行条件。"
+  },
+  {
+    "id": "7",
+    "title": "结论",
+    "text": "本文成功设计并实现了一套完整的食堂评分系统，实现了预期的功能目标。系统采用现代化的技术架构，具有良好的性能和扩展性。通过系统的使用，能够有效提升食堂管理效率，改善师生就餐体验。未来可以考虑增加移动端支持、智能推荐等功能，进一步提升系统价值。"
+  },
+  {
+    "id": "8",
+    "title": "参考文献",
+    "text": "包括Spring Boot官方文档、Vue.js技术指南、MyBatis Plus使用手册、系统设计相关学术论文、软件工程方法论等参考资料。"
+  },
+  {
+    "id": "9",
+    "title": "致谢",
+    "text": "感谢指导老师的悉心指导，感谢同学们的支持和帮助，感谢学校提供的学习和实践环境。特别感谢所有参与系统测试的用户，他们的反馈对系统改进起到了重要作用。"
+  }
+]
