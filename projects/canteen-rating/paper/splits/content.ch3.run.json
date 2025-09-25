@@ -256,6 +256,53 @@
         },
         {
           "order": 3,
+          "title": "stalls 实体（档口表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "completed",
+          "length": {
+            "unit": "char",
+            "target": 400,
+            "actual": 398
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "wantTable": true
+          },
+          "textPrompt": "撰写《数据库概念设计—stalls 实体（档口表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "档口实体（stalls）作为食堂内部的功能单元实体，是连接食堂和菜品的重要中介层次。该实体存储各个档口的详细信息，包括档口名称、所属食堂、经营类型和联系方式等关键属性。主键采用自增长的id字段，档口名称字段设置非空约束。该实体通过canteen_id外键与食堂实体建立多对一关系，明确档口的地理归属，一个食堂可以包含多个档口。档口实体与菜品实体建立一对多关系，每个档口可以提供多种菜品。实体包含经营状态字段，支持档口的开放和关闭管理。联系方式字段便于管理员和用户沟通。该实体的设计实现了校园食堂两层地理结构的建模，为用户提供了更精确的菜品定位功能，增强了系统的实用性和用户体验。",
+          "figures": [
+            {
+              "id": "Fig-stalls",
+              "label": "图3-3 档口表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-stalls.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-stalls",
+              "label": "表3-3 档口表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-stalls.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "stalls"
+          }
+        },
+        {
+          "order": 4,
           "title": "dishes 实体（菜品表）",
           "render": {
             "as": "numbered"
@@ -288,7 +335,7 @@
           "tables": [
             {
               "id": "Tab-dishes",
-              "label": "表3-3 菜品表字段三线表",
+              "label": "表3-5 菜品表字段三线表",
               "type": "table",
               "dataPath": "./paper/exports/tables/Tab-dishes.json",
               "status": "ready",
@@ -302,7 +349,7 @@
           }
         },
         {
-          "order": 4,
+          "order": 5,
           "title": "ratings 实体（评价表）",
           "render": {
             "as": "numbered"
@@ -335,7 +382,7 @@
           "tables": [
             {
               "id": "Tab-ratings",
-              "label": "表3-4 评价表字段三线表",
+              "label": "表3-6 评价表字段三线表",
               "type": "table",
               "dataPath": "./paper/exports/tables/Tab-ratings.json",
               "status": "ready",
@@ -347,12 +394,106 @@
           "meta": {
             "entityName": "ratings"
           }
+        },
+        {
+          "order": 6,
+          "title": "complaints 实体（投诉建议表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "completed",
+          "length": {
+            "unit": "char",
+            "target": 400,
+            "actual": 402
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "wantTable": true
+          },
+          "textPrompt": "撰写《数据库概念设计—complaints 实体（投诉建议表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "投诉建议实体（complaints）为用户提供反馈渠道，存储用户对食堂服务、菜品质量和系统功能的意见和建议。该实体支持用户多样化的反馈需求，包括投诉、建议、咨询等不同类型。主键采用自增长的id字段，实体通过user_id外键与用户实体建立多对一关系，确保投诉的可追溯性。投诉类型字段支持分类管理，便于管理员处理不同性质的反馈。投诉内容字段支持详细的文字描述，标题字段提供投诉摘要。该实体包含处理状态字段，支持待处理、处理中、已完成等状态管理。回复内容字段允许管理员对投诉进行响应，处理时间字段记录处理进度。实体设计充分考虑了用户体验和管理效率，为系统的持续改进提供了数据支撑，增强了系统的服务质量和用户满意度。",
+          "figures": [
+            {
+              "id": "Fig-complaints",
+              "label": "图3-7 投诉建议表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-complaints.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-complaints",
+              "label": "表3-7 投诉建议表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-complaints.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "complaints"
+          }
+        },
+        {
+          "order": 7,
+          "title": "sensitive_words 实体（敏感词表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "completed",
+          "length": {
+            "unit": "char",
+            "target": 400,
+            "actual": 395
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "wantTable": true
+          },
+          "textPrompt": "撰写《数据库概念设计—sensitive_words 实体（敏感词表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "敏感词实体（sensitive_words）是系统内容审核功能的基础数据实体，存储需要过滤和监控的敏感词汇。该实体支持系统的内容安全管理，确保用户评价和投诉内容的健康性。主键采用自增长的id字段，敏感词字段存储具体的词汇内容，设置唯一约束防止重复。词汇类型字段支持敏感词的分类管理，如脏话、政治敏感、商业广告等类别。严重程度字段定义敏感词的处理等级，支持警告、屏蔽、禁言等不同处理策略。该实体包含启用状态字段，支持敏感词词库的动态管理。创建时间和更新时间字段记录词汇的维护历史。实体设计为系统的智能内容过滤功能提供了灵活的配置基础，有效维护了平台的内容质量和用户体验，确保系统合规运营。",
+          "figures": [
+            {
+              "id": "Fig-sensitive_words",
+              "label": "图3-8 敏感词表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-sensitive_words.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-sensitive_words",
+              "label": "表3-8 敏感词表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-sensitive_words.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "sensitive_words"
+          }
         }
       ],
       "figures": [
         {
           "id": "Fig-ER-Overview",
-          "label": "图3-7 数据库总体ER图",
+          "label": "图3-9 数据库总体ER图",
           "type": "uml",
           "umlCodePath": "./paper/exports/tables/ER-overview.puml",
           "imagePath": "./paper/exports/tables/ER-overview.svg",
