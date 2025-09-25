@@ -1,0 +1,14 @@
+{
+  "tableName": "stalls",
+  "tableCnName": "档口表",
+  "columns": [
+    ["字段名", "字段中文名", "类型", "约束", "说明"],
+    ["id", "编号", "BIGINT", "PK, AUTO_INCREMENT, NOT NULL", "主键ID"],
+    ["canteen_id", "食堂编号", "BIGINT", "", "食堂ID"],
+    ["name", "档口名称", "VARCHAR(255)", "", "档口名称"],
+    ["description", "描述", "TEXT", "", "档口描述"],
+    ["created_time", "创建时间", "DATETIME", "", "创建时间"],
+    ["updated_time", "更新时间", "DATETIME", "", "更新时间"],
+    ["is_deleted", "删除标记", "INT", "", "逻辑删除标记（0-未删除，1-已删除）"]
+  ]
+}

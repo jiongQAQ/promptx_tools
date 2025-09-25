@@ -1,0 +1,214 @@
+{
+  "docId": "canteen-rating-001-chapter-5",
+  "meta": {
+    "title": "餐厅评分系统设计与实现",
+    "theme": "餐厅评分系统",
+    "chapter": 5,
+    "originalDocId": "canteen-rating-001",
+    "splitDate": "2025-09-25T10:43:48.064Z"
+  },
+  "defaults": {
+    "length": {
+      "unit": "char",
+      "target": 900
+    },
+    "textPromptTemplate": "撰写《{{sectionTitle}}》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+    "figurePromptTemplate": "为《{{sectionTitle}}》生成 PlantUML 代码，仅输出合法完整代码。重点：{{figureFocus}}。",
+    "tablePromptTemplate": "为《{{sectionTitle}}》生成三线表 JSON 数据。字段：{{schema}}。仅输出 JSON。",
+    "figureLabelTemplate": "图{{chapter}}-{{index}} {{figureTitle}}",
+    "tableLabelTemplate": "表{{chapter}}-{{index}} {{tableTitle}}"
+  },
+  "promptSnippets": {},
+  "autoApply": [],
+  "contents": {
+    "5": {
+      "id": "5",
+      "title": "第5章 系统实现",
+      "status": "planning",
+      "mode": "single",
+      "length": {
+        "unit": "char",
+        "target": 600
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《第5章 系统实现》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "5.1": {
+      "id": "5.1",
+      "title": "系统开发环境和工具",
+      "status": "planning",
+      "mode": "single",
+      "length": {
+        "unit": "char",
+        "target": 500
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统开发环境和工具》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "5.2": {
+      "id": "5.2",
+      "title": "系统功能实现",
+      "status": "planning",
+      "mode": "single",
+      "length": {
+        "unit": "char",
+        "target": 500
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统功能实现》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "5.2.1": {
+      "id": "5.2.1",
+      "title": "用户身份认证的实现",
+      "status": "planning",
+      "mode": "single",
+      "length": {
+        "unit": "char",
+        "target": 500
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《用户身份认证的实现》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "5.2.2": {
+      "id": "5.2.2",
+      "title": "菜品评分管理的实现",
+      "status": "planning",
+      "mode": "single",
+      "length": {
+        "unit": "char",
+        "target": 500
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《菜品评分管理的实现》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "5.2.3": {
+      "id": "5.2.3",
+      "title": "食堂档口管理的实现",
+      "status": "planning",
+      "mode": "single",
+      "length": {
+        "unit": "char",
+        "target": 500
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《食堂档口管理的实现》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "5.2.4": {
+      "id": "5.2.4",
+      "title": "投诉举报处理的实现",
+      "status": "planning",
+      "mode": "single",
+      "length": {
+        "unit": "char",
+        "target": 500
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《投诉举报处理的实现》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "5.2.5": {
+      "id": "5.2.5",
+      "title": "系统统计分析的实现",
+      "status": "planning",
+      "mode": "single",
+      "length": {
+        "unit": "char",
+        "target": 500
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《系统统计分析的实现》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    },
+    "5.3": {
+      "id": "5.3",
+      "title": "本章小结",
+      "status": "planning",
+      "mode": "single",
+      "length": {
+        "unit": "char",
+        "target": 300
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": false,
+        "figurePlan": [],
+        "wantTable": false,
+        "tablePlan": []
+      },
+      "textPrompt": "撰写《本章小结》，围绕\"餐厅评分系统\"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "",
+      "figures": [],
+      "tables": []
+    }
+  }
+}
