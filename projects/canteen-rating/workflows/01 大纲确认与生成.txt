@@ -1,15 +1,19 @@
 【流程 01｜大纲确认→生成→功能章节扩展＋技术占位符实填｜通用】
 
-你的当前工作目录为 ./（例如 projects/gym）。请仅操作大纲文件，不生成正文或图表。
+=== 路径定义 ===
+<projectRoot> = $(pwd)  # 当前工作目录的绝对路径
+使用说明：执行前请确保在项目根目录下运行，所有相对路径将基于此目录解析
+
+你的当前工作目录为 <projectRoot>/（例如 projects/gym）。请仅操作大纲文件，不生成正文或图表。
 
 —— 阶段一：大纲确认与生成 ——
 目标：
-1. 读取模板：./templates/outline.template.json
+1. 读取模板：<projectRoot>/templates/outline.template.json
 2. 与我确认使用方式（A/B/C 三选一），生成大纲文件：
-   - 输出到 ./paper/outline.json （若 ./paper/ 不存在请创建）
+   - 输出到 <projectRoot>/paper/outline.json （若 <projectRoot>/paper/ 不存在请创建）
    - 选择模式：
      A) 直接使用模板原样生成
-     B) 使用模板 + 你根据 ./source/ 的代码提出“建议新增章节”，待我确认后再写入
+     B) 使用模板 + 你根据 <projectRoot>/source/ 的代码提出"建议新增章节"，待我确认后再写入
      C) 我将粘贴“自定义大纲”（文本或 JSON），你据此规范化为最终大纲
 3. 生成完成后输出：
    - 机器可读摘要（stdout 单行 JSON）
@@ -17,12 +21,12 @@
 
 —— 阶段二：功能章节扩展（编号不固定，按标题匹配） ——
 目标：
-1. 在 ./paper/outline.json 中，查找标题包含以下关键词的章节：
-   - “系统功能详细设计”
-   - “系统功能实现”
-   - “系统功能测试”
-2. 若存在“系统功能详细设计”：
-   - 基于 ./source/ 与（如存在）./CLAUDE.md，自行分析识别系统核心功能模块（≤5）。
+1. 在 <projectRoot>/paper/outline.json 中，查找标题包含以下关键词的章节：
+   - "系统功能详细设计"
+   - "系统功能实现"
+   - "系统功能测试"
+2. 若存在"系统功能详细设计"：
+   - 基于 <projectRoot>/source/ 与（如存在）<projectRoot>/CLAUDE.md，自行分析识别系统核心功能模块（≤5）。
    - 在“系统功能详细设计”下生成子节点：《<功能名>的详细设计》
    - 在“系统功能实现”下生成子节点：《<功能名>的实现》
    - 在“系统功能测试”下生成子节点：《<功能名>功能测试》
@@ -32,19 +36,19 @@
 
 —— 阶段三：技术占位符实填（“相关技术介绍”中的 {{jishu1}}/{{jishu2}}/{{jishu3}}） ——
 目标：
-1. 在 ./paper/outline.json 中定位“相关技术介绍”章节下的 1.4.1 / 1.4.2 / 1.4.3（或任何等价的小节标题中包含 {{jishu1}} / {{jishu2}} / {{jishu3}} 的节点，编号位置可能不同）。
-2. 基于项目的**真实证据**自行分析（读取 ./source/ 与 ./CLAUDE.md，如存在），识别该项目最具代表性的三项技术（例如后端框架/数据访问层/缓存/认证/数据库/前端等不同维度各取其一），并按“相关性与重要性”排序为 jishu1、jishu2、jishu3：
+1. 在 <projectRoot>/paper/outline.json 中定位"相关技术介绍"章节下的 1.4.1 / 1.4.2 / 1.4.3（或任何等价的小节标题中包含 {{jishu1}} / {{jishu2}} / {{jishu3}} 的节点，编号位置可能不同）。
+2. 基于项目的**真实证据**自行分析（读取 <projectRoot>/source/ 与 <projectRoot>/CLAUDE.md，如存在），识别该项目最具代表性的三项技术（例如后端框架/数据访问层/缓存/认证/数据库/前端等不同维度各取其一），并按"相关性与重要性"排序为 jishu1、jishu2、jishu3：
    - 对每个 {{jishuX}} 生成 3–4 个候选（来源于你的证据分析），并在**不等待确认**的前提下自动选定 1 项用于替换。
    - 仅替换标题占位符文本，不改变节点结构/id/顺序。
 3. 若未找到占位符节点，输出说明并跳过本阶段；不得新建“相关技术介绍”节点。
 
 —— 阶段四：输出 ——
-1. 覆盖写回 ./paper/outline.json（UTF-8）
+1. 覆盖写回 <projectRoot>/paper/outline.json（UTF-8）
 2. 机器可读摘要（stdout 单行 JSON），示例字段：
    {
      "status": "success",
      "project": "<projectName>",
-     "outlinePath": "./paper/outline.json",
+     "outlinePath": "<projectRoot>/paper/outline.json",
      "nodeCount": <整数>,
      "rootIds": ["1","2","3",...],
      "mode": "template | template+suggest | custom",
@@ -73,10 +77,10 @@
      • 采纳项与采纳理由
      • 证据清单（来源文件/模块/配置/说明）
      • 被替换节点的 id 与新标题
-   - 覆盖写入确认：./paper/outline.json
+   - 覆盖写入确认：<projectRoot>/paper/outline.json
 
 —— 约束与容错 ——
-- 全流程仅操作 ./paper/outline.json；不得读写/创建其他文件（content.json、images、docx 等）。
+- 全流程仅操作 <projectRoot>/paper/outline.json；不得读写/创建其他文件（content.json、images、docx 等）。
 - 功能与技术的判定必须来源于项目真实证据；若证据不足，仍需给出候选并在报告中标注“依据不足”。
 - 不得增删无关节点与层级，不得变更已有节点 id 或顺序；仅允许：
   • 在“系统功能详细设计/实现/测试”三类章节下新增其**直接子节点**（如执行了功能扩展）；

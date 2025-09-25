@@ -1,33 +1,37 @@
 【流程 03｜正文与素材生成（基于 2-1 拆分文档｜不覆盖原文件｜统一使用 luban-uml）】
 
+=== 路径定义 ===
+<projectRoot> = $(pwd)  # 当前工作目录的绝对路径
+使用说明：执行前请确保在项目根目录下运行，所有相对路径将基于此目录解析
+
 目标
-1 基于 ./paper/outline.json 与 ./paper/splits/content.chN.json（来自流程 2-1 的分章文件），逐章节生成正文、UML 代码与表格数据。
+1 基于 <projectRoot>/paper/outline.json 与 <projectRoot>/paper/splits/content.chN.json（来自流程 2-1 的分章文件），逐章节生成正文、UML 代码与表格数据。
 2 不覆盖原始分章文件，仅生成新的运行产物：
-   - 默认写入 ./paper/splits/content.chN.run.json
-   - 若该文件已存在，则写入 ./paper/splits/content.chN.run.<YYYYMMDD-HHMMSS>.json
-3 所有 UML 图片必须调用工具 luban-uml 渲染，UML 源码文件与图片文件同名（仅后缀不同），统一存放在 ./paper/exports/uml/。
-   - 例外（仅此一类）：**单体 ER 图**直接复用 ./paper/exports/tables/ 下由 1.2 产物生成的 **SVG** 文件，不再生成 puml 与渲染（见“数据库设计章节”）。
+   - 默认写入 <projectRoot>/paper/splits/content.chN.run.json
+   - 若该文件已存在，则写入 <projectRoot>/paper/splits/content.chN.run.<YYYYMMDD-HHMMSS>.json
+3 所有 UML 图片必须调用工具 luban-uml 渲染，UML 源码文件与图片文件同名（仅后缀不同），统一存放在 <projectRoot>/paper/exports/uml/。
+   - 例外（仅此一类）：**单体 ER 图**直接复用 <projectRoot>/paper/exports/tables/ 下由 1.2 产物生成的 **SVG** 文件，不再生成 puml 与渲染（见"数据库设计章节"）。
 
 输入
-- ./paper/outline.json
-- ./paper/splits/content.chN.json（由流程 2-1 输出的分章文件）
-- ./source/ 源码目录
-- ./CLAUDE.md （若存在）
+- <projectRoot>/paper/outline.json
+- <projectRoot>/paper/splits/content.chN.json（由流程 2-1 输出的分章文件）
+- <projectRoot>/source/ 源码目录
+- <projectRoot>/CLAUDE.md （若存在）
 
 目录与命名规范
-- 产物根：./paper/exports/
-- UML 目录：./paper/exports/uml/        （存放 .puml 与 .png/.svg）
-- 表格目录：./paper/exports/tables/     （存放三线表 JSON 以及单体 ER 图 SVG 与总体 ER 图 puml/svg）
+- 产物根：<projectRoot>/paper/exports/
+- UML 目录：<projectRoot>/paper/exports/uml/        （存放 .puml 与 .png/.svg）
+- 表格目录：<projectRoot>/paper/exports/tables/     （存放三线表 JSON 以及单体 ER 图 SVG 与总体 ER 图 puml/svg）
 - 文件命名规则（通用图）：
   - 基础名：Fig-<chapter>-<index>__<slug>
   - slug：来源于 figureTitle（转小写，空格→-，去除非法字符，≤60 字符）
-  - UML 源码路径：./paper/exports/uml/Fig-<chapter>-<index>__<slug>.puml
-  - 图片路径：  ./paper/exports/uml/Fig-<chapter>-<index>__<slug>.png
+  - UML 源码路径：<projectRoot>/paper/exports/uml/Fig-<chapter>-<index>__<slug>.puml
+  - 图片路径：  <projectRoot>/paper/exports/uml/Fig-<chapter>-<index>__<slug>.png
 - 文件命名规则（数据库总体 ER 图与单体 ER 图例外）：
-  - **单体 ER 图**：直接引用 ./paper/exports/tables/Tab-<tableName>.svg（不产 puml）
+  - **单体 ER 图**：直接引用 <projectRoot>/paper/exports/tables/Tab-<tableName>.svg（不产 puml）
   - **数据库总体 ER 图**：
-    - UML 源码：./paper/exports/tables/ER-overview.puml
-    - 图片：   ./paper/exports/tables/ER-overview.svg
+    - UML 源码：<projectRoot>/paper/exports/tables/ER-overview.puml
+    - 图片：   <projectRoot>/paper/exports/tables/ER-overview.svg
 - luban-uml 调用方式（通用图与总体 ER 图）：
   - 写入 .puml 文件后执行：
     luban-uml render --in "<pumlPath>" --out "<pngOrSvgPath>" --format png|svg
@@ -35,7 +39,7 @@
 
 执行规则
 1 文本生成
-   - 对 plan.wantText=true 的节点（含 list.items），使用 textPrompt，结合 ./source/ 与 ./CLAUDE.md 生成正文，写入 node.text。
+   - 对 plan.wantText=true 的节点（含 list.items），使用 textPrompt，结合 <projectRoot>/source/ 与 <projectRoot>/CLAUDE.md 生成正文，写入 node.text。
    - 学术化表达。
    - 正文字数必须遵循节点的 length 配置，例如：
      "length": { "unit": "char", "target": 900 } → 约 900 个中文汉字。
@@ -46,7 +50,7 @@
    - 对 plan.wantFigure=true 的节点，逐个执行 figurePlan。
    - **功能结构图须使用 WBS（PlantUML）格式**：
      - 使用 @startwbs/@endwbs；* 为根，** 为二级，*** 为三级；层次清晰、样式简洁。
-     - 该类图按“通用图”命名规则生成 puml 与图片（存放于 ./paper/exports/uml/）。
+     - 该类图按"通用图"命名规则生成 puml 与图片（存放于 <projectRoot>/paper/exports/uml/）。
    - 一般流程：
      - 输出合法完整的 PlantUML 代码 → 保存到 .puml。
      - 调用 luban-uml 渲染为图片（png 或 svg），文件名与 .puml 同名。
@@ -58,7 +62,7 @@
 
 3 表生成
    - 对 plan.wantTable=true 的节点，逐个执行 tablePlan。
-   - 按 schema 输出 JSON 数组 → 保存到 ./paper/exports/tables/Tab-<chapter>-<index>__<slug>.json
+   - 按 schema 输出 JSON 数组 → 保存到 <projectRoot>/paper/exports/tables/Tab-<chapter>-<index>__<slug>.json
    - 写回运行产物：
      - tables[i].dataPath = "<.json 路径>"
      - tables[i].status   = "done" | "failed"
@@ -70,32 +74,32 @@
 5 数据库设计章节（必须完整覆盖｜单体 ER 图直接复用 SVG）
    - 判定条件：标题包含“数据库设计/数据库概念设计/数据库逻辑设计/ER”
    - 要求：
-     1. 从 ./source/ 中完整提取所有实体定义（ORM/建表 SQL/实体类），**一个不漏**。
+     1. 从 <projectRoot>/source/ 中完整提取所有实体定义（ORM/建表 SQL/实体类），**一个不漏**。
      2. 为每个实体生成一个子项：
-        - **单体结构图**：**不再生成 puml**，直接引用 **./paper/exports/tables/Tab-<tableName>.svg**（来自 1.2）；若不存在则标记 status=failed。
-        - **三线表 JSON**：引用 ./paper/exports/tables/Tab-<tableName>.json（来自 1.1）；若不存在则标记 status=failed。
+        - **单体结构图**：**不再生成 puml**，直接引用 **<projectRoot>/paper/exports/tables/Tab-<tableName>.svg**（来自 1.2）；若不存在则标记 status=failed。
+        - **三线表 JSON**：引用 <projectRoot>/paper/exports/tables/Tab-<tableName>.json（来自 1.1）；若不存在则标记 status=failed。
         - **文本描述**：实体业务定位、关键字段、约束、关系。
      3. 在章节级别必须生成一张“数据库总体 ER 图”，包含所有实体及它们的关系（不得遗漏）：
-        - 若 ./paper/exports/tables/ER-overview.svg 已存在：直接引用；
+        - 若 <projectRoot>/paper/exports/tables/ER-overview.svg 已存在：直接引用；
         - 否则自动生成 ER-overview.puml → 调用 luban-uml 渲染为 ER-overview.svg 并写回；失败则标记 status=failed。
    - 失败时：报告“未发现实体定义”，并标记章节 status=failed。
 
 6 写入产物
-   - 每章运行产物落盘为 ./paper/splits/content.chN.run.json（或带时间戳的新文件）。
-   - 原始 ./paper/splits/content.chN.json 不得修改。
+   - 每章运行产物落盘为 <projectRoot>/paper/splits/content.chN.run.json（或带时间戳的新文件）。
+   - 原始 <projectRoot>/paper/splits/content.chN.json 不得修改。
 
 输出
 1 新文件：
-   - ./paper/splits/content.chN.run.json
-   - ./paper/exports/uml/*.puml + *.png（或 .svg）
-   - ./paper/exports/tables/*.json（以及单体 ER 图 SVG、总体 ER 图 puml/svg）
+   - <projectRoot>/paper/splits/content.chN.run.json
+   - <projectRoot>/paper/exports/uml/*.puml + *.png（或 .svg）
+   - <projectRoot>/paper/exports/tables/*.json（以及单体 ER 图 SVG、总体 ER 图 puml/svg）
 2 机器可读 JSON（stdout 单行）：
    {
      "status": "success",
      "project": "<projectName>",
-     "outlinePath": "./paper/outline.json",
-     "contentPath": "./paper/splits/content.chN.json",
-     "runContentPath": "./paper/splits/content.chN.run.json",
+     "outlinePath": "<projectRoot>/paper/outline.json",
+     "contentPath": "<projectRoot>/paper/splits/content.chN.json",
+     "runContentPath": "<projectRoot>/paper/splits/content.chN.run.json",
      "chaptersDone": 1,
      "figures": { "generated": <int>, "failed": <int> },
      "tables":  { "generated": <int>, "failed": <int> },
@@ -112,10 +116,10 @@
    - 下一步建议：可进入“流程 04 导出 Word”
 
 注意
-- 必须用 luban-uml 渲染所有 UML 图片；**唯独单体 ER 图直接引用 ./paper/exports/tables/ 下的 SVG，不再生成 puml 或二次渲染**。
+- 必须用 luban-uml 渲染所有 UML 图片；**唯独单体 ER 图直接引用 <projectRoot>/paper/exports/tables/ 下的 SVG，不再生成 puml 或二次渲染**。
 - 功能结构图必须使用 **WBS**（@startwbs/@endwbs，*/* */*** 表示层级）。
 - 功能详细设计章节的每个功能子项需生成 **活动图** 与 **时序图**（常规渲染流程）。
 - 数据库实体类必须完整覆盖，不得省略任何一个实体；总体 ER 图必须包含所有实体。
 - 正文字数必须严格参考 length.target（允许 ±8% 容差），并在节点 meta.length.ok 中标记。
 - 若生成失败，保留 .puml 或 .json 文件，status=failed，不影响整体流程。
-- 禁止修改 ./paper/outline.json 与 ./paper/splits/content.chN.json。
+- 禁止修改 <projectRoot>/paper/outline.json 与 <projectRoot>/paper/splits/content.chN.json。

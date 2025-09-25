@@ -1,7 +1,11 @@
 【流程 1.1｜实体类 → 三线表 JSON（含表中文名与字段中文名）】
 
+=== 路径定义 ===
+<projectRoot> = $(pwd)  # 当前工作目录的绝对路径
+使用说明：执行前请确保在项目根目录下运行，所有相对路径将基于此目录解析
+
 目标
-1 扫描 ./source/ 目录，自动识别所有“实体类/数据模型”文件：
+1 扫描 <projectRoot>/source/ 目录，自动识别所有"实体类/数据模型"文件：
    - Java：@Entity/@Table 等注解的类，或 entity/pojo 目录下的类
    - Python：Django/SQLAlchemy 模型类
    - Node.js：Sequelize/Mongoose schema
@@ -14,12 +18,12 @@
 3 为每个实体生成一个 **三线表 JSON** 文件（仅 JSON，不输出 SQL），用于后续渲染。
 
 输入
-- ./source/ 源码目录
-- （可选）./CLAUDE.md：若包含数据字典或命名规范，优先按其中规则命名中文名
+- <projectRoot>/source/ 源码目录
+- （可选）<projectRoot>/CLAUDE.md：若包含数据字典或命名规范，优先按其中规则命名中文名
 
 输出
 1 三线表 JSON 文件（每个实体一份）
-   - 存放路径：./paper/exports/tables/
+   - 存放路径：<projectRoot>/paper/exports/tables/
    - 文件命名：Tab-<tableName>.json  （tableName 一律小写 + 下划线）
    - 内容结构（在原有四列基础上新增“字段中文名”列，并增加表中文名）：
      {
@@ -39,7 +43,7 @@
      "status": "success",
      "project": "<projectName>",
      "entityCount": <int>,
-     "tableJsonDir": "./paper/exports/tables/",
+     "tableJsonDir": "<projectRoot>/paper/exports/tables/",
      "tables": [
        {"name":"users","cn":"用户表","columns":5},
        {"name":"orders","cn":"订单表","columns":8}
@@ -62,7 +66,7 @@
 1 明确证据（最高优先）：
    - 代码注解/标签/元数据上的中文：如 JPA @Column(comment="用户名")、Django verbose_name、Sequelize/Mongoose 的 comment/label、Go struct tag `comment:"用户ID"`
    - SQL COMMENT 或 /* 中文说明 */、-- 中文注释
-   - ./CLAUDE.md 或 docs 中的字段/表中英文对照表
+   - <projectRoot>/CLAUDE.md 或 docs 中的字段/表中英文对照表
 2 结构化线索：
    - 文件/类/集合名中的中文片段（若存在）
    - 领域词典（如 user→用户、order→订单、payment→支付、created_at→创建时间、updated_at→更新时间、is_xxx→是否XXX 等）
@@ -74,7 +78,7 @@
      - is_/has_ 前缀→“是否…”
    - 缺乏可靠线索时，用合理中文化名并在报告中标注“自动推断”
 4 覆盖策略：
-   - 若多处证据冲突，按优先级 1 > 2 > 3 采纳；./CLAUDE.md 的明确表述优先级与 1 同级
+   - 若多处证据冲突，按优先级 1 > 2 > 3 采纳；<projectRoot>/CLAUDE.md 的明确表述优先级与 1 同级
    - 采纳结果要在报告中给出“来源说明”（文件/注解/规则）
 
 字段类型与约束映射
@@ -89,7 +93,7 @@
 
 命名与输出规范
 - 表名与字段名：统一小写 + 下划线；不改源码中的真实命名，仅用于输出规范（必要时保留原名于说明列）
-- 文件目录：./paper/exports/tables/  （若不存在需创建）
+- 文件目录：<projectRoot>/paper/exports/tables/  （若不存在需创建）
 - 仅生成 JSON 文件，不覆盖其它输出
 
 容错
