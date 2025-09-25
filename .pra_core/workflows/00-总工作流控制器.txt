@@ -27,16 +27,27 @@
 可用鲁班工具清单
 - **@tool://1-1-single-er**：单体ER图生成工具
   - 功能：基于三线表JSON生成对应的SVG格式ER图
-  - 使用：toolx("@tool://1-1-single-er", parameters)
+  - 参数：inputPath(JSON文件或目录), outputDir(可选)
+  - 使用：toolx("@tool://1-1-single-er", {inputPath: "<path>"})
+  - 工具代码学习：learn("@tool://1-1-single-er")
+
 - **@tool://json-chapter-splitter**：JSON章节拆分工具
   - 功能：将完整的content.json按章节拆分为独立文件
-  - 使用：toolx("@tool://json-chapter-splitter", parameters)
+  - 参数：inputFile(JSON路径), outputDir(输出目录), preserveStructure(布尔)
+  - 使用：toolx("@tool://json-chapter-splitter", {inputFile: "<path>", outputDir: "<dir>"})
+  - 工具代码学习：learn("@tool://json-chapter-splitter")
+
 - **@tool://luban-uml**：UML图表渲染工具
   - 功能：将PlantUML代码渲染为PNG/SVG图片
-  - 使用：toolx("@tool://luban-uml", parameters)
+  - 参数：operation(render/validate), input(puml代码或文件路径), output(输出路径), format(png/svg)
+  - 使用：toolx("@tool://luban-uml", {operation: "render", input: "<content>", output: "<path>", format: "svg"})
+  - 工具代码学习：learn("@tool://luban-uml")
+
 - **@tool://thesis-to-docx**：论文DOCX导出工具
   - 功能：基于content.run.json和素材生成完整的DOCX文档
-  - 使用：toolx("@tool://thesis-to-docx", parameters)
+  - 参数：sourceDir(splits目录), outputPath(docx路径), thesisTitle(标题), author(作者)
+  - 使用：toolx("@tool://thesis-to-docx", {sourceDir: "paper/splits", outputPath: "output.docx", thesisTitle: "题目"})
+  - 工具代码学习：learn("@tool://thesis-to-docx")
 
 执行流程
 
