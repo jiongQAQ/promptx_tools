@@ -1,0 +1,71 @@
+@startuml
+skinparam activity {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  FontColor #333333
+}
+
+skinparam swimlane {
+  BorderColor #333333
+  TitleFontColor #333333
+}
+
+title 用户认证与权限管理活动图
+
+|用户|
+start
+:输入用户名和密码;
+:提交登录请求;
+
+|系统|
+:接收登录请求;
+:验证请求参数;
+
+if (参数格式正确?) then (否)
+  :返回参数错误信息;
+  |用户|
+  :显示错误提示;
+  stop
+else (是)
+  :查询用户信息;
+
+  |数据库|
+  :执行用户查询SQL;
+
+  if (用户存在?) then (否)
+    |系统|
+    :返回用户不存在错误;
+    |用户|
+    :显示用户不存在提示;
+    stop
+  else (是)
+    :返回用户数据;
+
+    |系统|
+    :验证密码;
+
+    if (密码正确?) then (否)
+      :记录登录失败日志;
+      :返回密码错误信息;
+      |用户|
+      :显示密码错误提示;
+      stop
+    else (是)
+      :生成JWT Token;
+      :更新最后登录时间;
+
+      |数据库|
+      :更新用户登录记录;
+
+      |系统|
+      :返回认证成功响应;
+
+      |用户|
+      :存储Token到本地;
+      :跳转到主页面;
+      stop
+    endif
+  endif
+endif
+
+@enduml

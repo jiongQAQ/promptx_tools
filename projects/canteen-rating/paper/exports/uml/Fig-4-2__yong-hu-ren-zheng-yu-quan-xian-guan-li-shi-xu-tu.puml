@@ -1,0 +1,107 @@
+@startuml
+!define USER_COLOR #E3F2FD
+!define CONTROLLER_COLOR #F1F8E9
+!define SERVICE_COLOR #FFF3E0
+!define DB_COLOR #FFEBEE
+
+skinparam participant {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  FontColor #333333
+}
+
+skinparam sequence {
+  ArrowColor #333333
+  LifeLineBorderColor #333333
+  LifeLineBackgroundColor #FFFFFF
+}
+
+title 用户认证与权限管理时序图
+
+participant "用户" as User USER_COLOR
+participant "AuthController" as Controller CONTROLLER_COLOR
+participant "UserService" as Service SERVICE_COLOR
+participant "JwtUtils" as JWT SERVICE_COLOR
+participant "UserMapper" as Mapper SERVICE_COLOR
+participant "MySQL数据库" as DB DB_COLOR
+
+User -> Controller: POST /api/auth/login(username, password)
+activate Controller
+
+Controller -> Controller: 验证请求参数
+alt 参数验证失败
+  Controller --> User: 400 Bad Request
+  deactivate Controller
+else 参数验证成功
+  Controller -> Service: login(username, password)
+  activate Service
+
+  Service -> Mapper: selectByUsername(username)
+  activate Mapper
+
+  Mapper -> DB: SELECT * FROM users WHERE username = ?
+  activate DB
+
+  alt 用户不存在
+    DB --> Mapper: 空结果集
+    deactivate DB
+    Mapper --> Service: null
+    deactivate Mapper
+    Service --> Controller: UserNotFoundException
+    Controller --> User: 404 User Not Found
+    deactivate Service
+    deactivate Controller
+  else 用户存在
+    DB --> Mapper: 用户数据
+    deactivate DB
+    Mapper --> Service: User对象
+    deactivate Mapper
+
+    Service -> Service: 验证密码(BCrypt.checkpw)
+
+    alt 密码错误
+      Service --> Controller: InvalidPasswordException
+      Controller --> User: 401 Invalid Password
+      deactivate Service
+      deactivate Controller
+    else 密码正确
+      Service -> JWT: generateToken(user)
+      activate JWT
+      JWT --> Service: JWT Token
+      deactivate JWT
+
+      Service -> Mapper: updateLastLoginTime(userId)
+      activate Mapper
+      Mapper -> DB: UPDATE users SET last_login_time = ?
+      activate DB
+      DB --> Mapper: 更新成功
+      deactivate DB
+      Mapper --> Service: 更新结果
+      deactivate Mapper
+
+      Service --> Controller: LoginResponse(token, userInfo)
+      deactivate Service
+
+      Controller --> User: 200 OK + JWT Token
+      deactivate Controller
+    end
+  end
+end
+
+User -> User: 存储Token到localStorage
+User -> User: 跳转到主页面
+
+note over JWT
+  Token包含：
+  - 用户ID
+  - 用户类型(STUDENT/TEACHER)
+  - 权限列表
+  - 过期时间(7天)
+end note
+
+note over Service
+  密码验证使用BCrypt
+  支持慢哈希防止暴力破解
+end note
+
+@enduml

@@ -1,0 +1,122 @@
+@startuml
+skinparam activity {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  FontColor #333333
+}
+
+skinparam swimlane {
+  BorderColor #333333
+  TitleFontColor #333333
+}
+
+title 数据统计分析活动图
+
+|管理员|
+start
+:访问数据统计分析页面;
+:选择统计时间范围;
+:选择统计维度(食堂/菜品/用户);
+:选择统计指标;
+:点击生成报表;
+
+|系统|
+:接收统计请求;
+:验证管理员权限;
+
+if (权限验证通过?) then (否)
+  :返回权限不足错误;
+  |管理员|
+  :显示权限不足提示;
+  stop
+else (是)
+  :验证统计参数;
+
+  if (参数格式正确?) then (否)
+    :返回参数错误;
+    |管理员|
+    :显示参数错误提示;
+    stop
+  else (是)
+    :检查时间范围合理性;
+
+    if (时间范围合理?) then (否)
+      :返回时间范围错误;
+      |管理员|
+      :显示时间范围错误提示;
+      stop
+    else (是)
+      |缓存系统|
+      :检查缓存中是否有相同统计结果;
+
+      if (缓存命中?) then (是)
+        :返回缓存数据;
+        |系统|
+        :格式化统计结果;
+        :生成图表数据;
+        :返回统计报表;
+        |管理员|
+        :显示统计结果;
+        :展示数据图表;
+        stop
+      else (否)
+        |系统|
+        :构建统计SQL查询;
+
+        if (统计维度 == 食堂?) then (是)
+          |数据库|
+          :执行食堂维度统计查询;
+          :JOIN canteens, stalls, dishes, ratings;
+          :GROUP BY canteen_id;
+          :计算平均评分、评价数量等;
+        elseif (统计维度 == 菜品?) then (是)
+          |数据库|
+          :执行菜品维度统计查询;
+          :JOIN dishes, ratings, users;
+          :GROUP BY dish_id;
+          :计算热门菜品排名;
+        else (用户维度)
+          |数据库|
+          :执行用户维度统计查询;
+          :JOIN users, ratings;
+          :GROUP BY user_type;
+          :计算活跃用户统计;
+        endif
+
+        |数据库|
+        :返回统计原始数据;
+
+        |系统|
+        :处理统计数据;
+        :计算统计指标;
+        :格式化统计结果;
+        :生成图表配置数据;
+
+        |缓存系统|
+        :将统计结果存入缓存;
+        :设置缓存过期时间(1小时);
+
+        |系统|
+        :返回完整统计报表;
+
+        |管理员|
+        :查看统计数据表格;
+        :查看数据可视化图表;
+
+        if (需要导出报表?) then (是)
+          :选择导出格式(Excel/PDF);
+          |系统|
+          :生成导出文件;
+          :返回下载链接;
+          |管理员|
+          :下载统计报表文件;
+          stop
+        else (否)
+          stop
+        endif
+      endif
+    endif
+  endif
+endif
+
+@enduml

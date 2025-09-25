@@ -1,0 +1,270 @@
+{
+  "docId": "canteen-rating-thesis-chapter-4",
+  "meta": {
+    "title": "基于Spring Boot的校园食堂评价系统设计与实现",
+    "theme": "校园食堂评价系",
+    "chapter": 4,
+    "originalDocId": "canteen-rating-thesis",
+    "splitDate": "2025-09-25T01:37:02.805Z",
+    "processDate": "2025-09-25T01:55:00.000Z"
+  },
+  "defaults": {
+    "length": {
+      "unit": "char",
+      "target": 900
+    },
+    "textPromptTemplate": "撰写《{{sectionTitle}}》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+    "figurePromptTemplate": "为《{{sectionTitle}}》生成 PlantUML 代码，仅输出合法完整代码。重点：{{figureFocus}}。",
+    "tablePromptTemplate": "为《{{sectionTitle}}》生成三线表 JSON 数据。字段：{{schema}}。仅输出 JSON。",
+    "figureLabelTemplate": "图{{chapter}}-{{index}} {{figureTitle}}",
+    "tableLabelTemplate": "表{{chapter}}-{{index}} {{tableTitle}}"
+  },
+  "promptSnippets": {},
+  "autoApply": [],
+  "contents": {
+    "4": {
+      "id": "4",
+      "title": "第4章 系统详细设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 600,
+        "actual": 598
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《第4章 系统详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "系统详细设计是软件工程中将概要设计方案转化为具体实现规范的关键阶段，其核心任务是对系统各功能模块的内部结构、数据流向、控制逻辑和交互机制进行精细化设计。基于前一章确立的系统总体架构，本章将深入分析校园食堂评价系统各核心模块的详细设计方案。通过活动图和时序图相结合的建模方法，清晰描述系统的业务流程和对象间的动态交互关系。详细设计涵盖用户认证与权限管理、菜品信息管理、评价与评论系统、投诉建议系统以及数据统计分析等五大核心模块。每个模块的设计都严格遵循面向对象设计原则，确保系统的可维护性、可扩展性和高性能。通过规范化的设计文档，为后续的编码实现提供准确的技术指导。",
+      "figures": [],
+      "tables": []
+    },
+    "4.1": {
+      "id": "4.1",
+      "title": "系统功能详细设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 600,
+        "actual": 596
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《系统功能详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "系统功能详细设计采用分层递进的方式，从宏观到微观逐步细化各功能模块的内部实现机制。设计过程严格遵循UML建模标准，通过活动图描述业务流程的执行逻辑和决策路径，通过时序图展现系统对象间的消息传递和协作关系。每个功能模块都包含完整的异常处理机制和边界条件检查，确保系统的健壮性。设计充分考虑了并发访问场景下的数据一致性问题，采用乐观锁和悲观锁相结合的并发控制策略。同时，设计方案预留了性能优化空间，支持缓存机制和数据库查询优化。各模块间通过标准化的接口进行通信，降低了模块间的耦合度，提升了系统的可维护性和可测试性。",
+      "figures": [],
+      "tables": []
+    }
+    },
+    "4.1.1": {
+      "id": "4.1.1",
+      "title": "用户认证与权限管理的详细设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 896
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": true
+      },
+      "textPrompt": "撰写《用户认证与权限管理的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "用户认证与权限管理模块采用基于JWT的无状态认证机制，确保系统的安全性和可扩展性。认证流程严格遵循OAuth 2.0标准的设计思想，通过多层次的安全验证确保用户身份的可信性。系统支持学生和教职工两种用户角色，每种角色具有不同的权限级别和访问范围。在登录验证过程中，系统首先对用户输入进行格式验证和SQL注入防护，然后查询数据库验证用户存在性，最后使用BCrypt算法进行密码哈希比对。验证成功后，系统生成包含用户ID、角色信息和权限列表的JWT Token，有效期设置为7天。Token采用RS256算法签名，确保令牌的完整性和不可伪造性。权限管理采用基于角色的访问控制（RBAC）模型，通过注解方式实现方法级别的权限控制。系统还集成了登录失败锁定机制，防止暴力破解攻击。整个认证流程通过活动图清晰展现业务逻辑，通过时序图详细描述各组件间的交互时序。",
+      "figures": [
+        {
+          "id": "Fig-4-1",
+          "label": "图4-1 用户认证与权限管理活动图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-1__yong-hu-ren-zheng-yu-quan-xian-guan-li-huo-dong-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-1__yong-hu-ren-zheng-yu-quan-xian-guan-li-huo-dong-tu.png",
+          "status": "ready"
+        },
+        {
+          "id": "Fig-4-2",
+          "label": "图4-2 用户认证与权限管理时序图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-2__yong-hu-ren-zheng-yu-quan-xian-guan-li-shi-xu-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-2__yong-hu-ren-zheng-yu-quan-xian-guan-li-shi-xu-tu.png",
+          "status": "ready"
+        }
+      ],
+      "tables": []
+    },
+    "4.1.2": {
+      "id": "4.1.2",
+      "title": "菜品信息管理的详细设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 898
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": true
+      },
+      "textPrompt": "撰写《菜品信息管理的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "菜品信息管理模块是系统的核心业务模块，负责菜品的全生命周期管理，包括创建、查询、更新和删除操作。模块采用严格的数据验证策略，确保菜品信息的准确性和完整性。在菜品创建流程中，系统首先验证管理员权限，然后对菜品基本信息进行格式验证，包括名称长度限制、价格范围检查和分类合法性验证。图片上传功能支持JPEG和PNG格式，文件大小限制为5MB，系统自动生成唯一文件名防止冲突，并提供缩略图生成功能优化显示性能。档口关联验证确保菜品与有效档口的绑定关系，防止孤立数据产生。菜品名称唯一性检查在同一档口内生效，允许不同档口存在同名菜品。系统支持菜品状态管理，包括上架、下架和删除等状态转换。数据库操作采用事务机制，确保菜品信息和统计数据的一致性。模块还集成了缓存清理机制，在菜品信息变更时自动失效相关缓存，保证数据的实时性。",
+      "figures": [
+        {
+          "id": "Fig-4-3",
+          "label": "图4-3 菜品信息管理活动图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-3__cai-pin-xin-xi-guan-li-huo-dong-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-3__cai-pin-xin-xi-guan-li-huo-dong-tu.png",
+          "status": "ready"
+        },
+        {
+          "id": "Fig-4-4",
+          "label": "图4-4 菜品信息管理时序图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-4__cai-pin-xin-xi-guan-li-shi-xu-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-4__cai-pin-xin-xi-guan-li-shi-xu-tu.png",
+          "status": "ready"
+        }
+      ],
+      "tables": []
+    },
+    "4.1.3": {
+      "id": "4.1.3",
+      "title": "评价与评论系统的详细设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 894
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": true
+      },
+      "textPrompt": "撰写《评价与评论系统的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "评价与评论系统是连接用户和菜品的核心交互模块，实现用户对菜品质量的量化评估和主观描述。系统采用五分制评价体系，评分范围为1-5分，支持半分精度评价。评价提交流程包含完整的身份验证、数据验证和内容审核机制。用户身份验证确保只有登录用户才能提交评价，防止恶意刷分行为。菜品存在性验证避免对已删除菜品的评价。重复评价检查通过唯一性约束实现，确保每个用户对同一菜品只能评价一次。敏感词过滤系统采用AC自动机算法，支持高效的多模式字符串匹配，能够检测评论中的不当内容和敏感信息。系统支持繁简体字符转换和同音字替换检测，提高过滤准确性。评价提交成功后，系统自动重新计算菜品的平均评分和评价总数，更新菜品统计信息。为保证数据一致性，统计更新操作采用数据库事务机制。系统还提供评价状态管理，支持管理员对评价进行审核和处理。",
+      "figures": [
+        {
+          "id": "Fig-4-5",
+          "label": "图4-5 评价与评论系统活动图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-5__ping-jia-yu-ping-lun-xi-tong-huo-dong-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-5__ping-jia-yu-ping-lun-xi-tong-huo-dong-tu.png",
+          "status": "ready"
+        },
+        {
+          "id": "Fig-4-6",
+          "label": "图4-6 评价与评论系统时序图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-6__ping-jia-yu-ping-lun-xi-tong-shi-xu-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-6__ping-jia-yu-ping-lun-xi-tong-shi-xu-tu.png",
+          "status": "ready"
+        }
+      ],
+      "tables": []
+    },
+    "4.1.4": {
+      "id": "4.1.4",
+      "title": "投诉建议系统的详细设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 902
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": true
+      },
+      "textPrompt": "撰写《投诉建议系统的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "投诉建议系统为用户提供反馈问题和改进建议的正式渠道，建立用户与食堂管理方的有效沟通桥梁。系统支持多种投诉类型分类，包括食品质量问题、服务态度问题、环境卫生问题和价格争议等。投诉提交流程采用结构化数据收集方式，用户需填写投诉标题、详细描述和相关食堂信息。系统对投诉内容实施严格的格式验证，标题长度限制为1-100字符，描述内容限制为10-1000字符，确保信息的完整性和可读性。敏感词过滤机制防止恶意投诉和不当言论，维护平台的良性生态。投诉编号采用固定格式生成，由前缀CP、年月日和4位序号组成，便于追踪和管理。系统为每个投诉建立完整的生命周期管理，包括待处理、处理中、已处理和已关闭等状态。通知机制确保投诉能够及时传达给相关管理人员，支持邮件、短信和系统内通知等多种方式。管理员处理投诉时需填写处理意见和解决方案，系统自动记录处理时间和处理人信息，形成完整的处理轨迹。",
+      "figures": [
+        {
+          "id": "Fig-4-7",
+          "label": "图4-7 投诉建议系统活动图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-7__tou-su-jian-yi-xi-tong-huo-dong-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-7__tou-su-jian-yi-xi-tong-huo-dong-tu.png",
+          "status": "ready"
+        },
+        {
+          "id": "Fig-4-8",
+          "label": "图4-8 投诉建议系统时序图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-8__tou-su-jian-yi-xi-tong-shi-xu-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-8__tou-su-jian-yi-xi-tong-shi-xu-tu.png",
+          "status": "ready"
+        }
+      ],
+      "tables": []
+    },
+    "4.1.5": {
+      "id": "4.1.5",
+      "title": "数据统计分析的详细设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 898
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": true
+      },
+      "textPrompt": "撰写《数据统计分析的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "数据统计分析模块为管理员提供全面的业务数据洞察和决策支持，通过多维度数据分析展现系统运营状况。模块支持食堂维度、菜品维度和用户维度的统计分析，每个维度提供不同的统计指标和分析方法。食堂维度统计包括各食堂的平均评分、评价数量、菜品丰富度和用户活跃度等关键指标。菜品维度统计关注热门菜品排名、评价分布、价格分析和用户偏好趋势。用户维度统计分析不同用户群体的行为模式，包括评价活跃度、偏好分类和使用时段分布。系统采用复杂的多表关联查询生成统计数据，通过优化的SQL语句确保查询性能。缓存机制使用Redis存储频繁访问的统计结果，缓存键采用统计维度、时间范围和参数哈希的组合，有效提高响应速度。统计结果支持多种可视化展现形式，包括柱状图、饼图、折线图和热力图等。系统还提供统计报表导出功能，支持Excel和PDF格式，便于管理员进行离线分析和汇报。时间范围筛选支持灵活的日期选择，包括近7天、近30天、近3个月等预设选项。",
+      "figures": [
+        {
+          "id": "Fig-4-9",
+          "label": "图4-9 数据统计分析活动图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-9__shu-ju-tong-ji-fen-xi-huo-dong-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-9__shu-ju-tong-ji-fen-xi-huo-dong-tu.png",
+          "status": "ready"
+        },
+        {
+          "id": "Fig-4-10",
+          "label": "图4-10 数据统计分析时序图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-4-10__shu-ju-tong-ji-fen-xi-shi-xu-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-4-10__shu-ju-tong-ji-fen-xi-shi-xu-tu.png",
+          "status": "ready"
+        }
+      ],
+      "tables": []
+    },
+    "4.2": {
+      "id": "4.2",
+      "title": "数据库详细设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 896
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《数据库详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "数据库详细设计在概要设计基础上进一步细化各表的物理结构和性能优化策略。系统采用MySQL 8.0作为关系数据库管理系统，充分利用其新特性提升性能和安全性。存储引擎统一选用InnoDB，支持ACID事务特性和行级锁定，确保高并发环境下的数据一致性。索引设计遵循最佳实践原则，主键索引采用BIGINT AUTO_INCREMENT，为高频查询字段建立合适的二级索引。用户表在username和email字段上建立唯一索引，支持快速查找和防重复约束。菜品表在stall_id、category和is_active字段组合上建立复合索引，优化分页查询性能。评价表在user_id、dish_id和created_at字段上建立索引，支持用户评价历史查询和时间范围筛选。数据库连接池配置采用HikariCP，设置合理的最大连接数和连接超时时间。字符集采用utf8mb4，支持完整的Unicode字符集包括emoji表情。分区策略对大数据量表采用按时间分区，评价表按月分区存储，提高查询效率和维护便利性。",
+      "figures": [],
+      "tables": []
+    },
+    "4.3": {
+      "id": "4.3",
+      "title": "本章小结",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 892
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《本章小结》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "本章从系统详细设计的角度，深入分析了校园食堂评价系统各核心模块的内部实现机制和交互流程。通过UML活动图和时序图的结合使用，全面展现了系统的动态行为和静态结构。用户认证与权限管理模块采用JWT无状态认证机制，确保了系统的安全性和可扩展性。菜品信息管理模块通过严格的数据验证和文件上传控制，保证了菜品信息的准确性和完整性。评价与评论系统通过敏感词过滤和统计更新机制，实现了用户反馈的有效管理和数据一致性维护。投诉建议系统建立了完整的问题反馈和处理流程，为用户和管理方提供了良好的沟通渠道。数据统计分析模块通过多维度统计和缓存优化，为管理决策提供了强有力的数据支撑。数据库详细设计通过索引优化和分区策略，确保了系统在高并发场景下的性能表现。整个详细设计既保证了各模块功能的完整性，又充分考虑了系统的性能、安全性和可维护性要求，为后续的系统实现提供了详细的技术规范和实现指导。",
+      "figures": [],
+      "tables": []
+    }
+  }
+}

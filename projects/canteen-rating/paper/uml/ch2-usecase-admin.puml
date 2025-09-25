@@ -1,0 +1,59 @@
+@startuml
+!define ADMIN_COLOR #FF5722
+!define USECASE_COLOR #FFEBEE
+!define SYSTEM_COLOR #E8F5E9
+
+skinparam usecase {
+  BackgroundColor USECASE_COLOR
+  BorderColor #333333
+  ArrowColor #333333
+}
+
+skinparam actor {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+}
+
+title 校园食堂评价系统 - 管理员角色用例图
+
+left to right direction
+
+actor "系统管理员" as Admin ADMIN_COLOR
+
+rectangle "校园食堂评价系统管理模块" as AdminSystem {
+  usecase "用户管理" as AU1
+  usecase "菜品信息管理" as AU2
+  usecase "评价审核管理" as AU3
+  usecase "数据统计分析" as AU4
+  usecase "系统配置管理" as AU5
+  usecase "权限管理" as AU6
+  usecase "数据备份恢复" as AU7
+}
+
+Admin --> AU1
+Admin --> AU2
+Admin --> AU3
+Admin --> AU4
+Admin --> AU5
+Admin --> AU6
+Admin --> AU7
+
+AU1 .> AU6 : <<include>>
+AU4 .> AU3 : <<extend>>
+
+note right of AU3
+  评价审核包含内容
+  过滤和质量控制
+end note
+
+note right of AU6
+  权限管理是用户管理
+  的核心组成部分
+end note
+
+note bottom of AdminSystem
+  管理员功能具有更高权限级别
+  确保系统安全和数据完整性
+end note
+
+@enduml

@@ -1,0 +1,159 @@
+@startuml
+!define ADMIN_COLOR #FFE0B2
+!define CONTROLLER_COLOR #F1F8E9
+!define SERVICE_COLOR #E8F5E9
+!define CACHE_COLOR #E8EAF6
+!define EXPORT_COLOR #FFF3E0
+!define DB_COLOR #FFEBEE
+
+skinparam participant {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  FontColor #333333
+}
+
+title 数据统计分析时序图
+
+participant "管理员" as Admin ADMIN_COLOR
+participant "StatisticsController" as Controller CONTROLLER_COLOR
+participant "StatisticsService" as Service SERVICE_COLOR
+participant "RedisCache" as Cache CACHE_COLOR
+participant "ExportService" as ExportService EXPORT_COLOR
+participant "StatisticsMapper" as Mapper SERVICE_COLOR
+participant "MySQL数据库" as DB DB_COLOR
+
+Admin -> Controller: GET /api/admin/statistics?dimension=canteen&timeRange=30d&metrics=rating,count
+activate Controller
+
+Controller -> Controller: 验证管理员权限
+alt 权限验证失败
+  Controller --> Admin: 403 Forbidden
+  deactivate Controller
+else 权限验证成功
+  Controller -> Controller: 验证统计参数
+
+  alt 参数验证失败
+    Controller --> Admin: 400 Bad Request
+    deactivate Controller
+  else 参数验证成功
+    Controller -> Service: generateStatistics(dimension, timeRange, metrics)
+    activate Service
+
+    Service -> Service: 生成缓存键
+    Service -> Cache: get(cacheKey)
+    activate Cache
+    alt 缓存命中
+      Cache --> Service: 缓存的统计数据
+      deactivate Cache
+      Service -> Service: 格式化缓存数据
+      Service --> Controller: 统计结果
+      Controller --> Admin: 200 OK + 统计数据
+      deactivate Service
+      deactivate Controller
+    else 缓存未命中
+      Cache --> Service: null
+      deactivate Cache
+
+      Service -> Service: 构建统计查询SQL
+      alt 食堂维度统计
+        Service -> Mapper: getCanteenStatistics(timeRange, metrics)
+        activate Mapper
+        Mapper -> DB: 复杂统计查询 - 食堂维度
+        note right of DB
+          SELECT c.id, c.name,
+                 AVG(r.score) as avg_rating,
+                 COUNT(r.id) as total_ratings,
+                 COUNT(DISTINCT d.id) as dish_count
+          FROM canteens c
+          LEFT JOIN stalls s ON c.id = s.canteen_id
+          LEFT JOIN dishes d ON s.id = d.stall_id
+          LEFT JOIN ratings r ON d.id = r.dish_id
+          WHERE r.created_at >= ?
+          GROUP BY c.id, c.name
+          ORDER BY avg_rating DESC
+        end note
+        activate DB
+        DB --> Mapper: 食堂统计原始数据
+        deactivate DB
+        Mapper --> Service: 食堂统计结果
+        deactivate Mapper
+      else alt 菜品维度统计
+        Service -> Mapper: getDishStatistics(timeRange, metrics)
+        activate Mapper
+        Mapper -> DB: 复杂统计查询 - 菜品维度
+        note right of DB
+          SELECT d.id, d.name, c.name as canteen_name,
+                 AVG(r.score) as avg_rating,
+                 COUNT(r.id) as rating_count
+          FROM dishes d
+          JOIN stalls s ON d.stall_id = s.id
+          JOIN canteens c ON s.canteen_id = c.id
+          LEFT JOIN ratings r ON d.id = r.dish_id
+          WHERE r.created_at >= ?
+          GROUP BY d.id
+          ORDER BY rating_count DESC, avg_rating DESC
+        end note
+        activate DB
+        DB --> Mapper: 菜品统计原始数据
+        deactivate DB
+        Mapper --> Service: 菜品统计结果
+        deactivate Mapper
+      else 用户维度统计
+        Service -> Mapper: getUserStatistics(timeRange, metrics)
+        activate Mapper
+        Mapper -> DB: 复杂统计查询 - 用户维度
+        activate DB
+        DB --> Mapper: 用户统计原始数据
+        deactivate DB
+        Mapper --> Service: 用户统计结果
+        deactivate Mapper
+      end
+
+      Service -> Service: 数据处理和计算
+      Service -> Service: 生成图表配置数据
+      Service -> Service: 格式化统计结果
+
+      Service -> Cache: set(cacheKey, result, 3600)
+      activate Cache
+      Cache --> Service: 缓存保存成功
+      deactivate Cache
+
+      Service --> Controller: 完整统计结果
+      deactivate Service
+
+      Controller --> Admin: 200 OK + 统计数据和图表配置
+      deactivate Controller
+    end
+  end
+end
+
+Admin -> Admin: 查看统计图表和数据表格
+
+opt 导出报表
+  Admin -> Controller: GET /api/admin/statistics/export?format=excel&dimension=canteen
+  activate Controller
+  Controller -> ExportService: exportStatistics(statisticsData, format)
+  activate ExportService
+  ExportService -> ExportService: 生成Excel文件
+  ExportService --> Controller: 文件下载链接
+  deactivate ExportService
+  Controller --> Admin: 200 OK + 下载链接
+  deactivate Controller
+  Admin -> Admin: 下载统计报表文件
+end
+
+note over Service
+  支持的统计维度：
+  - canteen: 食堂维度
+  - dish: 菜品维度
+  - user: 用户维度
+end note
+
+note over Cache
+  缓存策略：
+  - Key格式: stats:dimension:timeRange:metrics
+  - TTL: 3600秒(1小时)
+  - 命中率监控
+end note
+
+@enduml

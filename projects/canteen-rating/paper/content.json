@@ -2,12 +2,12 @@
   "docId": "canteen-rating-thesis",
   "meta": {
     "title": "基于Spring Boot的校园食堂评价系统设计与实现",
-    "theme": "校园食堂评价系统"
+    "theme": "校园食堂评价系"
   },
 
   "defaults": {
     "length": { "unit": "char", "target": 900 },
-    "textPromptTemplate": "撰写《{{sectionTitle}}》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+    "textPromptTemplate": "撰写《{{sectionTitle}}》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
     "figurePromptTemplate": "为《{{sectionTitle}}》生成 PlantUML 代码，仅输出合法完整代码。重点：{{figureFocus}}。",
     "tablePromptTemplate": "为《{{sectionTitle}}》生成三线表 JSON 数据。字段：{{schema}}。仅输出 JSON。",
     "figureLabelTemplate": "图{{chapter}}-{{index}} {{figureTitle}}",
@@ -21,7 +21,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《第1章 绪论》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《第1章 绪论》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -33,7 +33,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《研究背景与意义》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《研究背景与意义》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -45,7 +45,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《研究背景》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《研究背景》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -57,7 +57,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《研究意义》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《研究意义》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -69,7 +69,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《国内外研究现状》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《国内外研究现状》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -81,7 +81,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《国内研究现状》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《国内研究现状》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -93,7 +93,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《国外研究现状》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《国外研究现状》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -105,7 +105,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《研究内容和方法》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《研究内容和方法》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -117,7 +117,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《相关技术介绍》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《相关技术介绍》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -129,7 +129,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《Spring Boot框架》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《Spring Boot框架》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -141,7 +141,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《Vue.js框架》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《Vue.js框架》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -153,7 +153,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《MySQL数据库》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《MySQL数据库》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -165,7 +165,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《第2章 系统分析》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《第2章 系统分析》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -177,7 +177,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统的目标》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统的目标》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -189,7 +189,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《功能需求分析》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《功能需求分析》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -201,7 +201,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统需求概述》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统需求概述》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -213,7 +213,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《用户角色和权限》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《用户角色和权限》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -227,7 +227,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统用例图》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统用例图》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "items": [
         {
@@ -289,7 +289,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统的非功能性需求分析》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统的非功能性需求分析》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -301,7 +301,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统可行性分析》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统可行性分析》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -313,7 +313,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《技术可行性分析》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《技术可行性分析》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -325,7 +325,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《经济可行性分析》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《经济可行性分析》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -337,7 +337,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《操作可行性分析》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《操作可行性分析》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -349,7 +349,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《本章小结》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《本章小结》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -361,7 +361,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《第3章 系统概要设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《第3章 系统概要设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -373,7 +373,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统设计原则》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统设计原则》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -396,7 +396,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《系统软件逻辑架构》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统软件逻辑架构》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -419,7 +419,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《系统功能框图》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统功能框图》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -431,7 +431,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统数据库设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统数据库设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -445,7 +445,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《数据库概念设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《数据库概念设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "items": [
         {
@@ -826,7 +826,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《数据库逻辑设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《数据库逻辑设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -838,7 +838,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《本章小结》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《本章小结》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -850,7 +850,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《第4章 系统详细设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《第4章 系统详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -862,7 +862,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统功能详细设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统功能详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -891,7 +891,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《用户认证与权限管理的详细设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《用户认证与权限管理的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -920,7 +920,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《菜品信息管理的详细设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《菜品信息管理的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -949,7 +949,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《评价与评论系统的详细设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《评价与评论系统的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -978,7 +978,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《投诉建议系统的详细设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《投诉建议系统的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1007,7 +1007,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《数据统计分析的详细设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《数据统计分析的详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1019,7 +1019,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《数据库详细设计》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《数据库详细设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1031,7 +1031,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《本章小结》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《本章小结》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1043,7 +1043,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《第5章 系统实现》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《第5章 系统实现》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1055,7 +1055,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统开发环境和工具》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统开发环境和工具》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1067,7 +1067,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统功能实现》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统功能实现》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1079,7 +1079,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《用户认证与权限管理的实现》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《用户认证与权限管理的实现》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1091,7 +1091,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《菜品信息管理的实现》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《菜品信息管理的实现》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1103,7 +1103,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《评价与评论系统的实现》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《评价与评论系统的实现》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1115,7 +1115,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《投诉建议系统的实现》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《投诉建议系统的实现》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1127,7 +1127,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《数据统计分析的实现》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《数据统计分析的实现》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1139,7 +1139,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《本章小结》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《本章小结》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1151,7 +1151,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《第6章 系统测试》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《第6章 系统测试》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1163,7 +1163,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统测试环境》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统测试环境》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1175,7 +1175,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统测试方法》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统测试方法》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1198,7 +1198,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《系统功能测试》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统功能测试》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1221,7 +1221,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《用户认证与权限管理功能测试》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《用户认证与权限管理功能测试》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1244,7 +1244,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《菜品信息管理功能测试》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《菜品信息管理功能测试》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1267,7 +1267,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《评价与评论系统功能测试》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《评价与评论系统功能测试》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1290,7 +1290,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《投诉建议系统功能测试》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《投诉建议系统功能测试》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1313,7 +1313,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《数据统计分析功能测试》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《数据统计分析功能测试》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1336,7 +1336,7 @@
           }
         ]
       },
-      "textPrompt": "撰写《系统性能测试》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统性能测试》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1348,7 +1348,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《系统兼容性测试》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《系统兼容性测试》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1360,7 +1360,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《本章小结》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《本章小结》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1372,7 +1372,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 900 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《结论》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《结论》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1384,7 +1384,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《参考文献》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《参考文献》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []
@@ -1396,7 +1396,7 @@
       "status": "planning",
       "length": { "unit": "char", "target": 600 },
       "plan": { "wantText": true },
-      "textPrompt": "撰写《致谢》，围绕"校园食堂评价系统"，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "textPrompt": "撰写《致谢》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
       "text": "",
       "figures": [],
       "tables": []

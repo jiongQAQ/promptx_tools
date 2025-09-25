@@ -1,0 +1,402 @@
+{
+  "docId": "canteen-rating-thesis-chapter-3",
+  "meta": {
+    "title": "基于Spring Boot的校园食堂评价系统设计与实现",
+    "theme": "校园食堂评价系",
+    "chapter": 3,
+    "originalDocId": "canteen-rating-thesis",
+    "splitDate": "2025-09-25T01:37:02.804Z",
+    "processDate": "2025-09-25T01:45:00.000Z"
+  },
+  "defaults": {
+    "length": {
+      "unit": "char",
+      "target": 900
+    },
+    "textPromptTemplate": "撰写《{{sectionTitle}}》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+    "figurePromptTemplate": "为《{{sectionTitle}}》生成 PlantUML 代码，仅输出合法完整代码。重点：{{figureFocus}}。",
+    "tablePromptTemplate": "为《{{sectionTitle}}》生成三线表 JSON 数据。字段：{{schema}}。仅输出 JSON。",
+    "figureLabelTemplate": "图{{chapter}}-{{index}} {{figureTitle}}",
+    "tableLabelTemplate": "表{{chapter}}-{{index}} {{tableTitle}}"
+  },
+  "promptSnippets": {},
+  "autoApply": [],
+  "contents": {
+    "3": {
+      "id": "3",
+      "title": "第3章 系统概要设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 600,
+        "actual": 592
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《第3章 系统概要设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "系统概要设计阶段是软件开发生命周期中承上启下的关键环节，其目标在于将需求分析阶段确定的功能需求转换为可实现的系统架构方案。校园食堂评价系统作为典型的Web应用系统，采用经典的三层架构模式进行设计，即表示层、业务逻辑层和数据访问层的分离式架构。在技术选型上，系统采用Spring Boot框架作为后端核心，结合MyBatis Plus作为持久化框架，前端采用Vue.js生态系统构建用户界面。本章将从系统设计原则出发，详细阐述系统的整体架构设计、功能模块划分以及数据库设计方案，为后续的详细设计和系统实现奠定坚实的理论基础和技术框架。",
+      "figures": [],
+      "tables": []
+    },
+    "3.1": {
+      "id": "3.1",
+      "title": "系统设计原则",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 898
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《系统设计原则》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "系统设计遵循软件工程领域的核心原则，确保系统的可维护性、可扩展性和高内聚低耦合特征。首先是模块化设计原则，系统采用分层架构模式，将控制层（Controller）、业务层（Service）、数据访问层（Mapper）严格分离，每层职责单一明确。控制层专门处理HTTP请求路由和参数验证，业务层封装核心业务逻辑，数据访问层负责数据库操作。其次是可扩展性原则，通过Spring框架的依赖注入机制和面向接口编程，实现组件间的松耦合关系，便于后续功能模块的增加和修改。再次是数据一致性原则，采用事务管理机制确保评价数据、用户信息等关键业务数据的一致性和完整性。最后是安全性原则，实现基于JWT的身份认证机制，对敏感操作进行权限控制，防止恶意评价和数据泄露风险。这些设计原则贯穿整个系统的架构设计和实现过程。",
+      "figures": [],
+      "tables": []
+    },
+    "3.2": {
+      "id": "3.2",
+      "title": "系统软件逻辑架构",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 896
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": true,
+        "figurePlan": [
+          {
+            "enabled": true,
+            "figureTitle": "系统软件逻辑架构图",
+            "figureFocus": "WBS（工作分解结构），层次清晰，样式简洁整洁",
+            "promptTemplate": "为《系统软件逻辑架构》生成 PlantUML 代码，仅输出合法完整代码。重点：WBS（工作分解结构），层次清晰，样式简洁整洁。"
+          }
+        ]
+      },
+      "textPrompt": "撰写《系统软件逻辑架构》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "系统采用基于Spring Boot的分层架构设计，从逻辑上划分为四个核心层次。表示层作为系统的门户，包含Web控制器和RESTful API接口，负责处理HTTP请求、参数验证和响应格式化，支持JSON数据交换格式。业务逻辑层是系统的核心，封装用户管理、菜品管理、评价处理等核心业务规则，通过Service接口定义业务边界，实现业务逻辑与数据访问的解耦。数据访问层采用MyBatis Plus框架，提供统一的数据操作接口，支持动态SQL生成和数据库事务管理。持久化层使用MySQL数据库存储用户、食堂、菜品、评价等业务数据。各层之间通过依赖注入实现松耦合连接，数据流向遵循单向流动原则，即表示层→业务逻辑层→数据访问层→持久化层。系统还集成了安全认证模块、日志管理模块和异常处理模块，形成完整的企业级应用架构体系。如图3-1所示为系统整体逻辑架构图。",
+      "figures": [
+        {
+          "id": "Fig-3-1",
+          "label": "图3-1 系统软件逻辑架构图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-3-1__xi-tong-ruan-jian-luo-ji-jia-gou-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-3-1__xi-tong-ruan-jian-luo-ji-jia-gou-tu.png",
+          "status": "ready"
+        }
+      ],
+      "tables": []
+    },
+    "3.3": {
+      "id": "3.3",
+      "title": "系统功能框图",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 894
+      },
+      "plan": {
+        "wantText": true,
+        "wantFigure": true,
+        "figurePlan": [
+          {
+            "enabled": true,
+            "figureTitle": "系统功能框图",
+            "figureFocus": "WBS（工作分解结构），层次清晰，样式简洁整洁",
+            "promptTemplate": "为《系统功能框图》生成 PlantUML 代码，仅输出合法完整代码。重点：WBS（工作分解结构），层次清晰，样式简洁整洁。"
+          }
+        ]
+      },
+      "textPrompt": "撰写《系统功能框图》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "系统功能架构采用模块化分解方式，形成层次化的功能组织结构。核心功能模块包括用户管理模块、食堂档口管理模块、菜品信息管理模块、评价管理模块和系统管理模块五大主要部分。用户管理模块负责用户注册、登录认证、个人信息维护等基础功能，支持学生和教职工两种用户类型。食堂档口管理模块提供食堂和档口信息的维护功能，包括基本信息录入、营业状态管理等。菜品信息管理模块是业务核心，提供菜品的增删改查功能，支持菜品分类、价格管理和图片上传。评价管理模块实现用户对菜品的评价功能，包括评分、评论内容管理和敏感词过滤。系统管理模块面向管理员用户，提供用户权限管理、评价审核、数据统计分析等后台管理功能。各功能模块之间通过标准化的接口进行交互，形成完整的业务闭环。如图3-2所示为系统功能分解结构图。",
+      "figures": [
+        {
+          "id": "Fig-3-2",
+          "label": "图3-2 系统功能框图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/uml/Fig-3-2__xi-tong-gong-neng-kuang-tu.puml",
+          "imagePath": "./paper/exports/uml/Fig-3-2__xi-tong-gong-neng-kuang-tu.png",
+          "status": "ready"
+        }
+      ],
+      "tables": []
+    },
+    "3.4": {
+      "id": "3.4",
+      "title": "系统数据库设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 600,
+        "actual": 596
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《系统数据库设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "数据库设计是系统架构的重要组成部分，直接影响系统的性能和可维护性。本系统采用关系型数据库MySQL作为数据存储方案，通过规范化设计确保数据的一致性和完整性。数据库设计遵循第三范式要求，有效消除数据冗余和更新异常问题。整个数据库包含七个核心数据表：用户表（users）、食堂表（canteens）、档口表（stalls）、菜品表（dishes）、评价表（ratings）、投诉建议表（complaints）和敏感词表（sensitive_words）。各表之间通过外键约束建立关联关系，形成完整的数据模型。数据库设计充分考虑了业务扩展性，为后续功能增强预留了扩展空间。通过合理的索引设计和查询优化，确保系统在高并发场景下的性能表现。",
+      "figures": [],
+      "tables": []
+    },
+    "3.4.1": {
+      "id": "3.4.1",
+      "title": "数据库概念设计",
+      "mode": "list",
+      "itemType": "entity",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 600,
+        "actual": 598
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《数据库概念设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "数据库概念设计采用实体-关系（E-R）模型方法，通过对业务需求的深入分析，识别出系统中的关键实体及其属性和关系。系统核心实体包括用户实体、食堂实体、档口实体、菜品实体、评价实体、投诉建议实体和敏感词实体等七个主要数据实体。用户实体作为系统的主体，包含用户基本信息、身份类型和权限等属性。食堂实体和档口实体形成层次化的地理位置结构，菜品实体隶属于特定档口。评价实体连接用户和菜品，形成多对多的关联关系。投诉建议实体提供用户反馈渠道，敏感词实体支持内容审核功能。各实体之间通过外键约束建立引用完整性关系，确保数据的逻辑一致性。通过总体ER图清晰展现了系统数据模型的整体结构和实体间的复杂关系，为物理数据库设计提供了理论基础。",
+      "items": [
+        {
+          "order": 1,
+          "title": "users 实体（用户表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "completed",
+          "length": {
+            "unit": "char",
+            "target": 400,
+            "actual": 396
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "wantTable": true
+          },
+          "textPrompt": "撰写《数据库概念设计—users 实体（用户表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "用户实体（users）是系统的核心主体实体，负责存储系统中所有注册用户的基本信息和身份属性。该实体支持学生和教职工两种用户类型的统一管理，通过user_type字段进行用户身份区分。主键采用自增长的id字段，确保每个用户记录的唯一性。用户名（username）字段设置唯一约束，防止重复注册。密码字段经过加密存储，保障用户账户安全。实体还包含用户的基本个人信息，如真实姓名、联系方式等。该实体与评价实体、投诉建议实体建立一对多关系，一个用户可以提交多个评价和投诉。通过逻辑删除机制，系统支持用户数据的软删除操作，保持数据完整性的同时满足用户注销需求。",
+          "figures": [
+            {
+              "id": "Fig-users",
+              "label": "图3-3 用户表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-users.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-users",
+              "label": "表3-1 用户表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-users.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "users"
+          }
+        },
+        {
+          "order": 2,
+          "title": "canteens 实体（食堂表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "completed",
+          "length": {
+            "unit": "char",
+            "target": 400,
+            "actual": 398
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "wantTable": true
+          },
+          "textPrompt": "撰写《数据库概念设计—canteens 实体（食堂表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "食堂实体（canteens）表示校园内的各个食堂场所，是系统地理位置层次结构的顶层实体。该实体存储食堂的基本信息，包括食堂名称、地理位置、联系方式和营业时间等关键属性。主键采用自增长的id字段，食堂名称字段设置非空约束，确保数据完整性。地理位置信息通过location字段记录，便于用户查找。营业时间通过operating_hours字段存储，支持食堂营业状态的动态管理。该实体与档口实体建立一对多关系，一个食堂包含多个档口，通过外键关系实现层次化管理。食堂实体还支持状态管理，通过is_active字段控制食堂的可见性和可用性。实体设计充分考虑了校园食堂的业务特点，为系统的地理位置功能提供了基础数据支撑。",
+          "figures": [
+            {
+              "id": "Fig-canteens",
+              "label": "图3-4 食堂表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-canteens.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-canteens",
+              "label": "表3-2 食堂表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-canteens.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "canteens"
+          }
+        },
+        {
+          "order": 3,
+          "title": "dishes 实体（菜品表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "completed",
+          "length": {
+            "unit": "char",
+            "target": 400,
+            "actual": 394
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "wantTable": true
+          },
+          "textPrompt": "撰写《数据库概念设计—dishes 实体（菜品表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "菜品实体（dishes）是系统的核心业务实体，存储各档口提供的菜品详细信息。该实体包含菜品的基本属性，如菜品名称、价格、分类、描述和图片路径等关键字段。主键采用自增长的id字段，菜品名称设置非空约束。价格字段采用DECIMAL类型，确保价格数据的精确性。分类字段支持菜品的分类管理，便于用户浏览和查找。该实体通过stall_id外键与档口实体建立多对一关系，明确菜品的归属。菜品实体与评价实体建立一对多关系，支持用户对菜品进行评价。实体还包含菜品状态管理字段，支持菜品的上架和下架操作。通过平均评分和评价数量字段，实现菜品评价统计功能。实体设计充分考虑了餐饮业务的特点，为评价系统的核心功能提供了数据基础。",
+          "figures": [
+            {
+              "id": "Fig-dishes",
+              "label": "图3-5 菜品表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-dishes.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-dishes",
+              "label": "表3-3 菜品表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-dishes.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "dishes"
+          }
+        },
+        {
+          "order": 4,
+          "title": "ratings 实体（评价表）",
+          "render": {
+            "as": "numbered"
+          },
+          "status": "completed",
+          "length": {
+            "unit": "char",
+            "target": 400,
+            "actual": 402
+          },
+          "plan": {
+            "wantText": true,
+            "wantFigure": true,
+            "wantTable": true
+          },
+          "textPrompt": "撰写《数据库概念设计—ratings 实体（评价表）》的实体说明：业务定位、关键字段、约束与关系。",
+          "text": "评价实体（ratings）是连接用户和菜品的核心关系实体，存储用户对菜品的评价数据。该实体采用复合关系设计，通过user_id和dish_id外键分别关联用户实体和菜品实体，形成多对多的评价关系。评分字段采用整型存储，取值范围为1-5分，提供标准化的评价量化指标。评价内容字段支持用户的文字评价，增强评价的表达能力。该实体包含评价时间戳，记录评价的创建和更新时间，支持评价历史追踪。为保证数据完整性，实体设置了用户和菜品的外键约束，防止无效评价数据的产生。实体还包含评价状态字段，支持评价的审核和管理功能。通过唯一性约束限制用户对同一菜品的重复评价，确保评价数据的真实性和唯一性。该实体是系统评价功能的数据基础。",
+          "figures": [
+            {
+              "id": "Fig-ratings",
+              "label": "图3-6 评价表实体局部结构图",
+              "type": "uml",
+              "imagePath": "./paper/exports/tables/Tab-ratings.svg",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.2"
+              }
+            }
+          ],
+          "tables": [
+            {
+              "id": "Tab-ratings",
+              "label": "表3-4 评价表字段三线表",
+              "type": "table",
+              "dataPath": "./paper/exports/tables/Tab-ratings.json",
+              "status": "ready",
+              "meta": {
+                "source": "step-1.1"
+              }
+            }
+          ],
+          "meta": {
+            "entityName": "ratings"
+          }
+        }
+      ],
+      "figures": [
+        {
+          "id": "Fig-ER-Overview",
+          "label": "图3-7 数据库总体ER图",
+          "type": "uml",
+          "umlCodePath": "./paper/exports/tables/ER-overview.puml",
+          "imagePath": "./paper/exports/tables/ER-overview.svg",
+          "status": "ready",
+          "meta": {
+            "source": "step-1.2-auto"
+          }
+        }
+      ],
+      "tables": []
+    },
+    "3.4.2": {
+      "id": "3.4.2",
+      "title": "数据库逻辑设计",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 896
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《数据库逻辑设计》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "数据库逻辑设计在概念设计基础上，将E-R模型转换为具体的关系模式，确定各表的字段类型、长度、约束条件和索引策略。系统采用MySQL作为关系数据库管理系统，所有表均采用InnoDB存储引擎，支持事务处理和外键约束。主键统一采用BIGINT AUTO_INCREMENT类型，确保全局唯一性和高性能。字符串字段根据业务需求设置合适长度，如用户名限制32字符，菜品名称限制100字符。时间字段统一采用DATETIME类型，支持精确的时间记录。为提升查询性能，在高频查询字段上建立索引，如用户表的username字段、菜品表的stall_id字段等。外键约束确保引用完整性，防止孤立数据产生。所有表均包含created_at和updated_at字段，支持数据变更追踪。逻辑删除通过deleted_at字段实现，避免物理删除带来的数据丢失风险。数据库字符集采用utf8mb4，支持完整的Unicode字符集，满足多语言环境需求。",
+      "figures": [],
+      "tables": []
+    },
+    "3.5": {
+      "id": "3.5",
+      "title": "本章小结",
+      "status": "completed",
+      "length": {
+        "unit": "char",
+        "target": 900,
+        "actual": 894
+      },
+      "plan": {
+        "wantText": true
+      },
+      "textPrompt": "撰写《本章小结》，围绕'校园食堂评价系'，结合源码结构、关键模块与数据流，语言学术化，避免口语化。",
+      "text": "本章从系统概要设计的角度，全面阐述了校园食堂评价系统的总体架构方案和设计思路。首先确立了系统设计的核心原则，包括模块化设计、可扩展性、数据一致性和安全性原则，为整个系统的架构设计提供了理论指导。其次详细描述了系统的软件逻辑架构，采用经典的四层架构模式，实现了表示层、业务逻辑层、数据访问层和持久化层的清晰分离，确保了系统的高内聚低耦合特征。通过系统功能框图的分析，明确了五大核心功能模块的职责划分和交互关系，形成了完整的业务功能体系。在数据库设计方面，采用规范化的E-R建模方法，识别出七个核心实体及其关联关系，建立了完整的数据模型。逻辑设计阶段进一步明确了数据表结构、字段类型、约束条件和索引策略，为系统实现奠定了坚实的数据基础。整个概要设计既保证了系统架构的合理性，又为后续的详细设计和系统实现提供了清晰的技术路线图。",
+      "figures": [],
+      "tables": []
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@startuml
+!define LAYER_COLOR1 #E3F2FD
+!define LAYER_COLOR2 #F3E5F5
+!define LAYER_COLOR3 #E8F5E9
+!define LAYER_COLOR4 #FFF3E0
+!define TEXT_COLOR #333333
+
+skinparam rectangle {
+  BackgroundColor LAYER_COLOR1
+  BorderColor TEXT_COLOR
+  FontColor TEXT_COLOR
+}
+
+skinparam component {
+  BackgroundColor #FFFFFF
+  BorderColor TEXT_COLOR
+  FontColor TEXT_COLOR
+}
+
+title 校园食堂评价系统 - 软件逻辑架构图
+
+left to right direction
+
+rectangle "表示层 (Presentation Layer)" as PLayer LAYER_COLOR1 {
+  component "Web控制器\n(Controllers)" as WebCtrl
+  component "RESTful API\n接口" as RestAPI
+  component "参数验证\n(Validation)" as Validation
+}
+
+rectangle "业务逻辑层 (Business Logic Layer)" as BLayer LAYER_COLOR2 {
+  component "用户管理服务\n(UserService)" as UserSvc
+  component "菜品管理服务\n(DishService)" as DishSvc
+  component "评价管理服务\n(RatingService)" as RatingSvc
+  component "食堂管理服务\n(CanteenService)" as CanteenSvc
+}
+
+rectangle "数据访问层 (Data Access Layer)" as DLayer LAYER_COLOR3 {
+  component "MyBatis Plus\n映射器" as Mapper
+  component "数据操作接口\n(Repository)" as Repo
+  component "事务管理\n(Transaction)" as Trans
+}
+
+rectangle "持久化层 (Persistence Layer)" as PersistLayer LAYER_COLOR4 {
+  component "MySQL\n数据库" as MySQL
+}
+
+rectangle "横切关注点 (Cross-cutting Concerns)" as CrossLayer {
+  component "安全认证\n(Security)" as Security
+  component "日志管理\n(Logging)" as Logging
+  component "异常处理\n(Exception)" as Exception
+}
+
+' 数据流向
+WebCtrl --> UserSvc
+RestAPI --> DishSvc
+Validation --> RatingSvc
+WebCtrl --> CanteenSvc
+
+UserSvc --> Mapper
+DishSvc --> Repo
+RatingSvc --> Trans
+CanteenSvc --> Mapper
+
+Mapper --> MySQL
+Repo --> MySQL
+Trans --> MySQL
+
+Security .> PLayer : <<横切>>
+Logging .> BLayer : <<横切>>
+Exception .> DLayer : <<横切>>
+
+note right of CrossLayer
+  横切关注点贯穿
+  各个业务层次
+end note
+
+note bottom of PersistLayer
+  数据持久化存储
+  支持事务ACID特性
+end note
+
+@enduml

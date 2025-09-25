@@ -1,0 +1,137 @@
+@startuml
+!define ADMIN_COLOR #FFE0B2
+!define CONTROLLER_COLOR #F1F8E9
+!define SERVICE_COLOR #E8F5E9
+!define FILE_COLOR #FFF3E0
+!define DB_COLOR #FFEBEE
+
+skinparam participant {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  FontColor #333333
+}
+
+title 菜品信息管理时序图
+
+participant "管理员" as Admin ADMIN_COLOR
+participant "DishController" as Controller CONTROLLER_COLOR
+participant "DishService" as Service SERVICE_COLOR
+participant "FileService" as FileService FILE_COLOR
+participant "StallService" as StallService SERVICE_COLOR
+participant "DishMapper" as Mapper SERVICE_COLOR
+participant "MySQL数据库" as DB DB_COLOR
+
+Admin -> Controller: POST /api/admin/dishes(dishData, imageFile)
+activate Controller
+
+Controller -> Controller: 验证管理员权限
+alt 权限验证失败
+  Controller --> Admin: 403 Forbidden
+  deactivate Controller
+else 权限验证成功
+  Controller -> Controller: 验证请求参数
+
+  alt 参数验证失败
+    Controller --> Admin: 400 Bad Request
+    deactivate Controller
+  else 参数验证成功
+    alt 包含图片文件
+      Controller -> FileService: uploadImage(imageFile)
+      activate FileService
+
+      FileService -> FileService: 验证图片格式和大小
+      alt 图片验证失败
+        FileService --> Controller: InvalidFileException
+        Controller --> Admin: 400 Invalid File Format
+        deactivate FileService
+        deactivate Controller
+      else 图片验证成功
+        FileService -> FileService: 生成唯一文件名
+        FileService -> FileService: 保存到文件系统
+        FileService --> Controller: imageUrl
+        deactivate FileService
+      end
+    else 无图片文件
+      Controller -> Controller: imageUrl = defaultImageUrl
+    end
+
+    Controller -> Service: createDish(dishData, imageUrl)
+    activate Service
+
+    Service -> StallService: validateStallExists(stallId)
+    activate StallService
+    StallService -> DB: SELECT * FROM stalls WHERE id = ?
+    activate DB
+    alt 档口不存在
+      DB --> StallService: 空结果集
+      deactivate DB
+      StallService --> Service: StallNotFoundException
+      Service --> Controller: StallNotFoundException
+      Controller --> Admin: 404 Stall Not Found
+      deactivate StallService
+      deactivate Service
+      deactivate Controller
+    else 档口存在
+      DB --> StallService: 档口数据
+      deactivate DB
+      StallService --> Service: 验证成功
+      deactivate StallService
+
+      Service -> Mapper: selectByNameAndStall(dishName, stallId)
+      activate Mapper
+      Mapper -> DB: SELECT * FROM dishes WHERE name = ? AND stall_id = ?
+      activate DB
+      alt 菜品名称重复
+        DB --> Mapper: 重复记录
+        deactivate DB
+        Mapper --> Service: 重复的菜品对象
+        deactivate Mapper
+        Service --> Controller: DishNameExistsException
+        Controller --> Admin: 409 Dish Name Exists
+        deactivate Service
+        deactivate Controller
+      else 菜品名称不重复
+        DB --> Mapper: 空结果集
+        deactivate DB
+        Mapper --> Service: null
+        deactivate Mapper
+
+        Service -> Service: 构建Dish实体对象
+        Service -> Mapper: insert(dish)
+        activate Mapper
+        Mapper -> DB: INSERT INTO dishes (name, price, category, ...)
+        activate DB
+        DB --> Mapper: 插入成功，返回生成的ID
+        deactivate DB
+        Mapper --> Service: 菜品ID
+        deactivate Mapper
+
+        Service -> Service: 清除相关缓存
+        Service --> Controller: 创建成功的菜品对象
+        deactivate Service
+
+        Controller --> Admin: 201 Created + 菜品数据
+        deactivate Controller
+      end
+    end
+  end
+end
+
+Admin -> Admin: 显示成功消息
+Admin -> Admin: 刷新菜品列表
+
+note over FileService
+  支持的图片格式：
+  - JPEG (.jpg, .jpeg)
+  - PNG (.png)
+  文件大小限制：5MB
+end note
+
+note over Service
+  菜品数据验证规则：
+  - 名称：1-100字符
+  - 价格：0.01-999.99元
+  - 分类：预定义枚举值
+end note
+
+@enduml

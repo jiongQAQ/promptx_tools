@@ -1,0 +1,148 @@
+@startuml
+!define USER_COLOR #E1F5FE
+!define CONTROLLER_COLOR #F1F8E9
+!define SERVICE_COLOR #E8F5E9
+!define FILTER_COLOR #FFF3E0
+!define DB_COLOR #FFEBEE
+
+skinparam participant {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+  FontColor #333333
+}
+
+title 评价与评论系统时序图
+
+participant "用户" as User USER_COLOR
+participant "RatingController" as Controller CONTROLLER_COLOR
+participant "RatingService" as Service SERVICE_COLOR
+participant "SensitiveWordService" as FilterService FILTER_COLOR
+participant "DishService" as DishService SERVICE_COLOR
+participant "RatingMapper" as Mapper SERVICE_COLOR
+participant "MySQL数据库" as DB DB_COLOR
+
+User -> Controller: POST /api/user/ratings(dishId, score, comment)
+activate Controller
+
+Controller -> Controller: 验证用户登录状态
+alt 用户未登录
+  Controller --> User: 401 Unauthorized
+  deactivate Controller
+else 用户已登录
+  Controller -> Controller: 验证请求参数
+
+  alt 参数验证失败
+    Controller --> User: 400 Bad Request
+    deactivate Controller
+  else 参数验证成功
+    Controller -> Service: createRating(userId, dishId, score, comment)
+    activate Service
+
+    Service -> DishService: validateDishExists(dishId)
+    activate DishService
+    DishService -> DB: SELECT * FROM dishes WHERE id = ?
+    activate DB
+    alt 菜品不存在
+      DB --> DishService: 空结果集
+      deactivate DB
+      DishService --> Service: DishNotFoundException
+      Service --> Controller: DishNotFoundException
+      Controller --> User: 404 Dish Not Found
+      deactivate DishService
+      deactivate Service
+      deactivate Controller
+    else 菜品存在
+      DB --> DishService: 菜品数据
+      deactivate DB
+      DishService --> Service: 验证成功
+      deactivate DishService
+
+      Service -> Mapper: selectByUserAndDish(userId, dishId)
+      activate Mapper
+      Mapper -> DB: SELECT * FROM ratings WHERE user_id = ? AND dish_id = ?
+      activate DB
+      alt 已存在评价
+        DB --> Mapper: 评价记录
+        deactivate DB
+        Mapper --> Service: 已有评价对象
+        deactivate Mapper
+        Service --> Controller: RatingExistsException
+        Controller --> User: 409 Rating Already Exists
+        deactivate Service
+        deactivate Controller
+      else 未评价过
+        DB --> Mapper: 空结果集
+        deactivate DB
+        Mapper --> Service: null
+        deactivate Mapper
+
+        alt 包含评论内容
+          Service -> FilterService: checkSensitiveWords(comment)
+          activate FilterService
+          FilterService -> DB: SELECT word FROM sensitive_words
+          activate DB
+          DB --> FilterService: 敏感词列表
+          deactivate DB
+          FilterService -> FilterService: 执行敏感词匹配算法
+          alt 包含敏感词
+            FilterService --> Service: 敏感词列表
+            deactivate FilterService
+            Service --> Controller: SensitiveWordException
+            Controller --> User: 400 Content Violation
+            deactivate Service
+            deactivate Controller
+          else 内容安全
+            FilterService --> Service: 内容审核通过
+            deactivate FilterService
+          end
+        end
+
+        Service -> Service: 构建Rating实体对象
+        Service -> Mapper: insert(rating)
+        activate Mapper
+        Mapper -> DB: INSERT INTO ratings (user_id, dish_id, score, comment, ...)
+        activate DB
+        DB --> Mapper: 插入成功，返回ID
+        deactivate DB
+        Mapper --> Service: 评价ID
+        deactivate Mapper
+
+        Service -> Service: 计算菜品新的平均评分
+        Service -> DishService: updateDishRatingStats(dishId, newAvgScore, totalCount)
+        activate DishService
+        DishService -> DB: UPDATE dishes SET avg_rating = ?, rating_count = ?
+        activate DB
+        DB --> DishService: 更新成功
+        deactivate DB
+        DishService --> Service: 更新完成
+        deactivate DishService
+
+        Service -> Service: 清除相关缓存
+        Service --> Controller: 创建成功的评价对象
+        deactivate Service
+
+        Controller --> User: 201 Created + 评价数据
+        deactivate Controller
+      end
+    end
+  end
+end
+
+User -> User: 显示评价成功消息
+User -> User: 刷新菜品详情页面
+
+note over FilterService
+  敏感词过滤算法：
+  - AC自动机算法
+  - 支持模糊匹配
+  - 支持繁简体转换
+end note
+
+note over Service
+  评分统计更新：
+  - 重新计算平均分
+  - 更新评价总数
+  - 触发缓存失效
+end note
+
+@enduml

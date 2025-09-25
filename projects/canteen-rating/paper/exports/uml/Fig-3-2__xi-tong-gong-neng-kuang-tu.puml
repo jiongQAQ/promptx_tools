@@ -1,0 +1,79 @@
+@startuml
+!define MODULE_COLOR1 #E1F5FE
+!define MODULE_COLOR2 #F1F8E9
+!define MODULE_COLOR3 #FFF3E0
+!define MODULE_COLOR4 #FCE4EC
+!define MODULE_COLOR5 #F3E5F5
+!define TEXT_COLOR #333333
+
+skinparam rectangle {
+  BorderColor TEXT_COLOR
+  FontColor TEXT_COLOR
+}
+
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor TEXT_COLOR
+  FontColor TEXT_COLOR
+}
+
+title 校园食堂评价系统 - 功能框图
+
+rectangle "校园食堂评价系统" as System {
+
+  rectangle "用户管理模块" as UserMod MODULE_COLOR1 {
+    usecase "用户注册" as UC1
+    usecase "用户登录" as UC2
+    usecase "身份认证" as UC3
+    usecase "个人信息维护" as UC4
+  }
+
+  rectangle "食堂档口管理模块" as CanteenMod MODULE_COLOR2 {
+    usecase "食堂信息管理" as UC5
+    usecase "档口信息管理" as UC6
+    usecase "营业状态管理" as UC7
+  }
+
+  rectangle "菜品信息管理模块" as DishMod MODULE_COLOR3 {
+    usecase "菜品信息录入" as UC8
+    usecase "菜品分类管理" as UC9
+    usecase "价格管理" as UC10
+    usecase "菜品图片管理" as UC11
+  }
+
+  rectangle "评价管理模块" as RatingMod MODULE_COLOR4 {
+    usecase "菜品评价" as UC12
+    usecase "评价浏览" as UC13
+    usecase "敏感词过滤" as UC14
+    usecase "评价统计分析" as UC15
+  }
+
+  rectangle "系统管理模块" as AdminMod MODULE_COLOR5 {
+    usecase "用户权限管理" as UC16
+    usecase "评价审核管理" as UC17
+    usecase "数据统计报告" as UC18
+    usecase "系统配置管理" as UC19
+  }
+}
+
+' 模块间关系
+UC2 ..> UC3 : <<include>>
+UC12 ..> UC14 : <<include>>
+UC17 ..> UC15 : <<extend>>
+
+note right of UserMod
+  支持学生和教职工
+  两种用户类型
+end note
+
+note right of RatingMod
+  评价管理是系统
+  的核心业务模块
+end note
+
+note bottom of AdminMod
+  管理员功能提供
+  系统运维支持
+end note
+
+@enduml
