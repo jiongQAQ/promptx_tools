@@ -1,5 +1,9 @@
 【流程 02｜基于大纲预填 content.json（证据驱动、模块化｜复用 1.1/1.2 产物并自动生成总体ER图）】
 
+=== 路径定义 ===
+<projectRoot> = $(pwd)  # 当前工作目录的绝对路径
+使用说明：执行前请确保在项目根目录下运行，所有相对路径将基于此目录解析
+
 目标
 1 读取 ./paper/outline.json 与 ./templates/content.template.json
 2 对大纲中每个章节创建对应的内容项（写入 ./paper/content.json），并根据章节类型自动决定：
@@ -10,11 +14,11 @@
 4 数据库设计章节直接复用步骤 1.1 的三线表 JSON 与步骤 1.2 的同名 SVG；若总体 ER 图不存在则自动生成（PlantUML + luban-uml）
 
 输入
-- ./paper/outline.json
-- ./templates/content.template.json
-- ./source/ 与 ./CLAUDE.md（若存在）
-- （来自 1.1）./paper/exports/tables/Tab-*.json
-- （来自 1.2）./paper/exports/tables/Tab-*.svg
+- <projectRoot>/paper/outline.json
+- <projectRoot>/templates/content.template.json
+- <projectRoot>/source/ 与 <projectRoot>/CLAUDE.md（若存在）
+- （来自 1.1）<projectRoot>/paper/exports/tables/Tab-*.json
+- （来自 1.2）<projectRoot>/paper/exports/tables/Tab-*.svg
 
 通用规则
 1 严格基于源码/文档/1.1+1.2 产物判断；不要臆造技术或功能
@@ -29,8 +33,8 @@
 [模块：相关技术介绍（占位符替换）]
 任务：
 1 定位标题含“相关技术介绍/技术介绍”等的章节及其子项（可能包含 {{jishu1}}/{{jishu2}}/{{jishu3}}）
-2 基于 ./source/ 与 ./CLAUDE.md 的证据，识别 3 项最具代表性的技术（后端框架/数据访问/缓存/认证/数据库/前端等维度优先）
-3 生成 3–4 个候选并自动采纳最佳项，替换占位符文本；写回 outline.json
+2 基于 <projectRoot>/source/ 与 <projectRoot>/CLAUDE.md 的证据，识别 3 项最具代表性的技术（后端框架/数据访问/缓存/认证/数据库/前端等维度优先）
+3 生成 3–4 个候选并自动采纳最佳项，替换占位符文本；写回 <projectRoot>/paper/outline.json
 4 在 content.json 对应章节设置 plan.wantText=true，生成 textPrompt
 输出（需在报告中列明）：每个占位符的候选、采纳理由与证据文件（路径+关键词或行号范围）
 
@@ -46,46 +50,37 @@
 3 章节本身可写一段总述（textPrompt），无强制图/表
 4 不当标题，只渲染为编号段落
 
-[模块：数据库设计（列表型 + 表 + 图｜复用 1.1/1.2，并自动生成总体ER图）]
-判定条件：标题包含“数据库设计/数据库概念设计/数据库逻辑设计/ER”
+[模块：数据库概念设计（列表型 + 图｜复用 1.2，并自动生成总体ER图）]
+判定条件：标题包含"数据库概念设计"
 任务：
 1 设置章节为 list 模式（itemType=entity）
 2 遍历 ./paper/exports/tables/ 下全部 Tab-*.json，为每个表生成一个 item（一个不漏）：
    - order 连续编号
-   - 解析 JSON 的 tableName 与 tableCnName，title = “<tableName> 实体（<tableCnName>）”
+   - 解析 JSON 的 tableName 与 tableCnName，title = "<tableName> 实体（<tableCnName>）"
    - render.as=numbered
-   - plan.wantText=true；plan.wantFigure=true；plan.wantTable=true
-   - textPrompt：描述该实体的业务定位、关键字段、约束、与其他实体关系（可引用 columns 中的中文列名）
-   - tables[0]（直接引用 1.1 产物）：
-       {
-         "id": "Tab-<tableName>",
-         "label": "表{{chapter}}-{{index}} <tableCnName>字段三线表",
-         "type": "table",
-         "dataPath": "./paper/exports/tables/Tab-<tableName>.json",
-         "status": "ready",
-         "meta": { "source": "step-1.1" }
-       }
+   - plan.wantText=true；plan.wantFigure=true
+   - textPrompt：采用实体概念描述格式："<tableCnName>实体主要包括<业务领域>相关的字段，其中的属性有<主要属性列表>等。<tableCnName>实体图如下图，图{{chapter}}-{{index}} <tableCnName>实体图所示。"
    - figures[0]（直接引用 1.2 产物）：
        {
          "id": "Fig-<tableName>",
          "label": "图{{chapter}}-{{index}} <tableCnName>实体局部结构图",
          "type": "uml",
-         "imagePath": "./paper/exports/tables/Tab-<tableName>.svg",
+         "imagePath": "<projectRoot>/paper/exports/tables/Tab-<tableName>.svg",
          "status": "ready",
          "meta": { "source": "step-1.2" }
        }
-   - 若某表缺少 JSON 或 SVG：仍创建 item，但将相应 tables[0] 或 figures[0] 的 status 置为 "failed"，并在报告列出缺失清单
-3 章节级别增加一张“数据库总体 ER 图”
+   - 若某表缺少 SVG：仍创建 item，但将 figures[0] 的 status 置为 "failed"，并在报告列出缺失清单
+3 章节级别增加一张"数据库总体 ER 图"
    - 目标文件（统一放 tables 目录）：
-     - UML 源码：./paper/exports/tables/ER-overview.puml
-     - 图片：   ./paper/exports/tables/ER-overview.svg
-   - 若 ./paper/exports/tables/ER-overview.svg 已存在：直接引用并在 section.figures 增加：
+     - UML 源码：<projectRoot>/paper/exports/tables/ER-overview.puml
+     - 图片：   <projectRoot>/paper/exports/tables/ER-overview.svg
+   - 若 <projectRoot>/paper/exports/tables/ER-overview.svg 已存在：直接引用并在 section.figures 增加：
        {
          "id": "Fig-ER-Overview",
          "label": "图{{chapter}}-{{index}} 数据库总体ER图",
          "type": "uml",
-         "umlCodePath": "./paper/exports/tables/ER-overview.puml",
-         "imagePath": "./paper/exports/tables/ER-overview.svg",
+         "umlCodePath": "<projectRoot>/paper/exports/tables/ER-overview.puml",
+         "imagePath": "<projectRoot>/paper/exports/tables/ER-overview.svg",
          "status": "ready",
          "meta": { "source": "step-1.2-or-auto" }
        }
@@ -95,10 +90,32 @@
      c) 将文本写入 ER-overview.puml
      d) 调用：
         luban-uml render \
-          --in "./paper/exports/tables/ER-overview.puml" \
-          --out "./paper/exports/tables/ER-overview.svg" \
+          --in "<projectRoot>/paper/exports/tables/ER-overview.puml" \
+          --out "<projectRoot>/paper/exports/tables/ER-overview.svg" \
           --format svg
      e) 渲染成功则按上面的节级 figure 结构写回，status="ready"；失败则 status="failed" 并记录原因
+
+[模块：数据库逻辑设计/详细设计（列表型 + 表｜复用 1.1）]
+判定条件：标题包含"数据库逻辑设计"或"数据库详细设计"
+任务：
+1 设置章节为 list 模式（itemType=tableStructure）
+2 遍历 ./paper/exports/tables/ 下全部 Tab-*.json，为每个表生成一个 item（一个不漏）：
+   - order 连续编号
+   - 解析 JSON 的 tableName 与 tableCnName，title = "<tableName> 表（<tableCnName>）"
+   - render.as=numbered
+   - plan.wantText=true；plan.wantTable=true
+   - textPrompt：采用表结构详细描述格式："{{index}}. <tableCnName>表，主要储存了本系统<功能描述>的相关信息，其中包含<详细字段列举：字段中文名 (英文名)>，<tableCnName>表的数据库设计如下表，表{{chapter}}-{{index}} <tableCnName>表 <tableName>所示。"
+   - tables[0]（直接引用 1.1 产物）：
+       {
+         "id": "Tab-<tableName>",
+         "label": "表{{chapter}}-{{index}} <tableCnName>表 <tableName>",
+         "type": "table",
+         "dataPath": "<projectRoot>/paper/exports/tables/Tab-<tableName>.json",
+         "status": "ready",
+         "meta": { "source": "step-1.1" }
+       }
+   - 若某表缺少 JSON：仍创建 item，但将 tables[0] 的 status 置为 "failed"，并在报告列出缺失清单
+3 章节本身可写一段总述（textPrompt），描述数据库总体设计思路和表结构规范
 
 [模块：系统功能详细设计 / 系统功能实现 / 系统功能测试（联动 ≤5）]
 判定条件：标题包含“系统功能详细设计 / 系统功能实现 / 系统功能测试”
@@ -146,32 +163,41 @@ A) 机器可读 JSON（stdout 单行）：
 {
   "status": "success",
   "project": "<projectName>",
-  "outlinePath": "./paper/outline.json",
-  "contentPath": "./paper/content.json",
+  "outlinePath": "<projectRoot>/paper/outline.json",
+  "contentPath": "<projectRoot>/paper/content.json",
   "sectionCount": <int>,
   "withFigures": ["..."],
   "withTables": ["..."],
-  "listSections": [{"id":"<secId>","itemType":"actorUseCase|entity|custom","itemCount":<int>}],
+  "listSections": [{"id":"<secId>","itemType":"actorUseCase|entity|tableStructure|custom","itemCount":<int>}],
   "placeholdersResolved": {"jishu1":"...","jishu2":"...","jishu3":"...","functionname":"...","funname":"..."},
   "dbDesign": {
-    "tablesJsonFound": <int>,
-    "tablesSvgFound": <int>,
-    "itemsLinked": <int>,
-    "overview": "ready|generated|failed",
-    "tablesDir": "./paper/exports/tables/"
+    "conceptualDesign": {
+      "tablesJsonFound": <int>,
+      "tablesSvgFound": <int>,
+      "entityItemsLinked": <int>,
+      "overviewER": "ready|generated|failed"
+    },
+    "detailedDesign": {
+      "tablesJsonFound": <int>,
+      "tableItemsLinked": <int>
+    },
+    "tablesDir": "<projectRoot>/paper/exports/tables/"
   }
 }
 
 B) 人类可读检查报告：
 1 覆盖统计：章节总数、list 节点与 item 个数
-2 模块化判定：哪些章节被识别为“用例图/数据库/架构/测试”等
+2 模块化判定：哪些章节被识别为"用例图/数据库概念设计/数据库详细设计/架构/测试"等
 3 数据库设计覆盖：
-   - 发现的三线表 JSON 数量（Tab-*.json 清单）
-   - 发现的 SVG 数量（Tab-*.svg 清单）
-   - 为多少个实体生成了 item 并成功链接 JSON + SVG
-   - 总体 ER 图：沿用现有/自动生成/失败及原因
+   - 概念设计模块：
+     • 发现的 SVG 数量（Tab-*.svg 清单）
+     • 为多少个实体生成了概念描述 item 并成功链接 SVG
+     • 总体 ER 图：沿用现有/自动生成/失败及原因
+   - 详细设计模块：
+     • 发现的三线表 JSON 数量（Tab-*.json 清单）
+     • 为多少个表生成了详细结构 item 并成功链接 JSON
 4 占位符替换：列出候选、采纳项与证据来源（文件路径与关键词/行号）
-5 文件写入确认：./paper/content.json 与（若有替换）./paper/outline.json
+5 文件写入确认：<projectRoot>/paper/content.json 与（若有替换）<projectRoot>/paper/outline.json
 6 失败清单：缺 JSON、缺 SVG、ER 图生成失败等
 
 容错

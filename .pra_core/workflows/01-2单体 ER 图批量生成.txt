@@ -1,14 +1,18 @@
 【流程 1-2｜单体 ER 图批量生成（基于 1-1 三线表 JSON | 使用 1-1-single-er 工具）】
 
+=== 路径定义 ===
+<projectRoot> = $(pwd)  # 当前工作目录的绝对路径
+使用说明：执行前请确保在项目根目录下运行，所有相对路径将基于此目录解析
+
 目标
-1 扫描 ./paper/exports/tables/ 目录下全部 Tab-*.json（来自【1-1｜实体→三线表 JSON】）。
+1 扫描 <projectRoot>/paper/exports/tables/ 目录下全部 Tab-*.json（来自【1-1｜实体→三线表 JSON】）。
 2 逐个调用工具 @tool://1-1-single-er 将每个 JSON 转换为同名 SVG 单体 ER 图：
    - 输入：Tab-<tableName>.json
    - 输出：Tab-<tableName>.svg（与 JSON 同目录、同名，仅后缀不同）
 3 生成机器可读摘要 + 人类可读报告。
 
 前置条件
-- 目录 ./paper/exports/tables/ 存在，且包含 ≥1 个 Tab-*.json。
+- 目录 <projectRoot>/paper/exports/tables/ 存在，且包含 ≥1 个 Tab-*.json。
 - 每个 JSON 满足格式：
   {
     "tableName": "check_in",
@@ -30,7 +34,7 @@
   "tool_resource": "@tool://1-1-single-er",
   "mode": "execute",
   "parameters": {
-    "inputPath": "<绝对或相对路径>/paper/exports/tables/Tab-<tableName>.json"
+    "inputPath": "<projectRoot>/paper/exports/tables/Tab-<tableName>.json"
   }
 }
 
@@ -39,7 +43,7 @@
   "tool_resource": "@tool://1-1-single-er",
   "mode": "execute",
   "parameters": {
-    "inputPath": "<绝对或相对路径>/paper/exports/tables"
+    "inputPath": "<projectRoot>/paper/exports/tables"
   }
 }
 
@@ -47,7 +51,7 @@
 {
   "status": "success",
   "project": "<projectName>",
-  "tablesDir": "./paper/exports/tables/",
+  "tablesDir": "<projectRoot>/paper/exports/tables/",
   "jsonCount": <int>,
   "svgGenerated": <int>,
   "failList": [
@@ -57,7 +61,7 @@
 }
 
 人类可读检查报告
-- 扫描目录：./paper/exports/tables/
+- 扫描目录：<projectRoot>/paper/exports/tables/
 - 发现 JSON：N 个；生成 SVG：M 个；失败：K 个
 - 成功清单（前若干个）：Tab-*.svg
 - 失败清单：文件名 + 原因
