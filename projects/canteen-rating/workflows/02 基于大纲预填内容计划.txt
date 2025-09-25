@@ -89,10 +89,13 @@
      b) 以 PlantUML ER 语法组装总体图（实体框显示英文名（中文名）；只列 PK 与关键 FK 以控制密度；关系使用 crow’s foot：||--o{ 等）
      c) 将文本写入 ER-overview.puml
      d) 调用：
-        luban-uml render \
-          --in "<projectRoot>/paper/exports/tables/ER-overview.puml" \
-          --out "<projectRoot>/paper/exports/tables/ER-overview.svg" \
-          --format svg
+        toolx("@tool://luban-uml", {
+          operation: "render",
+          input: "<projectRoot>/paper/exports/tables/ER-overview.puml",
+          output: "<projectRoot>/paper/exports/tables/ER-overview.svg",
+          format: "svg"
+        })
+        ⚠️ 重要：所有路径参数必须是绝对路径，如"/Users/pc/Documents/project/paper/exports/tables/ER-overview.svg"
      e) 渲染成功则按上面的节级 figure 结构写回，status="ready"；失败则 status="failed" 并记录原因
 
 [模块：数据库逻辑设计/详细设计（列表型 + 表｜复用 1.1）]

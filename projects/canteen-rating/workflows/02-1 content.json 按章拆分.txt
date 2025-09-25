@@ -35,22 +35,18 @@
    - 写入 <projectRoot>/paper/splits/content.chN.json（UTF-8）。
 4 汇总统计并输出摘要与报告。
 
-（如你必须使用 @tool://json-chapter-splitter）
-A) 先写入临时包装文件 <projectRoot>/paper/content.wrapper.json 以适配该工具的输入结构：
-   - 将 ROOTS 与其子键转换为 "chapters": [{ "id":"N", "contents":{...} }, ...]
-   - 其他顶层信息置于 "meta" 内，确保工具能保留（preserveStructure=true 时）
-B) 调用工具拆分（示例）：
+调用工具拆分示例：
 {
   "tool_resource": "@tool://json-chapter-splitter",
-  "mode": "execute",
   "parameters": {
-    "inputFile": "<projectRoot>/paper/content.wrapper.json",
-    "outputDir": "<projectRoot>/paper/splits.wrapper",
+    "inputFile": "<projectRoot>/paper/content.json",
+    "outputDir": "<projectRoot>/paper/splits/",
     "preserveStructure": true
   }
 }
-C) 将工具输出的每个 wrapper 章节文件再回写为标准分章 content.chN.json（恢复为我方标准 schema）。
-D) 清理临时 wrapper 文件与目录。
+⚠️ 重要：inputFile和outputDir必须是绝对路径，例如：
+- inputFile: "/Users/pc/Documents/project/paper/content.json"
+- outputDir: "/Users/pc/Documents/project/paper/splits/"
 
 输出（stdout 单行 JSON）
 {

@@ -41,7 +41,13 @@
     - 图片：   <projectRoot>/paper/exports/tables/ER-overview.svg
 - luban-uml 调用方式（通用图与总体 ER 图）：
   - 写入 .puml 文件后执行：
-    luban-uml render --in "<pumlPath>" --out "<pngOrSvgPath>" --format png|svg
+    toolx("@tool://luban-uml", {
+      operation: "render",
+      input: "<pumlPath>",
+      output: "<pngOrSvgPath>",
+      format: "png|svg"
+    })
+  - ⚠️ 重要：input和output必须是绝对路径，如"/Users/pc/Documents/project/paper/exports/uml/diagram.svg"
   - .puml 与输出图片同名（仅扩展名不同）。
 
 执行规则
@@ -74,7 +80,7 @@
 
    - 渲染流程（带智能错误诊断）：
      a) 生成PlantUML代码 → 保存到 .puml
-     b) 调用 luban-uml 渲染为图片，**失败时启动智能诊断修复**：
+     b) 调用 toolx("@tool://luban-uml", {绝对路径参数}) 渲染为图片，**失败时启动智能诊断修复**：
         【第1次失败】→ 语法诊断与修复：
           • 检查缺少@startuml/@enduml → 自动补充
           • 检查括号/引号不匹配 → 自动配对
@@ -127,7 +133,7 @@
         - 自动添加样式字段：docx_type_text = "body_text", docx_type_title = "entity_title"
      4. 在章节级别必须生成一张"数据库总体 ER 图"，包含所有实体及它们的关系（不得遗漏）：
         - 若 <projectRoot>/paper/exports/tables/ER-overview.svg 已存在：直接引用；
-        - 否则自动生成 ER-overview.puml → 调用 luban-uml 渲染为 ER-overview.svg 并写回；失败则智能诊断修复。
+        - 否则自动生成 ER-overview.puml → 调用 toolx("@tool://luban-uml", {绝对路径参数}) 渲染为 ER-overview.svg 并写回；失败则智能诊断修复。
         - 自动添加样式字段：docx_type_label = "figure_caption"
    - 失败时：报告"未发现实体定义"或"实体数量不匹配"，并标记章节 status=failed。
 
@@ -189,7 +195,7 @@
    - **下一步建议**：可进入"流程 04 导出 Word"；若有失败项建议的修复方案
 
 注意
-- 必须用 luban-uml 渲染所有 UML 图片；**唯独单体 ER 图直接引用 <projectRoot>/paper/exports/tables/ 下的 SVG，不再生成 puml 或二次渲染**。
+- 必须用 toolx("@tool://luban-uml", {绝对路径参数}) 渲染所有 UML 图片；**唯独单体 ER 图直接引用 <projectRoot>/paper/exports/tables/ 下的 SVG，不再生成 puml 或二次渲染**。
 - 功能结构图必须使用 **WBS**（@startwbs/@endwbs，*/* */*** 表示层级）。
 - 功能详细设计章节的每个功能子项需生成 **活动图** 与 **时序图**（常规渲染流程）。
 - 数据库实体类必须完整覆盖，不得省略任何一个实体；总体 ER 图必须包含所有实体。

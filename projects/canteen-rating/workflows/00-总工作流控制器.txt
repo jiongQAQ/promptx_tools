@@ -4,11 +4,45 @@
 <projectRoot> = $(pwd)  # 当前工作目录的绝对路径
 使用说明：执行前请确保在项目根目录下运行，所有相对路径将基于此目录解析
 
+⚠️ 【质量第一原则｜零容忍执行标准】⚠️
+本工作流系统采用严格的质量管控机制，对所有执行过程实行零容忍标准：
+
+🚫 严禁行为：
+- 【禁止偷懒】：不得省略任何步骤、跳过任何环节、简化任何流程
+- 【禁止找理由】：不得以"时间紧迫"、"内容简单"、"差不多就行"等为由降低标准
+- 【禁止快速生成】：不得使用粗糙的快速生成模式，必须保证每个产物的深度和质量
+- 【禁止敷衍了事】：不得产生空洞、无意义、copy-paste式的内容
+- 【禁止格式马虎】：不得忽视学术规范、引用格式、图表编号等细节要求
+
+✅ 强制要求：
+- 【完全执行】：每个流程必须100%按照对应workflows文件执行，一个步骤都不能少
+- 【质量优先】：宁可多花时间也要确保内容的学术水准和专业深度
+- 【细节到位】：从技术实现到学术表达，从图表设计到格式规范，每个细节都要精益求精
+- 【内容原创】：所有生成内容必须结合项目实际情况，体现真实的技术思考和设计理念
+- 【标准严格】：按照本科毕业论文的最高标准执行，确保答辩通过率
+
+📊 质量检查点：
+- 每个阶段结束后进行强制质量审查
+- 发现质量问题立即返工重做
+- 最终产物必须达到95%以上完整度
+- 学术规范性检查必须通过
+
+💡 执行理念：
+"宁要精品慢工出细活，不要次品快速交付"
+本系统的目标是生成真正优秀的毕业论文，而不是应付差事的半成品
+
 目标
 1 【自动化管道】提供一键式论文生成解决方案，自动按序执行所有工作流：01 → 01-1 → 01-2 → 02 → 02-1 → 03（所有章节）→ DOCX导出
-2 【产物验证】每个工作流执行前检查上游产物的完整性和正确性（第一个流程01除外）
-3 【故障恢复】支持从任意中断点恢复执行，自动跳过已完成的流程
-4 【进度跟踪】提供详细的执行日志和进度报告，支持并行处理优化
+2 【严格流程执行】每个具体流程必须严格按照对应的流程文件进行处理，不得偏离或简化：
+  - 执行01流程：严格按照 `workflows/01大纲设计与预处理.txt`
+  - 执行01-1流程：严格按照 `workflows/01-1识别实体类.txt`
+  - 执行01-2流程：严格按照 `workflows/01-2单体 ER 图批量生成.txt`
+  - 执行02流程：严格按照 `workflows/02 基于大纲预填内容计划.txt`
+  - 执行02-1流程：严格按照 `workflows/02-1 content.json 按章拆分.txt`
+  - 执行03流程：严格按照 `workflows/03｜正文与素材生成.txt`
+3 【产物验证】每个工作流执行前检查上游产物的完整性和正确性（第一个流程01除外）
+4 【故障恢复】支持从任意中断点恢复执行，自动跳过已完成的流程
+5 【进度跟踪】提供详细的执行日志和进度报告，支持并行处理优化
 
 输入
 - <projectRoot>/source/ 源码目录（必须存在，包含实体类定义）
@@ -24,29 +58,33 @@
   - 激活方式：action("luban")
   - 专长：PromptX工具开发，沙箱执行，依赖管理
 
-可用鲁班工具清单
+可用鲁班工具清单（⚠️ 重要：所有工具必须使用绝对路径参数）
 - **@tool://1-1-single-er**：单体ER图生成工具
   - 功能：基于三线表JSON生成对应的SVG格式ER图
-  - 参数：inputPath(JSON文件或目录), outputDir(可选)
-  - 使用：toolx("@tool://1-1-single-er", {inputPath: "<path>"})
+  - 参数：inputPath(JSON文件绝对路径或目录绝对路径，必需)
+  - 使用：toolx("@tool://1-1-single-er", {inputPath: "<projectRoot>/paper/exports/tables/"})
+  - 绝对路径示例：{inputPath: "/Users/pc/Documents/project/paper/exports/tables/"}
   - 工具代码学习：learn("@tool://1-1-single-er")
 
 - **@tool://json-chapter-splitter**：JSON章节拆分工具
   - 功能：将完整的content.json按章节拆分为独立文件
-  - 参数：inputFile(JSON路径), outputDir(输出目录), preserveStructure(布尔)
-  - 使用：toolx("@tool://json-chapter-splitter", {inputFile: "<path>", outputDir: "<dir>"})
+  - 参数：inputFile(JSON绝对路径，必需), outputDir(输出目录绝对路径，必需), preserveStructure(布尔)
+  - 使用：toolx("@tool://json-chapter-splitter", {inputFile: "<projectRoot>/paper/content.json", outputDir: "<projectRoot>/paper/splits/"})
+  - 绝对路径示例：{inputFile: "/Users/pc/Documents/project/paper/content.json", outputDir: "/Users/pc/Documents/project/paper/splits/"}
   - 工具代码学习：learn("@tool://json-chapter-splitter")
 
 - **@tool://luban-uml**：UML图表渲染工具
   - 功能：将PlantUML代码渲染为PNG/SVG图片
-  - 参数：operation(render/validate), input(puml代码或文件路径), output(输出路径), format(png/svg)
-  - 使用：toolx("@tool://luban-uml", {operation: "render", input: "<content>", output: "<path>", format: "svg"})
+  - 参数：operation(render/validate), input(puml代码或文件绝对路径), output(输出文件绝对路径，必需), format(png/svg)
+  - 使用：toolx("@tool://luban-uml", {operation: "render", input: "<content>", output: "<projectRoot>/paper/exports/uml/diagram.svg", format: "svg"})
+  - 绝对路径示例：{output: "/Users/pc/Documents/project/paper/exports/uml/diagram.svg"}
   - 工具代码学习：learn("@tool://luban-uml")
 
 - **@tool://thesis-to-docx**：论文DOCX导出工具
   - 功能：基于content.run.json和素材生成完整的DOCX文档
-  - 参数：sourceDir(splits目录), outputPath(docx路径), thesisTitle(标题), author(作者)
-  - 使用：toolx("@tool://thesis-to-docx", {sourceDir: "paper/splits", outputPath: "output.docx", thesisTitle: "题目"})
+  - 参数：sourceDir(splits目录绝对路径，必需), outputPath(docx文件绝对路径，必需), thesisTitle(标题), author(作者)
+  - 使用：toolx("@tool://thesis-to-docx", {sourceDir: "<projectRoot>/paper/splits", outputPath: "<projectRoot>/paper/thesis.docx", thesisTitle: "题目"})
+  - 绝对路径示例：{sourceDir: "/Users/pc/Documents/project/paper/splits", outputPath: "/Users/pc/Documents/project/paper/thesis.docx"}
   - 工具代码学习：learn("@tool://thesis-to-docx")
 
 执行流程
@@ -60,6 +98,7 @@
 
 阶段1【实体识别与表格生成】- 流程01系列
 1.1 执行【流程01-1｜实体类→三线表JSON】
+    - **⚠️ 严格执行**：必须完全按照 `workflows/01-1识别实体类.txt` 文件中定义的流程进行
     - **角色切换**：激活 `pra` 角色进行源码分析和中文命名
     - **执行方式**：action("pra") → 基于源码目录和CLAUDE.md生成三线表
     - **输入验证**：source/目录包含可识别的实体定义
@@ -72,8 +111,10 @@
     - 失败则终止执行，报告具体缺失项
 
 1.3 执行【流程01-2｜单体ER图批量生成】
+    - **⚠️ 严格执行**：必须完全按照 `workflows/01-2单体 ER 图批量生成.txt` 文件中定义的流程进行
     - **角色切换**：激活 `luban` 角色进行工具调用
-    - **工具调用**：action("luban") → toolx("@tool://1-1-single-er", {inputPath: tables目录})
+    - **工具调用**：action("luban") → toolx("@tool://1-1-single-er", {inputPath: "<projectRoot>/paper/exports/tables/"})
+    - **⚠️ 路径要求**：inputPath必须为绝对路径，如"/Users/pc/Documents/project/paper/exports/tables/"
     - **输入验证**：上一步生成的所有Tab-*.json文件
     - **产物期望**：<projectRoot>/paper/exports/tables/Tab-*.svg
     - **成功标准**：每个JSON对应生成一个SVG文件
@@ -89,6 +130,7 @@
     - 统计实体数量，为后续规划提供基础数据
 
 2.2 执行【流程02｜基于大纲预填content.json】
+    - **⚠️ 严格执行**：必须完全按照 `workflows/02 基于大纲预填内容计划.txt` 文件中定义的流程进行
     - **角色切换**：激活 `pra` 角色进行学术内容规划
     - **执行方式**：action("pra") → 基于大纲模板和实体数据生成内容规划
     - **占位符替换**：自动识别并替换技术栈占位符（{{jishu1/2/3}}、{{functionname}}）
@@ -103,8 +145,10 @@
     - 失败则终止执行，报告具体问题
 
 2.4 执行【流程02-1｜content.json按章拆分】
+    - **⚠️ 严格执行**：必须完全按照 `workflows/02-1 content.json 按章拆分.txt` 文件中定义的流程进行
     - **角色切换**：激活 `luban` 角色进行数据处理
-    - **工具调用**：action("luban") → toolx("@tool://json-chapter-splitter", {inputFile: content.json})
+    - **工具调用**：action("luban") → toolx("@tool://json-chapter-splitter", {inputFile: "<projectRoot>/paper/content.json", outputDir: "<projectRoot>/paper/splits/"})
+    - **⚠️ 路径要求**：inputFile和outputDir必须为绝对路径，如"/Users/pc/Documents/project/paper/content.json"
     - **输入验证**：上一步生成的content.json
     - **产物期望**：<projectRoot>/paper/splits/content.chN.json（N=1,2,3...）
     - **成功标准**：每个顶层章节对应生成一个拆分文件
@@ -121,10 +165,12 @@
     - 统计各章节预期生成的正文、图表数量
 
 3.2 章节顺序执行【流程03｜正文与素材生成】：
+    - **⚠️ 严格执行**：必须完全按照 `workflows/03｜正文与素材生成.txt` 文件中定义的流程进行
     - **严格按章节号从小到大顺序执行**：ch1 → ch2 → ch3 → ... → chN
     - **角色协作模式**：
       • **正文生成**：action("pra") → 专业学术写作，符合本科论文规范
-      • **图表渲染**：action("luban") → toolx("@tool://luban-uml", {pumlCode, format})
+      • **图表渲染**：action("luban") → toolx("@tool://luban-uml", {operation: "render", input: pumlCode, output: "<projectRoot>/paper/exports/uml/diagram.svg", format: "svg"})
+      • **⚠️ 路径要求**：UML图表output必须为绝对路径，如"/Users/pc/Documents/project/paper/exports/uml/diagram.svg"
       • **完整性审查**：action("pra") → 验证学术质量和规范性
     - 每个章节执行前验证：
       • 前置章节的run.json文件已存在
@@ -150,7 +196,8 @@
 
 4.2 执行DOCX导出：
     - **角色切换**：激活 `luban` 角色进行工具调用
-    - **工具调用**：action("luban") → toolx("@tool://thesis-to-docx", {runJsonFiles, exportsDir, stylesConfig})
+    - **工具调用**：action("luban") → toolx("@tool://thesis-to-docx", {sourceDir: "<projectRoot>/paper/splits", outputPath: "<projectRoot>/paper/output/论文.docx", thesisTitle: "论文标题"})
+    - **⚠️ 路径要求**：sourceDir和outputPath必须为绝对路径，如"/Users/pc/Documents/project/paper/splits"
     - **输入文件**：所有content.chN.run.json + exports/目录素材 + docx-styles.json
     - **产物期望**：<projectRoot>/paper/output/论文.docx
     - **成功标准**：生成完整的DOCX文件，包含所有正文、图表、样式
@@ -331,9 +378,23 @@
 ./run-master-workflow.sh --debug=true
 
 注意事项
+
+⚠️ 【质量红线｜不可逾越】：
+- 【零容忍原则】：对偷懒、敷衍、快速生成等降低质量的行为零容忍
+- 【完整性要求】：每个流程都必须完全执行，禁止以任何理由简化或跳过
+- 【学术标准】：所有内容必须达到本科毕业论文的最高学术要求
+- 【原创性保证】：严禁模板化、套路化的内容生成，必须体现真实项目特色
+- 【返工机制】：发现质量不达标立即返工，直到满足标准为止
+
+🔧 【技术执行要求】：
+- 【严格流程遵守】每个流程的执行必须严格按照对应workflows/目录下的流程文件进行，不得简化或跳过步骤
+- 【流程文件路径】执行前务必确认对应的流程文件存在：workflows/01-1识别实体类.txt、workflows/01-2单体 ER 图批量生成.txt 等
 - 确保在项目根目录执行，所有路径基于$(pwd)解析
 - 首次执行建议使用串行模式确保稳定性
 - 大型项目（>50个实体）建议分批处理或使用并行模式
 - 保持source/目录结构稳定，避免执行过程中修改源码
 - luban工具依赖需要提前安装和配置
 - 生成过程中避免手动修改paper/目录下的中间文件
+
+💡 【质量宣言】：
+"本系统不生产垃圾论文，只生产优秀作品！"

@@ -32,20 +32,20 @@
 调用模版（逐文件）
 {
   "tool_resource": "@tool://1-1-single-er",
-  "mode": "execute",
   "parameters": {
     "inputPath": "<projectRoot>/paper/exports/tables/Tab-<tableName>.json"
   }
 }
+⚠️ 重要：inputPath必须是绝对路径，例如："/Users/pc/Documents/project/paper/exports/tables/Tab-user.json"
 
 可选：目录批量（一次性）
 {
   "tool_resource": "@tool://1-1-single-er",
-  "mode": "execute",
   "parameters": {
     "inputPath": "<projectRoot>/paper/exports/tables"
   }
 }
+⚠️ 重要：inputPath必须是绝对路径，例如："/Users/pc/Documents/project/paper/exports/tables"
 
 输出（stdout 单行 JSON）
 {
