@@ -1,0 +1,7 @@
+{
+  "id": "3.3",
+  "title": "系统功能结构图",
+  "text": "系统功能按照模块化设计原则进行分解，形成清晰的层次结构：一级功能包括用户管理、食堂管理、评分管理、投诉管理、统计管理；各一级功能进一步细分为具体的功能子模块，确保职责明确，便于开发和维护。",
+  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/system-function-wbs.png",
+  "prompt": "请基于源码和论文主题，撰写《系统功能结构图》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}

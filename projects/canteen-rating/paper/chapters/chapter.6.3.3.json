@@ -1,0 +1,7 @@
+{
+  "id": "6.3.3",
+  "title": "食堂档口管理功能测试",
+  "text": "测试食堂、档口、菜品的增删改查功能。验证数据关联性、级联操作、批量处理等场景。测试数据导入导出功能。",
+  "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/test-canteen-management.json",
+  "prompt": "请基于源码和论文主题，撰写《食堂档口管理功能测试》的正文，要求学术化表达，在正文中说明该表格的数据结构和作用，并扩展分析其设计合理性，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}

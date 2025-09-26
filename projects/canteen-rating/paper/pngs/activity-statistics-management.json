@@ -1,0 +1,7 @@
+{
+  "id": "4.1.5",
+  "title": "系统统计管理的详细设计",
+  "text": "系统统计管理模块提供各类数据统计和分析功能，包括评分统计、用户活跃度、食堂排名等。通过活动图展示数据统计的计算流程和缓存机制。时序图描述统计数据的定时更新和实时查询。",
+  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-statistics-management.png",
+  "prompt": "请基于源码和论文主题，撰写《系统统计管理的详细设计》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}

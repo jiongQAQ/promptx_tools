@@ -1,0 +1,7 @@
+{
+  "id": "4.1.1",
+  "title": "用户认证管理的详细设计",
+  "text": "用户认证管理模块包括用户注册、登录、权限验证等功能。采用JWT令牌机制实现无状态认证，通过活动图展示认证流程的各个步骤和异常处理。时序图描述前端、后端和数据库之间的交互过程，确保认证的安全性和可靠性。",
+  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-auth-management.png",
+  "prompt": "请基于源码和论文主题，撰写《用户认证管理的详细设计》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}

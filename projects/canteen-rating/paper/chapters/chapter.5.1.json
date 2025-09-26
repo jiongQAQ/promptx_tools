@@ -1,0 +1,6 @@
+{
+  "id": "5.1",
+  "title": "系统开发环境和工具",
+  "text": "开发环境：操作系统为macOS/Windows，JDK 17，Node.js 16+，MySQL 8.0；开发工具：IntelliJ IDEA（后端开发），VSCode（前端开发），Git（版本控制），Postman（API测试）；构建工具：Maven（后端构建），Vite（前端构建）；其他工具：Docker（容器化部署），Nginx（反向代理）。",
+  "prompt": "请基于源码和论文主题，撰写《系统开发环境和工具》的正文，要求学术化表达，扩展说明相关技术要点和实现细节，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "5.2.3",
+  "title": "食堂档口管理的实现",
+  "text": "实现了食堂、档口、菜品的层级管理功能。采用树形结构展示层级关系，支持批量操作和级联删除。后端使用MyBatis Plus的条件构造器简化复杂查询，前端使用Element Plus的表格和表单组件。",
+  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/impl-canteen-management.png",
+  "prompt": "请基于源码和论文主题，撰写《食堂档口管理的实现》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}

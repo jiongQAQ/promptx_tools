@@ -1,0 +1,7 @@
+{
+  "id": "4.1.2",
+  "title": "菜品评分管理的详细设计",
+  "text": "菜品评分管理模块支持用户对菜品进行评分和评价，包括评分提交、评价展示、评分统计等功能。通过活动图展示评分流程，包括数据验证、敏感词过滤、评分计算等步骤。时序图描述评分数据的实时更新机制。",
+  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-rating-management.png",
+  "prompt": "请基于源码和论文主题，撰写《菜品评分管理的详细设计》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "6.4",
+  "title": "系统性能测试",
+  "text": "通过JMeter进行压力测试，验证系统在不同负载下的性能表现。测试结果显示系统能够支持500并发用户，平均响应时间小于2秒，CPU使用率不超过80%，满足预期性能要求。",
+  "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/performance-metrics.json",
+  "prompt": "请基于源码和论文主题，撰写《系统性能测试》的正文，要求学术化表达，在正文中说明该表格的数据结构和作用，并扩展分析其设计合理性，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}

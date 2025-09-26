@@ -1,0 +1,6 @@
+{
+  "id": "1.4.3",
+  "title": "MyBatis Plus数据访问层",
+  "text": "MyBatis Plus是MyBatis的增强工具，在MyBatis基础上只做增强不做改变，提供了丰富的CRUD操作和分页插件。本系统采用MyBatis Plus 3.5.3.1版本，实现高效的数据访问层，简化数据库操作代码。",
+  "prompt": "请基于源码和论文主题，撰写《MyBatis Plus数据访问层》的正文，要求学术化表达，扩展说明相关技术要点和实现细节，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}

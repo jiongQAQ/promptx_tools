@@ -1,0 +1,7 @@
+{
+  "id": "3.2",
+  "title": "系统软件逻辑架构",
+  "text": "采用经典的三层架构模式：表示层负责用户交互和界面展示，包括Vue.js前端应用；业务逻辑层负责核心业务处理，包括Spring Boot服务层；数据访问层负责数据持久化，包括MyBatis Plus数据访问组件。各层之间通过标准接口进行交互，确保松耦合。",
+  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/software-architecture.png",
+  "prompt": "请基于源码和论文主题，撰写《系统软件逻辑架构》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
+}
