@@ -16,11 +16,22 @@ def main():
         input_data = json.loads(sys.stdin.read())
         user_prompt = input_data.get('prompt', '')
 
-        # 检查是否为05流程相关指令
-        if ('05流程' in user_prompt or '正文生成' in user_prompt or
-            '处理完成' in user_prompt or '完成一批' in user_prompt or
-            '继续处理' in user_prompt):
-            project_root = os.getcwd()
+        # 检查触发文件或05流程指令
+        project_root = os.getcwd()
+        trigger_file = Path(project_root) / 'paper' / '.auto-trigger'
+
+        is_05_command = '05流程' in user_prompt or '正文生成' in user_prompt
+        has_trigger_file = trigger_file.exists()
+
+        if is_05_command or has_trigger_file:
+            # 删除触发文件
+            if has_trigger_file:
+                trigger_file.unlink()
+
+            # 如果是通过触发文件触发的，修改用户提示
+            if has_trigger_file and not is_05_command:
+                user_prompt = "开始05流程"
+
             progress_file = Path(project_root) / 'paper' / '.chapter-progress.json'
 
             # 读取或初始化进度状态
@@ -33,10 +44,19 @@ def main():
                     context = "❌ 错误：未找到chapter目录或章节文件。请确保已执行04章节切割流程。"
                 else:
                     progress = initialize_progress(chapters, progress_file)
-                    context = generate_first_batch_context(progress, project_root)
+                    context = generate_single_chapter_context(progress, project_root)
             else:
-                # 继续处理下一批
-                context = prepare_next_batch(progress, progress_file, project_root)
+                # 检查是否已完成
+                if not progress['pending']:
+                    context = "🎉 05流程已完成！所有章节内容生成完毕。"
+                else:
+                    # 自动更新进度：检查是否有章节已完成
+                    updated_progress = update_progress_from_files(progress, project_root)
+                    if updated_progress != progress:
+                        progress_file.write_text(json.dumps(updated_progress, indent=2, ensure_ascii=False), encoding='utf-8')
+                        progress = updated_progress
+
+                    context = generate_single_chapter_context(progress, project_root)
 
             # 返回增强的上下文
             output = {
@@ -119,79 +139,66 @@ def initialize_progress(chapters, progress_file):
     progress_file.write_text(json.dumps(progress, indent=2, ensure_ascii=False), encoding='utf-8')
     return progress
 
-def generate_first_batch_context(progress, project_root):
-    """生成第一批处理的上下文"""
-    context = f"🚀 开始05流程：已发现{progress['totalChapters']}个章节文件，准备分批处理。\n\n"
+def generate_single_chapter_context(progress, project_root):
+    """生成单个章节的处理上下文"""
+    remaining_chapters = progress['pending']
+
+    if not remaining_chapters:
+        return "🎉 所有章节已处理完成！"
+
+    # 只取第一个待处理章节
+    current_chapter = remaining_chapters[0]
+
+    total_chapters = progress['totalChapters']
+    processed_count = len(progress['processed'])
+
+    context = f"📝 处理单个章节：{current_chapter}\n\n"
+
+    # 获取章节详细信息
+    chapter_file = Path(project_root) / 'paper' / 'chapters' / f'chapter.{current_chapter}.json'
+
+    if chapter_file.exists():
+        try:
+            chapter_data = json.loads(chapter_file.read_text(encoding='utf-8'))
+            title = chapter_data.get('title', f'章节{current_chapter}')
+            prompt = chapter_data.get('prompt', '生成正文内容')
+            word_limit = chapter_data.get('word_limit', determine_word_limit(current_chapter))
+
+            context += f"📖 章节信息：\n"
+            context += f"- ID: {current_chapter}\n"
+            context += f"- 标题: {title}\n"
+            context += f"- 字数要求: {word_limit}字\n"
+            context += f"- 生成要求: {prompt}\n\n"
+
+        except Exception as e:
+            context += f"❌ 读取章节文件失败: {str(e)}\n\n"
+    else:
+        context += f"❌ 章节文件不存在: {chapter_file}\n\n"
+
+    # 进度信息
+    percentage = (processed_count / total_chapters * 100) if total_chapters > 0 else 0
+    context += f"📈 当前进度: {processed_count}/{total_chapters} ({percentage:.1f}%)\n\n"
 
     # 添加工作流程文档引用
     context += "📖 **参考文档**: workflows/05 正文内容生成.md\n"
     context += "请按照该文档中的内容生成原则、特殊处理规则和质量标准执行。\n\n"
 
-    context += generate_batch_context(progress, project_root)
-    return context
+    context += "🎯 当前任务：\n"
+    context += f"请专注处理章节 {current_chapter}，为其生成text字段内容。\n\n"
 
-def prepare_next_batch(progress, progress_file, project_root):
-    """准备下一批处理"""
-    if not progress['pending']:
-        return "🎉 05流程已完成！所有章节内容生成完毕。\n\n📊 最终统计:\n" + \
-               f"✅ 成功处理: {len(progress['processed'])}个章节\n" + \
-               f"❌ 处理失败: {len(progress['failed'])}个章节"
+    context += "操作要求：\n"
+    context += "1. 激活promptx的pra角色进行专业论文写作\n"
+    context += "2. 严格按照章节的prompt要求生成内容\n"
+    context += "3. 控制字数在指定范围内（允许±10%浮动）\n"
+    context += "4. 避免代码片段和文件路径描述\n"
+    context += "5. 使用Edit工具更新对应的JSON文件\n"
+    context += "6. 仅更新text字段，保持其他字段不变\n"
+    context += "7. 完成后简单报告该章节已完成\n\n"
 
-    return generate_batch_context(progress, project_root)
-
-def generate_batch_context(progress, project_root):
-    """生成当前批次的上下文信息"""
-    if not progress['pending']:
-        return "🎉 所有章节已处理完成！"
-
-    # 获取当前批次章节
-    batch_size = progress['batchSize']
-    current_batch = progress['pending'][:batch_size]
-
-    context = f"📋 当前处理第{progress['currentBatch']}批章节（共{progress['totalBatches']}批）:\n\n"
-    context += "需要处理的章节:\n"
-
-    for i, chapter_id in enumerate(current_batch, 1):
-        chapter_file = Path(project_root) / 'paper' / 'chapters' / f'chapter.{chapter_id}.json'
-        if chapter_file.exists():
-            try:
-                chapter_data = json.loads(chapter_file.read_text(encoding='utf-8'))
-                title = chapter_data.get('title', f'章节{chapter_id}')
-                prompt = chapter_data.get('prompt', '生成正文内容')
-                word_limit = chapter_data.get('word_limit', determine_word_limit(chapter_id))
-
-                context += f"{i}. 章节 {chapter_id}: {title}\n"
-                context += f"   生成要求: {prompt[:100]}{'...' if len(prompt) > 100 else ''}\n"
-                context += f"   字数要求: {word_limit}字\n\n"
-            except Exception as e:
-                context += f"{i}. 章节 {chapter_id}: [读取失败: {str(e)}]\n\n"
-        else:
-            context += f"{i}. 章节 {chapter_id}: [文件不存在]\n\n"
-
-    # 进度信息
-    total_processed = len(progress['processed'])
-    total_chapters = progress['totalChapters']
-    percentage = (total_processed / total_chapters * 100) if total_chapters > 0 else 0
-
-    context += f"📈 进度: {total_processed}/{total_chapters} ({percentage:.1f}%)\n\n"
-
-    context += "🎯 处理要求（详见05工作流程文档）:\n"
-    context += "1. **内容生成原则**:\n"
-    context += "   - 严格按照每个章节的prompt字段生成内容\n"
-    context += "   - 使用学术化表达，逻辑清晰，层次分明\n"
-    context += "   - 确保技术描述准确，符合软件工程规范\n"
-    context += "   - 字数控制在指定范围内（允许±10%浮动）\n\n"
-    context += "2. **特殊处理规则**:\n"
-    context += "   - 包含imagePath的章节：假设图片存在，正文中自然引用'如图X所示...'\n"
-    context += "   - 包含tablePath的章节：假设表格完整，分析'表X展示了...'\n"
-    context += "   - 代码实现章节：结合项目源码特点描述实现细节\n\n"
-    context += "3. **操作要求**:\n"
-    context += "   - 逐个处理章节，为每个章节生成text字段内容\n"
-    context += "   - 使用MultiEdit或Edit工具更新对应的JSON文件\n"
-    context += "   - 仅更新text字段，保持其他字段不变\n"
-    context += "   - 处理完成后必须说'继续05流程'来自动进入下一批处理\n"
+    context += "⚠️ 重要：只处理这一个章节，完成后Stop Hook会自动触发下一章节！\n"
 
     return context
+
 
 def determine_word_limit(chapter_id):
     """根据章节层级自动确定字数"""
