@@ -1,7 +1,7 @@
 {
   "title": "档口实体",
   "text": "描述档口实体属性：档口ID、名称、所属食堂、联系方式、营业状态等管理信息。",
-  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-stalls.png",
+  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-stall.svg",
   "prompt": "请撰写《档口实体》的正文，要求结合实体概念图描述档口实体的属性设计和管理信息，并在正文中说明该实体图所表达的档口数据结构和管理关系，确保涵盖text中的要点，字数参考word_limit配置。",
   "word_limit": 70,
   "id": "3.4.1.4",
