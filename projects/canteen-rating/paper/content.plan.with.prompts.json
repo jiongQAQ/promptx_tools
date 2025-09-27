@@ -243,36 +243,50 @@
       {
         "title": "用户实体",
         "text": "描述用户实体的核心属性：用户ID、用户名、密码、角色、注册时间等，定义用户状态与权限关系。",
-        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-users.png",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-user.svg",
         "prompt": "请撰写《用户实体》的正文，要求结合实体概念图描述用户实体的属性设计和业务含义，并在正文中说明该实体图所表达的用户数据结构和关系，确保涵盖text中的要点，字数参考word_limit配置。",
         "word_limit": 70
       },
       {
         "title": "菜品实体",
         "text": "描述菜品实体属性：菜品ID、名称、价格、分类、所属档口、状态等核心字段及业务约束。",
-        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-dishes.png",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-dish.svg",
         "prompt": "请撰写《菜品实体》的正文，要求结合实体概念图描述菜品实体的属性设计和业务约束，并在正文中说明该实体图所表达的菜品数据结构和关系，确保涵盖text中的要点，字数参考word_limit配置。",
         "word_limit": 70
       },
       {
         "title": "评分实体",
         "text": "描述评分实体结构：评分ID、用户ID、菜品ID、评分值、评价内容、提交时间等字段关系。",
-        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-ratings.png",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-rating.svg",
         "prompt": "请撰写《评分实体》的正文，要求结合实体概念图描述评分实体的属性设计和关联关系，并在正文中说明该实体图所表达的评分数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
         "word_limit": 70
       },
       {
         "title": "档口实体",
         "text": "描述档口实体属性：档口ID、名称、所属食堂、联系方式、营业状态等管理信息。",
-        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-stalls.png",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-stall.svg",
         "prompt": "请撰写《档口实体》的正文，要求结合实体概念图描述档口实体的属性设计和管理信息，并在正文中说明该实体图所表达的档口数据结构和管理关系，确保涵盖text中的要点，字数参考word_limit配置。",
         "word_limit": 70
       },
       {
         "title": "投诉实体",
         "text": "描述投诉建议实体：投诉ID、用户ID、内容、类型、处理状态、处理结果等流程字段。",
-        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-complaints.png",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-complaint.svg",
         "prompt": "请撰写《投诉实体》的正文，要求结合实体概念图描述投诉建议实体的属性设计和流程状态，并在正文中说明该实体图所表达的投诉数据结构和处理流程，确保涵盖text中的要点，字数参考word_limit配置。",
+        "word_limit": 70
+      },
+      {
+        "title": "食堂实体",
+        "text": "描述食堂实体属性：食堂ID、名称、地址、联系方式、营业时间、状态等基础管理信息。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-canteen.svg",
+        "prompt": "请撰写《食堂实体》的正文，要求结合实体概念图描述食堂实体的属性设计和管理信息，并在正文中说明该实体图所表达的食堂数据结构和管理关系，确保涵盖text中的要点，字数参考word_limit配置。",
+        "word_limit": 70
+      },
+      {
+        "title": "敏感词实体",
+        "text": "描述敏感词实体结构：敏感词ID、词汇内容、类型、状态、创建时间等内容审核管理字段。",
+        "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-sensitive_word.svg",
+        "prompt": "请撰写《敏感词实体》的正文，要求结合实体概念图描述敏感词实体的属性设计和管理机制，并在正文中说明该实体图所表达的敏感词数据结构和审核流程，确保涵盖text中的要点，字数参考word_limit配置。",
         "word_limit": 70
       }
     ]
@@ -347,7 +361,58 @@
     "title": "数据库详细设计",
     "text": "详细设计核心数据表结构，明确字段类型、约束条件、索引设计、数据关系等数据库实现细节。",
     "prompt": "请基于源码和论文主题，撰写《数据库详细设计》的正文，要求学术化表达，详细说明数据库表结构的设计细节和实现规范，确保涵盖text中的要点，字数参考word_limit配置。",
-    "word_limit": 350
+    "word_limit": 350,
+    "items": [
+      {
+        "title": "用户表",
+        "text": "用户表，主要储存了本系统用户的相关信息，其中包含编号 (id)、用户名 (username)、密码 (password)、角色 (role)、创建时间 (created_time)、更新时间 (updated_time)、是否删除 (is_deleted)，用户表的数据库设计如下表，表4-1 用户表 user所示。",
+        "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-user.json",
+        "prompt": "请基于源码和论文主题，撰写《用户表》的正文，要求学术化表达，详细说明用户表的字段设计和约束条件，并在正文中结合三线表说明该表的数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
+        "word_limit": 70
+      },
+      {
+        "title": "食堂表",
+        "text": "食堂表，主要储存了本系统食堂的相关信息，其中包含编号 (id)、名称 (name)、地址 (address)、联系方式 (contact)、营业时间 (business_hours)、状态 (status)、创建时间 (created_time)、更新时间 (updated_time)，食堂表的数据库设计如下表，表4-2 食堂表 canteen所示。",
+        "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-canteen.json",
+        "prompt": "请基于源码和论文主题，撰写《食堂表》的正文，要求学术化表达，详细说明食堂表的字段设计和约束条件，并在正文中结合三线表说明该表的数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
+        "word_limit": 70
+      },
+      {
+        "title": "档口表",
+        "text": "档口表，主要储存了本系统档口的相关信息，其中包含编号 (id)、名称 (name)、食堂编号 (canteen_id)、联系方式 (contact)、营业时间 (business_hours)、状态 (status)、创建时间 (created_time)，档口表的数据库设计如下表，表4-3 档口表 stall所示。",
+        "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-stall.json",
+        "prompt": "请基于源码和论文主题，撰写《档口表》的正文，要求学术化表达，详细说明档口表的字段设计和约束条件，并在正文中结合三线表说明该表的数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
+        "word_limit": 70
+      },
+      {
+        "title": "菜品表",
+        "text": "菜品表，主要储存了本系统菜品的相关信息，其中包含编号 (id)、名称 (name)、档口编号 (stall_id)、发布时间 (publish_date)、价格 (price)、描述 (description)、图片路径 (image_path)、平均评分 (average_rating)、评分数量 (rating_count)、创建时间 (created_time)、更新时间 (updated_time)、是否删除 (is_deleted)，菜品表的数据库设计如下表，表4-4 菜品表 dish所示。",
+        "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-dish.json",
+        "prompt": "请基于源码和论文主题，撰写《菜品表》的正文，要求学术化表达，详细说明菜品表的字段设计和约束条件，并在正文中结合三线表说明该表的数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
+        "word_limit": 70
+      },
+      {
+        "title": "评分表",
+        "text": "评分表，主要储存了本系统评分的相关信息，其中包含编号 (id)、用户编号 (user_id)、菜品编号 (dish_id)、评分值 (rating_value)、评价内容 (comment)、图片路径 (image_path)、状态 (status)、创建时间 (created_time)、更新时间 (updated_time)、是否删除 (is_deleted)，评分表的数据库设计如下表，表4-5 评分表 rating所示。",
+        "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-rating.json",
+        "prompt": "请基于源码和论文主题，撰写《评分表》的正文，要求学术化表达，详细说明评分表的字段设计和约束条件，并在正文中结合三线表说明该表的数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
+        "word_limit": 70
+      },
+      {
+        "title": "投诉表",
+        "text": "投诉表，主要储存了本系统投诉的相关信息，其中包含编号 (id)、用户编号 (user_id)、投诉内容 (content)、投诉类型 (type)、相关编号 (related_id)、状态 (status)、处理人编号 (handler_id)、处理结果 (result)、处理时间 (handle_time)、创建时间 (created_time)、更新时间 (updated_time)，投诉表的数据库设计如下表，表4-6 投诉表 complaint所示。",
+        "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-complaint.json",
+        "prompt": "请基于源码和论文主题，撰写《投诉表》的正文，要求学术化表达，详细说明投诉表的字段设计和约束条件，并在正文中结合三线表说明该表的数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
+        "word_limit": 70
+      },
+      {
+        "title": "敏感词表",
+        "text": "敏感词表，主要储存了本系统敏感词的相关信息，其中包含编号 (id)、词汇 (word)、类型 (type)、状态 (status)、创建时间 (created_time)、更新时间 (updated_time)，敏感词表的数据库设计如下表，表4-7 敏感词表 sensitive_word所示。",
+        "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-sensitive_word.json",
+        "prompt": "请基于源码和论文主题，撰写《敏感词表》的正文，要求学术化表达，详细说明敏感词表的字段设计和约束条件，并在正文中结合三线表说明该表的数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
+        "word_limit": 70
+      }
+    ]
   },
   {
     "id": "4.3",
