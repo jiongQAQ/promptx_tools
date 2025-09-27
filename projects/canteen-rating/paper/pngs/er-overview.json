@@ -1,7 +1,0 @@
-{
-  "id": "3.4.2",
-  "title": "数据库逻辑设计",
-  "text": "系统数据库采用关系型设计，各实体间通过主外键建立关联关系。用户与评分、投诉为一对多关系；食堂与档口为一对多关系；档口与菜品为一对多关系；菜品与评分为一对多关系。设计中考虑了数据完整性约束和索引优化。",
-  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/er-overview.png",
-  "prompt": "请基于源码和论文主题，撰写《数据库逻辑设计》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
-}

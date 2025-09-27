@@ -1,7 +1,0 @@
-{
-  "id": "5.2.4",
-  "title": "投诉建议管理的实现",
-  "text": "实现了投诉提交、状态跟踪、处理回复等功能。采用状态机模式管理投诉处理流程，支持消息通知和邮件提醒。前端提供友好的投诉表单和状态展示界面。",
-  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/impl-complaint-management.png",
-  "prompt": "请基于源码和论文主题，撰写《投诉建议管理的实现》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
-}

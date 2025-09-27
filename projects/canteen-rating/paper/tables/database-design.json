@@ -1,7 +1,0 @@
-{
-  "id": "4.2",
-  "title": "数据库详细设计",
-  "text": "本节详细描述系统核心表的结构设计，包括字段定义、数据类型、约束条件和索引策略。重点关注数据完整性和查询性能的平衡。",
-  "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/database-design.json",
-  "prompt": "请基于源码和论文主题，撰写《数据库详细设计》的正文，要求学术化表达，在正文中说明该表格的数据结构和作用，并扩展分析其设计合理性，确保涵盖 text 中的要点，字数参考 length.target 配置。"
-}

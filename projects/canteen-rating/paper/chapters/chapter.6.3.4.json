@@ -1,7 +1,0 @@
-{
-  "id": "6.3.4",
-  "title": "投诉建议管理功能测试",
-  "text": "测试投诉提交、状态跟踪、处理回复等功能。验证投诉分类、处理流程、通知机制等特性。测试投诉统计和报表功能。",
-  "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/tables/test-complaint-management.json",
-  "prompt": "请基于源码和论文主题，撰写《投诉建议管理功能测试》的正文，要求学术化表达，在正文中说明该表格的数据结构和作用，并扩展分析其设计合理性，确保涵盖 text 中的要点，字数参考 length.target 配置。"
-}

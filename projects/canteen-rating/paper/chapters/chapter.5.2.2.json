@@ -1,7 +1,0 @@
-{
-  "id": "5.2.2",
-  "title": "菜品评分管理的实现",
-  "text": "实现了评分提交、评价展示、统计计算等功能。采用异步处理机制更新评分数据，使用Redis缓存热点数据提升查询性能。前端使用Element Plus评分组件提供良好的用户体验。",
-  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/impl-rating-management.png",
-  "prompt": "请基于源码和论文主题，撰写《菜品评分管理的实现》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
-}

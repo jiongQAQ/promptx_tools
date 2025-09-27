@@ -1,6 +1,0 @@
-{
-  "id": "0.3",
-  "title": "Keywords",
-  "text": "canteen rating system; campus service management; Spring Boot; Vue.js; MyBatis Plus; front-end and back-end separation; user evaluation system; data statistical analysis; permission control; RESTful API",
-  "prompt": "请基于源码和论文主题，撰写《Keywords》的正文，要求学术化表达，扩展说明相关技术要点和实现细节，确保涵盖 text 中的要点，字数参考 length.target 配置。"
-}

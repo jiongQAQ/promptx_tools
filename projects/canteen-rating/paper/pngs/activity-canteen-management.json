@@ -1,7 +1,0 @@
-{
-  "id": "4.1.3",
-  "title": "食堂档口管理的详细设计",
-  "text": "食堂档口管理模块支持食堂、档口、菜品信息的增删改查操作。通过活动图展示管理流程，包括信息录入、数据校验、状态更新等步骤。时序图描述多级关联数据的操作协调机制。",
-  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-canteen-management.png",
-  "prompt": "请基于源码和论文主题，撰写《食堂档口管理的详细设计》的正文，要求学术化表达，在正文中结合 text 描述该图所表达的架构/关系/流程，并保持学术化风格，确保涵盖 text 中的要点，字数参考 length.target 配置。"
-}
