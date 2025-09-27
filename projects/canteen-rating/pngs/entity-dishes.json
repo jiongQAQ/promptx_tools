@@ -1,0 +1,11 @@
+{
+  "title": "菜品实体",
+  "text": "描述菜品实体属性：菜品ID、名称、价格、分类、所属档口、状态等核心字段及业务约束。",
+  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-dishes.png",
+  "prompt": "请撰写《菜品实体》的正文，要求结合实体概念图描述菜品实体的属性设计和业务约束，并在正文中说明该实体图所表达的菜品数据结构和关系，确保涵盖text中的要点，字数参考word_limit配置。",
+  "word_limit": 70,
+  "id": "3.4.1.2",
+  "parentChapter": "3.4.1",
+  "sourceFile": "chapter.3.4.1.json",
+  "extractedAt": "2025-09-27T15:57:42.773Z"
+}

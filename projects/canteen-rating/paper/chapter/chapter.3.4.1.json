@@ -1,0 +1,43 @@
+{
+  "id": "3.4.1",
+  "title": "数据库概念设计",
+  "word_limit": 350,
+  "content": "数据库概念设计基于实体关系模型（E-R模型）进行，通过分析业务需求识别出五个核心实体及其属性和关系。用户实体作为系统的主体，包含用户ID（主键）、用户名、密码哈希值、角色类型、注册时间、最后登录时间等属性，支持学生、教职工、管理员等不同角色的权限控制。菜品实体承载评价对象信息，包括菜品ID（主键）、菜品名称、价格、分类、描述、所属档口ID（外键）、状态标识等属性，通过外键关联档口实体实现数据关联。评分实体作为核心业务实体，记录用户对菜品的评价信息，包含评分ID（主键）、用户ID（外键）、菜品ID（外键）、评分值、评价内容、提交时间等属性，通过外键约束确保数据完整性。档口实体管理食堂基础信息，包含档口ID（主键）、档口名称、所属食堂、联系方式、营业时间、状态等属性，为菜品管理提供组织结构支撑。投诉实体处理用户反馈信息，包含投诉ID（主键）、用户ID（外键）、投诉内容、问题类型、处理状态、处理结果、创建时间、更新时间等属性，支持完整的投诉处理流程。各实体间通过主外键关系建立关联约束：用户与评分、投诉为一对多关系；档口与菜品为一对多关系；菜品与评分为一对多关系。这种设计确保了数据的一致性、完整性和可维护性。",
+  "items": [
+    {
+      "title": "用户实体",
+      "text": "描述用户实体的核心属性：用户ID、用户名、密码、角色、注册时间等，定义用户状态与权限关系。",
+      "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-users.png",
+      "prompt": "请撰写《用户实体》的正文，要求结合实体概念图描述用户实体的属性设计和业务含义，并在正文中说明该实体图所表达的用户数据结构和关系，确保涵盖text中的要点，字数参考word_limit配置。",
+      "word_limit": 70
+    },
+    {
+      "title": "菜品实体",
+      "text": "描述菜品实体属性：菜品ID、名称、价格、分类、所属档口、状态等核心字段及业务约束。",
+      "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-dishes.png",
+      "prompt": "请撰写《菜品实体》的正文，要求结合实体概念图描述菜品实体的属性设计和业务约束，并在正文中说明该实体图所表达的菜品数据结构和关系，确保涵盖text中的要点，字数参考word_limit配置。",
+      "word_limit": 70
+    },
+    {
+      "title": "评分实体",
+      "text": "描述评分实体结构：评分ID、用户ID、菜品ID、评分值、评价内容、提交时间等字段关系。",
+      "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-ratings.png",
+      "prompt": "请撰写《评分实体》的正文，要求结合实体概念图描述评分实体的属性设计和关联关系，并在正文中说明该实体图所表达的评分数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
+      "word_limit": 70
+    },
+    {
+      "title": "档口实体",
+      "text": "描述档口实体属性：档口ID、名称、所属食堂、联系方式、营业状态等管理信息。",
+      "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-stalls.png",
+      "prompt": "请撰写《档口实体》的正文，要求结合实体概念图描述档口实体的属性设计和管理信息，并在正文中说明该实体图所表达的档口数据结构和管理关系，确保涵盖text中的要点，字数参考word_limit配置。",
+      "word_limit": 70
+    },
+    {
+      "title": "投诉实体",
+      "text": "描述投诉建议实体：投诉ID、用户ID、内容、类型、处理状态、处理结果等流程字段。",
+      "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/entity-complaints.png",
+      "prompt": "请撰写《投诉实体》的正文，要求结合实体概念图描述投诉建议实体的属性设计和流程状态，并在正文中说明该实体图所表达的投诉数据结构和处理流程，确保涵盖text中的要点，字数参考word_limit配置。",
+      "word_limit": 70
+    }
+  ]
+}

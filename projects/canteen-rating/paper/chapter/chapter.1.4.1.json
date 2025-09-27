@@ -1,0 +1,8 @@
+{
+  "id": "1.4.1",
+  "title": "Spring Boot框架",
+  "text": "介绍Spring Boot微服务框架的核心特性、自动配置机制、依赖注入等核心概念，说明其在企业级应用开发中的优势与适用场景。",
+  "prompt": "请基于源码和论文主题，撰写《Spring Boot框架》的正文，要求学术化表达，深入介绍Spring Boot的技术特点和在项目中的应用优势，确保涵盖text中的要点，字数参考word_limit配置。",
+  "word_limit": 200,
+  "content": "Spring Boot是基于Spring Framework的开源Java微服务框架，旨在简化Spring应用程序的创建和部署过程。其核心特性包括自动配置（Auto Configuration）、起步依赖（Starter Dependencies）和嵌入式服务器支持。自动配置机制通过智能感知应用程序的类路径依赖，自动装配相应的Bean配置，极大地减少了传统Spring应用的XML配置工作量。起步依赖功能提供了一系列预定义的依赖集合，开发者只需添加相应的starter即可获得完整的功能模块。依赖注入（Dependency Injection）作为Spring的核心概念，通过控制反转（IoC）容器管理对象生命周期和依赖关系，实现了松耦合的系统架构。在企业级应用开发中，Spring Boot具有显著优势：开发效率高，通过约定优于配置的设计理念简化开发流程；部署便捷，内嵌Tomcat等服务器支持独立运行；监控完善，提供Actuator等生产级特性；生态丰富，与Spring Cloud、Spring Security等组件无缝集成。本项目采用Spring Boot 2.7.18版本构建后端服务，充分利用其微服务架构优势和丰富的企业级功能。"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "2.2.3",
+  "title": "系统用例图",
+  "word_limit": 300,
+  "content": "系统用例图从不同角色视角全面展示了食堂评价管理系统的功能边界和交互关系。通过UML用例建模方法，明确定义了各类用户与系统的交互场景和功能范围。普通用户用例图展示了最基础的系统交互流程，包括用户注册登录作为系统访问的前置条件，浏览菜品信息获取基础数据，提交评分和评论实现核心评价功能，查看历史评价了解服务质量趋势，以及投诉建议功能保障用户权益表达渠道。这些用例构成了用户参与食堂评价的完整业务链条。管理员用例图体现了中层管理功能，涵盖档口信息管理维护基础数据准确性，菜品信息管理确保产品信息时效性，投诉处理管理建立问题响应机制，数据查看功能支持业务决策分析。管理员角色承担着连接用户需求与系统运营的桥梁作用。系统管理员用例图展现了最高级别的系统控制功能，包括用户账户管理维护系统安全，权限配置管理实现精细化访问控制，数据统计分析提供决策支持，系统监控功能确保平台稳定运行。三类用例图共同构建了层次分明、职责清晰的系统功能架构，为后续详细设计提供了重要依据。",
+  "items": [
+    {
+      "title": "普通用户用例",
+      "text": "展示用户注册登录、浏览菜品、提交评分、查看评价、投诉建议等核心用例及其关系。",
+      "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/usecase-user.png",
+      "prompt": "请撰写《普通用户用例》的正文，要求结合用例图描述普通用户的主要功能操作和业务流程，并在正文中说明该用例图所表达的用户行为和系统边界，确保涵盖text中的要点，字数参考word_limit配置。",
+      "word_limit": 100
+    },
+    {
+      "title": "管理员用例",
+      "text": "展示档口管理、菜品管理、投诉处理、数据查看等管理功能用例。",
+      "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/usecase-admin.png",
+      "prompt": "请撰写《管理员用例》的正文，要求结合用例图描述管理员的核心管理功能和操作权限，并在正文中说明该用例图所表达的管理流程和功能范围，确保涵盖text中的要点，字数参考word_limit配置。",
+      "word_limit": 100
+    },
+    {
+      "title": "系统管理员用例",
+      "text": "展示用户管理、权限配置、数据统计、系统监控等高级管理用例。",
+      "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/usecase-system-admin.png",
+      "prompt": "请撰写《系统管理员用例》的正文，要求结合用例图描述系统管理员的高级管理功能和系统配置权限，并在正文中说明该用例图所表达的系统管理架构和控制范围，确保涵盖text中的要点，字数参考word_limit配置。",
+      "word_limit": 100
+    }
+  ]
+}

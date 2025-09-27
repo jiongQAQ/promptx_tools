@@ -1,0 +1,8 @@
+{
+  "id": "4.2",
+  "title": "数据库详细设计",
+  "text": "详细设计核心数据表结构，明确字段类型、约束条件、索引设计、数据关系等数据库实现细节。",
+  "prompt": "请基于源码和论文主题，撰写《数据库详细设计》的正文，要求学术化表达，详细说明数据库表结构的设计细节和实现规范，确保涵盖text中的要点，字数参考word_limit配置。",
+  "word_limit": 350,
+  "content": "数据库详细设计基于MySQL 8.0进行，遵循第三范式设计原则，确保数据一致性和完整性。用户表(users)设计包含id(BIGINT主键，自增)、username(VARCHAR(50)唯一索引)、password(VARCHAR(255)存储BCrypt哈希值)、role(ENUM类型，包含USER、ADMIN、SYSTEM_ADMIN)、created_at和updated_at(TIMESTAMP类型)、deleted(TINYINT逻辑删除标识)等字段。菜品表(dishes)包含id主键、name(VARCHAR(100))、price(DECIMAL(8,2))、category(VARCHAR(50))、description(TEXT)、stall_id外键、status(ENUM类型)、average_rating(DECIMAL(3,2))等字段，通过stall_id与档口表建立关联。评分表(ratings)包含id主键、user_id和dish_id外键、rating_value(TINYINT，1-5范围)、comment(TEXT)、created_at等字段，建立(user_id, dish_id)唯一复合索引防止重复评分。档口表(stalls)包含id主键、name、canteen_name、contact_info、business_hours、status等字段。投诉表(complaints)包含id主键、user_id外键、content(TEXT)、type(ENUM类型)、status(ENUM包含SUBMITTED、PROCESSING、COMPLETED、CLOSED)、handler_id、result(TEXT)、created_at、updated_at等字段。索引设计方面，除主键索引外，创建外键索引提升关联查询性能，为frequently查询字段如username、stall_id、user_id等建立普通索引，为评分统计查询建立(dish_id, created_at)复合索引。约束条件包括外键约束保证数据完整性、CHECK约束限制评分范围、NOT NULL约束确保必填字段。采用InnoDB存储引擎支持事务和外键约束，字符集使用utf8mb4支持全字符集存储。"
+}
