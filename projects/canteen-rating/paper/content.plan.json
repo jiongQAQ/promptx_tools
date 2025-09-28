@@ -286,6 +286,7 @@
     "title": "用户认证管理的详细设计",
     "text": "设计用户注册、登录、权限验证的完整流程，包括密码加密、JWT令牌生成、权限检查等安全机制的具体实现方案。",
     "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-user-auth.png",
+    "imagePathSequence": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/sequence-user-auth.png",
     "word_limit": 400
   },
   {
@@ -293,6 +294,7 @@
     "title": "菜品评分管理的详细设计",
     "text": "设计菜品浏览、评分提交、评价展示的业务流程，包括评分算法、数据验证、重复评分控制等核心逻辑的实现。",
     "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-dish-rating.png",
+    "imagePathSequence": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/sequence-dish-rating.png",
     "word_limit": 400
   },
   {
@@ -300,6 +302,7 @@
     "title": "食堂档口管理的详细设计",
     "text": "设计档口信息管理、菜品管理、状态控制的管理流程，包括数据校验、权限控制、级联操作等管理逻辑。",
     "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-stall-management.png",
+    "imagePathSequence": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/sequence-stall-management.png",
     "word_limit": 400
   },
   {
@@ -307,6 +310,7 @@
     "title": "投诉建议管理的详细设计",
     "text": "设计投诉提交、审核处理、状态跟踪的完整工作流，包括敏感词过滤、分类处理、响应时限等服务质量保障机制。",
     "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-complaint-handling.png",
+    "imagePathSequence": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/sequence-complaint-handling.png",
     "word_limit": 400
   },
   {
@@ -314,6 +318,7 @@
     "title": "系统统计管理的详细设计",
     "text": "设计数据统计、报表生成、趋势分析的数据处理流程，包括多维度统计算法、缓存策略、报表导出等功能实现。",
     "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/activity-statistics.png",
+    "imagePathSequence": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/sequence-statistics.png",
     "word_limit": 400
   },
   {
