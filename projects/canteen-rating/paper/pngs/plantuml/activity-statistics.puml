@@ -1,0 +1,101 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam activity {
+  BackgroundColor #E1F5FE
+  BorderColor #0277BD
+  FontSize 12
+}
+skinparam arrow {
+  Color #0277BD
+  FontSize 10
+}
+skinparam diamond {
+  BackgroundColor #FFF3E0
+  BorderColor #F57C00
+  FontSize 11
+}
+skinparam linetype ortho
+
+start
+:接收统计分析请求;
+:确定统计维度和参数;
+note right: 时间维度：日、周、月、季、年\n空间维度：档口、食堂、校区\n业务维度：评分、投诉、用户活跃度
+
+:检查多级缓存;
+if (Redis缓存命中?) then (是)
+  :返回缓存结果;
+  stop
+elseif (应用层缓存命中?) then (是)
+  :返回Spring Cache结果;
+  stop
+elseif (物化视图可用?) then (是)
+  :从数据库预计算结果获取;
+  stop
+endif
+
+:评估数据量大小;
+if (数据量级别?) then (小数据量)
+  :实时SQL聚合计算;
+  note right: COUNT、SUM、AVG、MAX、MIN\n直接聚合函数处理
+elseif (大数据量) then
+  :MapReduce并行处理;
+  note right: 拆分为多个子任务\n并行计算后合并结果
+
+  :消息队列分发任务;
+  :后台异步处理;
+  note right: 避免阻塞用户界面\nWebSocket实时推送进度
+endif
+
+:趋势分析算法处理;
+note left: 时间序列分析\n移动平均、指数平滑\n识别变化趋势和周期性
+
+:数据一致性检查;
+fork
+  :异常值检测;
+fork again
+  :业务逻辑验证;
+end fork
+
+:统计结果生成;
+
+:报表格式选择;
+if (报表类型?) then (在线报表)
+  :ECharts动态图表;
+  note right: 柱状图、折线图\n饼图、热力图等
+elseif (离线报表) then
+  if (导出格式?) then (Excel)
+    :POI库Excel生成;
+  elseif (PDF) then
+    :iText库PDF生成;
+  endif
+endif
+
+:可配置报表模板;
+note left: 自定义报表字段\n统计周期、图表类型
+
+:更新多级缓存;
+fork
+  :Redis缓存存储;
+  note right: 动态调整有效期
+fork again
+  :Spring Cache更新;
+fork again
+  :物化视图刷新;
+  note right: 定时刷新保证准确性
+end fork
+
+:缓存失效策略处理;
+note left: 主动失效：数据更新时清除\n被动失效：超时后重新计算
+
+:Quartz定时任务调度;
+if (定期报表?) then (是)
+  :生成日报、周报、月报;
+  :邮件自动发送;
+  :系统消息通知;
+endif
+
+:统计分析完成;
+stop
+
+@enduml

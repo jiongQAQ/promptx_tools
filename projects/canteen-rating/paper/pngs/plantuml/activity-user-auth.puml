@@ -1,0 +1,120 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam activity {
+  BackgroundColor #E1F5FE
+  BorderColor #0277BD
+  FontSize 12
+}
+skinparam arrow {
+  Color #0277BD
+  FontSize 10
+}
+skinparam diamond {
+  BackgroundColor #FFF3E0
+  BorderColor #F57C00
+  FontSize 11
+}
+skinparam linetype ortho
+
+start
+
+if (操作类型?) then (用户注册)
+  :接收注册信息;
+  :用户名唯一性检查;
+
+  if (用户名已存在?) then (是)
+    :返回用户名重复错误;
+    stop
+  endif
+
+  :密码强度验证;
+  note right: 要求包含字母、数字\n和特殊字符
+
+  if (密码强度不足?) then (是)
+    :返回密码强度错误;
+    stop
+  endif
+
+  :BCrypt算法密码加密;
+  note left: 12轮加密强度\n单向哈希加密
+
+  :生成唯一用户ID;
+  :创建用户记录;
+  note right: 默认角色为普通用户
+
+  :注册成功;
+
+elseif (用户登录) then
+  :接收登录凭据;
+  :输入验证和SQL注入防护;
+
+  :根据用户名查询数据库;
+
+  if (用户不存在?) then (是)
+    :返回用户不存在错误;
+    stop
+  endif
+
+  :BCrypt密码哈希值验证;
+
+  if (密码验证失败?) then (是)
+    :返回密码错误;
+    stop
+  endif
+
+  :生成JWT访问令牌;
+  note right: 包含用户ID、角色信息、过期时间\nHMAC-SHA256算法签名
+
+  :设置令牌有效期24小时;
+  :更新最后登录时间;
+  :登录成功;
+
+elseif (权限验证) then
+  :Spring Security拦截器验证;
+  :解析JWT令牌;
+
+  :令牌有效性检查;
+  fork
+    :检查令牌完整性;
+  fork again
+    :检查令牌过期时间;
+  fork again
+    :验证令牌签名;
+  end fork
+
+  if (令牌验证失败?) then (是)
+    :返回401未授权;
+    stop
+  endif
+
+  :获取用户身份和权限信息;
+  :权限匹配检查;
+
+  if (权限不足?) then (是)
+    :返回403禁止访问;
+    stop
+  endif
+
+  :权限验证通过;
+endif
+
+:会话管理机制;
+fork
+  :单设备登录限制;
+fork again
+  :异常登录检测;
+fork again
+  :自动登出机制;
+end fork
+
+:安全控制点验证;
+note left: 输入验证防注入攻击\n密码加密保护隐私\n令牌签名防篡改\n权限检查确保访问控制
+
+:记录审计日志;
+note right: 记录安全事件\n用于安全分析
+
+:认证流程完成;
+stop
+
+@enduml

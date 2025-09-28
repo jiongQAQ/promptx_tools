@@ -1,0 +1,93 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam usecase {
+  BackgroundColor #E8F5E8
+  BorderColor #2E7D32
+  FontSize 12
+}
+skinparam actor {
+  BackgroundColor #FFF3E0
+  BorderColor #F57C00
+  FontSize 12
+}
+skinparam arrow {
+  Color #2E7D32
+  FontSize 10
+}
+skinparam linetype ortho
+
+left to right direction
+
+actor "系统管理员" as SystemAdmin
+
+rectangle "食堂评价管理系统" {
+
+  package "用户管理" {
+    usecase "用户账户管理" as UC1
+    usecase "角色权限配置" as UC2
+    usecase "用户行为监控" as UC3
+  }
+
+  package "权限配置" {
+    usecase "系统权限设置" as UC4
+    usecase "功能模块控制" as UC5
+    usecase "数据访问控制" as UC6
+  }
+
+  package "数据统计" {
+    usecase "全局数据统计" as UC7
+    usecase "业务报表生成" as UC8
+    usecase "数据趋势分析" as UC9
+    usecase "统计报表导出" as UC10
+  }
+
+  package "系统监控" {
+    usecase "系统性能监控" as UC11
+    usecase "日志审计管理" as UC12
+    usecase "异常告警处理" as UC13
+    usecase "系统备份恢复" as UC14
+  }
+
+  package "系统配置" {
+    usecase "参数配置管理" as UC15
+    usecase "敏感词库维护" as UC16
+    usecase "系统安全配置" as UC17
+  }
+}
+
+' 系统管理员与用例的关联
+SystemAdmin --> UC1
+SystemAdmin --> UC2
+SystemAdmin --> UC3
+SystemAdmin --> UC4
+SystemAdmin --> UC5
+SystemAdmin --> UC6
+SystemAdmin --> UC7
+SystemAdmin --> UC8
+SystemAdmin --> UC9
+SystemAdmin --> UC10
+SystemAdmin --> UC11
+SystemAdmin --> UC12
+SystemAdmin --> UC13
+SystemAdmin --> UC14
+SystemAdmin --> UC15
+SystemAdmin --> UC16
+SystemAdmin --> UC17
+
+' 用例之间的关系
+UC1 ..> UC2 : <<include>>
+UC2 ..> UC4 : <<extend>>
+UC7 ..> UC8 : <<include>>
+UC8 ..> UC10 : <<extend>>
+UC11 ..> UC13 : <<extend>>
+UC12 ..> UC13 : <<include>>
+
+' 约束说明
+note right of UC2 : RBAC角色权限模型\n细粒度权限控制
+
+note bottom of UC11 : 实时监控系统性能\n自动告警和通知机制
+
+note left of UC16 : Trie树算法敏感词\n动态更新词库
+
+@enduml

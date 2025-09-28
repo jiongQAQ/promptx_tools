@@ -1,0 +1,11 @@
+{
+  "title": "系统管理员用例",
+  "text": "展示用户管理、权限配置、数据统计、系统监控等高级管理用例。",
+  "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/pngs/usecase-system-admin.png",
+  "prompt": "请撰写《系统管理员用例》的正文，要求结合用例图描述系统管理员的高级管理功能和系统配置权限，并在正文中说明该用例图所表达的系统管理架构和控制范围，确保涵盖text中的要点，字数参考word_limit配置。",
+  "word_limit": 100,
+  "id": "2.2.3.3",
+  "parentChapter": "2.2.3",
+  "sourceFile": "chapter.2.2.3.json",
+  "extractedAt": "2025-09-28T03:11:38.489Z"
+}

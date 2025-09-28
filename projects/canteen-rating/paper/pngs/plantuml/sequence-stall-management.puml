@@ -1,0 +1,164 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam sequence {
+  ArrowColor #0277BD
+  LifeLineBorderColor #0277BD
+  LifeLineBackgroundColor #E1F5FE
+  ParticipantBorderColor #0277BD
+  ParticipantBackgroundColor #E1F5FE
+  ParticipantFontSize 12
+  MessageAlignment center
+}
+skinparam note {
+  BackgroundColor #FFF9C4
+  BorderColor #F57F17
+}
+skinparam linetype ortho
+
+participant "管理界面" as UI
+participant "StallController" as Controller
+participant "Spring Security" as Security
+participant "StallService" as Service
+participant "DishService" as DishService
+participant "MyBatis Plus" as Mapper
+participant "数据库" as DB
+
+== 权限验证阶段 ==
+
+UI -> Controller: 访问档口管理
+activate Controller
+Controller -> Security: @PreAuthorize权限检查
+activate Security
+Security -> Security: 验证用户角色
+note right: 检查是否为管理员\n或系统管理员角色
+Security --> Controller: 权限验证结果
+deactivate Security
+
+alt 权限不足
+  Controller --> UI: 403 权限不足错误
+else 权限验证通过
+  Controller --> UI: 显示管理界面
+  deactivate Controller
+end
+
+== 档口信息管理 ==
+
+UI -> Controller: POST /api/admin/stalls
+note right: 档口新增请求
+activate Controller
+
+Controller -> Service: 创建档口
+activate Service
+
+Service -> Service: 数据完整性校验
+note right: 档口名称唯一性检查\n联系方式格式验证\n营业时间合理性验证
+
+alt 数据校验失败
+  Service --> Controller: 数据验证异常
+  Controller --> UI: 400 数据错误
+else 校验通过
+  Service -> Mapper: 保存档口信息
+  activate Mapper
+  Mapper -> DB: INSERT INTO stalls
+  activate DB
+  DB --> Mapper: 插入结果
+  deactivate DB
+  Mapper --> Service: 档口创建成功
+  deactivate Mapper
+
+  Service --> Controller: 档口创建完成
+  deactivate Service
+  Controller --> UI: 201 创建成功
+  deactivate Controller
+end
+
+== 档口修改操作 ==
+
+UI -> Controller: PUT /api/admin/stalls/{id}
+note right: 档口修改请求
+activate Controller
+
+Controller -> Service: 更新档口信息
+activate Service
+
+Service -> Mapper: 查询当前版本
+activate Mapper
+Mapper -> DB: SELECT version FROM stalls WHERE id=?
+activate DB
+DB --> Mapper: 当前版本号
+deactivate DB
+Mapper --> Service: 版本信息
+deactivate Mapper
+
+Service -> Service: 乐观锁版本控制
+note right: 检查version字段\n防止并发修改冲突
+
+Service -> Mapper: 更新档口信息
+activate Mapper
+Mapper -> DB: UPDATE stalls SET ... WHERE id=? AND version=?
+activate DB
+
+alt 版本冲突
+  DB --> Mapper: 更新影响行数=0
+  Mapper --> Service: 并发冲突异常
+  Service --> Controller: 409 冲突错误
+  Controller --> UI: 并发修改冲突
+else 更新成功
+  DB --> Mapper: 更新成功
+  deactivate DB
+  Mapper --> Service: 档口更新完成
+  deactivate Mapper
+  Service --> Controller: 更新成功
+  deactivate Service
+  Controller --> UI: 200 更新成功
+  deactivate Controller
+end
+
+== 状态控制与级联操作 ==
+
+UI -> Controller: PATCH /api/admin/stalls/{id}/status
+note right: 状态变更请求
+activate Controller
+
+Controller -> Service: 更新档口状态
+activate Service
+
+alt 状态变更为暂停营业
+  Service -> DishService: 级联下架关联菜品
+  activate DishService
+  DishService -> Mapper: 批量更新菜品状态
+  activate Mapper
+  Mapper -> DB: UPDATE dishes SET status='OFFLINE' WHERE stall_id=?
+  activate DB
+  note right: 避免用户对不可用\n菜品进行评分
+  DB --> Mapper: 批量更新结果
+  deactivate DB
+  Mapper --> DishService: 菜品状态更新完成
+  deactivate Mapper
+  DishService --> Service: 级联操作完成
+  deactivate DishService
+end
+
+Service -> Mapper: 更新档口状态
+activate Mapper
+Mapper -> DB: UPDATE stalls SET status=?
+activate DB
+DB --> Mapper: 状态更新成功
+deactivate DB
+Mapper --> Service: 档口状态更新完成
+deactivate Mapper
+
+Service -> Service: 记录操作日志
+note right: 操作人员、操作时间\n操作内容等详细信息
+
+Service --> Controller: 状态变更完成
+deactivate Service
+Controller --> UI: 200 状态更新成功
+deactivate Controller
+
+== 多层数据验证 ==
+
+note over UI, DB: 验证策略：前端表单验证(即时反馈)\n后端参数验证(数据安全)\n业务逻辑验证(规则一致性)
+
+@enduml

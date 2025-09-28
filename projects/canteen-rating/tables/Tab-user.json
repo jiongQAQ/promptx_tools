@@ -1,0 +1,12 @@
+{
+  "title": "用户表",
+  "text": "用户表，主要储存了本系统用户的相关信息，其中包含编号 (id)、用户名 (username)、密码 (password)、角色 (role)、创建时间 (created_time)、更新时间 (updated_time)、是否删除 (is_deleted)，用户表的数据库设计如下表，表4-1 用户表 user所示。",
+  "tablePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-user.json",
+  "prompt": "请基于源码和论文主题，撰写《用户表》的正文，要求学术化表达，详细说明用户表的字段设计和约束条件，并在正文中结合三线表说明该表的数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
+  "content": "用户表，主要储存了本系统用户的相关信息，其中包含编号 (id)、用户名 (username)、real名称 (real_name)、密码 (password)、role (role)、创建时间 (created_time)、更新时间 (updated_time)、是否Deleted (is_deleted)，用户表的数据库设计如下表，表4-1 用户表 user所示。",
+  "word_limit": 70,
+  "id": "4.2.1",
+  "parentChapter": "4.2",
+  "sourceFile": "chapter.4.2.json",
+  "extractedAt": "2025-09-28T03:11:38.499Z"
+}

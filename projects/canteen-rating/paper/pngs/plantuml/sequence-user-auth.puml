@@ -1,0 +1,177 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam sequence {
+  ArrowColor #0277BD
+  LifeLineBorderColor #0277BD
+  LifeLineBackgroundColor #E1F5FE
+  ParticipantBorderColor #0277BD
+  ParticipantBackgroundColor #E1F5FE
+  ParticipantFontSize 12
+  MessageAlignment center
+}
+skinparam note {
+  BackgroundColor #FFF9C4
+  BorderColor #F57F17
+}
+skinparam linetype ortho
+
+participant "客户端" as Client
+participant "AuthController" as Controller
+participant "UserService" as Service
+participant "BCrypt加密器" as BCrypt
+participant "JWT工具类" as JWT
+participant "Spring Security" as Security
+participant "UserMapper" as Mapper
+participant "数据库" as DB
+
+== 用户注册流程 ==
+
+Client -> Controller: POST /api/auth/register
+activate Controller
+Controller -> Service: 用户注册请求
+activate Service
+
+Service -> Mapper: 检查用户名唯一性
+activate Mapper
+Mapper -> DB: SELECT COUNT(*) FROM users WHERE username=?
+activate DB
+DB --> Mapper: 查询结果
+deactivate DB
+Mapper --> Service: 用户名检查结果
+deactivate Mapper
+
+alt 用户名已存在
+  Service --> Controller: 用户名重复异常
+  Controller --> Client: 400 用户名已存在
+else 用户名可用
+  Service -> Service: 密码强度验证
+  note right: 字母、数字、特殊字符
+
+  alt 密码强度不足
+    Service --> Controller: 密码强度异常
+    Controller --> Client: 400 密码强度不足
+  else 密码强度通过
+    Service -> BCrypt: 密码加密
+    activate BCrypt
+    BCrypt -> BCrypt: 12轮哈希加密
+    BCrypt --> Service: 加密后密码
+    deactivate BCrypt
+
+    Service -> Mapper: 创建用户记录
+    activate Mapper
+    Mapper -> DB: INSERT INTO users
+    note right: 生成唯一用户ID\n默认角色为普通用户
+    activate DB
+    DB --> Mapper: 插入结果
+    deactivate DB
+    Mapper --> Service: 用户创建成功
+    deactivate Mapper
+
+    Service --> Controller: 注册成功
+    deactivate Service
+    Controller --> Client: 201 注册成功
+    deactivate Controller
+  end
+end
+
+== 用户登录流程 ==
+
+Client -> Controller: POST /api/auth/login
+activate Controller
+Controller -> Security: 输入验证和SQL注入防护
+activate Security
+Security --> Controller: 验证通过
+deactivate Security
+
+Controller -> Service: 用户登录请求
+activate Service
+
+Service -> Mapper: 根据用户名查询用户
+activate Mapper
+Mapper -> DB: SELECT * FROM users WHERE username=?
+activate DB
+DB --> Mapper: 用户信息
+deactivate DB
+Mapper --> Service: 用户查询结果
+deactivate Mapper
+
+alt 用户不存在
+  Service --> Controller: 用户不存在异常
+  Controller --> Client: 401 用户不存在
+else 用户存在
+  Service -> BCrypt: 验证密码
+  activate BCrypt
+  BCrypt -> BCrypt: 比较哈希值
+  BCrypt --> Service: 密码验证结果
+  deactivate BCrypt
+
+  alt 密码验证失败
+    Service --> Controller: 密码错误异常
+    Controller --> Client: 401 密码错误
+  else 密码验证通过
+    Service -> JWT: 生成访问令牌
+    activate JWT
+    JWT -> JWT: 创建载荷(用户ID、角色、过期时间)
+    JWT -> JWT: HMAC-SHA256签名
+    note right: 令牌有效期24小时
+    JWT --> Service: JWT令牌
+    deactivate JWT
+
+    Service -> Mapper: 更新最后登录时间
+    activate Mapper
+    Mapper -> DB: UPDATE users SET last_login_time=NOW()
+    activate DB
+    DB --> Mapper: 更新结果
+    deactivate DB
+    Mapper --> Service: 登录时间更新完成
+    deactivate Mapper
+
+    Service --> Controller: 登录成功和JWT令牌
+    deactivate Service
+    Controller --> Client: 200 登录成功 + JWT令牌
+    deactivate Controller
+  end
+end
+
+== 权限验证流程 ==
+
+Client -> Security: 请求受保护资源 + JWT令牌
+activate Security
+Security -> JWT: 解析JWT令牌
+activate JWT
+
+JWT -> JWT: 验证令牌签名
+JWT -> JWT: 检查令牌过期时间
+JWT -> JWT: 验证令牌完整性
+
+alt 令牌验证失败
+  JWT --> Security: 令牌无效
+  Security --> Client: 401 未授权
+else 令牌验证通过
+  JWT --> Security: 用户身份和权限信息
+  deactivate JWT
+
+  Security -> Security: 权限匹配检查
+  note right: 根据用户角色和请求资源\n进行权限验证
+
+  alt 权限不足
+    Security --> Client: 403 禁止访问
+  else 权限验证通过
+    Security -> Security: 记录审计日志
+    note right: 记录安全事件
+
+    Security -> Controller: 转发到业务处理
+    activate Controller
+    Controller --> Security: 业务处理结果
+    deactivate Controller
+    Security --> Client: 200 访问成功
+    deactivate Security
+  end
+end
+
+== 会话管理 ==
+
+note over Client, DB: 会话管理机制包括：\n单设备登录限制、异常登录检测\n自动登出、令牌刷新等功能
+
+@enduml

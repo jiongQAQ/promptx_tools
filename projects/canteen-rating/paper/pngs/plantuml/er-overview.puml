@@ -1,0 +1,137 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam entity {
+  BackgroundColor #F3E5F5
+  BorderColor #7B1FA2
+  FontSize 12
+}
+skinparam arrow {
+  Color #7B1FA2
+  FontSize 10
+}
+skinparam linetype ortho
+
+entity "users 用户" as users {
+  * id : bigint (PK)
+  --
+  * username : varchar(50) (UK)
+  * password : varchar(255)
+  * email : varchar(100)
+  * phone : varchar(20)
+  * role : varchar(20)
+  * created_at : datetime
+  * updated_at : datetime
+  * deleted : tinyint
+}
+
+entity "canteens 食堂" as canteens {
+  * id : bigint (PK)
+  --
+  * name : varchar(100)
+  * location : varchar(200)
+  * description : text
+  * status : varchar(20)
+  * created_at : datetime
+  * updated_at : datetime
+  * deleted : tinyint
+}
+
+entity "stalls 档口" as stalls {
+  * id : bigint (PK)
+  --
+  * canteen_id : bigint (FK)
+  * name : varchar(100)
+  * description : text
+  * contact_phone : varchar(20)
+  * business_hours : varchar(100)
+  * status : varchar(20)
+  * created_at : datetime
+  * updated_at : datetime
+  * version : int
+  * deleted : tinyint
+}
+
+entity "dishes 菜品" as dishes {
+  * id : bigint (PK)
+  --
+  * stall_id : bigint (FK)
+  * name : varchar(100)
+  * description : text
+  * price : decimal(10,2)
+  * category : varchar(50)
+  * image_url : varchar(500)
+  * avg_rating : decimal(3,2)
+  * rating_count : int
+  * status : varchar(20)
+  * created_at : datetime
+  * updated_at : datetime
+  * deleted : tinyint
+}
+
+entity "ratings 评分" as ratings {
+  * id : bigint (PK)
+  --
+  * user_id : bigint (FK)
+  * dish_id : bigint (FK)
+  * rating_value : int
+  * comment : text
+  * created_at : datetime
+  * updated_at : datetime
+  * deleted : tinyint
+  --
+  UK: (user_id, dish_id)
+}
+
+entity "complaints 投诉" as complaints {
+  * id : bigint (PK)
+  --
+  * user_id : bigint (FK)
+  * title : varchar(200)
+  * content : text
+  * category : varchar(50)
+  * status : varchar(20)
+  * priority : varchar(20)
+  * handler_id : bigint
+  * response : text
+  * created_at : datetime
+  * updated_at : datetime
+  * deleted : tinyint
+}
+
+entity "sensitive_words 敏感词" as sensitive_words {
+  * id : bigint (PK)
+  --
+  * word : varchar(100) (UK)
+  * type : varchar(50)
+  * status : varchar(20)
+  * created_at : datetime
+  * updated_at : datetime
+  * deleted : tinyint
+}
+
+' 关系定义
+canteens ||--o{ stalls : "一个食堂包含多个档口"
+stalls ||--o{ dishes : "一个档口提供多个菜品"
+users ||--o{ ratings : "一个用户可提交多个评分"
+dishes ||--o{ ratings : "一个菜品可收到多个评分"
+users ||--o{ complaints : "一个用户可提交多个投诉"
+
+' 约束说明
+note top of ratings : 复合唯一约束(user_id, dish_id)\n防止重复评分
+
+note bottom of stalls : 乐观锁版本控制\n防止并发修改冲突
+
+note right of sensitive_words : Trie树算法敏感词检测\n动态更新词库
+
+note left of users : JWT身份认证\nBCrypt密码加密
+
+' 级联操作说明
+note as N1
+  级联操作规则:
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+  确保数据一致性
+end note
+
+@enduml

@@ -1,0 +1,116 @@
+@startuml
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor White
+skinparam component {
+  BackgroundColor #F5F5F5
+  BorderColor #424242
+  FontSize 12
+}
+skinparam package {
+  BackgroundColor #E3F2FD
+  BorderColor #1976D2
+  FontSize 13
+}
+skinparam arrow {
+  Color #1976D2
+  FontSize 10
+}
+skinparam linetype ortho
+
+package "表现层 (Presentation Layer)" as PresentationLayer {
+  component [Vue.js 3.3.4 用户界面] as Vue
+
+  component [Element Plus 组件库] as ElementPlus
+  component [Axios HTTP客户端] as Axios
+  component [Vue Router 路由] as Router
+  component [Pinia 状态管理] as Pinia
+}
+
+package "业务层 (Business Layer)" as BusinessLayer {
+  component [Spring Boot 2.7.18] as SpringBoot
+
+  package "Controller层" {
+    component [用户控制器] as UserController
+    component [菜品控制器] as DishController
+    component [评分控制器] as RatingController
+    component [投诉控制器] as ComplaintController
+  }
+
+  package "Service层" {
+    component [用户认证服务] as AuthService
+    component [业务逻辑服务] as BusinessService
+    component [权限控制服务] as SecurityService
+  }
+
+  package "Repository层" {
+    component [MyBatis Plus 数据访问] as MyBatisPlus
+    component [数据持久化] as Repository
+  }
+
+  component [Spring Security] as Security
+  component [JWT Token认证] as JWT
+}
+
+package "数据层 (Data Layer)" as DataLayer {
+  component [MySQL 8.0 数据库] as MySQL
+
+  component [JDBC连接池] as ConnectionPool
+  component [数据库索引] as Index
+  component [外键约束] as ForeignKey
+}
+
+' 表现层内部交互
+Vue --> ElementPlus : 组件化UI
+Vue --> Axios : HTTP请求
+Vue --> Router : 路由管理
+Vue --> Pinia : 状态管理
+
+' 表现层到业务层
+Vue --> SpringBoot : RESTful API调用
+note on link : HTTP协议\n数据交互
+
+' 业务层内部交互
+SpringBoot --> UserController
+SpringBoot --> DishController
+SpringBoot --> RatingController
+SpringBoot --> ComplaintController
+
+UserController --> AuthService
+DishController --> BusinessService
+RatingController --> BusinessService
+ComplaintController --> BusinessService
+
+AuthService --> SecurityService
+BusinessService --> Repository
+SecurityService --> JWT
+
+Repository --> MyBatisPlus
+
+SpringBoot --> Security : 安全控制
+Security --> JWT : 无状态认证
+
+' 业务层到数据层
+MyBatisPlus --> MySQL : JDBC访问
+note on link : 数据持久化\n事务管理
+
+MySQL --> ConnectionPool : 连接管理
+MySQL --> Index : 查询优化
+MySQL --> ForeignKey : 数据完整性
+
+' 架构特点说明
+note top of PresentationLayer : 响应式单页应用\n组件化设计\n前后端分离
+
+note right of BusinessLayer : 微服务架构\n分层设计\n关注点分离
+
+note bottom of DataLayer : 关系型数据库\n第三范式设计\n事务ACID特性
+
+note as N1
+  架构优势:
+  - 松耦合设计
+  - 易于开发测试
+  - 便于部署维护
+  - 支持水平扩展
+end note
+
+@enduml
