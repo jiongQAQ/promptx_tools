@@ -4,11 +4,12 @@
 projectRoot 取当前工作目录（pwd）的绝对路径
 
 ## 功能说明
-自动扫描pngs目录下的**所有JSON文件**（确保无遗漏），**严格基于每个JSON文件的content字段内容和源码分析生成个性化的UML图表**，使用luban-uml工具将PlantUML源码渲染为图片，并按照imagePath或imagePathSequence字段指定的路径进行命名。**每个图表都是独特的，完全反映对应JSON文件描述的具体业务场景，绝不使用通用模板**。支持批量处理所有符合条件的UML图表，保留整体ER图生成功能。
+自动扫描 chapters 目录下的**所有JSON文件**（确保无遗漏），**严格基于每个JSON文件的content字段内容和源码分析生成个性化的UML图表**，支持变量路径解析，使用luban-uml工具将PlantUML源码渲染为图片，并按照imagePath或imagePathSequence字段指定的路径进行命名。**每个图表都是独特的，完全反映对应JSON文件描述的具体业务场景，绝不使用通用模板**。支持批量处理所有符合条件的UML图表，保留整体ER图生成功能。
 
 ## 目标任务
 1. **源码真相验证**：**首先读取** `<projectRoot>/paper/source-truth.json` 文件，获取项目真实技术栈和限制清单
-2. **JSON文件扫描**：**完整扫描** `<projectRoot>/paper/pngs/` 目录下的**每一个JSON文件**，确保无遗漏
+2. **JSON文件扫描**：**完整扫描** `<projectRoot>/paper/chapters/` 目录下的**每一个JSON文件**，确保无遗漏
+3. **路径变量解析**：从 `<projectRoot>/paper/path-config.json` 读取路径配置，将变量路径转换为实际物理路径
 3. **图表类型识别**：根据文件名、content内容和图片路径字段识别图表类型：
    - `activity-*`：**双图生成** - 每个文件生成活动图（imagePath）+ 时序图（imagePathSequence）
    - `usecase-*`：用例图（处理imagePath字段）
@@ -42,7 +43,7 @@ projectRoot 取当前工作目录（pwd）的绝对路径
 
 ### 1. 图片文件输出
 - **存放路径**：`<projectRoot>/paper/assets/diagrams/uml/`
-- **文件命名**：按照JSON文件中imagePath字段的basename命名
+- **文件命名**：按照JSON文件中imagePath字段解析后的物理路径命名（支持变量路径解析）
 - **文件格式**：PNG或SVG（默认PNG）
 
 ### 2. PlantUML源码保存
@@ -52,7 +53,7 @@ projectRoot 取当前工作目录（pwd）的绝对路径
 
 ### 3. 测试用例三线表输出
 - **存放路径**：`<projectRoot>/paper/assets/tables/`
-- **文件命名**：按照JSON文件中tablePath字段的basename命名
+- **文件命名**：按照JSON文件中tablePath字段解析后的物理路径命名（支持变量路径解析）
 - **表格格式**：标准三线表JSON格式，包含测试用例、预期结果、实际结果等字段
 - **支持类型**：
   - `test-*`：功能测试用例表（测试场景、输入、预期输出、实际结果、结论）
@@ -499,7 +500,8 @@ skinparam linetype ortho
 
 ## 前置条件
 - 执行前确保在项目根目录下运行
-- paper/pngs目录存在且包含JSON文件
+- paper/chapters目录存在且包含JSON文件
+- paper/path-config.json路径配置文件存在
 - source目录包含源码文件
 - 网络连接正常（PlantUML在线服务）
 
@@ -509,7 +511,8 @@ skinparam linetype ortho
 采用类似chapter-batch-processor的设计模式，实现UML图表的智能批量生成：
 
 1. **文件发现与分组**：
-   - 扫描paper/pngs目录，按图表类型自动分组
+   - 扫描paper/chapters目录，按图表类型自动分组
+   - 加载路径配置，支持变量路径解析
    - 识别双图字段（imagePath + imagePathSequence）
    - 过滤排除单体实体图和实现图，保留整体ER图
 

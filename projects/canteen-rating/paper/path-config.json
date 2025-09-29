@@ -1,0 +1,23 @@
+{
+  "pathVariables": {
+    "${root}": "paper/",
+    "${assets}": "paper/assets/",
+    "${tables}": "paper/assets/tables/",
+    "${er}": "paper/assets/diagrams/er/",
+    "${uml}": "paper/assets/diagrams/uml/",
+    "${impl}": "paper/assets/diagrams/impl/",
+    "${plantuml}": "paper/assets/plantuml/",
+    "${chapters}": "paper/chapters/",
+    "${exports}": "paper/exports/"
+  },
+  "filePatterns": {
+    "tables": "Tab-*.json",
+    "erDiagrams": "Tab-*.svg",
+    "umlDiagrams": "*.png",
+    "implScreenshots": "impl-*.png",
+    "chapters": "chapter.*.json"
+  },
+  "description": "统一路径配置，所有工作流共享",
+  "version": "1.0",
+  "lastUpdated": "2025-09-29"
+}
