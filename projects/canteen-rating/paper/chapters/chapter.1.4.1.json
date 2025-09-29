@@ -1,0 +1,7 @@
+{
+  "id": "1.4.1",
+  "title": "Spring Boot框架",
+  "text": "介绍Spring Boot框架的主要特性、微服务生态与在食堂评价系统中的适配点与权衡，包括自动配置、依赖注入、AOP等核心能力。",
+  "word_limit": 180,
+  "content": "Spring Boot作为Spring框架的子项目，已成为现代Java企业应用开发的主流框架。其核心特性自动配置（Auto Configuration）通过约定大于配置的理念，大大简化了传统Spring应用的繁琐配置过程，使开发人员能够专注于业务逻辑的实现。依赖注入（Dependency Injection）机制实现了组件间的松耦合，提高了代码的可测试性和可维护性。面向切面编程（AOP）支持为系统提供了统一的日志记录、事务管理和安全控制能力。在食堂评价系统的开发中，Spring Boot的优势尤为明显。首先，其内置的Tomcat服务器支持使系统能够以jar包形式独立部署，降低了运维复杂度。其次，Spring Boot Starter机制提供了丰富的预配置模块，如spring-boot-starter-web支持RESTful API开发，spring-boot-starter-data-jpa简化了数据库访问层的实现。最后，Spring Boot的微服务生态为后续系统扩展奠定了基础，通过Spring Cloud可以轻松实现服务注册发现、配置管理和负载均衡等功能。"
+}
