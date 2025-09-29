@@ -1,0 +1,116 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam activity {
+  BackgroundColor #E1F5FE
+  BorderColor #0277BD
+  FontSize 12
+}
+skinparam arrow {
+  Color #0277BD
+  FontSize 10
+}
+skinparam diamond {
+  BackgroundColor #FFF3E0
+  BorderColor #F57C00
+  FontSize 11
+}
+skinparam linetype ortho
+
+title 食堂档口管理活动图
+
+start
+
+:管理员选择管理操作类型;
+
+if (操作类型?) then (新增食堂)
+  :输入食堂基本信息;
+  :系统校验参数格式和完整性;
+  if (参数校验通过?) then (是)
+    :检查食堂名称唯一性;
+    if (名称唯一?) then (是)
+      :验证地理坐标和营业时间;
+      if (业务数据有效?) then (是)
+        :检查管理员权限;
+        if (权限验证通过?) then (是)
+          :保存食堂数据到数据库;
+          :记录操作日志;
+          :发送系统通知;
+          :返回新增成功;
+        else (否)
+          :返回权限不足错误;
+        endif
+      else (否)
+        :返回业务数据校验错误;
+      endif
+    else (否)
+      :返回食堂名称重复错误;
+    endif
+  else (否)
+    :返回参数格式错误;
+  endif
+
+elseif (操作类型?) then (修改食堂)
+  :输入食堂ID和修改信息;
+  :系统检查食堂是否存在;
+  if (食堂存在?) then (是)
+    :乐观锁版本检查;
+    if (版本一致?) then (是)
+      :校验修改数据格式;
+      if (数据格式正确?) then (是)
+        :更新食堂信息;
+        if (营业状态变更?) then (是)
+          :通知关联档口和菜品;
+        endif
+        :更新版本号;
+        :返回修改成功;
+      else (否)
+        :返回数据格式错误;
+      endif
+    else (否)
+      :返回并发冲突错误;
+    endif
+  else (否)
+    :返回食堂不存在错误;
+  endif
+
+elseif (操作类型?) then (删除食堂)
+  :输入要删除的食堂ID;
+  :检查食堂是否存在;
+  if (食堂存在?) then (是)
+    :检查是否有关联档口;
+    if (无关联数据?) then (是)
+      :执行软删除操作;
+      :记录删除日志;
+      :返回删除成功;
+    else (否)
+      :提示级联删除确认;
+      if (确认级联删除?) then (是)
+        :级联删除关联档口和菜品;
+        :执行事务性删除;
+        :返回级联删除成功;
+      else (否)
+        :取消删除操作;
+      endif
+    endif
+  else (否)
+    :返回食堂不存在错误;
+  endif
+
+else (档口管理)
+  :进入档口CRUD操作流程;
+  :检查档口与食堂关联关系;
+  :执行档口相关业务逻辑;
+endif
+
+if (数据库异常?) then (是)
+  :记录数据库异常日志;
+  :执行事务回滚;
+  :返回系统异常提示;
+else (否)
+  :操作执行完成;
+endif
+
+stop
+
+@enduml

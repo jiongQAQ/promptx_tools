@@ -1,0 +1,119 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam activity {
+  BackgroundColor #E1F5FE
+  BorderColor #0277BD
+  FontSize 12
+}
+skinparam arrow {
+  Color #0277BD
+  FontSize 10
+}
+skinparam diamond {
+  BackgroundColor #FFF3E0
+  BorderColor #F57C00
+  FontSize 11
+}
+skinparam linetype ortho
+
+title 投诉建议处理活动图
+
+start
+
+:用户提交投诉建议;
+
+:系统检查用户登录状态;
+if (用户已登录?) then (否)
+  :跳转到登录页面;
+  stop
+else (是)
+  :用户选择投诉类型;
+  :输入投诉详细内容;
+  :上传相关证据材料(可选);
+
+  :系统进行内容校验;
+  if (内容完整性校验?) then (否)
+    :返回内容不完整提示;
+    stop
+  else (是)
+    :系统进行敏感词检查;
+    if (内容安全?) then (否)
+      :返回敏感内容提示;
+      :要求用户修改;
+      stop
+    else (是)
+      :生成唯一投诉编号;
+      :记录提交时间和用户信息;
+      :投诉状态设为"待处理";
+      :保存投诉数据;
+      :发送提交成功通知;
+    endif
+  endif
+endif
+
+:系统自动分类投诉;
+if (投诉类型?) then (食品质量)
+  :分配给食品安全管理员;
+elseif (投诉类型?) then (服务态度)
+  :分配给服务管理部门;
+elseif (投诉类型?) then (环境卫生)
+  :分配给后勤管理部门;
+else (设备故障)
+  :分配给设备维护部门;
+endif
+
+:管理员收到分配通知;
+:查看投诉详情和相关信息;
+
+if (投诉紧急程度?) then (紧急)
+  :触发加急处理流程;
+  :多级通知相关负责人;
+else (普通)
+  :按正常流程处理;
+endif
+
+:管理员更新处理状态;
+:记录处理过程和措施;
+:投诉状态变更为"处理中";
+:系统自动通知用户进度;
+
+if (需要现场调查?) then (是)
+  :安排现场调查;
+  :收集相关证据;
+  :更新调查结果;
+else (否)
+  :直接进行协调处理;
+endif
+
+:制定解决方案;
+:执行改进措施;
+:投诉状态变更为"待验证";
+:通知用户处理结果;
+
+:等待用户反馈;
+if (用户满意?) then (是)
+  :投诉状态变更为"已关闭";
+  :记录满意度评价;
+  :完成投诉处理;
+else (否)
+  if (可以重新处理?) then (是)
+    :重新评估处理方案;
+    :投诉状态回到"处理中";
+  else (否)
+    :升级到上级管理部门;
+    :记录升级原因;
+  endif
+endif
+
+if (处理超时?) then (是)
+  :系统自动发送提醒;
+  :记录超时日志;
+  if (多次超时?) then (是)
+    :自动升级处理;
+  endif
+endif
+
+stop
+
+@enduml

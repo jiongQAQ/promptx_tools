@@ -1,0 +1,73 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam usecase {
+  BackgroundColor #E8F5E8
+  BorderColor #2E7D32
+  FontSize 12
+}
+skinparam actor {
+  BackgroundColor #FFF3E0
+  BorderColor #F57C00
+  FontSize 12
+}
+skinparam arrow {
+  Color #2E7D32
+  FontSize 10
+}
+
+title 系统管理员角色用例图
+
+actor "系统管理员" as SysAdmin
+
+' 系统配置管理类用例
+usecase "系统参数设置" as UC1
+usecase "性能阈值配置" as UC2
+usecase "安全策略设定" as UC3
+
+' 权限管理类用例
+usecase "角色权限配置" as UC4
+usecase "管理员权限分配" as UC5
+usecase "系统访问控制" as UC6
+
+' 数据维护类用例
+usecase "数据备份与恢复" as UC7
+usecase "数据库维护" as UC8
+usecase "日志管理" as UC9
+
+' 系统监控类用例
+usecase "性能监控" as UC10
+usecase "安全事件监测" as UC11
+usecase "系统健康检查" as UC12
+
+' 系统管理员登录认证
+usecase "系统管理员登录" as UCLogin
+
+SysAdmin --> UC1
+SysAdmin --> UC2
+SysAdmin --> UC3
+SysAdmin --> UC4
+SysAdmin --> UC5
+SysAdmin --> UC6
+SysAdmin --> UC7
+SysAdmin --> UC8
+SysAdmin --> UC9
+SysAdmin --> UC10
+SysAdmin --> UC11
+SysAdmin --> UC12
+
+' 所有系统管理操作都需要先登录
+UC1 .> UCLogin : <<include>>
+UC2 .> UCLogin : <<include>>
+UC3 .> UCLogin : <<include>>
+UC4 .> UCLogin : <<include>>
+UC5 .> UCLogin : <<include>>
+UC6 .> UCLogin : <<include>>
+UC7 .> UCLogin : <<include>>
+UC8 .> UCLogin : <<include>>
+UC9 .> UCLogin : <<include>>
+UC10 .> UCLogin : <<include>>
+UC11 .> UCLogin : <<include>>
+UC12 .> UCLogin : <<include>>
+
+@enduml
