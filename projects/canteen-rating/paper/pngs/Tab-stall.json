@@ -1,0 +1,11 @@
+{
+  "title": "档口实体",
+  "text": "档口表，主要储存了本系统档口管理的相关信息，其中包含档口ID (id)、档口名称 (name)、档口描述 (description)、所属食堂ID (canteen_id)、创建时间 (created_time)、更新时间 (updated_time)。",
+  "imagePath": "${er}/Tab-stall.svg",
+  "word_limit": 70,
+  "content": "档口实体体现了食堂内部的层次化组织结构，建立了食堂与档口的一对多关联关系。canteen_id作为外键与食堂表建立强关联，支持级联删除和参照完整性约束。name和description字段描述档口的经营特色，如“麯食窗口”或“川菜档口”，为用户选择提供参考依据。",
+  "id": "3.4.1.3",
+  "parentChapter": "3.4.1",
+  "sourceFile": "chapter.3.4.1.json",
+  "extractedAt": "2025-09-29T13:54:23.218Z"
+}

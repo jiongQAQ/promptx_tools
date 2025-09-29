@@ -1,0 +1,11 @@
+{
+  "title": "用户表",
+  "text": "用户表，主要储存了本系统用户认证管理的相关信息，其中包含用户ID (id)、学号工号 (username)、密码 (password)、姓名 (name)、角色 (role)、启用状态 (enabled)、创建时间 (created_time)、更新时间 (updated_time)，用户表的数据库设计如下表，表4-1 用户表 users所示。",
+  "tablePath": "${tables}/Tab-users.json",
+  "word_limit": 70,
+  "content": "用户表采用严格的数据约束和安全设计。id主键自增，username字段设置唯一索引保证登录标识的唯一性，password采用VARCHAR(255)存储BCrypt加密密码，role字段使用枚举类型限制取值为'STUDENT'或'ADMIN'，enabled字段默认值为trueenabled，created_time和updated_time采用DATETIME类型支持自动更新。",
+  "id": "4.2.1",
+  "parentChapter": "4.2",
+  "sourceFile": "chapter.4.2.json",
+  "extractedAt": "2025-09-29T13:54:23.220Z"
+}

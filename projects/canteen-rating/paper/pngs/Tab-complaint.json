@@ -1,0 +1,11 @@
+{
+  "title": "投诉建议实体",
+  "text": "投诉建议表，主要储存了本系统投诉建议处理的相关信息，其中包含投诉ID (id)、用户ID (user_id)、投诉类型 (type)、投诉标题 (title)、投诉内容 (content)、处理状态 (status)、管理员回复 (admin_reply)、创建时间 (created_time)、更新时间 (updated_time)。",
+  "imagePath": "${er}/Tab-complaint.svg",
+  "word_limit": 70,
+  "content": "投诉建议实体建立了用户与管理方的双向沟通渠道，支持问题反馈和跟踪处理。type字段区分投诉类型（如服务质量、卫生问题、设备故障），status字段记录处理状态（待处理、处理中、已关闭），admin_reply字段存储管理员的正式回复内容，实现闭环的反馈机制。",
+  "id": "3.4.1.6",
+  "parentChapter": "3.4.1",
+  "sourceFile": "chapter.3.4.1.json",
+  "extractedAt": "2025-09-29T13:54:23.218Z"
+}

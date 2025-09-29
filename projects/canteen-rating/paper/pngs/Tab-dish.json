@@ -1,0 +1,11 @@
+{
+  "title": "菜品实体",
+  "text": "菜品表，主要储存了本系统菜品管理的相关信息，其中包含菜品ID (id)、菜品名称 (name)、菜品描述 (description)、价格 (price)、所属档口ID (stall_id)、菜品图片 (image_url)、创建时间 (created_time)、更新时间 (updated_time)。",
+  "imagePath": "${er}/Tab-dish.svg",
+  "word_limit": 70,
+  "content": "菜品实体是系统核心业务数据的载体，存储了丰富的菜品属性信息。stall_id外键关联到档口表，建立了档口与菜品的一对多关系。price字段采用DECIMAL类型保证金额计算精度，image_url字段支持多媒体展示，存储菜品图片的访问路径，提升用户体验和选择准确性。",
+  "id": "3.4.1.4",
+  "parentChapter": "3.4.1",
+  "sourceFile": "chapter.3.4.1.json",
+  "extractedAt": "2025-09-29T13:54:23.218Z"
+}

@@ -1,0 +1,11 @@
+{
+  "title": "评价表",
+  "text": "评价表，主要储存了本系统菜品评价的相关信息，其中包含评价ID (id)、用户ID (user_id)、菜品ID (dish_id)、评分 (score)、评价内容 (content)、评价时间 (rating_time)、创建时间 (created_time)、更新时间 (updated_time)，评价表的数据库设计如下表，表4-5 评价表 rating所示。",
+  "tablePath": "${tables}/Tab-rating.json",
+  "word_limit": 70,
+  "content": "评价表作为系统核心业务数据表，采用复合主键设计。user_id和dish_id建立复合索引防止重复评价，score字段设置检查约束(1-5)保证评分有效性，content支持长文本存储且建立全文索引支持关键词搜索。rating_time独立于系统时间，记录用户实际评价的时间点，支持时间维度的数据分析。",
+  "id": "4.2.5",
+  "parentChapter": "4.2",
+  "sourceFile": "chapter.4.2.json",
+  "extractedAt": "2025-09-29T13:54:23.221Z"
+}

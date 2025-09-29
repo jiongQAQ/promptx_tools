@@ -8,7 +8,11 @@ projectRoot 取当前工作目录（pwd）的绝对路径
 
 ## 目标任务
 1. **源码真相验证**：**首先读取** `<projectRoot>/paper/source-truth.json` 文件，获取项目真实技术栈和限制清单
-2. **JSON文件扫描**：**完整扫描** `<projectRoot>/paper/chapters/` 目录下的**每一个JSON文件**，确保无遗漏
+2. **智能文件筛选**：扫描 `<projectRoot>/paper/chapters/` 目录，**只处理包含以下字段的JSON文件**：
+   - `imagePath` - 需要生成单个图表
+   - `imagePathSequence` - 需要生成时序图
+   - `tablePath` - 需要生成表格
+   - 跳过纯文本章节，避免无效处理
 3. **路径变量解析**：从 `<projectRoot>/paper/path-config.json` 读取路径配置，将变量路径转换为实际物理路径
 3. **图表类型识别**：根据文件名、content内容和图片路径字段识别图表类型：
    - `activity-*`：**双图生成** - 每个文件生成活动图（imagePath）+ 时序图（imagePathSequence）
@@ -35,8 +39,46 @@ projectRoot 取当前工作目录（pwd）的绝对路径
 7. **图片渲染**：使用luban-uml工具将PlantUML渲染为PNG/SVG格式
 8. **文件命名**：按照imagePath或imagePathSequence字段的文件名进行输出命名
 
+## 文件过滤策略
+
+### 需要处理的文件特征
+- **包含 `imagePath` 字段** → 生成对应类型的UML图（活动图、用例图、架构图等）
+- **包含 `imagePathSequence` 字段** → 生成时序图
+- **包含 `tablePath` 字段** → 生成测试用例表格（test-*/perf-*/compat-*类型）
+- **包含 `items` 且子项有上述字段** → 递归处理子项中的图表需求
+
+### 跳过的文件特征（提高效率）
+- **仅包含 `text` 字段**的纯文本章节
+- **仅包含 `word_limit`** 的章节标题
+- **不包含任何资源路径字段**的章节
+- **已处理的单体实体图**（Tab-*类型，由01工作流处理）
+
+### 智能识别逻辑
+```javascript
+function shouldProcessFile(chapterJson) {
+  // 检查直接字段
+  if (chapterJson.imagePath || chapterJson.imagePathSequence || chapterJson.tablePath) {
+    return true;
+  }
+
+  // 检查items子项
+  if (chapterJson.items && Array.isArray(chapterJson.items)) {
+    return chapterJson.items.some(item =>
+      item.imagePath || item.imagePathSequence || item.tablePath
+    );
+  }
+
+  return false; // 跳过纯文本章节
+}
+```
+
+### 处理效率提升
+- **预计效果**：假设100个章节文件，通常只有15-25个需要生成图表
+- **时间节省**：减少75-85%的无效文件读取
+- **准确性**：避免尝试处理无图表路径的文件导致的错误
+
 ## 输入要求
-- **JSON目录**：`<projectRoot>/paper/pngs/`
+- **JSON目录**：`<projectRoot>/paper/chapters/`
 - **源码目录**：`<projectRoot>/source/` （AI自动分析项目技术栈和架构）
 
 ## 输出结构
@@ -510,11 +552,13 @@ skinparam linetype ortho
 ### 类似chapter-batch-processor的批处理架构
 采用类似chapter-batch-processor的设计模式，实现UML图表的智能批量生成：
 
-1. **文件发现与分组**：
-   - 扫描paper/chapters目录，按图表类型自动分组
+1. **智能文件发现与过滤**：
+   - 扫描paper/chapters目录
+   - **预读JSON检查**是否包含imagePath/imagePathSequence/tablePath
+   - **只将需要处理的文件加入队列**
    - 加载路径配置，支持变量路径解析
-   - 识别双图字段（imagePath + imagePathSequence）
-   - 过滤排除单体实体图和实现图，保留整体ER图
+   - 按图表类型自动分组
+   - **生成处理清单**：需处理X个文件，跳过Y个纯文本文件
 
 2. **批处理队列管理**：
    - 按依赖关系排序处理顺序
@@ -530,6 +574,26 @@ skinparam linetype ortho
    - 实时显示处理进度百分比
    - 生成详细的成功/失败统计报告
    - 提供后续调整建议
+
+### 基于资源索引的快速处理（可选优化）
+
+如果存在 `<projectRoot>/paper/assets/resource-index.json`（由06工作流生成）：
+
+1. **索引驱动模式**：
+   ```bash
+   # 直接读取索引文件获取所有需要生成的图表列表
+   # 根据索引中的章节ID定位到对应的chapter.{id}.json
+   # 批量处理索引中列出的所有图表
+   ```
+
+2. **优势**：
+   - 避免全目录扫描，精准定位
+   - 更快的启动速度
+   - 清晰的处理队列
+
+3. **回退机制**：
+   - 如果resource-index.json不存在，自动切换到目录扫描模式
+   - 确保工具在任何情况下都能正常工作
 
 ### 批处理命令示例
 ```bash

@@ -1,0 +1,303 @@
+{
+  "images": [
+    {
+      "id": "2.2.3.1",
+      "type": "uml",
+      "logicalPath": "${uml}/usecase-student.png",
+      "physicalPath": "paper/assets/diagrams/uml/usecase-student.png",
+      "exists": false,
+      "title": "学生用户角色用例"
+    },
+    {
+      "id": "2.2.3.2",
+      "type": "uml",
+      "logicalPath": "${uml}/usecase-admin.png",
+      "physicalPath": "paper/assets/diagrams/uml/usecase-admin.png",
+      "exists": false,
+      "title": "管理员角色用例"
+    },
+    {
+      "id": "2.2.3.3",
+      "type": "uml",
+      "logicalPath": "${uml}/usecase-system.png",
+      "physicalPath": "paper/assets/diagrams/uml/usecase-system.png",
+      "exists": false,
+      "title": "系统管理员角色用例"
+    },
+    {
+      "id": "3.2",
+      "type": "uml",
+      "logicalPath": "${uml}/software-architecture.png",
+      "physicalPath": "paper/assets/diagrams/uml/software-architecture.png",
+      "exists": false,
+      "title": "系统软件逻辑架构"
+    },
+    {
+      "id": "3.3",
+      "type": "uml",
+      "logicalPath": "${uml}/wbs-function.png",
+      "physicalPath": "paper/assets/diagrams/uml/wbs-function.png",
+      "exists": false,
+      "title": "系统功能框图"
+    },
+    {
+      "id": "3.4.1.1",
+      "type": "er",
+      "logicalPath": "${er}/Tab-users.svg",
+      "physicalPath": "paper/assets/diagrams/er/Tab-users.svg",
+      "exists": true,
+      "title": "用户实体"
+    },
+    {
+      "id": "3.4.1.2",
+      "type": "er",
+      "logicalPath": "${er}/Tab-canteen.svg",
+      "physicalPath": "paper/assets/diagrams/er/Tab-canteen.svg",
+      "exists": true,
+      "title": "食堂实体"
+    },
+    {
+      "id": "3.4.1.3",
+      "type": "er",
+      "logicalPath": "${er}/Tab-stall.svg",
+      "physicalPath": "paper/assets/diagrams/er/Tab-stall.svg",
+      "exists": true,
+      "title": "档口实体"
+    },
+    {
+      "id": "3.4.1.4",
+      "type": "er",
+      "logicalPath": "${er}/Tab-dish.svg",
+      "physicalPath": "paper/assets/diagrams/er/Tab-dish.svg",
+      "exists": true,
+      "title": "菜品实体"
+    },
+    {
+      "id": "3.4.1.5",
+      "type": "er",
+      "logicalPath": "${er}/Tab-rating.svg",
+      "physicalPath": "paper/assets/diagrams/er/Tab-rating.svg",
+      "exists": true,
+      "title": "评价实体"
+    },
+    {
+      "id": "3.4.1.6",
+      "type": "er",
+      "logicalPath": "${er}/Tab-complaint.svg",
+      "physicalPath": "paper/assets/diagrams/er/Tab-complaint.svg",
+      "exists": true,
+      "title": "投诉建议实体"
+    },
+    {
+      "id": "3.4.1.7",
+      "type": "er",
+      "logicalPath": "${er}/Tab-sensitive_word.svg",
+      "physicalPath": "paper/assets/diagrams/er/Tab-sensitive_word.svg",
+      "exists": true,
+      "title": "敏感词实体"
+    },
+    {
+      "id": "3.4.2",
+      "type": "uml",
+      "logicalPath": "${uml}/er-overall.png",
+      "physicalPath": "paper/assets/diagrams/uml/er-overall.png",
+      "exists": false,
+      "title": "数据库逻辑设计"
+    },
+    {
+      "id": "4.1.1",
+      "type": "uml",
+      "logicalPath": "${uml}/activity-auth.png",
+      "physicalPath": "paper/assets/diagrams/uml/activity-auth.png",
+      "exists": false,
+      "title": "用户认证管理的详细设计"
+    },
+    {
+      "id": "4.1.2",
+      "type": "uml",
+      "logicalPath": "${uml}/activity-rating.png",
+      "physicalPath": "paper/assets/diagrams/uml/activity-rating.png",
+      "exists": false,
+      "title": "菜品评价系统的详细设计"
+    },
+    {
+      "id": "4.1.3",
+      "type": "uml",
+      "logicalPath": "${uml}/activity-canteen.png",
+      "physicalPath": "paper/assets/diagrams/uml/activity-canteen.png",
+      "exists": false,
+      "title": "食堂档口管理的详细设计"
+    },
+    {
+      "id": "4.1.4",
+      "type": "uml",
+      "logicalPath": "${uml}/activity-complaint.png",
+      "physicalPath": "paper/assets/diagrams/uml/activity-complaint.png",
+      "exists": false,
+      "title": "投诉建议处理的详细设计"
+    },
+    {
+      "id": "4.1.5",
+      "type": "uml",
+      "logicalPath": "${uml}/activity-admin.png",
+      "physicalPath": "paper/assets/diagrams/uml/activity-admin.png",
+      "exists": false,
+      "title": "系统管理功能的详细设计"
+    },
+    {
+      "id": "5.2.1",
+      "type": "impl",
+      "logicalPath": "${impl}/impl-auth.png",
+      "physicalPath": "paper/assets/diagrams/impl/impl-auth.png",
+      "exists": false,
+      "title": "用户认证管理的实现"
+    },
+    {
+      "id": "5.2.2",
+      "type": "impl",
+      "logicalPath": "${impl}/impl-rating.png",
+      "physicalPath": "paper/assets/diagrams/impl/impl-rating.png",
+      "exists": false,
+      "title": "菜品评价系统的实现"
+    },
+    {
+      "id": "5.2.3",
+      "type": "impl",
+      "logicalPath": "${impl}/impl-canteen.png",
+      "physicalPath": "paper/assets/diagrams/impl/impl-canteen.png",
+      "exists": false,
+      "title": "食堂档口管理的实现"
+    },
+    {
+      "id": "5.2.4",
+      "type": "impl",
+      "logicalPath": "${impl}/impl-complaint.png",
+      "physicalPath": "paper/assets/diagrams/impl/impl-complaint.png",
+      "exists": false,
+      "title": "投诉建议处理的实现"
+    },
+    {
+      "id": "5.2.5",
+      "type": "impl",
+      "logicalPath": "${impl}/impl-admin.png",
+      "physicalPath": "paper/assets/diagrams/impl/impl-admin.png",
+      "exists": false,
+      "title": "系统管理功能的实现"
+    }
+  ],
+  "tables": [
+    {
+      "id": "4.2.1",
+      "logicalPath": "${tables}/Tab-users.json",
+      "physicalPath": "paper/assets/tables/Tab-users.json",
+      "exists": true,
+      "title": "用户表"
+    },
+    {
+      "id": "4.2.2",
+      "logicalPath": "${tables}/Tab-canteen.json",
+      "physicalPath": "paper/assets/tables/Tab-canteen.json",
+      "exists": true,
+      "title": "食堂表"
+    },
+    {
+      "id": "4.2.3",
+      "logicalPath": "${tables}/Tab-stall.json",
+      "physicalPath": "paper/assets/tables/Tab-stall.json",
+      "exists": true,
+      "title": "档口表"
+    },
+    {
+      "id": "4.2.4",
+      "logicalPath": "${tables}/Tab-dish.json",
+      "physicalPath": "paper/assets/tables/Tab-dish.json",
+      "exists": true,
+      "title": "菜品表"
+    },
+    {
+      "id": "4.2.5",
+      "logicalPath": "${tables}/Tab-rating.json",
+      "physicalPath": "paper/assets/tables/Tab-rating.json",
+      "exists": true,
+      "title": "评价表"
+    },
+    {
+      "id": "4.2.6",
+      "logicalPath": "${tables}/Tab-complaint.json",
+      "physicalPath": "paper/assets/tables/Tab-complaint.json",
+      "exists": true,
+      "title": "投诉建议表"
+    },
+    {
+      "id": "4.2.7",
+      "logicalPath": "${tables}/Tab-sensitive_word.json",
+      "physicalPath": "paper/assets/tables/Tab-sensitive_word.json",
+      "exists": true,
+      "title": "敏感词表"
+    },
+    {
+      "id": "6.3.1",
+      "logicalPath": "${tables}/test-auth.json",
+      "physicalPath": "paper/assets/tables/test-auth.json",
+      "exists": false,
+      "title": "用户认证管理功能测试"
+    },
+    {
+      "id": "6.3.2",
+      "logicalPath": "${tables}/test-rating.json",
+      "physicalPath": "paper/assets/tables/test-rating.json",
+      "exists": false,
+      "title": "菜品评价系统功能测试"
+    },
+    {
+      "id": "6.3.3",
+      "logicalPath": "${tables}/test-canteen.json",
+      "physicalPath": "paper/assets/tables/test-canteen.json",
+      "exists": false,
+      "title": "食堂档口管理功能测试"
+    },
+    {
+      "id": "6.3.4",
+      "logicalPath": "${tables}/test-complaint.json",
+      "physicalPath": "paper/assets/tables/test-complaint.json",
+      "exists": false,
+      "title": "投诉建议处理功能测试"
+    },
+    {
+      "id": "6.3.5",
+      "logicalPath": "${tables}/test-admin.json",
+      "physicalPath": "paper/assets/tables/test-admin.json",
+      "exists": false,
+      "title": "系统管理功能功能测试"
+    },
+    {
+      "id": "6.4",
+      "logicalPath": "${tables}/test-performance.json",
+      "physicalPath": "paper/assets/tables/test-performance.json",
+      "exists": false,
+      "title": "系统性能测试"
+    },
+    {
+      "id": "6.5",
+      "logicalPath": "${tables}/test-compatibility.json",
+      "physicalPath": "paper/assets/tables/test-compatibility.json",
+      "exists": false,
+      "title": "系统兼容性测试"
+    }
+  ],
+  "summary": {
+    "totalImages": 23,
+    "totalTables": 14,
+    "totalResources": 37,
+    "missingFiles": 23
+  },
+  "metadata": {
+    "generatedAt": "2025-09-29T13:55:00.000Z",
+    "generatedBy": "06-asset-extractor",
+    "sourceFiles": {
+      "contentPlan": "paper/content-plan.json",
+      "chaptersDir": "paper/chapters/"
+    },
+    "pathConfig": "paper/path-config.json"
+  }
+}

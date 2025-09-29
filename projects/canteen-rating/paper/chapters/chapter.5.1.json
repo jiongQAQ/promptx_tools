@@ -3,6 +3,5 @@
   "title": "系统开发环境和工具",
   "text": "给出操作系统、开发工具链、数据库与辅助软件版本清单，说明Spring Boot、Vue.js、MySQL等技术选型依据、兼容性与关键配置。",
   "word_limit": 270,
-  "content": "系统开发环境采用了成熟稳定的技术栈组合，确保了开发效率和系统可靠性。操作系统方面采用Windows 10作为主要开发平台，同时兼容Ubuntu 20.04 LTS作为部署环境。开发工具链中，IntelliJ IDEA 2023.1作为后端主要IDE，提供Spring Boot项目的集成开发支持；VS Code 1.77作为前端开发环境，配置Vetur和Vue Language Features插件提供Vue.js项目的语法高亮和智能提示。数据库环境采用MySQL 8.0.32作为主数据库，配合Navicat 16作为可视化管理工具。辅助软件方面，Postman 10.12用于API接口测试，Git 2.40用于版本控制，Node.js 18.15和JDK 17分别作为前后端运行时环境。
-技术选型依据中，Spring Boot 2.7.18被选为后端框架是因为其成熟的生态系统、优秀的性能表现和丰富的Starter组件；Vue.js 3.3.4的选择基于其渐进式采用特性、响应式数据绑定能力和Composition API的灵活性；MySQL 8.0的选择考虑到其在高校信息化环境中的广泛应用和成熟的运维体系。在兼容性方面，所选技术栈全面支持JDK 17的语言特性，前端支持Chrome 90+、Firefox 88+和Safari 14+等主流浏览器。关键配置包括数据库连接池设置、JVM内存参数调优和Vue CLI打包优化配置。"
+  "content": "系统开发环境采用了成熟稳定的技术栈组合，确保了开发效率和系统可靠性。操作系统方面采用Windows 10作为主要开发平台，同时兼容Ubuntu 20.04 LTS作为部署环境。开发工具链中，IntelliJ IDEA 2023.1作为后端主要IDE，提供Spring Boot项目的集成开发支持；VS Code 1.77作为前端开发环境，配置Vetur和Vue Language Features插件提供Vue.js项目的语法高亮和智能提示。数据库环境采用MySQL 8.0.32作为主数据库，配合Navicat 16作为可视化管理工具。辅助软件方面，Postman 10.12用于API接口测试，Git 2.40用于版本控制，Node.js 18.15和JDK 17分别作为前后端运行时环境。技术选型依据中，Spring Boot 2.7.18被选为后端框架是因为其成熟的生态系统、优秀的性能表现和丰富的Starter组件；Vue.js 3.3.4的选择基于其渐进式采用特性、响应式数据绑定能力和Composition API的灵活性；MySQL 8.0的选择考虑到其在高校信息化环境中的广泛应用和成熟的运维体系。在兼容性方面，所选技术栈全面支持JDK 17的语言特性，前端支持Chrome 90+、Firefox 88+和Safari 14+等主流浏览器。关键配置包括数据库连接池设置、JVM内存参数调优和Vue CLI打包优化配置。"
 }

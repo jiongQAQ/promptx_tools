@@ -1,0 +1,11 @@
+{
+  "title": "档口表",
+  "text": "档口表，主要储存了本系统档口管理的相关信息，其中包含档口ID (id)、档口名称 (name)、档口描述 (description)、所属食堂ID (canteen_id)、创建时间 (created_time)、更新时间 (updated_time)，档口表的数据库设计如下表，表4-3 档口表 stall所示。",
+  "tablePath": "${tables}/Tab-stall.json",
+  "word_limit": 70,
+  "content": "档口表建立了与食堂表的强关联关系。canteen_id为外键，引用canteen表的id字段，设置了级联更新约束。name在同一食堂内必须唯一，通过复合索引(canteen_id, name)实现。description支持富文本内容，包括档口特色、主打菜品等介绍信息，为用户选择提供参考。",
+  "id": "4.2.3",
+  "parentChapter": "4.2",
+  "sourceFile": "chapter.4.2.json",
+  "extractedAt": "2025-09-29T13:54:23.221Z"
+}

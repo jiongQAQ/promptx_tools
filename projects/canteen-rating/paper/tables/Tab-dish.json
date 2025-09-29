@@ -1,0 +1,11 @@
+{
+  "title": "菜品表",
+  "text": "菜品表，主要储存了本系统菜品管理的相关信息，其中包含菜品ID (id)、菜品名称 (name)、菜品描述 (description)、价格 (price)、所属档口ID (stall_id)、菜品图片 (image_url)、创建时间 (created_time)、更新时间 (updated_time)，菜品表的数据库设计如下表，表4-4 菜品表 dish所示。",
+  "tablePath": "${tables}/Tab-dish.json",
+  "word_limit": 70,
+  "content": "菜品表作为核心业务表，设计重点关注数据精度和业务规则。stall_id外键关联档口表，price采用DECIMAL(10,2)类型保证货币计算精度，image_url存储图片访问路径且支持CDN加速。表中增加了is_deleted逻辑删除字段和avg_rating评分统计字段，支持高效的评价查询和排序。",
+  "id": "4.2.4",
+  "parentChapter": "4.2",
+  "sourceFile": "chapter.4.2.json",
+  "extractedAt": "2025-09-29T13:54:23.221Z"
+}
