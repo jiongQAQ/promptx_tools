@@ -1,0 +1,195 @@
+{
+  "scanTime": "2024-09-29T10:30:00Z",
+  "projectName": "canteen-rating",
+  "backend": {
+    "framework": "Spring Boot",
+    "version": "2.7.18",
+    "language": "Java",
+    "languageVersion": "17",
+    "database": {
+      "type": "MySQL",
+      "version": "8.3.0",
+      "orm": "MyBatis Plus 3.5.3.1"
+    },
+    "security": {
+      "framework": "Spring Security",
+      "authentication": "JWT",
+      "library": "jsonwebtoken 0.11.5"
+    },
+    "dependencies": [
+      {"name": "spring-boot-starter-web", "version": "2.7.18"},
+      {"name": "mybatis-plus-boot-starter", "version": "3.5.3.1"},
+      {"name": "spring-boot-starter-security", "version": "2.7.18"},
+      {"name": "jjwt-api", "version": "0.11.5"},
+      {"name": "mysql-connector-j", "version": "8.3.0"}
+    ]
+  },
+  "frontend": {
+    "admin": {
+      "framework": "Vue",
+      "version": "3.3.4",
+      "ui": "Element Plus 2.3.8",
+      "stateManagement": "Pinia 2.1.6",
+      "buildTool": "Vite 4.4.5",
+      "httpClient": "Axios 1.4.0"
+    },
+    "user": {
+      "framework": "Vue",
+      "version": "3.4.0",
+      "ui": "Element Plus 2.4.0",
+      "stateManagement": "Pinia 2.1.0",
+      "buildTool": "Vite 5.0.0",
+      "httpClient": "Axios 1.6.0"
+    }
+  },
+  "actualModules": [
+    {
+      "name": "user-auth",
+      "evidence": ["AuthController.java", "UserService.java", "User.java"],
+      "endpoints": ["/api/auth/login", "/api/auth/register", "/api/auth/refresh"],
+      "implemented": true
+    },
+    {
+      "name": "canteen-management",
+      "evidence": ["CanteenController.java", "CanteenService.java", "Canteen.java"],
+      "endpoints": ["/api/admin/canteen", "/api/common/canteen"],
+      "implemented": true
+    },
+    {
+      "name": "stall-management",
+      "evidence": ["StallController.java", "StallService.java", "Stall.java"],
+      "endpoints": ["/api/admin/stall", "/api/common/stall"],
+      "implemented": true
+    },
+    {
+      "name": "dish-management",
+      "evidence": ["DishController.java", "DishService.java", "Dish.java"],
+      "endpoints": ["/api/admin/dish", "/api/user/dish"],
+      "implemented": true
+    },
+    {
+      "name": "rating-system",
+      "evidence": ["RatingController.java", "RatingService.java", "Rating.java"],
+      "endpoints": ["/api/user/rating", "/api/admin/rating"],
+      "implemented": true
+    },
+    {
+      "name": "complaint-system",
+      "evidence": ["ComplaintController.java", "ComplaintService.java", "Complaint.java"],
+      "endpoints": ["/api/user/complaint", "/api/admin/complaint"],
+      "implemented": true
+    },
+    {
+      "name": "sensitive-word-filter",
+      "evidence": ["SensitiveWordController.java", "SensitiveWordService.java", "SensitiveWord.java"],
+      "endpoints": ["/api/admin/sensitive-word"],
+      "implemented": true
+    },
+    {
+      "name": "statistics-dashboard",
+      "evidence": ["StatisticsController.java", "StatisticsService.java", "AdminController.java"],
+      "endpoints": ["/api/admin/statistics", "/api/admin/dashboard"],
+      "implemented": true
+    }
+  ],
+  "entities": [
+    {
+      "name": "User",
+      "tableName": "users",
+      "fields": ["id", "username", "real_name", "password", "role", "created_time", "updated_time", "is_deleted"],
+      "filePath": "src/main/java/com/graduation/entity/User.java"
+    },
+    {
+      "name": "Canteen",
+      "tableName": "canteens",
+      "fields": ["id", "name", "location", "open_time", "close_time", "created_time", "updated_time", "is_deleted"],
+      "filePath": "src/main/java/com/graduation/entity/Canteen.java"
+    },
+    {
+      "name": "Stall",
+      "tableName": "stalls",
+      "fields": ["id", "name", "description", "canteen_id", "created_time", "updated_time", "is_deleted"],
+      "filePath": "src/main/java/com/graduation/entity/Stall.java"
+    },
+    {
+      "name": "Dish",
+      "tableName": "dishes",
+      "fields": ["id", "name", "stall_id", "publish_date", "price", "description", "image_path", "average_rating", "rating_count", "created_time", "updated_time", "is_deleted"],
+      "filePath": "src/main/java/com/graduation/entity/Dish.java"
+    },
+    {
+      "name": "Rating",
+      "tableName": "ratings",
+      "fields": ["id", "user_id", "dish_id", "score", "comment", "image_path", "rating_date", "created_time", "updated_time", "is_deleted"],
+      "filePath": "src/main/java/com/graduation/entity/Rating.java"
+    },
+    {
+      "name": "Complaint",
+      "tableName": "complaints",
+      "fields": ["id", "user_id", "dish_id", "content", "status", "created_time", "updated_time", "is_deleted"],
+      "filePath": "src/main/java/com/graduation/entity/Complaint.java"
+    },
+    {
+      "name": "SensitiveWord",
+      "tableName": "sensitive_words",
+      "fields": ["id", "word", "created_time", "updated_time", "is_deleted"],
+      "filePath": "src/main/java/com/graduation/entity/SensitiveWord.java"
+    }
+  ],
+  "notImplemented": [
+    "payment-system",
+    "third-party-integration",
+    "message-queue",
+    "caching-layer",
+    "file-upload-service"
+  ],
+  "prohibitedTechnologies": [
+    "microservices",
+    "GraphQL",
+    "Redis",
+    "Docker",
+    "Kubernetes",
+    "Message Queue",
+    "API Gateway",
+    "Elasticsearch",
+    "RabbitMQ",
+    "Apache Kafka",
+    "MongoDB",
+    "PostgreSQL",
+    "React",
+    "Angular",
+    "Node.js Express"
+  ],
+  "allowedBackend": [
+    "Spring Boot 2.7.18",
+    "MySQL 8.3.0",
+    "MyBatis Plus 3.5.3.1",
+    "Spring Security",
+    "JWT",
+    "Java 17",
+    "Maven"
+  ],
+  "allowedFrontend": [
+    "Vue 3.3.4",
+    "Vue 3.4.0",
+    "Element Plus 2.3.8",
+    "Element Plus 2.4.0",
+    "Pinia 2.1.6",
+    "Pinia 2.1.0",
+    "Vite 4.4.5",
+    "Vite 5.0.0",
+    "Axios 1.4.0",
+    "Axios 1.6.0",
+    "SCSS",
+    "ESLint"
+  ],
+  "allowedPatterns": [
+    "MVC Architecture",
+    "RESTful API",
+    "Single Page Application",
+    "Monolithic Architecture",
+    "Layered Architecture",
+    "JWT Authentication",
+    "Role-based Access Control"
+  ]
+}
