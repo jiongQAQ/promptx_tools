@@ -1,0 +1,75 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam sequence {
+  ArrowColor #0277BD
+  LifeLineBorderColor #0277BD
+  LifeLineBackgroundColor #E1F5FE
+  ParticipantBorderColor #0277BD
+  ParticipantBackgroundColor #E1F5FE
+  ParticipantFontSize 12
+  MessageAlignment center
+}
+skinparam note {
+  BackgroundColor #FFF9C4
+  BorderColor #F57F17
+}
+skinparam linetype ortho
+
+title 用户认证管理时序图
+
+participant "Vue前端" as Frontend
+participant "AuthController" as Controller
+participant "UserService" as Service
+participant "UserMapper" as Mapper
+participant "MySQL数据库" as DB
+participant "JWT工具" as JWT
+
+Frontend -> Controller: POST /api/auth/login\n{username, password}
+activate Controller
+
+Controller -> Controller: 参数校验与格式验证
+note right: 验证用户名格式\n密码复杂度检查
+
+Controller -> Service: authenticateUser(username, password)
+activate Service
+
+Service -> Mapper: findByUsername(username)
+activate Mapper
+
+Mapper -> DB: SELECT * FROM users WHERE username = ?
+activate DB
+DB --> Mapper: 用户记录或空结果
+deactivate DB
+
+Mapper --> Service: User对象
+deactivate Mapper
+
+alt 用户存在且启用
+    Service -> Service: BCrypt.checkpw(password, storedHash)
+    note right: 使用BCrypt算法\n验证密码散列值
+
+    alt 密码验证通过
+        Service -> JWT: generateToken(userId, role, expireTime)
+        activate JWT
+        JWT --> Service: JWT Token字符串
+        deactivate JWT
+
+        Service --> Controller: LoginResult{token, userInfo}
+        Controller --> Frontend: {code: 200, token, userInfo}
+    else 密码错误
+        Service --> Controller: 密码验证失败
+        Controller --> Frontend: {code: 401, message: "密码错误"}
+    end
+else 用户不存在
+    Service --> Controller: 用户不存在错误
+    Controller --> Frontend: {code: 404, message: "用户不存在"}
+else 账户禁用
+    Service --> Controller: 账户状态异常
+    Controller --> Frontend: {code: 403, message: "账户已禁用"}
+end
+
+deactivate Service
+deactivate Controller
+
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor White
+skinparam component {
+  BackgroundColor #E8F5E8
+  BorderColor #2E7D32
+  FontSize 12
+}
+skinparam package {
+  BackgroundColor #E3F2FD
+  BorderColor #1976D2
+  FontSize 13
+}
+
+title 高校食堂评价系统功能框图
+
+package "高校食堂评价系统" {
+
+  package "用户认证管理模块" {
+    component [用户注册]
+    component [用户登录]
+    component [个人信息管理]
+    component [权限控制]
+  }
+
+  package "菜品评价系统模块" {
+    component [评价发布]
+    component [评价查询]
+    component [评价管理]
+    component [评价统计]
+  }
+
+  package "食堂档口管理模块" {
+    component [食堂信息管理]
+    component [档口信息管理]
+    component [菜品信息管理]
+  }
+
+  package "投诉建议处理模块" {
+    component [投诉受理]
+    component [分类处理]
+    component [进度跟踪]
+    component [结果反馈]
+  }
+
+  package "系统管理功能模块" {
+    component [用户管理]
+    component [数据统计]
+    component [系统配置]
+    component [日志管理]
+  }
+}
+
+note right of [用户注册] : 学号验证、密码加密\n唯一性检查
+note right of [评价发布] : 评分范围1-5分\n敏感词过滤
+note right of [食堂信息管理] : 营业时间配置\n位置信息管理
+note right of [投诉受理] : 自动分类编号\n内容安全审核
+note right of [数据统计] : 用户活跃度分析\n评价趋势统计
+
+@enduml

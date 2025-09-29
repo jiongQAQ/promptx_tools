@@ -1,0 +1,124 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam entity {
+  BackgroundColor #F3E5F5
+  BorderColor #7B1FA2
+  FontSize 12
+}
+skinparam arrow {
+  Color #7B1FA2
+  FontSize 10
+}
+skinparam linetype ortho
+
+title 高校食堂评价系统总体ER关系图
+
+entity "用户表 (users)" as User {
+  * id : INT (PK)
+  --
+  * username : VARCHAR(50) (UNIQUE)
+  * real_name : VARCHAR(100)
+  * password : VARCHAR(255)
+  * role : ENUM('STUDENT', 'ADMIN')
+  enabled : BOOLEAN DEFAULT TRUE
+  created_time : DATETIME
+  updated_time : DATETIME
+  is_deleted : BOOLEAN DEFAULT FALSE
+}
+
+entity "食堂表 (canteens)" as Canteen {
+  * id : INT (PK)
+  --
+  * name : VARCHAR(100)
+  location : VARCHAR(500)
+  open_time : TIME
+  close_time : TIME
+  created_time : DATETIME
+  updated_time : DATETIME
+  is_deleted : BOOLEAN DEFAULT FALSE
+}
+
+entity "档口表 (stalls)" as Stall {
+  * id : INT (PK)
+  --
+  * canteen_id : INT (FK)
+  * name : VARCHAR(100)
+  description : TEXT
+  created_time : DATETIME
+  updated_time : DATETIME
+  is_deleted : BOOLEAN DEFAULT FALSE
+}
+
+entity "菜品表 (dishes)" as Dish {
+  * id : INT (PK)
+  --
+  * stall_id : INT (FK)
+  * name : VARCHAR(200)
+  publish_date : DATE
+  price : DECIMAL(10,2)
+  description : TEXT
+  image_path : VARCHAR(500)
+  average_rating : DECIMAL(3,2)
+  rating_count : INT DEFAULT 0
+  created_time : DATETIME
+  updated_time : DATETIME
+  is_deleted : BOOLEAN DEFAULT FALSE
+}
+
+entity "评价表 (ratings)" as Rating {
+  * id : INT (PK)
+  --
+  * user_id : INT (FK)
+  * dish_id : INT (FK)
+  * score : INT CHECK (score BETWEEN 1 AND 5)
+  comment : TEXT
+  image_path : VARCHAR(500)
+  rating_date : DATETIME
+  created_time : DATETIME
+  updated_time : DATETIME
+  is_deleted : BOOLEAN DEFAULT FALSE
+}
+
+entity "投诉表 (complaints)" as Complaint {
+  * id : INT (PK)
+  --
+  * user_id : INT (FK)
+  stall_id : INT (FK)
+  * type : VARCHAR(50)
+  * title : VARCHAR(200)
+  * content : TEXT
+  status : ENUM('PENDING', 'PROCESSING', 'RESOLVED', 'CLOSED') DEFAULT 'PENDING'
+  admin_reply : TEXT
+  created_time : DATETIME
+  updated_time : DATETIME
+  is_deleted : BOOLEAN DEFAULT FALSE
+}
+
+entity "敏感词表 (sensitive_words)" as SensitiveWord {
+  * id : INT (PK)
+  --
+  * word : VARCHAR(100) (UNIQUE)
+  level : INT DEFAULT 1
+  created_time : DATETIME
+  updated_time : DATETIME
+  is_deleted : BOOLEAN DEFAULT FALSE
+}
+
+' 主要关系连线
+Canteen ||--o{ Stall : "一对多"
+Stall ||--o{ Dish : "一对多"
+User ||--o{ Rating : "一对多"
+Dish ||--o{ Rating : "一对多"
+User ||--o{ Complaint : "一对多"
+Stall ||--o{ Complaint : "一对多（可选）"
+
+note right of User : 用户认证与权限控制\n支持学生和管理员角色
+note right of Canteen : 食堂基础信息管理\n支持营业时间配置
+note right of Stall : 档口信息管理\n隶属于特定食堂
+note right of Dish : 菜品核心数据\n包含评价统计字段
+note right of Rating : 用户评价数据\n一用户一菜品一评价
+note right of Complaint : 投诉建议管理\n支持工作流状态机
+note right of SensitiveWord : 内容安全过滤\n支持敏感词等级管理
+
+@enduml

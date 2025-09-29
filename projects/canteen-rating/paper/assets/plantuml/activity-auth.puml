@@ -1,0 +1,65 @@
+@startuml
+!theme plain
+skinparam backgroundColor White
+skinparam activity {
+  BackgroundColor #E1F5FE
+  BorderColor #0277BD
+  FontSize 12
+}
+skinparam arrow {
+  Color #0277BD
+  FontSize 10
+}
+skinparam diamond {
+  BackgroundColor #FFF3E0
+  BorderColor #F57C00
+  FontSize 11
+}
+skinparam linetype ortho
+
+title 用户认证管理活动图
+
+start
+
+:用户输入登录信息;
+:系统校验参数格式和完整性;
+
+if (参数校验通过?) then (是)
+  :根据用户名查询用户信息;
+  if (用户存在?) then (是)
+    if (账户启用状态?) then (启用)
+      :使用BCrypt验证密码;
+      if (密码正确?) then (是)
+        :生成JWT令牌包含用户ID、角色信息和过期时间;
+        :返回用户信息和访问Token;
+        :登录成功;
+      else (否)
+        :返回密码错误信息;
+      endif
+    else (禁用)
+      :返回账户已禁用信息;
+    endif
+  else (否)
+    :返回用户不存在错误;
+  endif
+else (否)
+  :返回参数校验失败信息;
+endif
+
+if (网络异常?) then (是)
+  :记录网络异常日志;
+  :返回网络超时错误;
+else (否)
+  :正常处理完成;
+endif
+
+if (数据库异常?) then (是)
+  :记录数据库连接异常;
+  :返回系统繁忙提示;
+else (否)
+  :数据访问正常;
+endif
+
+stop
+
+@enduml
