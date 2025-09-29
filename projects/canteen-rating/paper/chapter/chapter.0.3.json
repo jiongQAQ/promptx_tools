@@ -4,5 +4,8 @@
   "text": "canteen rating system; Spring Boot; Vue.js; rating management; stall management; data statistics",
   "prompt": "请基于论文内容，提取《Keywords》的英文关键词，要求符合国际学术规范，选择最能代表论文核心内容的英文术语，确保涵盖text中的要点。",
   "word_limit": 25,
-  "content": "canteen rating system; Spring Boot; Vue.js; rating management; stall management; data statistics"
+  "content": "canteen rating system; Spring Boot; Vue.js; rating management; stall management; data statistics",
+  "docx_style": {
+    "preset": "academic"
+  }
 }

@@ -4,5 +4,8 @@
   "text": "食堂评价系统；Spring Boot；Vue.js；评分管理；档口管理；数据统计",
   "prompt": "请基于论文内容，提取《关键词》，要求符合学术规范，选择最能代表论文核心内容的关键技术和功能模块，确保涵盖text中的要点。",
   "word_limit": 25,
-  "content": "食堂评价系统；Spring Boot；Vue.js；评分管理；档口管理；数据统计"
+  "content": "食堂评价系统；Spring Boot；Vue.js；评分管理；档口管理；数据统计",
+  "docx_style": {
+    "preset": "academic"
+  }
 }

@@ -8,6 +8,7 @@
       "title": "用户实体",
       "text": "描述用户实体的核心属性：用户ID、用户名、密码、角色、注册时间等，定义用户状态与权限关系。",
       "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-user.svg",
+      "imageLabel": "图3-3 用户实体图",
       "prompt": "请撰写《用户实体》的正文，要求结合实体概念图描述用户实体的属性设计和业务含义，并在正文中说明该实体图所表达的用户数据结构和关系，确保涵盖text中的要点，字数参考word_limit配置。",
       "word_limit": 70
     },
@@ -15,6 +16,7 @@
       "title": "菜品实体",
       "text": "描述菜品实体属性：菜品ID、名称、价格、分类、所属档口、状态等核心字段及业务约束。",
       "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-dish.svg",
+      "imageLabel": "图3-4 菜品实体图",
       "prompt": "请撰写《菜品实体》的正文，要求结合实体概念图描述菜品实体的属性设计和业务约束，并在正文中说明该实体图所表达的菜品数据结构和关系，确保涵盖text中的要点，字数参考word_limit配置。",
       "word_limit": 70
     },
@@ -22,6 +24,7 @@
       "title": "评分实体",
       "text": "描述评分实体结构：评分ID、用户ID、菜品ID、评分值、评价内容、提交时间等字段关系。",
       "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-rating.svg",
+      "imageLabel": "图3-5 评分实体图",
       "prompt": "请撰写《评分实体》的正文，要求结合实体概念图描述评分实体的属性设计和关联关系，并在正文中说明该实体图所表达的评分数据结构和业务逻辑，确保涵盖text中的要点，字数参考word_limit配置。",
       "word_limit": 70
     },
@@ -29,6 +32,7 @@
       "title": "档口实体",
       "text": "描述档口实体属性：档口ID、名称、所属食堂、联系方式、营业状态等管理信息。",
       "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-stall.svg",
+      "imageLabel": "图3-6 档口实体图",
       "prompt": "请撰写《档口实体》的正文，要求结合实体概念图描述档口实体的属性设计和管理信息，并在正文中说明该实体图所表达的档口数据结构和管理关系，确保涵盖text中的要点，字数参考word_limit配置。",
       "word_limit": 70
     },
@@ -36,6 +40,7 @@
       "title": "投诉实体",
       "text": "描述投诉建议实体：投诉ID、用户ID、内容、类型、处理状态、处理结果等流程字段。",
       "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-complaint.svg",
+      "imageLabel": "图3-7 投诉实体图",
       "prompt": "请撰写《投诉实体》的正文，要求结合实体概念图描述投诉建议实体的属性设计和流程状态，并在正文中说明该实体图所表达的投诉数据结构和处理流程，确保涵盖text中的要点，字数参考word_limit配置。",
       "word_limit": 70
     },
@@ -43,6 +48,7 @@
       "title": "食堂实体",
       "text": "描述食堂实体属性：食堂ID、名称、地址、联系方式、营业时间、状态等基础管理信息。",
       "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-canteen.svg",
+      "imageLabel": "图3-8 食堂实体图",
       "prompt": "请撰写《食堂实体》的正文，要求结合实体概念图描述食堂实体的属性设计和管理信息，并在正文中说明该实体图所表达的食堂数据结构和管理关系，确保涵盖text中的要点，字数参考word_limit配置。",
       "word_limit": 70
     },
@@ -50,8 +56,12 @@
       "title": "敏感词实体",
       "text": "描述敏感词实体结构：敏感词ID、词汇内容、类型、状态、创建时间等内容审核管理字段。",
       "imagePath": "/Users/jiongjiong/Documents/a_git_project/promptx_tools/projects/canteen-rating/paper/exports/tables/Tab-sensitive_word.svg",
+      "imageLabel": "图3-9 敏感词实体图",
       "prompt": "请撰写《敏感词实体》的正文，要求结合实体概念图描述敏感词实体的属性设计和管理机制，并在正文中说明该实体图所表达的敏感词数据结构和审核流程，确保涵盖text中的要点，字数参考word_limit配置。",
       "word_limit": 70
     }
-  ]
+  ],
+  "docx_style": {
+    "preset": "academic"
+  }
 }
