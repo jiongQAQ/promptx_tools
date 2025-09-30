@@ -1,0 +1,59 @@
+@startuml
+!theme plain
+skinparam linetype ortho
+
+start
+
+:用户访问登录页面;
+
+:输入用户名和密码;
+
+:提交登录请求;
+
+if (用户名是否存在?) then (否)
+  :返回用户不存在错误;
+  stop
+else (是)
+  if (密码验证通过?) then (否)
+    :登录失败次数+1;
+    if (失败次数>=5?) then (是)
+      :锁定账户30分钟;
+      :返回账户已锁定;
+      stop
+    else (否)
+      :返回密码错误;
+      stop
+    endif
+  else (是)
+    :生成JWT令牌\n(包含用户ID、角色);
+    :返回Token给前端;
+    :前端存储Token到localStorage;
+
+    partition 后续请求流程 {
+      :前端发送API请求;
+      :Axios拦截器添加\nAuthorization头;
+      :后端JwtAuthenticationFilter\n拦截请求;
+
+      if (Token有效?) then (否)
+        :返回401未授权;
+        :前端跳转登录页;
+        stop
+      else (是)
+        :解析Token提取用户信息;
+        :设置SecurityContext;
+
+        if (权限验证通过?) then (否)
+          :返回403禁止访问;
+          stop
+        else (是)
+          :执行业务逻辑;
+          :返回响应数据;
+        endif
+      endif
+    }
+  endif
+endif
+
+stop
+
+@enduml

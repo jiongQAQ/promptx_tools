@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+skinparam linetype ortho
+
+rectangle "普通用户" as User
+rectangle "管理员" as Admin
+ellipse "食堂评价\n系统" as System
+
+User --> System : 浏览信息请求
+User --> System : 提交评价
+User --> System : 提交投诉
+
+System --> User : 查询结果
+System --> User : 处理状态
+
+Admin --> System : 管理食堂档口
+Admin --> System : 管理菜品信息
+Admin --> System : 处理投诉
+
+System --> Admin : 统计数据
+System --> Admin : 操作结果
+
+@enduml

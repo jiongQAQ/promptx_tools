@@ -1,0 +1,33 @@
+@startuml
+!theme plain
+skinparam linetype ortho
+
+|用户|
+start
+:选择菜品;
+:填写评分和评价;
+|Controller层|
+:接收评价请求;
+|敏感词过滤服务|
+:检测敏感词;
+if (包含敏感词?) then (是)
+  :设置状态为待审核;
+else (否)
+  :设置状态为已发布;
+endif
+|Service层|
+:保存评价数据;
+:异步更新菜品评分;
+|Mapper层|
+:插入评价记录;
+:更新菜品平均分;
+|MySQL数据库|
+:存储评价数据;
+:更新菜品表;
+|Controller层|
+:返回提交结果;
+|用户|
+:查看评价展示;
+stop
+
+@enduml
