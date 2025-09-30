@@ -1,0 +1,9 @@
+{
+  "id": "5.1.2",
+  "title": "实现过程",
+  "text": "用户认证模块的实现基于Spring Security和JWT。首先配置SecurityFilterChain，定义URL权限规则，放行登录注册接口，其他接口需要认证。实现UserDetailsService接口的loadUserByUsername方法，从数据库加载用户信息并转换为UserDetails对象。配置JwtAuthenticationFilter，在doFilterInternal方法中解析请求头的Token，验证有效性并设置Authentication到SecurityContext。实现AuthController，提供/api/auth/register和/api/auth/login接口，登录成功后调用JwtTokenUtil生成Token返回。前端使用Axios拦截器在请求头中自动添加Authorization: Bearer <token>。权限控制使用@PreAuthorize('hasRole(\"ADMIN\")')注解标注需要管理员权限的方法。实现效果如图所示，展示了登录界面和认证成功后的主界面。",
+  "word_limit": 300,
+  "imagePath": "${impl}/impl-auth.png",
+  "sourceFile": "content-plan",
+  "extractedAt": "2025-09-30T10:21:26.383Z"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "5.3.2",
+  "title": "实现过程",
+  "text": "菜品管理模块的后端实现主要在DishController和UserDishController中，前者提供管理员接口，后者提供用户查询接口。DishController提供/api/admin/dish的增删改查接口，支持分页查询、条件筛选、批量删除。DishServiceImpl实现业务逻辑，包括菜品信息校验、档口关联验证、图片路径处理等。前端管理界面使用el-table展示菜品列表，el-form实现菜品编辑表单，el-upload支持图片上传并预览，el-switch实现上下架快速切换。用户端使用el-card展示菜品卡片，点击卡片查看详情，显示菜品图片、价格、评分、评价数等信息。菜品列表支持按档口筛选、按分类过滤、按价格排序。实现效果如图所示，展示了菜品管理界面和用户浏览界面。",
+  "word_limit": 300,
+  "imagePath": "${impl}/impl-dish.png",
+  "sourceFile": "content-plan",
+  "extractedAt": "2025-09-30T10:21:26.384Z"
+}

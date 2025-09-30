@@ -1,0 +1,10 @@
+{
+  "title": "用户认证与权限管理功能2层数据流图",
+  "text": "展示用户登录认证、JWT令牌生成和验证、角色权限检查的数据流程。用户提交用户名密码，系统验证后生成JWT令牌返回前端，前端携带令牌访问受保护接口，后端验证令牌有效性并提取用户信息进行权限判断。",
+  "word_limit": 100,
+  "imagePath": "${dfd}/dfd-auth-level2.png",
+  "id": "4.3.1.1",
+  "parentChapter": "4.3.1",
+  "sourceFile": "chapter.4.3.1.json",
+  "extractedAt": "2025-09-30T10:25:51.841Z"
+}

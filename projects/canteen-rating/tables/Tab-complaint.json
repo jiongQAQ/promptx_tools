@@ -1,0 +1,10 @@
+{
+  "title": "投诉表（complaint）",
+  "text": "投诉表（complaint），主要存储了本系统用户投诉信息的相关数据，其中包含投诉ID（id）、用户ID（user_id）、投诉类型（type）、投诉对象ID（target_id）、投诉内容（content）、图片（images）、处理状态（status）、处理结果（result）、处理时间（handle_time）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。投诉表的数据库设计如下表，表4-6 投诉表 complaint所示。",
+  "word_limit": 70,
+  "tablePath": "${tables}/Tab-complaint.json",
+  "id": "4.2.3.6",
+  "parentChapter": "4.2.3",
+  "sourceFile": "chapter.4.2.3.json",
+  "extractedAt": "2025-09-30T10:25:51.841Z"
+}
