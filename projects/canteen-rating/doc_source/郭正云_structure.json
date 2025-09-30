@@ -1,0 +1,701 @@
+{
+  "document_info": {
+    "title": "基于SpringMVC中小型企业人事管理系统的设计与实现",
+    "author": "郭正云",
+    "student_id": "2023003212",
+    "school": "玉溪师范学院",
+    "college": "工学院",
+    "major": "计算机科学与技术（专升本）",
+    "supervisor": "苏亚丽",
+    "supervisor_title": "副教授",
+    "enterprise_mentor": "席阳",
+    "enterprise_mentor_title": "企业导师",
+    "date": "2025年3月",
+    "total_pages": 66,
+    "document_type": "本科生毕业论文"
+  },
+  "abstract": {
+    "chinese": {
+      "page": 4,
+      "content_type": "introduction",
+      "keywords": ["人事管理", "UML", "MVC架构", "Vue.js"],
+      "summary": "经济全球化和市场竞争不断加剧，人力资源管理对企业保持持续竞争优势越来越重要。本研究聚焦于中小企业在人力资源管理领域遇到的困境，倾力打造了一套依循SpringMVC框架的人事管理系统。"
+    },
+    "english": {
+      "page": 6,
+      "content_type": "introduction",
+      "keywords": ["personnel management", "UML", "MVC framework", "Vue.js"],
+      "summary": "Economic globalization and increasing market competition have made human resource management increasingly important for enterprises to maintain a sustainable competitive advantage."
+    }
+  },
+  "chapters": [
+    {
+      "id": "1",
+      "title": "绪论",
+      "level": 1,
+      "page_start": 10,
+      "content_type": "introduction",
+      "sections": [
+        {
+          "id": "1.1",
+          "title": "研究背景及意义",
+          "level": 2,
+          "page": 10,
+          "content_type": "text",
+          "description": "介绍经济全球化背景下，企业人力资源管理数字化转型的重要性和必要性"
+        },
+        {
+          "id": "1.2",
+          "title": "国内外研究现状",
+          "level": 2,
+          "page": 11,
+          "content_type": "text",
+          "description": "分析国内外人力资源管理系统的研究现状和发展趋势，包括云端HR系统、SaaS平台等"
+        },
+        {
+          "id": "1.3",
+          "title": "本文的主要内容",
+          "level": 2,
+          "page": 13,
+          "content_type": "text",
+          "description": "概述论文的三个主要研究要点：分析中小企业人力资源管理问题、系统架构设计、基于SpringMVC框架的系统开发"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "相关技术介绍",
+      "level": 1,
+      "page_start": 14,
+      "content_type": "technical_background",
+      "sections": [
+        {
+          "id": "2.1",
+          "title": "后端框架",
+          "level": 2,
+          "page": 14,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "2.1.1",
+              "title": "SpringBoot框架",
+              "level": 3,
+              "page": 14,
+              "content_type": "text",
+              "description": "介绍SpringBoot框架的特点、自动配置、嵌入式Web服务器等核心功能"
+            },
+            {
+              "id": "2.1.2",
+              "title": "SpringMVC框架",
+              "level": 3,
+              "page": 14,
+              "content_type": "text",
+              "description": "介绍MVC三层架构模式（Model-View-Controller）及其在Web开发中的应用"
+            },
+            {
+              "id": "2.1.3",
+              "title": "Spring Security安全框架",
+              "level": 3,
+              "page": 14,
+              "content_type": "text",
+              "description": "介绍Spring Security的安全管理、前端呈现、身份验证等功能"
+            },
+            {
+              "id": "2.1.4",
+              "title": "MyBatis",
+              "level": 3,
+              "page": 14,
+              "content_type": "text",
+              "description": "介绍MyBatis持久层框架及其数据操作功能"
+            }
+          ]
+        },
+        {
+          "id": "2.2",
+          "title": "前端框架",
+          "level": 2,
+          "page": 15,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "2.2.1",
+              "title": "Vue和ElementUI",
+              "level": 3,
+              "page": 15,
+              "content_type": "text",
+              "description": "介绍Vue.js框架和Element UI组件库"
+            },
+            {
+              "id": "2.2.2",
+              "title": "Axios",
+              "level": 3,
+              "page": 15,
+              "content_type": "text",
+              "description": "介绍Axios HTTP客户端及其在前后端通信中的应用"
+            }
+          ]
+        },
+        {
+          "id": "2.3",
+          "title": "MySQL数据库",
+          "level": 2,
+          "page": 15,
+          "content_type": "text",
+          "description": "介绍MySQL关系型数据库管理系统"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "系统需求分析",
+      "level": 1,
+      "page_start": 16,
+      "content_type": "requirements_analysis",
+      "sections": [
+        {
+          "id": "3.1",
+          "title": "系统可行性分析",
+          "level": 2,
+          "page": 16,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "3.1.1",
+              "title": "技术可行性",
+              "level": 3,
+              "page": 16,
+              "content_type": "text"
+            },
+            {
+              "id": "3.1.2",
+              "title": "经济可行性",
+              "level": 3,
+              "page": 16,
+              "content_type": "text"
+            },
+            {
+              "id": "3.1.3",
+              "title": "社会可行性",
+              "level": 3,
+              "page": 16,
+              "content_type": "text"
+            }
+          ]
+        },
+        {
+          "id": "3.2",
+          "title": "综合性需求分析",
+          "level": 2,
+          "page": 17,
+          "content_type": "text"
+        },
+        {
+          "id": "3.3",
+          "title": "功能性需求",
+          "level": 2,
+          "page": 17,
+          "content_type": "text",
+          "description": "包含用户登录、部门管理、员工信息管理、考勤管理、薪资管理、系统管理等核心功能模块"
+        },
+        {
+          "id": "3.4",
+          "title": "非功能性需求",
+          "level": 2,
+          "page": 18,
+          "content_type": "text"
+        }
+      ],
+      "figures": [
+        {
+          "id": "图3-1",
+          "title": "管理员用例图",
+          "page": 20,
+          "type": "uml_use_case",
+          "description": "展示系统管理员的用例关系，包括基本信息管理、员工信息管理、部门管理、员工考勤管理、系统管理等模块"
+        },
+        {
+          "id": "图3-2",
+          "title": "员工管理用例图",
+          "page": 20,
+          "type": "uml_use_case",
+          "description": "展示普通员工的用例关系，包括个人信息管理、部门信息、考勤事务管理等"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "系统设计",
+      "level": 1,
+      "page_start": 21,
+      "content_type": "system_design",
+      "sections": [
+        {
+          "id": "4.1",
+          "title": "系统整体架构设计",
+          "level": 2,
+          "page": 21,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "4.1.1",
+              "title": "架构选择",
+              "level": 3,
+              "page": 21,
+              "content_type": "text"
+            },
+            {
+              "id": "4.1.2",
+              "title": "系统模块",
+              "level": 3,
+              "page": 21,
+              "content_type": "text"
+            }
+          ]
+        },
+        {
+          "id": "4.2",
+          "title": "数据库设计",
+          "level": 2,
+          "page": 22,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "4.2.1",
+              "title": "数据库概念结构设计",
+              "level": 3,
+              "page": 22,
+              "content_type": "text",
+              "description": "包含E-R图设计，展示实体及其属性关系"
+            },
+            {
+              "id": "4.2.2",
+              "title": "数据库逻辑结构设计",
+              "level": 3,
+              "page": 27,
+              "content_type": "text",
+              "description": "将E-R图转换为关系模型，设计数据表结构"
+            },
+            {
+              "id": "4.2.3",
+              "title": "数据库物理结构设计",
+              "level": 3,
+              "page": 27,
+              "content_type": "text",
+              "description": "详细的数据表字段设计，包括字段名、数据类型、是否为空、默认值、是否主键等"
+            }
+          ]
+        },
+        {
+          "id": "4.3",
+          "title": "系统访问流程",
+          "level": 2,
+          "page": 32,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "4.3.1",
+              "title": "系统数据流图",
+              "level": 3,
+              "page": 33,
+              "content_type": "diagram"
+            }
+          ]
+        },
+        {
+          "id": "4.4",
+          "title": "类图",
+          "level": 2,
+          "page": 36,
+          "content_type": "diagram"
+        }
+      ],
+      "figures": [
+        {
+          "id": "图4-4",
+          "title": "合同实体属性图",
+          "page": 25,
+          "type": "er_diagram",
+          "description": "展示合同实体的属性结构，包括员工工号、合同编号、合同开始时间、合同结束时间、合同内容、签订日期"
+        },
+        {
+          "id": "图4-5",
+          "title": "考勤状态实体属性图",
+          "page": 25,
+          "type": "er_diagram",
+          "description": "展示考勤状态实体的属性，包括员工工号、考勤记录编号、打卡日期、签到时间、签退时间、考勤状态、需要工时、实际工时、排班日期"
+        },
+        {
+          "id": "图4-12",
+          "title": "系统实体属性图",
+          "page": 30,
+          "type": "er_diagram",
+          "description": "展示系统中主要实体及其关系，包括合同、考勤状态、权限、员工、角色、用户、部门、薪资结构、专项附加扣除、福利标准等"
+        },
+        {
+          "id": "图4-16",
+          "title": "用户登录功能2层数据流图",
+          "page": 40,
+          "type": "dfd",
+          "description": "展示用户登录功能的数据流程，包括管理员登录和普通员工登录两种路径"
+        },
+        {
+          "id": "图4-17",
+          "title": "部门信息管理功能2层数据流图",
+          "page": 40,
+          "type": "dfd",
+          "description": "展示部门信息管理功能的数据流程，包括查看部门结构、修改部门信息、新增部门、删除部门等操作"
+        }
+      ],
+      "tables": [
+        {
+          "id": "表4-5",
+          "title": "薪资结构表(employeesalary)",
+          "page": 35,
+          "type": "database_schema",
+          "description": "详细列出薪资结构表的字段设计，包括esId、workId、basicSalary、endowment、medical等20多个字段的数据类型、是否为空、默认值和主键约束"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "系统实现",
+      "level": 1,
+      "page_start": 37,
+      "content_type": "implementation",
+      "sections": [
+        {
+          "id": "5.1",
+          "title": "用户登录模块",
+          "level": 2,
+          "page": 37,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "5.1.1",
+              "title": "功能描述",
+              "level": 3,
+              "page": 37,
+              "content_type": "text"
+            },
+            {
+              "id": "5.1.2",
+              "title": "实现过程",
+              "level": 3,
+              "page": 37,
+              "content_type": "text",
+              "description": "介绍前端和后端的登录实现，包括Spring Security授权流程、用户验证、密码验证、登录页面设计等"
+            }
+          ]
+        },
+        {
+          "id": "5.2",
+          "title": "部门管理模块",
+          "level": 2,
+          "page": 38,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "5.2.1",
+              "title": "功能描述",
+              "level": 3,
+              "page": 38,
+              "content_type": "text"
+            },
+            {
+              "id": "5.2.2",
+              "title": "实现过程",
+              "level": 3,
+              "page": 38,
+              "content_type": "text"
+            }
+          ]
+        },
+        {
+          "id": "5.3",
+          "title": "员工信息管理模块",
+          "level": 2,
+          "page": 39,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "5.3.1",
+              "title": "功能描述",
+              "level": 3,
+              "page": 39,
+              "content_type": "text"
+            },
+            {
+              "id": "5.3.2",
+              "title": "实现过程",
+              "level": 3,
+              "page": 39,
+              "content_type": "text"
+            }
+          ]
+        },
+        {
+          "id": "5.4",
+          "title": "考勤模块",
+          "level": 2,
+          "page": 40,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "5.4.1",
+              "title": "功能描述",
+              "level": 3,
+              "page": 40,
+              "content_type": "text"
+            },
+            {
+              "id": "5.4.2",
+              "title": "实现过程",
+              "level": 3,
+              "page": 40,
+              "content_type": "text",
+              "description": "包括获取员工排班信息、接收分页参数教员、通过接口分页数据查询等功能"
+            }
+          ]
+        },
+        {
+          "id": "5.5",
+          "title": "薪资管理模块",
+          "level": 2,
+          "page": 42,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "5.5.1",
+              "title": "功能描述",
+              "level": 3,
+              "page": 42,
+              "content_type": "text"
+            },
+            {
+              "id": "5.5.2",
+              "title": "实现过程",
+              "level": 3,
+              "page": 42,
+              "content_type": "text"
+            }
+          ]
+        },
+        {
+          "id": "5.6",
+          "title": "系统管理模块",
+          "level": 2,
+          "page": 43,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "5.6.1",
+              "title": "功能描述",
+              "level": 3,
+              "page": 43,
+              "content_type": "text"
+            },
+            {
+              "id": "5.6.2",
+              "title": "实现过程",
+              "level": 3,
+              "page": 43,
+              "content_type": "text"
+            }
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "id": "图5-1",
+          "title": "Spring Security授权流程图",
+          "page": 45,
+          "type": "flowchart",
+          "description": "展示Spring Security的授权流程，包括登录认证、权限验证、访问控制等环节"
+        },
+        {
+          "id": "图5-6",
+          "title": "自动排班页面",
+          "page": 50,
+          "type": "screenshot",
+          "description": "展示自动排班功能的界面，包括员工排班信息、日期选择、排班记录查询等"
+        },
+        {
+          "id": "图5-12",
+          "title": "系统日志管理界面",
+          "page": 55,
+          "type": "screenshot",
+          "description": "展示系统日志管理功能的界面，记录系统操作日志、用户行为等信息"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "测试与评价",
+      "level": 1,
+      "page_start": 56,
+      "content_type": "testing",
+      "sections": [
+        {
+          "id": "6.1",
+          "title": "系统测试的目的",
+          "level": 2,
+          "page": 56,
+          "content_type": "text",
+          "description": "说明测试的目的是验证软件功能和性能需求，确保软件质量"
+        },
+        {
+          "id": "6.2",
+          "title": "系统功能测试",
+          "level": 2,
+          "page": 57,
+          "content_type": "text",
+          "subsections": [
+            {
+              "id": "6.2.1",
+              "title": "登录模块测试",
+              "level": 3,
+              "page": 57,
+              "content_type": "text"
+            },
+            {
+              "id": "6.2.2",
+              "title": "员工信息管理模块测试",
+              "level": 3,
+              "page": 58,
+              "content_type": "text"
+            },
+            {
+              "id": "6.2.3",
+              "title": "员工薪资管理模块测试",
+              "level": 3,
+              "page": 59,
+              "content_type": "text"
+            },
+            {
+              "id": "6.2.4",
+              "title": "系统管理模块测试",
+              "level": 3,
+              "page": 60,
+              "content_type": "text"
+            }
+          ]
+        },
+        {
+          "id": "6.3",
+          "title": "系统安全性测试",
+          "level": 2,
+          "page": 61,
+          "content_type": "text",
+          "description": "测试数据库安全、权限控制、密码登录等安全功能"
+        },
+        {
+          "id": "6.4",
+          "title": "小结",
+          "level": 2,
+          "page": 61,
+          "content_type": "text"
+        }
+      ],
+      "tables": [
+        {
+          "id": "测试表",
+          "title": "功能模块测试用例",
+          "page": 60,
+          "type": "test_case",
+          "description": "展示系统管理模块的测试用例，包括测试用例、测试目标、测试操作、预期测试结果、测试结果"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "总结与展望",
+      "level": 1,
+      "page_start": 62,
+      "content_type": "conclusion",
+      "sections": [
+        {
+          "id": "7.1",
+          "title": "总结",
+          "level": 2,
+          "page": 62,
+          "content_type": "text"
+        },
+        {
+          "id": "7.2",
+          "title": "展望",
+          "level": 2,
+          "page": 62,
+          "content_type": "text"
+        }
+      ]
+    }
+  ],
+  "back_matter": [
+    {
+      "title": "致谢",
+      "page": 63,
+      "content_type": "acknowledgment"
+    },
+    {
+      "title": "参考文献",
+      "page_start": 65,
+      "page_end": 66,
+      "content_type": "references",
+      "count": 15,
+      "description": "包含15篇参考文献，涵盖SpringBoot、人力资源管理、MVC架构、数据库等相关研究"
+    }
+  ],
+  "statistics": {
+    "total_chapters": 7,
+    "total_sections": 43,
+    "total_figures": 11,
+    "total_tables": 3,
+    "total_references": 15,
+    "page_distribution": {
+      "front_matter": 10,
+      "main_content": 52,
+      "back_matter": 4
+    }
+  },
+  "content_type_distribution": {
+    "introduction": {
+      "pages": [4, 6, 10],
+      "description": "摘要和绪论部分，介绍研究背景、意义、现状"
+    },
+    "technical_background": {
+      "pages": [14, 15],
+      "description": "相关技术介绍，包括SpringBoot、SpringMVC、Vue、MySQL等"
+    },
+    "requirements_analysis": {
+      "pages": [16, 17, 18, 19, 20],
+      "description": "系统需求分析，包括可行性分析、功能需求、用例图"
+    },
+    "system_design": {
+      "pages": [21, 22, 25, 30, 35, 40],
+      "description": "系统设计，包括架构设计、数据库设计、E-R图、数据流图"
+    },
+    "implementation": {
+      "pages": [37, 45, 50, 55],
+      "description": "系统实现，包括各模块的功能描述、实现过程、界面截图"
+    },
+    "testing": {
+      "pages": [56, 60, 61],
+      "description": "测试与评价，包括功能测试、安全性测试、测试结果"
+    },
+    "conclusion": {
+      "pages": [62],
+      "description": "总结与展望"
+    },
+    "references": {
+      "pages": [65, 66],
+      "description": "参考文献列表"
+    }
+  },
+  "figure_distribution": {
+    "use_case_diagrams": ["图3-1", "图3-2"],
+    "er_diagrams": ["图4-4", "图4-5", "图4-12"],
+    "data_flow_diagrams": ["图4-16", "图4-17"],
+    "flowcharts": ["图5-1"],
+    "screenshots": ["图5-6", "图5-12"]
+  }
+}
