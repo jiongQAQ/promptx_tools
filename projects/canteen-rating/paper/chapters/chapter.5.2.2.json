@@ -1,0 +1,7 @@
+{
+  "id": "5.2.2",
+  "title": "实现过程",
+  "text": "食堂与档口管理模块的后端实现包括CanteenController和StallController两个控制器，分别处理食堂和档口相关请求。CanteenController提供/api/admin/canteen的增删改查接口，使用@PostMapping、@PutMapping、@DeleteMapping、@GetMapping注解标注。Service层CanteenServiceImpl实现业务逻辑，调用CanteenMapper接口操作数据库。前端使用Element Plus的el-table展示食堂列表，支持分页查询，使用el-dialog实现新增/编辑弹窗，使用el-upload实现图片上传。档口管理类似，档口列表额外显示所属食堂信息，通过关联查询实现。列表支持按名称模糊搜索、按状态筛选功能。实现效果如图所示，展示了食堂管理界面和档口管理界面。",
+  "word_limit": 300,
+  "imagePath": "${impl}/impl-canteen-stall.png"
+}

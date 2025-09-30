@@ -1,0 +1,6 @@
+{
+  "id": "2.1.4",
+  "title": "JWT令牌技术",
+  "text": "JWT（JSON Web Token）是一种开放标准（RFC 7519），用于在网络应用间安全传递信息的令牌格式。JWT由Header（头部）、Payload（负载）和Signature（签名）三部分组成，通过Base64编码后用点号连接。本系统采用jjwt 0.11.5库实现JWT的生成和验证，将用户ID、用户名、角色等信息编码到Payload中，使用HS256算法和密钥生成签名，有效期设置为24小时。相比传统的Session认证，JWT实现了无状态认证，服务器不需要存储会话信息，特别适合分布式系统和前后端分离架构。前端将JWT存储在localStorage中，通过Axios拦截器自动在请求头中携带Token，后端通过JwtAuthenticationFilter验证Token有效性并提取用户信息。",
+  "word_limit": 200
+}

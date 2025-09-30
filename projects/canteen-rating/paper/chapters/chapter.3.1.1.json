@@ -1,0 +1,6 @@
+{
+  "id": "3.1.1",
+  "title": "技术可行性",
+  "text": "从技术角度看，本系统采用的Spring Boot、Vue 3、MySQL等技术均为成熟的主流技术栈，拥有丰富的文档和社区支持。开发团队具备Java后端开发和Vue前端开发经验，熟悉RESTful API设计和前后端分离架构。Spring Boot的自动配置和MyBatis Plus的代码生成功能可显著提升开发效率，Element Plus提供了丰富的UI组件减少前端开发工作量。系统架构采用分层设计，模块之间低耦合高内聚，便于开发和维护。部署方面，Spring Boot内置Tomcat服务器，打包为JAR文件即可独立运行，Vue前端编译为静态资源可部署到任意Web服务器。因此，本系统在技术上完全可行。",
+  "word_limit": 250
+}

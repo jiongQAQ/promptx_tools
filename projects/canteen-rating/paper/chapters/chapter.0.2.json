@@ -1,0 +1,6 @@
+{
+  "id": "0.2",
+  "title": "Abstract",
+  "text": "This paper designs and implements a canteen rating system based on Spring Boot and Vue 3 framework for university canteen evaluation management. The system adopts a front-end and back-end separation architecture, with the backend using Spring Boot 2.7.18, MyBatis Plus 3.5.3.1, Spring Security and JWT to implement RESTful APIs, and the frontend using Vue 3.3.4 and Element Plus 2.3.8 to build the management console. MySQL 8.0+ is selected for data storage. The system implements core functions including user authentication and permission management, canteen and stall management, dish management, rating management, complaint management and system management. The availability and stability of the system are verified through functional testing, performance testing and security testing.",
+  "word_limit": 200
+}

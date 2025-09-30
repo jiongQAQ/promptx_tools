@@ -1,0 +1,7 @@
+{
+  "id": "4.4",
+  "title": "系统类图",
+  "text": "类图（Class Diagram）是UML中最常用的图之一，用于描述系统的静态结构。本系统采用分层架构，类图展示了Controller、Service、Mapper和Entity各层的核心类及其关系。Entity层包含User、Canteen、Stall、Dish、Rating、Complaint、SensitiveWord等实体类，使用MyBatis Plus注解定义表映射关系。Mapper层接口继承BaseMapper<T>，提供基础CRUD方法。Service层分为接口和实现类，ServiceImpl继承ServiceImpl<Mapper, Entity>并实现自定义Service接口，包含业务逻辑。Controller层注入Service接口，处理HTTP请求，返回统一的Result对象。类之间通过依赖、关联和继承关系连接，体现了分层架构和依赖倒置原则。",
+  "word_limit": 280,
+  "imagePath": "${uml}/class-diagram.png"
+}

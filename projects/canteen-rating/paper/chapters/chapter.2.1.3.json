@@ -1,0 +1,6 @@
+{
+  "id": "2.1.3",
+  "title": "Spring Security安全框架",
+  "text": "Spring Security是Spring生态中用于身份认证和访问控制的安全框架，提供了完善的认证（Authentication）和授权（Authorization）机制。其核心是一系列过滤器链，通过配置SecurityFilterChain来定义安全策略。本系统使用Spring Security实现基于角色的访问控制（RBAC），配置了自定义的UserDetailsService加载用户信息，通过PasswordEncoder进行密码加密存储，使用UsernamePasswordAuthenticationFilter处理登录请求。Spring Security与JWT令牌技术结合，实现了无状态的前后端分离认证方案，在保证安全性的同时提升了系统的可扩展性。",
+  "word_limit": 200
+}

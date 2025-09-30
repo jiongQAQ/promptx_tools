@@ -1,0 +1,6 @@
+{
+  "id": "2.1.1",
+  "title": "Spring Boot框架",
+  "text": "Spring Boot是基于Spring框架的开源Java应用开发框架，由Pivotal团队于2014年推出。Spring Boot简化了Spring应用的初始搭建和开发过程，采用\"约定优于配置\"的设计理念，提供了自动配置、嵌入式Web服务器（Tomcat、Jetty）、starter依赖管理等核心功能。本系统采用Spring Boot 2.7.18版本，利用其自动配置特性快速搭建RESTful API，通过Spring Boot Starter Web提供HTTP服务，通过Spring Boot Starter Security实现安全认证，显著提升了开发效率。Spring Boot的生产就绪特性（Actuator监控、外部化配置）也为系统的运维管理提供了便利。",
+  "word_limit": 200
+}

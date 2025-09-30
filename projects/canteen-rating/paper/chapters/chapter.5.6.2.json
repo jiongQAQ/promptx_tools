@@ -1,0 +1,7 @@
+{
+  "id": "5.6.2",
+  "title": "实现过程",
+  "text": "系统管理模块的后端实现分布在多个Controller中。AdminController提供用户管理接口，支持分页查询、角色分配、状态更新。SensitiveWordController提供敏感词CRUD接口，使用缓存（Redis或本地缓存）加速敏感词检测。StatisticsController提供统计数据接口，执行复杂的SQL聚合查询，返回时间序列数据和排行榜数据。FileUploadController处理文件上传，使用MultipartFile接收文件，保存到指定目录，返回访问URL。系统日志使用AOP切面实现自动记录，定义@Log注解标注需要记录的方法，切面拦截方法执行，记录操作人、时间、参数、结果。前端使用ECharts的折线图、柱状图、饼图展示统计数据。敏感词管理使用el-table和el-tag展示列表。实现效果如图所示，展示了统计分析仪表盘和敏感词管理界面。",
+  "word_limit": 300,
+  "imagePath": "${impl}/impl-system-admin.png"
+}

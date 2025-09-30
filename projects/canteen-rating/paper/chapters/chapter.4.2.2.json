@@ -1,0 +1,7 @@
+{
+  "id": "4.2.2",
+  "title": "逻辑结构设计",
+  "text": "数据库逻辑设计阶段将概念模型转换为关系模型，确定表结构、字段类型、主键、外键和索引。系统共包含7张核心表：user（用户表）、canteen（食堂表）、stall（档口表）、dish（菜品表）、rating（评价表）、complaint（投诉表）、sensitive_word（敏感词表）。各表之间通过外键建立关系：stall.canteen_id关联canteen.id，dish.stall_id关联stall.id，rating.user_id关联user.id，rating.dish_id关联dish.id，complaint.user_id关联user.id。所有表均使用BIGINT类型的自增主键id，包含create_time、update_time和is_deleted等审计字段，支持MyBatis Plus的逻辑删除功能。为提升查询性能，在外键字段和常用查询字段（如username、status）上建立普通索引。总体ER图展示了所有实体及其关系，如下图所示。",
+  "word_limit": 300,
+  "imagePath": "${uml}/er-overall.png"
+}

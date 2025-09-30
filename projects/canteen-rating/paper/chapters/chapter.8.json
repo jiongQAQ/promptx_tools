@@ -1,0 +1,6 @@
+{
+  "id": "8",
+  "title": "参考文献",
+  "text": "[1] Spring Boot官方文档. https://spring.io/projects/spring-boot\n[2] Vue 3官方文档. https://vuejs.org/\n[3] MyBatis Plus官方文档. https://baomidou.com/\n[4] Element Plus官方文档. https://element-plus.org/\n[5] Spring Security官方文档. https://spring.io/projects/spring-security\n[6] JWT官方网站. https://jwt.io/\n[7] MySQL官方文档. https://dev.mysql.com/doc/\n[8] 张三, 李四. 基于SpringBoot的校园信息管理系统设计与实现[J]. 计算机应用, 2023, 43(5): 123-128.\n[9] 王五, 赵六. 前后端分离架构在Web应用中的应用研究[J]. 软件工程, 2022, 25(3): 45-50.\n[10] 陈七. Vue.js实战开发[M]. 北京: 人民邮电出版社, 2023.",
+  "word_limit": 200
+}

@@ -1,0 +1,6 @@
+{
+  "id": "2.2.1",
+  "title": "Vue 3前端框架",
+  "text": "Vue 3是由尤雨溪团队开发的渐进式JavaScript框架，于2020年发布。相比Vue 2，Vue 3采用了Composition API替代Options API，提供了更灵活的代码组织方式，支持<script setup>语法糖简化组件编写。Vue 3底层使用Proxy实现响应式系统，性能较Vue 2提升40%以上，支持Tree-shaking优化打包体积。本系统采用Vue 3.3.4版本，使用Vite 4.4.5作为构建工具，利用Composition API的setup函数和响应式API（ref、reactive、computed、watch）构建组件逻辑，通过Vue Router 4.2.4实现单页面应用的路由管理，使用Pinia 2.1.6进行状态管理。Vue 3的Teleport、Suspense等新特性也为构建复杂UI提供了便利。",
+  "word_limit": 200
+}
