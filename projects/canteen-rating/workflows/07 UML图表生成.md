@@ -19,6 +19,8 @@ projectRoot 取当前工作目录（pwd）的绝对路径
    - `usecase-*`：用例图（处理imagePath字段）
    - `software-architecture`：软件架构图（处理imagePath字段）
    - `system-function-*`：系统功能图（处理imagePath字段）
+   - `dfd-*`：**数据流图生成**（处理imagePath字段，生成数据流图）
+   - `flow-*`：**传统流程图生成**（处理imagePath字段，生成流程图）
    - `er-overview`：**整体ER关系图（保留生成）**
    - `test-*`：**测试用例三线表生成**（处理tablePath字段，生成测试用例表格JSON）
    - `perf-*`：**性能指标三线表生成**（处理tablePath字段，生成性能测试表格JSON）
@@ -151,21 +153,6 @@ function shouldProcessFile(chapterJson) {
 ```plantuml
 @startuml
 !theme plain
-skinparam backgroundColor White
-skinparam activity {
-  BackgroundColor #E1F5FE
-  BorderColor #0277BD
-  FontSize 12
-}
-skinparam arrow {
-  Color #0277BD
-  FontSize 10
-}
-skinparam diamond {
-  BackgroundColor #FFF3E0
-  BorderColor #F57C00
-  FontSize 11
-}
 skinparam linetype ortho
 
 start
@@ -183,21 +170,6 @@ stop
 @startuml
 !theme plain
 skinparam componentStyle rectangle
-skinparam backgroundColor White
-skinparam component {
-  BackgroundColor #F5F5F5
-  BorderColor #424242
-  FontSize 12
-}
-skinparam package {
-  BackgroundColor #E3F2FD
-  BorderColor #1976D2
-  FontSize 13
-}
-skinparam arrow {
-  Color #1976D2
-  FontSize 10
-}
 skinparam linetype ortho
 
 // 此处必须基于JSON文件的content字段内容生成具体的架构组件
@@ -212,21 +184,6 @@ skinparam linetype ortho
 ```plantuml
 @startuml
 !theme plain
-skinparam backgroundColor White
-skinparam usecase {
-  BackgroundColor #E8F5E8
-  BorderColor #2E7D32
-  FontSize 12
-}
-skinparam actor {
-  BackgroundColor #FFF3E0
-  BorderColor #F57C00
-  FontSize 12
-}
-skinparam arrow {
-  Color #2E7D32
-  FontSize 10
-}
 skinparam linetype ortho
 
 // 此处必须基于JSON文件的content字段内容生成具体的用例
@@ -241,20 +198,6 @@ skinparam linetype ortho
 ```plantuml
 @startuml
 !theme plain
-skinparam backgroundColor White
-skinparam sequence {
-  ArrowColor #0277BD
-  LifeLineBorderColor #0277BD
-  LifeLineBackgroundColor #E1F5FE
-  ParticipantBorderColor #0277BD
-  ParticipantBackgroundColor #E1F5FE
-  ParticipantFontSize 12
-  MessageAlignment center
-}
-skinparam note {
-  BackgroundColor #FFF9C4
-  BorderColor #F57F17
-}
 skinparam linetype ortho
 
 // 此处必须基于JSON文件的content字段内容生成具体的时序交互
@@ -269,16 +212,6 @@ skinparam linetype ortho
 ```plantuml
 @startuml
 !theme plain
-skinparam backgroundColor White
-skinparam entity {
-  BackgroundColor #F3E5F5
-  BorderColor #7B1FA2
-  FontSize 12
-}
-skinparam arrow {
-  Color #7B1FA2
-  FontSize 10
-}
 skinparam linetype ortho
 
 // 此处必须基于JSON文件的content字段和源码entity目录生成具体的实体关系
@@ -286,6 +219,40 @@ skinparam linetype ortho
 // 约束条件需要反映content中描述的业务规则
 @enduml
 ```
+
+### Data Flow Diagram（数据流图）样式模板
+**适用文件**：`dfd-*.json`
+**样式框架**（内容需基于 content 生成）：
+```plantuml
+@startuml
+!theme plain
+skinparam linetype ortho
+
+// 此处必须基于 JSON 文件的 content 字段内容生成具体的数据流
+// 外部实体（角色）、处理过程、数据存储、数据流都必须来自 content 描述
+// 顶层图(dfd-top-level)展示系统整体，二层图(dfd-*-level2)展示模块分解
+@enduml
+```
+
+### Flowchart（传统流程图）样式模板
+**适用文件**：`flow-*.json`
+**样式框架**（内容需基于 content 生成）：
+```plantuml
+@startuml
+!theme plain
+
+start
+// 此处必须基于 JSON 文件的 content 字段内容生成具体的流程步骤
+// 使用矩形表示处理步骤，菱形表示判断条件
+// 流程必须反映 5.x.1 章节描述的具体功能操作流程
+// 注意：这是传统流程图，不是 UML 活动图，样式更简洁
+stop
+@enduml
+```
+
+**重要说明**：
+- **数据流图 vs 活动图**：数据流图关注数据的流动和存储（外部实体→处理→数据存储），活动图关注活动的执行顺序
+- **传统流程图 vs UML 活动图**：传统流程图使用简单的矩形和菱形，UML 活动图使用更丰富的符号（泳道、分叉等）
 
 ### Test Case Table（测试用例三线表）格式模板
 **适用文件**：`test-*.json`、`perf-*.json`、`compat-*.json`
@@ -455,6 +422,24 @@ skinparam linetype ortho
   - 关系反映content中描述的业务关联
   - 约束对应content中的数据一致性要求
 
+#### Data Flow Diagram（数据流图）
+- **解析重点**：从content中识别外部实体、处理过程、数据存储、数据流方向
+- **生成要求**：
+  - 外部实体基于content中提到的用户角色或外部系统
+  - 处理过程对应content中描述的业务处理环节
+  - 数据存储对应content中涉及的数据库表或文件
+  - 数据流箭头表示content中描述的信息传递路径
+  - 顶层图展示系统整体数据流，二层图展示具体模块的数据流分解
+
+#### Flowchart（传统流程图）
+- **解析重点**：从content中提取功能操作步骤、判断条件、分支路径
+- **生成要求**：
+  - 矩形框对应content中的具体操作步骤
+  - 菱形框对应content中的判断条件
+  - 箭头路径反映content中的流程走向
+  - 样式保持简洁，避免UML活动图的复杂符号
+  - 重点表达功能的操作逻辑，而非系统交互
+
 ### 命名规范
 - **类名**：使用源码中的实际类名（如UserController、UserService）
 - **方法名**：使用实际的方法签名（如authenticateUser、findByUsername）
@@ -462,12 +447,9 @@ skinparam linetype ortho
 - **参与者**：使用content中提到的具体角色或系统组件名称
 - **实体名**：使用源码entity目录中的实际实体类名
 
-### 颜色和样式规范
-- **活动图**：蓝色系（#E1F5FE背景，#0277BD边框）
-- **架构图**：中性色（白色背景，矩形组件）
-- **用例图**：绿色系（#E8F5E8背景，#2E7D32边框）
-- **时序图**：蓝色系（#E1F5FE背景，#0277BD箭头和边框）
-- **类图**：紫色系（#F3E5F5背景，#7B1FA2边框）
+### 样式规范
+- **所有图表**：使用 PlantUML 默认样式，不添加自定义颜色配置
+- **布局方式**：使用 `skinparam linetype ortho` 保证直线布局
 
 ### 图表清晰度要求
 - **直线布局**：优先使用直线连接，避免弯曲和混乱的布线
