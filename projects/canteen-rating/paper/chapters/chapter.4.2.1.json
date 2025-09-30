@@ -9,43 +9,43 @@
       "title": "用户实体（User）",
       "text": "用户表（user），主要存储了本系统用户基本信息和认证信息的相关数据，其中包含用户ID（id）、用户名（username）、密码（password）、昵称（nickname）、头像（avatar）、邮箱（email）、手机号（phone）、角色（role）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。用户实体是系统的核心实体，与评价、投诉等实体存在一对多关系。",
       "word_limit": 70,
-      "imagePath": "${er}/Tab-user.svg"
+      "imagePath": "${er}/Tab-users.svg"
     },
     {
       "title": "食堂实体（Canteen）",
       "text": "食堂表（canteen），主要存储了本系统食堂基本信息的相关数据，其中包含食堂ID（id）、食堂名称（name）、位置（location）、简介（description）、图片（image）、营业时间（opening_hours）、联系电话（phone）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。食堂与档口存在一对多关系。",
       "word_limit": 70,
-      "imagePath": "${er}/Tab-canteen.svg"
+      "imagePath": "${er}/Tab-canteens.svg"
     },
     {
       "title": "档口实体（Stall）",
       "text": "档口表（stall），主要存储了本系统档口信息的相关数据，其中包含档口ID（id）、档口名称（name）、所属食堂ID（canteen_id）、简介（description）、图片（image）、位置（location）、联系方式（contact）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。档口实体通过canteen_id外键关联食堂实体，与菜品存在一对多关系。",
       "word_limit": 70,
-      "imagePath": "${er}/Tab-stall.svg"
+      "imagePath": "${er}/Tab-stalls.svg"
     },
     {
       "title": "菜品实体（Dish）",
       "text": "菜品表（dish），主要存储了本系统菜品信息的相关数据，其中包含菜品ID（id）、菜品名称（name）、所属档口ID（stall_id）、分类（category）、价格（price）、图片（image）、描述（description）、是否推荐（is_recommended）、上架状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。菜品实体通过stall_id外键关联档口实体，与评价存在一对多关系。",
       "word_limit": 70,
-      "imagePath": "${er}/Tab-dish.svg"
+      "imagePath": "${er}/Tab-dishes.svg"
     },
     {
       "title": "评价实体（Rating）",
       "text": "评价表（rating），主要存储了本系统用户评价信息的相关数据，其中包含评价ID（id）、用户ID（user_id）、菜品ID（dish_id）、评分（score）、评价内容（content）、图片（images）、审核状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。评价实体通过user_id和dish_id外键分别关联用户和菜品实体。",
       "word_limit": 70,
-      "imagePath": "${er}/Tab-rating.svg"
+      "imagePath": "${er}/Tab-ratings.svg"
     },
     {
       "title": "投诉实体（Complaint）",
       "text": "投诉表（complaint），主要存储了本系统用户投诉信息的相关数据，其中包含投诉ID（id）、用户ID（user_id）、投诉类型（type）、投诉对象ID（target_id）、投诉内容（content）、图片（images）、处理状态（status）、处理结果（result）、处理时间（handle_time）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。投诉实体通过user_id外键关联用户实体。",
       "word_limit": 70,
-      "imagePath": "${er}/Tab-complaint.svg"
+      "imagePath": "${er}/Tab-complaints.svg"
     },
     {
       "title": "敏感词实体（SensitiveWord）",
       "text": "敏感词表（sensitive_word），主要存储了本系统敏感词管理的相关数据，其中包含敏感词ID（id）、敏感词内容（word）、类型（type）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。敏感词实体用于评价内容的审核过滤。",
       "word_limit": 70,
-      "imagePath": "${er}/Tab-sensitive_word.svg"
+      "imagePath": "${er}/Tab-sensitive_words.svg"
     }
   ]
 }
