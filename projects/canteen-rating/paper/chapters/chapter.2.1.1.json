@@ -2,5 +2,6 @@
   "id": "2.1.1",
   "title": "Spring Boot框架",
   "text": "Spring Boot是基于Spring框架的开源Java应用开发框架，由Pivotal团队于2014年推出。Spring Boot简化了Spring应用的初始搭建和开发过程，采用\"约定优于配置\"的设计理念，提供了自动配置、嵌入式Web服务器（Tomcat、Jetty）、starter依赖管理等核心功能。本系统采用Spring Boot 2.7.18版本，利用其自动配置特性快速搭建RESTful API，通过Spring Boot Starter Web提供HTTP服务，通过Spring Boot Starter Security实现安全认证，显著提升了开发效率。Spring Boot的生产就绪特性（Actuator监控、外部化配置）也为系统的运维管理提供了便利。",
-  "word_limit": 200
+  "word_limit": 200,
+  "content": "Spring Boot是基于Spring框架的开源Java应用开发框架，由Pivotal团队于2014年推出。作为Spring生态系统的重要组成部分，Spring Boot旨在简化Spring应用的初始搭建和开发过程，使开发者能够快速构建独立运行的、生产级别的Spring应用程序。\n\nSpring Boot采用\"约定优于配置\"（Convention over Configuration）的设计理念，通过合理的默认配置减少了开发者的配置工作量。其核心特性包括：自动配置（Auto-configuration）能够根据项目依赖自动配置Spring应用；嵌入式Web服务器（如Tomcat、Jetty、Undertow）使应用可以打包成独立的可执行JAR文件；Starter依赖管理提供了一站式的依赖引入方案，简化了Maven或Gradle的配置；Spring Boot Actuator提供了应用监控和管理功能，包括健康检查、指标收集等生产就绪特性。\n\n本系统采用Spring Boot 2.7.18版本作为后端开发框架。利用Spring Boot的自动配置特性，快速搭建了RESTful API架构。通过引入Spring Boot Starter Web依赖，系统自动配置了嵌入式Tomcat服务器和SpringMVC组件，提供HTTP服务。通过Spring Boot Starter Security依赖，集成了Spring Security安全框架，实现了用户认证和授权功能。Spring Boot的外部化配置特性使系统可以通过application.yml文件灵活管理不同环境的配置参数。这些特性显著提升了开发效率，缩短了项目开发周期，同时保证了代码的规范性和可维护性。"
 }
