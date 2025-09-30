@@ -7,8 +7,9 @@ projectRoot 取当前工作目录（pwd）的绝对路径
 自动扫描 chapters 目录下的**所有JSON文件**（确保无遗漏），**严格基于每个JSON文件的content字段内容和源码分析生成个性化的UML图表**，支持变量路径解析，使用luban-uml工具将PlantUML源码渲染为图片，并按照imagePath或imagePathSequence字段指定的路径进行命名。**每个图表都是独特的，完全反映对应JSON文件描述的具体业务场景，绝不使用通用模板**。支持批量处理所有符合条件的UML图表，保留整体ER图生成功能。
 
 ## 目标任务
-1. **源码真相验证**：**首先读取** `<projectRoot>/paper/source-truth.json` 文件，获取项目真实技术栈和限制清单
-2. **智能文件筛选**：扫描 `<projectRoot>/paper/chapters/` 目录，**只处理包含以下字段的JSON文件**：
+1. **参考论文规范加载（可选）**：若 `<projectRoot>/paper/reference-structure.json` 存在，加载图表命名规范和布局风格
+2. **源码真相验证**：**首先读取** `<projectRoot>/paper/source-truth.json` 文件，获取项目真实技术栈和限制清单
+3. **智能文件筛选**：扫描 `<projectRoot>/paper/chapters/` 目录，**只处理包含以下字段的JSON文件**：
    - `imagePath` - 需要生成单个图表
    - `imagePathSequence` - 需要生成时序图
    - `tablePath` - 需要生成表格
@@ -142,6 +143,48 @@ function shouldProcessFile(chapterJson) {
 - PlantUML源码保存位置
 - 测试用例三线表保存位置
 - 下一步建议
+
+## 参考论文规范加载机制
+
+### 触发条件
+若 `<projectRoot>/paper/reference-structure.json` 存在，执行以下步骤：
+
+### 加载步骤
+1. **读取参考结构文件**：
+   ```bash
+   Read({ "file_path": "<projectRoot>/paper/reference-structure.json" })
+   ```
+
+2. **提取图表规范**：
+   - `image_distribution`: 图表分布和命名规范
+   - `special_patterns.dfd_hierarchy`: 数据流图分层命名模式
+   - `special_patterns.implementation_structure`: 实现章节图表模式
+
+3. **应用规范（优先级最高）**：
+   - **命名规范**: 使用参考论文的图表命名模式（如 `dfd-{module}-level2.png`）
+   - **图表类型**: 优先匹配参考论文中相同章节的图表类型
+   - **布局风格**: 参考相同类型图表的元素组织方式
+
+### 示例
+```json
+{
+  "image_distribution": [
+    {
+      "chapter_id": "4.3.1.1",
+      "image_type": "dfd",
+      "image_name": "dfd-auth-level2",
+      "path_variable": "${dfd}/dfd-auth-level2.png"
+    }
+  ],
+  "special_patterns": {
+    "dfd_hierarchy": {
+      "naming_pattern": "dfd-{module}-level2.png"
+    }
+  }
+}
+```
+
+在生成图表时，若当前章节匹配到参考规范，则使用参考论文的命名和风格。
 
 ## 图表类型与样式规范（仅提供样式模板，内容必须基于content生成）
 
