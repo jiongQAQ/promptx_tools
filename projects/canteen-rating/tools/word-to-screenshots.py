@@ -74,8 +74,8 @@ def word_to_screenshots(word_file, output_dir=None, dpi=300):
         print(f"❌ 文件不存在: {word_file}")
         return False
 
-    if not word_file.endswith('.docx'):
-        print(f"❌ 仅支持.docx格式")
+    if not (word_file.endswith('.docx') or word_file.endswith('.doc')):
+        print(f"❌ 仅支持.docx或.doc格式")
         return False
 
     # 检查依赖

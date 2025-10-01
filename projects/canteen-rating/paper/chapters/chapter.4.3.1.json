@@ -35,5 +35,8 @@
       "word_limit": 100,
       "imagePath": "${dfd}/dfd-complaint-level2.png"
     }
-  ]
+  ],
+  "docx_type": "subsection_title",
+  "docx_type_text": "body_text",
+  "docx_type_desc": "body_text"
 }

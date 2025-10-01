@@ -47,5 +47,8 @@
       "word_limit": 70,
       "imagePath": "${er}/Tab-sensitive_words.svg"
     }
-  ]
+  ],
+  "docx_type": "subsection_title",
+  "docx_type_text": "body_text",
+  "docx_type_desc": "body_text"
 }

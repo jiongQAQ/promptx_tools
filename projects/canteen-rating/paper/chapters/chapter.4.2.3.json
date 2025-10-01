@@ -47,5 +47,8 @@
       "word_limit": 70,
       "tablePath": "${tables}/Tab-sensitive_words.json"
     }
-  ]
+  ],
+  "docx_type": "subsection_title",
+  "docx_type_text": "body_text",
+  "docx_type_desc": "body_text"
 }
