@@ -222,7 +222,7 @@
     "table_header": {
       "font": {
         "name": "SimSun",
-        "size": 22,
+        "size": 18,
         "color": "000000",
         "bold": true,
         "italic": false
@@ -231,7 +231,7 @@
       "spacing": {
         "before": 0,
         "after": 0,
-        "line": 1.15
+        "line": 1.0
       },
       "indent": {
         "firstLine": 0,
@@ -244,7 +244,7 @@
     "table_cell": {
       "font": {
         "name": "SimSun",
-        "size": 20,
+        "size": 16,
         "color": "000000",
         "bold": false,
         "italic": false
@@ -253,12 +253,12 @@
       "spacing": {
         "before": 0,
         "after": 0,
-        "line": 1.15
+        "line": 1.0
       },
       "indent": {
         "firstLine": 0,
-        "left": 60,
-        "right": 60
+        "left": 30,
+        "right": 30
       },
       "background": "FFFFFF"
     },
@@ -329,7 +329,9 @@
         "table": "table_caption",
         "tableHeader": "table_header",
         "tableCell": "table_cell",
-        "error": "error_text"
+        "error": "error_text",
+        "keywordsLabel": "keywords_label",
+        "keywordsContent": "keywords_content"
       }
     },
 
