@@ -1,0 +1,254 @@
+{
+  "schemaVersion": "1.0",
+  "projectName": "newbee-mall-cloud",
+  "validationRules": {
+    "technologiesWhitelist": {
+      "backend": {
+        "frameworks": [
+          "Spring Boot 2.6.3",
+          "Spring Cloud 2021.0.1",
+          "Spring Cloud Alibaba 2021.0.1.0"
+        ],
+        "languages": [
+          "Java 1.8"
+        ],
+        "databases": [
+          "MySQL 8.0+",
+          "Redis"
+        ],
+        "orm": [
+          "MyBatis 2.2.2"
+        ],
+        "microservices": [
+          "Nacos",
+          "Spring Cloud Gateway",
+          "Sentinel",
+          "Seata",
+          "Spring Boot Admin",
+          "Zipkin",
+          "RabbitMQ"
+        ],
+        "connectionPool": [
+          "HikariCP"
+        ],
+        "utilities": [
+          "Lombok 1.18.24",
+          "Swagger 3.0.0"
+        ]
+      },
+      "frontend": {
+        "frameworks": [
+          "Vue 3.2.39",
+          "Vue 3.2.45"
+        ],
+        "uiLibraries": [
+          "Element Plus 2.2.17",
+          "Vant 4.0.9"
+        ],
+        "stateManagement": [
+          "Pinia 2.0.28"
+        ],
+        "routing": [
+          "Vue Router 4.1.5",
+          "Vue Router 4.1.6"
+        ],
+        "buildTools": [
+          "Vite 2.1.3",
+          "Vite 4.0.0"
+        ],
+        "httpClients": [
+          "Axios 0.21.1",
+          "Axios 1.2.6"
+        ]
+      },
+      "allowedPatterns": [
+        "Microservices Architecture",
+        "Spring Cloud Alibaba",
+        "RESTful API",
+        "Service Registry & Discovery",
+        "API Gateway",
+        "Circuit Breaker Pattern",
+        "Distributed Transaction",
+        "Mobile-First Design",
+        "SPA (Single Page Application)",
+        "MVC Pattern"
+      ]
+    },
+    "technologiesBlacklist": {
+      "prohibited": [
+        "Kubernetes",
+        "Docker Swarm",
+        "GraphQL",
+        "MongoDB",
+        "Elasticsearch",
+        "Kafka",
+        "Apache Pulsar",
+        "gRPC",
+        "WebSocket (未实现)",
+        "MyBatis Plus (实际使用MyBatis)",
+        "JPA/Hibernate",
+        "PostgreSQL",
+        "Oracle Database",
+        "React",
+        "Angular",
+        "Svelte"
+      ],
+      "prohibitedPatterns": [
+        "Service Mesh",
+        "Event Sourcing",
+        "CQRS",
+        "Serverless",
+        "GraphQL API",
+        "WebSocket实时通信 (未实现)"
+      ]
+    },
+    "architectureConstraints": {
+      "maxServiceCount": 9,
+      "actualServiceCount": 9,
+      "servicesList": [
+        "user-service",
+        "goods-service",
+        "order-service",
+        "shop-cart-service",
+        "recommend-service",
+        "gateway-mall",
+        "gateway-admin",
+        "common",
+        "admin-monitor"
+      ],
+      "databaseSeparation": true,
+      "databaseCount": 5,
+      "databases": [
+        "newbee_mall_cloud_user_db",
+        "newbee_mall_cloud_goods_db",
+        "newbee_mall_cloud_order_db",
+        "newbee_mall_cloud_cart_db",
+        "newbee_mall_cloud_recommend_db"
+      ]
+    },
+    "featureValidation": {
+      "mustInclude": [
+        "用户认证与授权",
+        "商品管理",
+        "订单管理",
+        "购物车",
+        "服务注册与发现",
+        "API网关",
+        "熔断降级",
+        "分布式追踪"
+      ],
+      "mustNotInclude": [
+        "支付功能 (未实现)",
+        "秒杀功能 (未实现)",
+        "优惠券系统 (未实现)",
+        "积分系统 (未实现)",
+        "第三方登录 (未实现)",
+        "实时聊天 (未实现)",
+        "搜索引擎集成 (未实现)"
+      ]
+    },
+    "diagramValidationRules": {
+      "architectureDiagram": {
+        "mustShow": [
+          "Nacos注册中心",
+          "API网关 (gateway-mall, gateway-admin)",
+          "5个业务微服务",
+          "MySQL数据库集群",
+          "Redis缓存",
+          "RabbitMQ消息队列",
+          "Sentinel熔断器",
+          "Zipkin链路追踪"
+        ],
+        "mustNotShow": [
+          "Kubernetes集群",
+          "Docker容器",
+          "Elasticsearch",
+          "Kafka",
+          "Service Mesh",
+          "Config Server (使用Nacos配置中心)"
+        ]
+      },
+      "deploymentDiagram": {
+        "allowedDeployment": [
+          "传统服务器部署",
+          "虚拟机部署",
+          "云服务器部署"
+        ],
+        "prohibitedDeployment": [
+          "Kubernetes部署",
+          "Docker Compose部署",
+          "容器编排"
+        ]
+      },
+      "databaseDiagram": {
+        "mustShow": [
+          "5个独立的MySQL数据库",
+          "每个服务对应的表结构",
+          "Redis缓存层"
+        ],
+        "mustNotShow": [
+          "NoSQL数据库",
+          "读写分离架构 (未实现)",
+          "分库分表 (未实现)"
+        ]
+      }
+    },
+    "versionConsistency": {
+      "backend": {
+        "springBoot": "2.6.3",
+        "springCloud": "2021.0.1",
+        "springCloudAlibaba": "2021.0.1.0",
+        "java": "1.8"
+      },
+      "frontend": {
+        "userApp": {
+          "vue": "3.2.45",
+          "vite": "4.0.0",
+          "vant": "4.0.9"
+        },
+        "adminApp": {
+          "vue": "3.2.39",
+          "vite": "2.1.3",
+          "elementPlus": "2.2.17"
+        }
+      }
+    }
+  },
+  "validationChecklist": [
+    {
+      "rule": "技术栈一致性",
+      "description": "UML图中使用的所有技术必须在白名单中",
+      "severity": "critical"
+    },
+    {
+      "rule": "架构真实性",
+      "description": "架构图必须反映9个微服务的实际结构",
+      "severity": "critical"
+    },
+    {
+      "rule": "数据库准确性",
+      "description": "必须显示5个独立的MySQL数据库",
+      "severity": "critical"
+    },
+    {
+      "rule": "禁用技术检查",
+      "description": "不得出现Kubernetes、Docker、GraphQL等未使用的技术",
+      "severity": "critical"
+    },
+    {
+      "rule": "功能模块验证",
+      "description": "只能展示已实现的功能模块",
+      "severity": "high"
+    },
+    {
+      "rule": "版本号准确性",
+      "description": "所有框架和库的版本号必须与实际一致",
+      "severity": "medium"
+    },
+    {
+      "rule": "架构模式合规",
+      "description": "使用Spring Cloud Alibaba微服务架构模式",
+      "severity": "high"
+    }
+  ]
+}

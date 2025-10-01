@@ -1,0 +1,448 @@
+[
+  {
+    "id": "0.1",
+    "title": "摘要",
+    "word_limit": 300,
+    "text": "placeholder",
+    "_reference_source": "参考 NJUT_毕业论文_初稿.md 结构"
+  },
+  {
+    "id": "0.2",
+    "title": "Abstract",
+    "word_limit": 250,
+    "text": "placeholder",
+    "_reference_source": "参考 NJUT_毕业论文_初稿.md 结构"
+  },
+  {
+    "id": "1",
+    "title": "绪论",
+    "word_limit": 0,
+    "_note": "一级章节，有子节点，不写text"
+  },
+  {
+    "id": "1.1",
+    "title": "研究背景与意义",
+    "word_limit": 700,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "1.2",
+    "title": "国内外研究现状",
+    "word_limit": 800,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "1.3",
+    "title": "研究目标与内容",
+    "word_limit": 600,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "1.4",
+    "title": "论文组织结构",
+    "word_limit": 300,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "2",
+    "title": "系统相关技术与理论基础",
+    "word_limit": 0,
+    "_note": "一级章节，有子节点，不写text"
+  },
+  {
+    "id": "2.1",
+    "title": "B/S 架构",
+    "word_limit": 450,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "2.2",
+    "title": "Java 语言简介",
+    "word_limit": 450,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "2.3",
+    "title": "MySQL 数据库",
+    "word_limit": 450,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "2.4",
+    "title": "SSM 框架体系",
+    "word_limit": 600,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text，重要框架"
+  },
+  {
+    "id": "2.5",
+    "title": "微服务架构概述",
+    "word_limit": 700,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，核心技术，需要详细介绍"
+  },
+  {
+    "id": "2.6",
+    "title": "Spring Cloud 技术栈",
+    "word_limit": 800,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，核心技术栈，需要详细介绍"
+  },
+  {
+    "id": "2.7",
+    "title": "分布式系统理论",
+    "word_limit": 650,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，理论基础"
+  },
+  {
+    "id": "2.8",
+    "title": "电商系统技术特点",
+    "word_limit": 500,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，领域特征"
+  },
+  {
+    "id": "3",
+    "title": "系统需求分析与总体规划",
+    "word_limit": 0,
+    "_note": "一级章节，有子节点，不写text"
+  },
+  {
+    "id": "3.1",
+    "title": "系统可行性分析",
+    "word_limit": 700,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "3.2",
+    "title": "功能需求分析",
+    "word_limit": 1000,
+    "text": "placeholder",
+    "imagePath": "${uml}/usecase-overall.png",
+    "_note": "二级章节，无子节点，重要章节，包含用例图"
+  },
+  {
+    "id": "3.3",
+    "title": "非功能需求分析",
+    "word_limit": 800,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "3.4",
+    "title": "系统架构规划",
+    "word_limit": 1000,
+    "text": "placeholder",
+    "imagePath": "${uml}/software-architecture.png",
+    "_note": "二级章节，无子节点，包含架构图"
+  },
+  {
+    "id": "3.5",
+    "title": "微服务拆分策略",
+    "word_limit": 1000,
+    "text": "placeholder",
+    "imagePath": "${uml}/microservice-split.png",
+    "_note": "二级章节，无子节点，包含微服务拆分图"
+  },
+  {
+    "id": "4",
+    "title": "系统详细设计",
+    "word_limit": 0,
+    "_note": "一级章节，有子节点，不写text"
+  },
+  {
+    "id": "4.1",
+    "title": "技术栈选型与设计原则",
+    "word_limit": 900,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，重要章节"
+  },
+  {
+    "id": "4.2",
+    "title": "微服务核心功能模块设计",
+    "word_limit": 0,
+    "_note": "二级章节，有子节点，不写text"
+  },
+  {
+    "id": "4.2.1",
+    "title": "用户管理模块设计",
+    "word_limit": 500,
+    "text": "placeholder",
+    "imagePath": "${uml}/activity-user.png",
+    "imagePathSequence": "${uml}/sequence-user.png",
+    "_note": "三级章节，必须有text，包含活动图和时序图"
+  },
+  {
+    "id": "4.2.2",
+    "title": "商品管理模块设计",
+    "word_limit": 500,
+    "text": "placeholder",
+    "imagePath": "${uml}/activity-goods.png",
+    "imagePathSequence": "${uml}/sequence-goods.png",
+    "_note": "三级章节，必须有text，包含活动图和时序图"
+  },
+  {
+    "id": "4.2.3",
+    "title": "订单管理模块设计",
+    "word_limit": 500,
+    "text": "placeholder",
+    "imagePath": "${uml}/activity-order.png",
+    "imagePathSequence": "${uml}/sequence-order.png",
+    "_note": "三级章节，必须有text，包含活动图和时序图"
+  },
+  {
+    "id": "4.2.4",
+    "title": "购物车模块设计",
+    "word_limit": 500,
+    "text": "placeholder",
+    "imagePath": "${uml}/activity-cart.png",
+    "imagePathSequence": "${uml}/sequence-cart.png",
+    "_note": "三级章节，必须有text，包含活动图和时序图"
+  },
+  {
+    "id": "4.2.5",
+    "title": "首页推荐模块设计",
+    "word_limit": 500,
+    "text": "placeholder",
+    "imagePath": "${uml}/activity-recommend.png",
+    "imagePathSequence": "${uml}/sequence-recommend.png",
+    "_note": "三级章节，必须有text，包含活动图和时序图"
+  },
+  {
+    "id": "4.3",
+    "title": "微服务治理与基础设施设计",
+    "word_limit": 1200,
+    "text": "placeholder",
+    "imagePath": "${uml}/microservice-governance.png",
+    "_note": "二级章节，无子节点，重要章节，包含治理架构图"
+  },
+  {
+    "id": "4.4",
+    "title": "系统高并发保障设计",
+    "word_limit": 1000,
+    "text": "placeholder",
+    "imagePath": "${uml}/high-concurrency-design.png",
+    "_note": "二级章节，无子节点，包含高并发方案图"
+  },
+  {
+    "id": "4.5",
+    "title": "前端系统设计",
+    "word_limit": 700,
+    "text": "placeholder",
+    "imagePath": "${uml}/frontend-architecture.png",
+    "_note": "二级章节，无子节点，包含前端架构图"
+  },
+  {
+    "id": "5",
+    "title": "系统核心功能实现",
+    "word_limit": 0,
+    "_note": "一级章节，有子节点，不写text"
+  },
+  {
+    "id": "5.1",
+    "title": "开发环境与工具配置",
+    "word_limit": 500,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "5.2",
+    "title": "微服务基础功能模块实现",
+    "word_limit": 0,
+    "_note": "二级章节，有子节点，不写text"
+  },
+  {
+    "id": "5.2.1",
+    "title": "用户管理模块实现",
+    "word_limit": 600,
+    "text": "placeholder",
+    "imagePath": "${impl}/impl-user.png",
+    "_note": "三级章节，必须有text，包含实现截图"
+  },
+  {
+    "id": "5.2.2",
+    "title": "商品管理模块实现",
+    "word_limit": 600,
+    "text": "placeholder",
+    "imagePath": "${impl}/impl-goods.png",
+    "_note": "三级章节，必须有text，包含实现截图"
+  },
+  {
+    "id": "5.2.3",
+    "title": "订单管理模块实现",
+    "word_limit": 600,
+    "text": "placeholder",
+    "imagePath": "${impl}/impl-order.png",
+    "_note": "三级章节，必须有text，包含实现截图"
+  },
+  {
+    "id": "5.2.4",
+    "title": "购物车模块实现",
+    "word_limit": 500,
+    "text": "placeholder",
+    "imagePath": "${impl}/impl-cart.png",
+    "_note": "三级章节，必须有text，包含实现截图"
+  },
+  {
+    "id": "5.2.5",
+    "title": "首页推荐模块实现",
+    "word_limit": 500,
+    "text": "placeholder",
+    "imagePath": "${impl}/impl-recommend.png",
+    "_note": "三级章节，必须有text，包含实现截图"
+  },
+  {
+    "id": "5.3",
+    "title": "微服务治理与基础设施实现",
+    "word_limit": 900,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text，包含配置示例"
+  },
+  {
+    "id": "5.4",
+    "title": "系统高并发保障实现",
+    "word_limit": 700,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text，包含代码示例"
+  },
+  {
+    "id": "5.5",
+    "title": "前端系统实现",
+    "word_limit": 600,
+    "text": "placeholder",
+    "imagePath": "${impl}/ui-user-frontend.png",
+    "imagePath2": "${impl}/ui-admin-frontend.png",
+    "_note": "二级章节，无子节点，需要text，包含前端界面截图"
+  },
+  {
+    "id": "6",
+    "title": "系统测试与验证",
+    "word_limit": 0,
+    "_note": "一级章节，有子节点，不写text"
+  },
+  {
+    "id": "6.1",
+    "title": "测试环境与策略",
+    "word_limit": 500,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "6.2",
+    "title": "功能测试",
+    "word_limit": 0,
+    "_note": "二级章节，有子节点，不写text"
+  },
+  {
+    "id": "6.2.1",
+    "title": "用户管理功能测试",
+    "word_limit": 300,
+    "text": "placeholder",
+    "tablePath": "${tables}/test-user.json",
+    "_note": "三级章节，必须有text，包含测试用例表"
+  },
+  {
+    "id": "6.2.2",
+    "title": "商品管理功能测试",
+    "word_limit": 300,
+    "text": "placeholder",
+    "tablePath": "${tables}/test-goods.json",
+    "_note": "三级章节，必须有text，包含测试用例表"
+  },
+  {
+    "id": "6.2.3",
+    "title": "订单管理功能测试",
+    "word_limit": 300,
+    "text": "placeholder",
+    "tablePath": "${tables}/test-order.json",
+    "_note": "三级章节，必须有text，包含测试用例表"
+  },
+  {
+    "id": "6.2.4",
+    "title": "购物车功能测试",
+    "word_limit": 300,
+    "text": "placeholder",
+    "tablePath": "${tables}/test-cart.json",
+    "_note": "三级章节，必须有text，包含测试用例表"
+  },
+  {
+    "id": "6.2.5",
+    "title": "首页推荐功能测试",
+    "word_limit": 300,
+    "text": "placeholder",
+    "tablePath": "${tables}/test-recommend.json",
+    "_note": "三级章节，必须有text，包含测试用例表"
+  },
+  {
+    "id": "6.3",
+    "title": "性能测试",
+    "word_limit": 600,
+    "text": "placeholder",
+    "tablePath": "${tables}/test-performance.json",
+    "_note": "二级章节，无子节点，需要text，包含性能指标表"
+  },
+  {
+    "id": "6.4",
+    "title": "可靠性测试",
+    "word_limit": 500,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "7",
+    "title": "结语",
+    "word_limit": 0,
+    "_note": "一级章节，有子节点，不写text"
+  },
+  {
+    "id": "7.1",
+    "title": "研究成果总结",
+    "word_limit": 450,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "7.2",
+    "title": "系统特色与创新",
+    "word_limit": 400,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "7.3",
+    "title": "存在问题与不足",
+    "word_limit": 300,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "7.4",
+    "title": "未来发展方向",
+    "word_limit": 350,
+    "text": "placeholder",
+    "_note": "二级章节，无子节点，需要text"
+  },
+  {
+    "id": "10",
+    "title": "参考文献",
+    "word_limit": 120,
+    "text": "placeholder",
+    "_note": "参考文献列表"
+  },
+  {
+    "id": "11",
+    "title": "致谢",
+    "word_limit": 150,
+    "text": "placeholder",
+    "_note": "致谢"
+  }
+]

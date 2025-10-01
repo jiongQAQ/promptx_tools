@@ -1,0 +1,8 @@
+{
+  "id": "3.4",
+  "title": "系统架构规划",
+  "word_limit": 1000,
+  "text": "placeholder",
+  "imagePath": "${uml}/software-architecture.png",
+  "_note": "二级章节，无子节点，包含架构图"
+}

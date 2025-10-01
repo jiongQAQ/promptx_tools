@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "project": "newbee-mall-cloud",
+  "entityCount": 11,
+  "tableJsonDir": "paper/assets/tables/",
+  "tables": [
+    {"name": "tb_newbee_mall_user", "cn": "商城用户表", "columns": 8},
+    {"name": "tb_newbee_mall_admin_user", "cn": "管理员用户表", "columns": 5},
+    {"name": "tb_newbee_mall_goods_info", "cn": "商品信息表", "columns": 16},
+    {"name": "tb_newbee_mall_goods_category", "cn": "商品分类表", "columns": 10},
+    {"name": "tb_newbee_mall_order", "cn": "订单主表", "columns": 12},
+    {"name": "tb_newbee_mall_order_item", "cn": "订单商品明细表", "columns": 8},
+    {"name": "tb_newbee_mall_order_address", "cn": "订单收货地址表", "columns": 7},
+    {"name": "tb_newbee_mall_user_address", "cn": "用户收货地址表", "columns": 12},
+    {"name": "tb_newbee_mall_shopping_cart_item", "cn": "购物车商品表", "columns": 7},
+    {"name": "tb_newbee_mall_carousel", "cn": "轮播图配置表", "columns": 9},
+    {"name": "tb_newbee_mall_index_config", "cn": "首页配置表", "columns": 11}
+  ],
+  "failList": []
+}

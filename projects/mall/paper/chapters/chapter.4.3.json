@@ -1,0 +1,8 @@
+{
+  "id": "4.3",
+  "title": "微服务治理与基础设施设计",
+  "word_limit": 1200,
+  "text": "placeholder",
+  "imagePath": "${uml}/microservice-governance.png",
+  "_note": "二级章节，无子节点，重要章节，包含治理架构图"
+}

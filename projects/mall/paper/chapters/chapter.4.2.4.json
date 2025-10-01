@@ -1,0 +1,9 @@
+{
+  "id": "4.2.4",
+  "title": "购物车模块设计",
+  "word_limit": 500,
+  "text": "placeholder",
+  "imagePath": "${uml}/activity-cart.png",
+  "imagePathSequence": "${uml}/sequence-cart.png",
+  "_note": "三级章节，必须有text，包含活动图和时序图"
+}

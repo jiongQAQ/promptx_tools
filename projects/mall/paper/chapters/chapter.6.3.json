@@ -1,0 +1,8 @@
+{
+  "id": "6.3",
+  "title": "性能测试",
+  "word_limit": 600,
+  "text": "placeholder",
+  "tablePath": "${tables}/test-performance.json",
+  "_note": "二级章节，无子节点，需要text，包含性能指标表"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "4.2.2",
+  "title": "商品管理模块设计",
+  "word_limit": 500,
+  "text": "placeholder",
+  "imagePath": "${uml}/activity-goods.png",
+  "imagePathSequence": "${uml}/sequence-goods.png",
+  "_note": "三级章节，必须有text，包含活动图和时序图"
+}

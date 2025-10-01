@@ -1,0 +1,9 @@
+{
+  "id": "4.2.1",
+  "title": "用户管理模块设计",
+  "word_limit": 500,
+  "text": "placeholder",
+  "imagePath": "${uml}/activity-user.png",
+  "imagePathSequence": "${uml}/sequence-user.png",
+  "_note": "三级章节，必须有text，包含活动图和时序图"
+}

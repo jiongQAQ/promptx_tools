@@ -1,0 +1,8 @@
+{
+  "id": "3.5",
+  "title": "微服务拆分策略",
+  "word_limit": 1000,
+  "text": "placeholder",
+  "imagePath": "${uml}/microservice-split.png",
+  "_note": "二级章节，无子节点，包含微服务拆分图"
+}
