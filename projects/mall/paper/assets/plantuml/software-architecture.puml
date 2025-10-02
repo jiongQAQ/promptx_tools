@@ -1,15 +1,5 @@
 @startuml software-architecture
 
-<<<<<<< HEAD
-skinparam linetype ortho
-skinparam nodesep 100
-skinparam ranksep 100
-=======
-!pragma layout smetana
-skinparam linetype ortho
-skinparam nodesep 80
-skinparam ranksep 80
->>>>>>> 32c2d4b6a4b90edef88800c5b58783d709691097
 !define RECTANGLE class
 
 skinparam packageStyle rectangle
@@ -17,16 +7,16 @@ skinparam componentStyle rectangle
 
 title 电商系统五层架构
 
-package "前端层 (Presentation Layer)" #LightBlue {
+package "前端层 (Presentation Layer)" {
   component [用户端应用\n(Vue.js)] as UserApp
   component [管理端应用\n(Vue.js)] as AdminApp
 }
 
-package "网关层 (Gateway Layer)" #LightGreen {
+package "网关层 (Gateway Layer)" {
   component [Spring Cloud Gateway\n- 路由转发\n- 负载均衡\n- JWT认证\n- 限流控制] as Gateway
 }
 
-package "服务层 (Service Layer)" #LightYellow {
+package "服务层 (Service Layer)" {
   component [用户服务\n(User Service)] as UserService
   component [商品服务\n(Goods Service)] as GoodsService
   component [订单服务\n(Order Service)] as OrderService
@@ -34,7 +24,7 @@ package "服务层 (Service Layer)" #LightYellow {
   component [推荐服务\n(Recommend Service)] as RecommendService
 }
 
-package "数据层 (Data Layer)" #LightPink {
+package "数据层 (Data Layer)" {
   database "MySQL\n(用户库)" as UserDB
   database "MySQL\n(商品库)" as GoodsDB
   database "MySQL\n(订单库)" as OrderDB
@@ -43,7 +33,7 @@ package "数据层 (Data Layer)" #LightPink {
   database "Redis\n(缓存)" as Redis
 }
 
-package "基础设施层 (Infrastructure Layer)" #LightGray {
+package "基础设施层 (Infrastructure Layer)" {
   component [Nacos\n- 服务注册\n- 配置中心] as Nacos
   component [Sentinel\n- 流量控制\n- 熔断降级] as Sentinel
   component [Seata\n- 分布式事务] as Seata
