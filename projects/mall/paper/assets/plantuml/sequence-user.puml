@@ -1,5 +1,9 @@
 @startuml sequence-user
 
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+
 title 用户管理模块服务间调用时序
 
 actor "用户" as User

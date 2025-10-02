@@ -1,4 +1,8 @@
 @startuml software-architecture
+
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
 !define RECTANGLE class
 
 skinparam packageStyle rectangle

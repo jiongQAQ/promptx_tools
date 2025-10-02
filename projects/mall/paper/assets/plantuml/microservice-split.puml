@@ -1,4 +1,8 @@
 @startuml microservice-split
+
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
 !define RECTANGLE class
 
 skinparam componentStyle rectangle

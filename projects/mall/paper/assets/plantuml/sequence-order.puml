@@ -1,5 +1,9 @@
 @startuml sequence-order
 
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+
 title 订单管理模块服务间协作时序
 
 actor "用户" as User

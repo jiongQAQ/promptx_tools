@@ -1,5 +1,9 @@
 @startuml sequence-goods
 
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+
 title 商品管理模块服务间交互
 
 actor "用户" as User

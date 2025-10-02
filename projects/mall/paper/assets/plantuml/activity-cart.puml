@@ -1,5 +1,9 @@
 @startuml activity-cart
 
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+
 title 购物车模块操作流程
 
 |用户|

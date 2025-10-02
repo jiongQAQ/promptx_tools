@@ -1,5 +1,9 @@
 @startuml high-concurrency-design
 
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+
 title 系统高并发保障方案
 
 skinparam componentStyle rectangle

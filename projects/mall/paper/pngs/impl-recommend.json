@@ -1,0 +1,10 @@
+{
+  "id": "5.2.5",
+  "title": "首页推荐模块实现",
+  "word_limit": 500,
+  "text": "placeholder",
+  "imagePath": "${impl}/impl-recommend.png",
+  "_note": "三级章节，必须有text，包含实现截图",
+  "sourceFile": "chapter.5.2.5.json",
+  "extractedAt": "2025-10-01T17:57:42.301Z"
+}

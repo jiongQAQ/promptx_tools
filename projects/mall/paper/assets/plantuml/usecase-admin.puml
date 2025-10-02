@@ -1,0 +1,59 @@
+@startuml usecase-admin
+
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+
+title 管理员功能用例图
+
+top to bottom direction
+
+actor "管理员" as Admin
+
+rectangle "电商系统管理后台" {
+
+  package "用户管理模块" as UserMgmt {
+    usecase "管理员登录" as UC1
+    usecase "查看用户列表" as UC2
+    usecase "锁定/解锁用户" as UC3
+  }
+
+  package "商品管理模块" as GoodsMgmt {
+    usecase "添加商品" as UC4
+    usecase "编辑商品" as UC5
+    usecase "删除商品" as UC6
+    usecase "商品上下架" as UC7
+    usecase "管理商品分类" as UC8
+  }
+
+  package "订单管理模块" as OrderMgmt {
+    usecase "查看订单列表" as UC9
+    usecase "查看订单详情" as UC10
+    usecase "订单发货" as UC11
+    usecase "处理退款" as UC12
+  }
+
+  package "推荐管理模块" as RecommendMgmt {
+    usecase "配置轮播图" as UC13
+    usecase "配置首页推荐" as UC14
+    usecase "设置推荐排序" as UC15
+  }
+
+  package "统计分析模块" as Analytics {
+    usecase "查看销售统计" as UC16
+    usecase "查看用户统计" as UC17
+  }
+}
+
+' 管理员只连接到模块包，不连接具体用例
+Admin --> UserMgmt
+Admin --> GoodsMgmt
+Admin --> OrderMgmt
+Admin --> RecommendMgmt
+Admin --> Analytics
+
+' 关键用例之间的依赖关系（少量）
+UC4 ..> UC8 : <<include>>
+UC11 ..> UC10 : <<include>>
+
+@enduml

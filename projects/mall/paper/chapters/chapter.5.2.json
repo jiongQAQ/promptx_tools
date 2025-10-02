@@ -1,0 +1,65 @@
+{
+  "id": "5.2",
+  "title": "数据库实现",
+  "word_limit": 500,
+  "text": "placeholder",
+  "_note": "二级章节，包含11个数据表的三线表",
+  "content": "数据库实现基于第4章的数据库设计，在MySQL 8.0环境中创建数据库表结构。系统采用微服务架构，每个微服务拥有独立的数据库实例，实现数据隔离。共创建5个数据库：newbee_mall_cloud_user_db（用户服务）、newbee_mall_cloud_goods_db（商品服务）、newbee_mall_cloud_order_db（订单服务）、newbee_mall_cloud_cart_db（购物车服务）、newbee_mall_cloud_recommend_db（推荐服务），包含11个数据表。各表的详细字段定义如下，采用标准三线表格式展示字段名称、数据类型、约束条件和说明。",
+  "items": [
+    {
+      "title": "商城用户表（tb_newbee_mall_user）",
+      "text": "商城用户表用于存储普通用户的账号信息和基本资料，支持用户注册登录功能。表包含8个字段，主键user_id采用自增长策略，login_name设置唯一索引保证账号唯一性，password_md5存储MD5加密后的密码，is_deleted和locked_flag分别控制逻辑删除和账号锁定。详细字段定义如表5-1所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_user.json"
+    },
+    {
+      "title": "管理员用户表（tb_newbee_mall_admin_user）",
+      "text": "管理员用户表存储系统管理员的账号信息，与普通用户表分离实现权限隔离。表包含5个字段，login_user_name设置唯一索引，locked字段控制管理员账号的锁定状态。详细字段定义如表5-2所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_admin_user.json"
+    },
+    {
+      "title": "用户地址表（tb_newbee_mall_user_address）",
+      "text": "用户地址表存储用户的收货地址信息，一个用户可以拥有多个收货地址。表包含完整的地址信息字段，user_id外键关联用户表，is_default标识默认收货地址。为user_id字段建立索引优化地址查询性能。详细字段定义如表5-3所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_user_address.json"
+    },
+    {
+      "title": "商品信息表（tb_newbee_mall_goods_info）",
+      "text": "商品信息表是系统的核心业务表，存储商品的完整信息。表包含16个字段，goods_category_id外键关联商品分类，goods_sell_status控制商品上下架，stock_num记录库存数量，original_price和selling_price分别存储原价和售价（单位：分）。为分类ID、销售状态、库存数量建立索引，为goods_name建立全文索引支持商品搜索。详细字段定义如表5-4所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_goods_info.json"
+    },
+    {
+      "title": "商品分类表（tb_newbee_mall_goods_category）",
+      "text": "商品分类表采用树形结构设计，支持多级商品分类。category_level标识分类层级，parent_id指向父分类实现树形结构，category_rank控制分类排序。为parent_id和category_level建立复合索引支持分类树的高效查询。详细字段定义如表5-5所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_goods_category.json"
+    },
+    {
+      "title": "订单表（tb_newbee_mall_order）",
+      "text": "订单表存储订单的主信息和状态。order_no订单编号使用雪花算法生成保证全局唯一，pay_status和order_status分别标识支付状态和订单状态，支持订单生命周期管理。为order_no设置唯一索引，为user_id、order_status、create_time建立索引优化订单查询和统计。详细字段定义如表5-6所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_order.json"
+    },
+    {
+      "title": "订单明细表（tb_newbee_mall_order_item）",
+      "text": "订单明细表存储订单中购买的商品列表，与订单表形成一对多关系。order_id外键关联订单表，goods_name、goods_cover_img等字段保存商品快照，避免商品信息变更影响历史订单记录。为order_id建立索引支持订单详情查询。详细字段定义如表5-7所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_order_item.json"
+    },
+    {
+      "title": "订单地址表（tb_newbee_mall_order_address）",
+      "text": "订单地址表存储订单的收货地址快照信息。order_id外键关联订单表，保存下单时的完整收货地址信息，包括收货人、联系电话、省市区、详细地址等，保证历史订单地址信息的准确性和完整性。详细字段定义如表5-8所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_order_address.json"
+    },
+    {
+      "title": "购物车表（tb_newbee_mall_shopping_cart_item）",
+      "text": "购物车表存储用户的购物车商品。user_id和goods_id建立联合唯一索引，防止用户重复添加相同商品。goods_count记录商品数量，支持购物车商品数量的修改。购物车数据采用Redis+MySQL双写策略，Redis提供高性能访问，MySQL保证数据持久化。详细字段定义如表5-9所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_shopping_cart_item.json"
+    },
+    {
+      "title": "轮播图表（tb_newbee_mall_carousel）",
+      "text": "轮播图表存储首页轮播图的配置信息。carousel_url存储图片地址，redirect_url存储点击跳转链接，carousel_rank控制轮播图显示顺序，为carousel_rank建立索引支持按排序查询。详细字段定义如表5-10所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_carousel.json"
+    },
+    {
+      "title": "首页配置表（tb_newbee_mall_index_config）",
+      "text": "首页配置表存储首页推荐商品的配置。config_type区分热销、推荐、新品等不同类型，goods_id关联推荐的商品，config_rank控制推荐顺序。为config_type和config_rank建立复合索引优化首页推荐查询。详细字段定义如表5-11所示。",
+      "tablePath": "${tables}/Tab-tb_newbee_mall_index_config.json"
+    }
+  ]
+}

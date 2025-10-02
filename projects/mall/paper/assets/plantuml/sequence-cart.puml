@@ -1,5 +1,9 @@
 @startuml sequence-cart
 
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+
 title 购物车模块与其他服务的交互
 
 actor "用户" as User

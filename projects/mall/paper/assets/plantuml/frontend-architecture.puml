@@ -1,5 +1,9 @@
 @startuml frontend-architecture
 
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+
 title 前端系统架构
 
 skinparam componentStyle rectangle

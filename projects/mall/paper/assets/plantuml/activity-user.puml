@@ -1,5 +1,9 @@
 @startuml activity-user
 
+skinparam linetype ortho
+skinparam nodesep 100
+skinparam ranksep 100
+
 title 用户管理模块活动流程
 
 |用户|
