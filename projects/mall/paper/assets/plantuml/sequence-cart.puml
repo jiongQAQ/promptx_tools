@@ -1,0 +1,163 @@
+@startuml sequence-cart
+
+title 购物车模块与其他服务的交互
+
+actor "用户" as User
+participant "Gateway" as Gateway
+participant "购物车服务\n(Cart Service)" as CartService
+participant "商品服务\n(Goods Service)" as GoodsService
+database "Redis" as Redis
+database "MySQL\n(购物车库)" as CartDB
+
+== 添加商品到购物车 ==
+
+User -> Gateway: POST /api/cart/add\n{goodsId, quantity}
+activate Gateway
+
+Gateway -> Gateway: 验证JWT令牌\n获取userId
+
+Gateway -> CartService: 转发添加请求
+activate CartService
+
+CartService -> GoodsService: GET /internal/goods/{goodsId}
+activate GoodsService
+GoodsService --> CartService: {goodsName, price, stock, status}
+deactivate GoodsService
+
+alt 商品已下架
+  CartService --> Gateway: 商品已下架
+  Gateway --> User: 400 商品不可用
+end
+
+CartService -> Redis: HGET cart:{userId} {goodsId}
+activate Redis
+
+alt 商品已在购物车
+  Redis --> CartService: {quantity: 2}
+  CartService -> CartService: 增加数量 quantity=3
+
+else 新商品
+  Redis --> CartService: null
+  CartService -> CartService: 创建商品项
+end
+
+deactivate Redis
+
+CartService -> Redis: HSET cart:{userId} {goodsId}\n{商品信息, quantity}
+activate Redis
+Redis --> CartService: OK
+deactivate Redis
+
+CartService -> CartService: 异步写入MySQL
+
+CartService -> CartService: 计算购物车总价
+
+CartService --> Gateway: 添加成功, 购物车总价
+deactivate CartService
+
+Gateway --> User: 200 OK
+deactivate Gateway
+
+== 查询购物车 ==
+
+User -> Gateway: GET /api/cart/list
+activate Gateway
+
+Gateway -> CartService: 转发查询请求
+activate CartService
+
+CartService -> Redis: HGETALL cart:{userId}
+activate Redis
+
+alt Redis有数据
+  Redis --> CartService: 购物车数据
+
+else Redis无数据
+  Redis --> CartService: null
+  deactivate Redis
+
+  CartService -> CartDB: SELECT * FROM tb_cart\nWHERE userId=?
+  activate CartDB
+  CartDB --> CartService: 购物车记录
+  deactivate CartDB
+
+  CartService -> Redis: HSET cart:{userId}\n(加载数据到Redis)
+  activate Redis
+  Redis --> CartService: OK
+  deactivate Redis
+end
+
+CartService -> GoodsService: POST /internal/goods/batch-info\n{goodsIds: [1,2,3]}
+activate GoodsService
+GoodsService --> CartService: 商品最新信息\n{price, stock, status}
+deactivate GoodsService
+
+CartService -> CartService: 更新商品价格\n标记下架商品
+
+CartService --> Gateway: 购物车列表
+deactivate CartService
+
+Gateway --> User: 200 OK
+deactivate Gateway
+
+== 修改商品数量 ==
+
+User -> Gateway: PUT /api/cart/update\n{cartItemId, quantity}
+activate Gateway
+
+Gateway -> CartService: 转发更新请求
+activate CartService
+
+CartService -> GoodsService: GET /internal/goods/{goodsId}/stock
+activate GoodsService
+GoodsService --> CartService: {stock: 100}
+deactivate GoodsService
+
+alt 数量超过库存
+  CartService --> Gateway: 数量超过库存
+  Gateway --> User: 400 数量超过库存
+
+else 数量为0
+  CartService -> Redis: HDEL cart:{userId} {goodsId}
+  activate Redis
+  Redis --> CartService: OK
+  deactivate Redis
+
+  CartService -> CartService: 异步删除MySQL
+  CartService --> Gateway: 删除成功
+
+else 正常修改
+  CartService -> Redis: HSET cart:{userId} {goodsId}\n{quantity: new_value}
+  activate Redis
+  Redis --> CartService: OK
+  deactivate Redis
+
+  CartService -> CartService: 异步更新MySQL
+  CartService --> Gateway: 更新成功
+end
+
+deactivate CartService
+Gateway --> User: 200 OK
+deactivate Gateway
+
+== 订单服务清空购物车 ==
+
+participant "订单服务" as OrderService
+
+OrderService -> CartService: DELETE /internal/cart/clear\n{userId, goodsIds: [1,2]}
+activate CartService
+
+CartService -> Redis: HDEL cart:{userId} 1 2
+activate Redis
+Redis --> CartService: OK
+deactivate Redis
+
+CartService -> CartDB: DELETE FROM tb_cart\nWHERE userId=? AND goodsId IN (1,2)
+activate CartDB
+CartDB --> CartService: 删除成功
+deactivate CartDB
+
+CartService --> OrderService: 清空成功
+deactivate CartService
+
+@enduml

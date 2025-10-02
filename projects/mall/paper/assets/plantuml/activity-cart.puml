@@ -1,0 +1,109 @@
+@startuml activity-cart
+
+title 购物车模块操作流程
+
+|用户|
+start
+
+if (用户登录?) then (yes)
+  |系统|
+  :合并本地购物车到Redis;
+
+else (no)
+  |系统|
+  :使用浏览器LocalStorage;
+endif
+
+|用户|
+:选择操作;
+
+if (操作类型?) then (添加商品)
+
+  |用户|
+  :选择商品和数量;
+
+  |系统|
+  :调用商品服务\n获取商品信息;
+
+  if (商品已在购物车?) then (yes)
+    :增加商品数量;
+  else (no)
+    :添加新商品项;
+  endif
+
+  :更新Redis;
+  :异步写入MySQL;
+  :计算购物车总价;
+  :返回购物车状态;
+
+else if (修改数量)
+
+  |用户|
+  :调整商品数量;
+
+  |系统|
+  :验证库存限制;
+
+  if (数量为0?) then (yes)
+    :删除商品;
+  else (no)
+    if (超过库存?) then (yes)
+      :返回"超过库存";
+      stop
+    else (no)
+      :更新商品数量;
+    endif
+  endif
+
+  :更新Redis;
+  :异步写入MySQL;
+  :重新计算总价;
+
+else if (删除商品)
+
+  |系统|
+  :从Redis删除商品项;
+  :异步删除MySQL记录;
+  :重新计算总价;
+
+else if (查询购物车)
+
+  |系统|
+  :从Redis读取购物车;
+
+  if (Redis有数据?) then (yes)
+    :返回购物车数据;
+
+  else (no)
+    :从MySQL加载;
+    :写入Redis;
+    :返回购物车数据;
+  endif
+
+  :调用商品服务\n获取最新价格和库存;
+
+  if (商品已下架?) then (yes)
+    :标记商品不可购买;
+  endif
+
+  :返回购物车列表;
+
+else (购物车结算)
+
+  |用户|
+  :选择要结算的商品;
+
+  |系统|
+  :验证选中商品;
+  :传递给订单服务;
+
+  note right
+    订单创建成功后
+    清空已结算商品
+  end note
+
+endif
+
+stop
+
+@enduml

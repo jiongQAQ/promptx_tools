@@ -1,0 +1,110 @@
+@startuml activity-recommend
+
+title 首页推荐模块推荐流程
+
+|系统|
+start
+
+:接收推荐请求;
+
+if (推荐类型?) then (热门推荐)
+
+  :查询Redis缓存;
+
+  if (缓存存在?) then (yes)
+    :返回缓存数据;
+    stop
+
+  else (no)
+    :计算商品热度分数;
+
+    note right
+      热度 = 销量 × 0.5 +
+             浏览量 × 0.3 +
+             收藏量 × 0.2
+    end note
+
+    :按热度排序;
+    :选取Top N商品;
+    :缓存到Redis (1小时);
+    :返回推荐列表;
+    stop
+  endif
+
+else if (新品推荐)
+
+  :查询Redis缓存;
+
+  if (缓存存在?) then (yes)
+    :返回缓存数据;
+    stop
+
+  else (no)
+    :按上架时间倒序;
+    :选取最新N件商品;
+    :缓存到Redis (1小时);
+    :返回推荐列表;
+    stop
+  endif
+
+else if (促销推荐)
+
+  :查询参与促销的商品;
+  :添加促销标签;
+  :返回促销商品;
+  stop
+
+else if (个性化推荐)
+
+  :获取用户ID;
+
+  if (用户已登录?) then (yes)
+
+    :查询用户行为数据;
+
+    partition "推荐算法" {
+      :分析浏览历史;
+      :分析购买历史;
+      :分析收藏商品;
+
+      if (算法选择?) then (基于内容)
+        :找出相似商品;
+        :计算商品相似度;
+
+      else (协同过滤)
+        :找出相似用户;
+        :推荐相似用户购买的商品;
+      endif
+
+      :合并推荐结果;
+      :去重排序;
+    }
+
+    :缓存推荐结果 (1天);
+    :返回个性化推荐;
+    stop
+
+  else (未登录)
+    :返回热门推荐;
+    stop
+  endif
+
+else (分类推荐)
+
+  :获取主要分类;
+
+  fork
+    :查询分类1热门商品;
+  fork again
+    :查询分类2热门商品;
+  fork again
+    :查询分类3热门商品;
+  end fork
+
+  :组装分类推荐;
+  :返回分类推荐;
+  stop
+
+endif
+
+@enduml

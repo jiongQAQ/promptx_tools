@@ -3,5 +3,6 @@
   "title": "参考文献",
   "word_limit": 120,
   "text": "placeholder",
-  "_note": "参考文献列表"
+  "_note": "参考文献列表",
+  "content": "[1] Martin Fowler. Microservices: a definition of this new architectural term[EB/OL]. https://martinfowler.com/articles/microservices.html, 2014.\n[2] Chris Richardson. Pattern: Microservice Architecture[EB/OL]. https://microservices.io/patterns/microservices.html, 2018.\n[3] Spring Cloud Alibaba开发团队. Spring Cloud Alibaba官方文档[EB/OL]. https://github.com/alibaba/spring-cloud-alibaba, 2023.\n[4] 翟永超. Spring Cloud微服务实战[M]. 北京: 电子工业出版社, 2017.\n[5] 杨波. 微服务架构设计模式[M]. 北京: 机械工业出版社, 2019.\n[6] 李运华. 从零开始学架构[M]. 北京: 电子工业出版社, 2018.\n[7] Eric Brewer. CAP Twelve Years Later: How the \"Rules\" Have Changed[J]. Computer, 2012, 45(2): 23-29.\n[8] Leslie Lamport. The Part-Time Parliament[J]. ACM Transactions on Computer Systems, 1998, 16(2): 133-169.\n[9] 阿里巴巴中间件团队. Nacos架构与原理[EB/OL]. https://nacos.io/zh-cn/docs/architecture.html, 2023.\n[10] Netflix. Hystrix: Latency and Fault Tolerance Library[EB/OL]. https://github.com/Netflix/Hystrix, 2019."
 }

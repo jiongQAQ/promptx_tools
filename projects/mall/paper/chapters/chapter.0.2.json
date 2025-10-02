@@ -3,5 +3,6 @@
   "title": "Abstract",
   "word_limit": 250,
   "text": "placeholder",
-  "_reference_source": "参考 NJUT_毕业论文_初稿.md 结构"
+  "_reference_source": "参考 NJUT_毕业论文_初稿.md 结构",
+  "content": "With the rapid development of e-commerce and continuous advancement of Internet technology, traditional monolithic architecture e-commerce systems can no longer meet the demands of rapid business iteration and high concurrent access. This paper designs and implements an e-commerce system based on microservices architecture to address this issue. The system adopts Spring Cloud technology stack and decouples core business modules including user management, product management, order management, shopping cart, and homepage recommendation into independent microservices through service decomposition. The system utilizes Nacos for service registry, discovery and configuration center, implements traffic control and circuit breaker through Sentinel, resolves distributed transaction problems using Seata, and introduces Redis cache to improve system performance. The frontend employs Vue.js framework to build user interface and provides unified service interfaces through API Gateway. System testing results demonstrate that this architecture effectively enhances system scalability, high availability and development efficiency, capable of supporting large-scale concurrent access and providing technical guarantee for stable operation of e-commerce platforms. This research provides practical reference for the application of microservices architecture in e-commerce domain."
 }
