@@ -1,5 +1,10 @@
 @startuml sequence-order
 
+!pragma layout smetana
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
+
 title 订单管理模块服务间协作时序
 
 actor "用户" as User

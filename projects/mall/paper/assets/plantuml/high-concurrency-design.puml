@@ -1,5 +1,10 @@
 @startuml high-concurrency-design
 
+!pragma layout smetana
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
+
 title 系统高并发保障方案
 
 skinparam componentStyle rectangle

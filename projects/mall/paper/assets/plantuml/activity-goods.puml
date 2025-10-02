@@ -1,5 +1,10 @@
 @startuml activity-goods
 
+!pragma layout smetana
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
+
 title 商品管理模块业务流程
 
 |管理员|

@@ -1,0 +1,11 @@
+{
+  "id": "4.2.5",
+  "title": "首页推荐模块设计",
+  "word_limit": 500,
+  "text": "placeholder",
+  "imagePath": "${uml}/activity-recommend.png",
+  "imagePathSequence": "${uml}/sequence-recommend.png",
+  "_note": "三级章节，必须有text，包含活动图和时序图",
+  "sourceFile": "chapter.4.2.5.json",
+  "extractedAt": "2025-10-01T17:57:42.300Z"
+}

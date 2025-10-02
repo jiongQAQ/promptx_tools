@@ -1,5 +1,10 @@
 @startuml sequence-recommend
 
+!pragma layout smetana
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
+
 title 首页推荐模块服务交互
 
 actor "用户" as User

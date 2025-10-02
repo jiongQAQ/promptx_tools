@@ -1,0 +1,10 @@
+{
+  "id": "6.2.2",
+  "title": "商品管理功能测试",
+  "word_limit": 300,
+  "text": "placeholder",
+  "tablePath": "${tables}/test-goods.json",
+  "_note": "三级章节，必须有text，包含测试用例表",
+  "sourceFile": "chapter.6.2.2.json",
+  "extractedAt": "2025-10-01T17:57:42.302Z"
+}

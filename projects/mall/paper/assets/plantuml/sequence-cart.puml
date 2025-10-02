@@ -1,5 +1,10 @@
 @startuml sequence-cart
 
+!pragma layout smetana
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
+
 title 购物车模块与其他服务的交互
 
 actor "用户" as User

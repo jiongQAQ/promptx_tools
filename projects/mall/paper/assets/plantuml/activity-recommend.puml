@@ -1,5 +1,10 @@
 @startuml activity-recommend
 
+!pragma layout smetana
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
+
 title 首页推荐模块推荐流程
 
 |系统|

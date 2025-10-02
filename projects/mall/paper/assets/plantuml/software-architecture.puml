@@ -1,4 +1,9 @@
 @startuml software-architecture
+
+!pragma layout smetana
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
 !define RECTANGLE class
 
 skinparam packageStyle rectangle
