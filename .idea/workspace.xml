@@ -27,6 +27,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
@@ -41,6 +42,22 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "/Users/jiongjiong/Library/Application Support/JetBrains/IntelliJIdea2025.1/plugins/Shell Script/shellcheck",
+    "git-widget-placeholder": "canteen-rating-template-2",
+    "last_opened_file_path": "/Users/jiongjiong/Documents/a_git_project/promptx_tools",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> 32c2d4b6a4b90edef88800c5b58783d709691097
   }
 }</component>
   <component name="RecentsManager">
@@ -89,7 +106,10 @@
       <workItem from="1758626546384" duration="82508000" />
       <workItem from="1759332665522" duration="4287000" />
       <workItem from="1759341704715" duration="74000" />
+<<<<<<< HEAD
       <workItem from="1759385817941" duration="723000" />
+=======
+>>>>>>> 32c2d4b6a4b90edef88800c5b58783d709691097
     </task>
     <task id="LOCAL-00001" summary="删除">
       <option name="closed" value="true" />

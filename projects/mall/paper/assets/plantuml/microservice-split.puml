@@ -1,8 +1,15 @@
 @startuml microservice-split
 
+<<<<<<< HEAD
 skinparam linetype ortho
 skinparam nodesep 100
 skinparam ranksep 100
+=======
+!pragma layout smetana
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
+>>>>>>> 32c2d4b6a4b90edef88800c5b58783d709691097
 !define RECTANGLE class
 
 skinparam componentStyle rectangle
