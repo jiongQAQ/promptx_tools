@@ -1,9 +1,0 @@
-{
-  "id": "5.4.2",
-  "title": "实现过程",
-  "text": "评价管理模块的后端实现在RatingController中，提供/api/user/rating和/api/admin/rating两套接口，分别面向用户和管理员。用户提交评价时，RatingServiceImpl首先调用SensitiveWordService检测内容中的敏感词，使用DFA（Deterministic Finite Automaton）算法实现高效匹配。检测通过的评价状态设为已发布，否则设为待审核。评价保存后异步更新菜品表的平均分和评价数，使用@Async注解实现异步调用。前端用户界面使用el-rate组件实现星级评分，el-input type=\"textarea\"输入评价内容，el-upload上传图片。评价列表使用el-timeline展示时间轴样式，显示用户头像、昵称、评分、内容、图片、时间。管理员审核界面使用el-table展示待审核评价，提供通过/拒绝操作按钮。实现效果如图所示。",
-  "word_limit": 300,
-  "imagePath": "${impl}/impl-rating.png",
-  "sourceFile": "content-plan",
-  "extractedAt": "2025-09-30T10:21:26.384Z"
-}

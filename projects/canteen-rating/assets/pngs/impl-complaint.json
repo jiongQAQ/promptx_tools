@@ -1,9 +1,0 @@
-{
-  "id": "5.5.2",
-  "title": "实现过程",
-  "text": "投诉管理模块的后端实现在ComplaintController中，提供用户投诉接口和管理员处理接口。用户提交投诉时，ComplaintServiceImpl保存投诉信息，初始状态为待处理，同时发送通知给相关管理员（可通过邮件或站内消息）。管理员查询投诉列表时，支持按状态、类型、时间范围筛选，按优先级排序。处理投诉时，管理员填写处理结果，更新状态为已处理，记录处理时间，系统计算处理时长。前端用户界面使用el-form实现投诉提交表单，el-select选择投诉类型，el-upload上传图片。投诉列表使用el-card展示投诉卡片，按时间倒序排列，标识状态（待处理/已处理）。管理员界面使用el-table展示投诉列表，el-drawer抽屉组件展示投诉详情和处理表单。实现效果如图所示。",
-  "word_limit": 300,
-  "imagePath": "${impl}/impl-complaint.png",
-  "sourceFile": "content-plan",
-  "extractedAt": "2025-09-30T10:21:26.384Z"
-}
