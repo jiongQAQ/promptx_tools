@@ -4,61 +4,61 @@
   "word_limit": 800,
   "text": "placeholder",
   "_note": "三级章节，描述各数据库表结构，包含单体ER图和表结构",
-  "content": "逻辑结构设计将概念模型转换为具体的数据库表结构，定义表的字段、数据类型、约束条件等。系统采用MySQL数据库，遵循第三范式设计原则，确保数据的一致性和减少冗余。系统按微服务拆分，每个服务拥有独立的数据库实例，共设计11个数据表，分布在5个微服务数据库中。各表的实体关系图和详细结构说明如下。",
+  "content": "逻辑结构设计将概念模型转换为具体的数据库表结构，定义表的字段、数据类型、约束条件等。系统采用MySQL数据库，遵循第三范式设计原则，确保数据的一致性和减少冗余。系统按微服务拆分，每个服务拥有独立的数据库实例，共设计11个数据表，分布在5个微服务数据库中。各表的实体关系图如下。",
   "items": [
     {
       "title": "商城用户表（tb_newbee_mall_user）",
-      "text": "商城用户表存储普通用户的基本信息，包括用户ID、昵称、登录名、密码、个性签名、逻辑删除标记、锁定标记等字段。主键userId采用BIGINT类型自增长策略，loginName登录名设置唯一索引保证账号唯一性，passwordMd5字段存储MD5加密后的密码。为loginName、isDeleted、createTime字段建立索引以优化查询性能。表结构ER图如图4-2所示。",
+      "text": "商城用户表存储普通用户的基本信息，支持用户注册登录功能。表结构ER图如图4-2所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_user.svg"
     },
     {
       "title": "管理员用户表（tb_newbee_mall_admin_user）",
-      "text": "管理员用户表存储系统管理员的账号信息，与普通用户表分离管理。主键adminUserId，loginUserName登录用户名设置唯一索引，loginPassword存储加密密码，locked字段标识账号锁定状态。表结构ER图如图4-3所示。",
+      "text": "管理员用户表存储系统管理员的账号信息，与普通用户表分离管理。表结构ER图如图4-3所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_admin_user.svg"
     },
     {
       "title": "用户地址表（tb_newbee_mall_user_address）",
-      "text": "用户地址表存储用户的收货地址信息，支持一个用户维护多个收货地址。主键addressId，userId外键关联用户表，包含收货人姓名、联系电话、省市区、详细地址等完整地址信息，isDefault字段标识默认地址。为userId字段建立索引，为userId和isDefault建立复合索引。表结构ER图如图4-4所示。",
+      "text": "用户地址表存储用户的收货地址信息，支持一个用户维护多个收货地址。表结构ER图如图4-4所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_user_address.svg"
     },
     {
       "title": "商品信息表（tb_newbee_mall_goods_info）",
-      "text": "商品信息表是系统的核心业务表，存储商品的完整信息。主键goodsId，goodsName商品名称支持全文检索，goodsCategoryId外键关联商品分类，goodsCoverImg和goodsCarousel存储商品图片URL，originalPrice和sellingPrice分别存储原价和售价（单位为分），stockNum库存数量，goodsSellStatus销售状态控制商品上下架，goodsDetailContent存储富文本详情。为分类ID、销售状态、库存数量建立索引，为商品名称建立全文索引。表结构ER图如图4-5所示。",
+      "text": "商品信息表是系统的核心业务表，存储商品的完整信息。表结构ER图如图4-5所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_goods_info.svg"
     },
     {
       "title": "商品分类表（tb_newbee_mall_goods_category）",
-      "text": "商品分类表采用树形结构设计，支持多级分类。主键categoryId，categoryLevel标识分类层级（1/2/3级），parentId指向父分类实现树形结构，categoryName分类名称，categoryRank排序值控制分类显示顺序。为parentId和categoryLevel建立复合索引支持分类树查询，为categoryRank建立索引支持排序。表结构ER图如图4-6所示。",
+      "text": "商品分类表采用树形结构设计，支持多级商品分类。表结构ER图如图4-6所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_goods_category.svg"
     },
     {
       "title": "订单表（tb_newbee_mall_order）",
-      "text": "订单表存储订单的主要信息。主键orderId，orderNo订单编号使用分布式ID生成算法保证全局唯一性，userId关联用户，totalPrice订单总价，payStatus支付状态，payType支付方式，payTime支付时间，orderStatus订单状态标识订单生命周期各阶段。为orderNo设置唯一索引，为userId、orderStatus、createTime建立索引优化订单查询。表结构ER图如图4-7所示。",
+      "text": "订单表存储订单的主要信息和状态，支持订单生命周期管理。表结构ER图如图4-7所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_order.svg"
     },
     {
       "title": "订单明细表（tb_newbee_mall_order_item）",
-      "text": "订单明细表存储订单中的商品列表，一个订单对应多条订单明细记录。主键orderItemId，orderId外键关联订单表，goodsId记录商品ID，goodsName、goodsCoverImg等字段保存下单时的商品快照信息，避免商品信息变更影响历史订单，sellingPrice记录成交价格，goodsCount购买数量。为orderId建立索引。表结构ER图如图4-8所示。",
+      "text": "订单明细表存储订单中的商品列表，一个订单对应多条订单明细记录。表结构ER图如图4-8所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_order_item.svg"
     },
     {
       "title": "订单地址表（tb_newbee_mall_order_address）",
-      "text": "订单地址表存储订单的收货地址快照。包含orderId关联订单，userName收货人、userPhone联系电话、provinceName省份、cityName城市、regionName区县、detailAddress详细地址等完整地址信息。保存下单时的地址快照，避免用户后续修改地址影响历史订单的配送信息追溯。表结构ER图如图4-9所示。",
+      "text": "订单地址表存储订单的收货地址快照信息，保证历史订单地址的准确性。表结构ER图如图4-9所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_order_address.svg"
     },
     {
       "title": "购物车表（tb_newbee_mall_shopping_cart_item）",
-      "text": "购物车表存储用户的购物车商品信息。主键cartItemId，userId关联用户，goodsId关联商品，goodsCount记录商品数量。为userId和goodsId建立联合唯一索引，防止同一用户重复添加相同商品。购物车数据同时存储在Redis缓存中提升访问性能，MySQL作为持久化备份。表结构ER图如图4-10所示。",
+      "text": "购物车表存储用户的购物车商品信息，采用Redis+MySQL双写策略。表结构ER图如图4-10所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_shopping_cart_item.svg"
     },
     {
       "title": "轮播图表（tb_newbee_mall_carousel）",
-      "text": "轮播图表存储首页轮播图的配置信息。主键carouselId，carouselUrl存储轮播图图片URL，redirectUrl存储点击跳转链接，carouselRank排序值控制轮播图显示顺序，isDeleted逻辑删除标记。为carouselRank建立索引支持排序查询。表结构ER图如图4-11所示。",
+      "text": "轮播图表存储首页轮播图的配置信息。表结构ER图如图4-11所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_carousel.svg"
     },
     {
       "title": "首页配置表（tb_newbee_mall_index_config）",
-      "text": "首页配置表存储首页推荐商品的配置信息。主键configId，configName配置名称，configType配置类型区分热销商品、推荐商品、新品等不同展示区域，goodsId关联推荐的商品，redirectUrl跳转链接，configRank排序值。为configType和configRank建立复合索引优化首页推荐查询。表结构ER图如图4-12所示。",
+      "text": "首页配置表存储首页推荐商品的配置信息。表结构ER图如图4-12所示。",
       "imagePath": "${er}/Tab-tb_newbee_mall_index_config.svg"
     }
   ]
