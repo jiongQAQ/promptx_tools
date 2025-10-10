@@ -234,7 +234,8 @@
       "parent": "4",
       "children": [
         "4.2.1",
-        "4.2.2"
+        "4.2.2",
+        "4.2.3"
       ],
       "pageNumber": "43"
     },
@@ -253,6 +254,14 @@
       "parent": "4.2",
       "children": [],
       "pageNumber": "44"
+    },
+    {
+      "id": "4.2.3",
+      "title": "表结构设计",
+      "level": 3,
+      "parent": "4.2",
+      "children": [],
+      "pageNumber": "45"
     },
     {
       "id": "4.3",
@@ -357,8 +366,7 @@
         "5.1",
         "5.2",
         "5.3",
-        "5.4",
-        "5.5"
+        "5.4"
       ],
       "pageNumber": "65"
     },
@@ -372,28 +380,60 @@
     },
     {
       "id": "5.2",
-      "title": "数据库实现",
-      "level": 2,
-      "parent": "5",
-      "children": [],
-      "pageNumber": "67"
-    },
-    {
-      "id": "5.3",
       "title": "微服务基础功能模块实现",
       "level": 2,
       "parent": "5",
       "children": [
-        "5.3.1",
-        "5.3.2",
-        "5.3.3",
-        "5.3.4",
-        "5.3.5"
+        "5.2.1",
+        "5.2.2",
+        "5.2.3",
+        "5.2.4",
+        "5.2.5"
       ],
+      "pageNumber": "67"
+    },
+    {
+      "id": "5.2.1",
+      "title": "用户管理模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
+      "pageNumber": "67"
+    },
+    {
+      "id": "5.2.2",
+      "title": "商品管理模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
+      "pageNumber": "68"
+    },
+    {
+      "id": "5.2.3",
+      "title": "订单管理模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
+      "pageNumber": "69"
+    },
+    {
+      "id": "5.2.4",
+      "title": "购物车模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
+      "pageNumber": "69"
+    },
+    {
+      "id": "5.2.5",
+      "title": "首页推荐模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
       "pageNumber": "70"
     },
     {
-      "id": "5.4",
+      "id": "5.3",
       "title": "微服务治理与基础设施实现",
       "level": 2,
       "parent": "5",
@@ -401,7 +441,7 @@
       "pageNumber": "70"
     },
     {
-      "id": "5.5",
+      "id": "5.4",
       "title": "系统高并发保障实现",
       "level": 2,
       "parent": "5",
