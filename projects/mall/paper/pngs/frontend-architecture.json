@@ -1,0 +1,10 @@
+{
+  "id": "4.5",
+  "title": "前端系统设计",
+  "word_limit": 700,
+  "text": "placeholder",
+  "imagePath": "${uml}/frontend-architecture.png",
+  "_note": "二级章节，无子节点，包含前端架构图",
+  "sourceFile": "chapter.4.5.json",
+  "extractedAt": "2025-10-01T17:57:42.301Z"
+}

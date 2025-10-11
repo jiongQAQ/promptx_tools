@@ -1,0 +1,619 @@
+{
+  "metadata": {
+    "project": "newbee-mall-cloud",
+    "title": "基于微服务架构的电商系统设计与实现",
+    "university": "南京工业大学",
+    "major": "计算机科学与技术",
+    "createdDate": "2025-10-02",
+    "mode": "custom",
+    "sourceType": "custom_outline_text"
+  },
+  "outline": [
+    {
+      "id": "0.1",
+      "title": "摘要",
+      "level": 0,
+      "parent": null,
+      "children": [],
+      "pageNumber": "I"
+    },
+    {
+      "id": "0.2",
+      "title": "Abstract",
+      "level": 0,
+      "parent": null,
+      "children": [],
+      "pageNumber": "II"
+    },
+    {
+      "id": "1",
+      "title": "绪论",
+      "level": 1,
+      "parent": null,
+      "children": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4"
+      ],
+      "pageNumber": "1"
+    },
+    {
+      "id": "1.1",
+      "title": "研究背景与意义",
+      "level": 2,
+      "parent": "1",
+      "children": [],
+      "pageNumber": "1"
+    },
+    {
+      "id": "1.2",
+      "title": "国内外研究现状",
+      "level": 2,
+      "parent": "1",
+      "children": [],
+      "pageNumber": "3"
+    },
+    {
+      "id": "1.3",
+      "title": "研究目标与内容",
+      "level": 2,
+      "parent": "1",
+      "children": [],
+      "pageNumber": "5"
+    },
+    {
+      "id": "1.4",
+      "title": "论文组织结构",
+      "level": 2,
+      "parent": "1",
+      "children": [],
+      "pageNumber": "7"
+    },
+    {
+      "id": "2",
+      "title": "系统相关技术与理论基础",
+      "level": 1,
+      "parent": null,
+      "children": [
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.5",
+        "2.6",
+        "2.7",
+        "2.8"
+      ],
+      "pageNumber": "8"
+    },
+    {
+      "id": "2.1",
+      "title": "B/S 架构",
+      "level": 2,
+      "parent": "2",
+      "children": [],
+      "pageNumber": "8"
+    },
+    {
+      "id": "2.2",
+      "title": "Java 语言简介",
+      "level": 2,
+      "parent": "2",
+      "children": [],
+      "pageNumber": "9"
+    },
+    {
+      "id": "2.3",
+      "title": "MySQL 数据库",
+      "level": 2,
+      "parent": "2",
+      "children": [],
+      "pageNumber": "10"
+    },
+    {
+      "id": "2.4",
+      "title": "SSM 框架体系",
+      "level": 2,
+      "parent": "2",
+      "children": [],
+      "pageNumber": "11"
+    },
+    {
+      "id": "2.5",
+      "title": "微服务架构概述",
+      "level": 2,
+      "parent": "2",
+      "children": [],
+      "pageNumber": "14"
+    },
+    {
+      "id": "2.6",
+      "title": "Spring Cloud 技术栈",
+      "level": 2,
+      "parent": "2",
+      "children": [],
+      "pageNumber": "17"
+    },
+    {
+      "id": "2.7",
+      "title": "分布式系统理论",
+      "level": 2,
+      "parent": "2",
+      "children": [],
+      "pageNumber": "21"
+    },
+    {
+      "id": "2.8",
+      "title": "Vue前端框架",
+      "level": 2,
+      "parent": "2",
+      "children": [],
+      "pageNumber": "24"
+    },
+    {
+      "id": "3",
+      "title": "系统需求分析与总体规划",
+      "level": 1,
+      "parent": null,
+      "children": [
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.5"
+      ],
+      "pageNumber": "25"
+    },
+    {
+      "id": "3.1",
+      "title": "系统可行性分析",
+      "level": 2,
+      "parent": "3",
+      "children": [],
+      "pageNumber": "25"
+    },
+    {
+      "id": "3.2",
+      "title": "功能需求分析",
+      "level": 2,
+      "parent": "3",
+      "children": [],
+      "pageNumber": "27"
+    },
+    {
+      "id": "3.3",
+      "title": "非功能需求分析",
+      "level": 2,
+      "parent": "3",
+      "children": [],
+      "pageNumber": "30"
+    },
+    {
+      "id": "3.4",
+      "title": "系统架构规划",
+      "level": 2,
+      "parent": "3",
+      "children": [],
+      "pageNumber": "33"
+    },
+    {
+      "id": "3.5",
+      "title": "微服务拆分策略",
+      "level": 2,
+      "parent": "3",
+      "children": [],
+      "pageNumber": "37"
+    },
+    {
+      "id": "4",
+      "title": "系统详细设计",
+      "level": 1,
+      "parent": null,
+      "children": [
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.5"
+      ],
+      "pageNumber": "40"
+    },
+    {
+      "id": "4.1",
+      "title": "技术栈选型与设计原则",
+      "level": 2,
+      "parent": "4",
+      "children": [],
+      "pageNumber": "40"
+    },
+    {
+      "id": "4.2",
+      "title": "数据库设计",
+      "level": 2,
+      "parent": "4",
+      "children": [
+        "4.2.1",
+        "4.2.2",
+        "4.2.3"
+      ],
+      "pageNumber": "43"
+    },
+    {
+      "id": "4.2.1",
+      "title": "概念结构设计",
+      "level": 3,
+      "parent": "4.2",
+      "children": [],
+      "pageNumber": "43"
+    },
+    {
+      "id": "4.2.2",
+      "title": "逻辑结构设计",
+      "level": 3,
+      "parent": "4.2",
+      "children": [],
+      "pageNumber": "44"
+    },
+    {
+      "id": "4.2.3",
+      "title": "表结构设计",
+      "level": 3,
+      "parent": "4.2",
+      "children": [],
+      "pageNumber": "45"
+    },
+    {
+      "id": "4.3",
+      "title": "微服务核心功能模块设计",
+      "level": 2,
+      "parent": "4",
+      "children": [
+        "4.3.1",
+        "4.3.2",
+        "4.3.3",
+        "4.3.4",
+        "4.3.5"
+      ],
+      "pageNumber": "47"
+    },
+    {
+      "id": "4.3.1",
+      "title": "用户管理模块设计",
+      "level": 3,
+      "parent": "4.3",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "user-service",
+        "MallUser.java",
+        "AdminUser.java"
+      ]
+    },
+    {
+      "id": "4.3.2",
+      "title": "商品管理模块设计",
+      "level": 3,
+      "parent": "4.3",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "goods-service",
+        "NewBeeMallGoods.java",
+        "GoodsCategory.java"
+      ]
+    },
+    {
+      "id": "4.3.3",
+      "title": "订单管理模块设计",
+      "level": 3,
+      "parent": "4.3",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "order-service",
+        "NewBeeMallOrder.java",
+        "NewBeeMallOrderItem.java"
+      ]
+    },
+    {
+      "id": "4.3.4",
+      "title": "购物车模块设计",
+      "level": 3,
+      "parent": "4.3",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "shop-cart-service",
+        "NewBeeMallShoppingCartItem.java"
+      ]
+    },
+    {
+      "id": "4.3.5",
+      "title": "首页推荐模块设计",
+      "level": 3,
+      "parent": "4.3",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "recommend-service",
+        "Carousel.java",
+        "IndexConfig.java"
+      ]
+    },
+    {
+      "id": "4.4",
+      "title": "微服务治理与基础设施设计",
+      "level": 2,
+      "parent": "4",
+      "children": [],
+      "pageNumber": "51"
+    },
+    {
+      "id": "4.5",
+      "title": "系统高并发保障设计",
+      "level": 2,
+      "parent": "4",
+      "children": [],
+      "pageNumber": "59"
+    },
+    {
+      "id": "5",
+      "title": "系统核心功能实现",
+      "level": 1,
+      "parent": null,
+      "children": [
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4"
+      ],
+      "pageNumber": "65"
+    },
+    {
+      "id": "5.1",
+      "title": "开发环境与工具配置",
+      "level": 2,
+      "parent": "5",
+      "children": [],
+      "pageNumber": "65"
+    },
+    {
+      "id": "5.2",
+      "title": "微服务基础功能模块实现",
+      "level": 2,
+      "parent": "5",
+      "children": [
+        "5.2.1",
+        "5.2.2",
+        "5.2.3",
+        "5.2.4",
+        "5.2.5"
+      ],
+      "pageNumber": "67"
+    },
+    {
+      "id": "5.2.1",
+      "title": "用户管理模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
+      "pageNumber": "67"
+    },
+    {
+      "id": "5.2.2",
+      "title": "商品管理模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
+      "pageNumber": "68"
+    },
+    {
+      "id": "5.2.3",
+      "title": "订单管理模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
+      "pageNumber": "69"
+    },
+    {
+      "id": "5.2.4",
+      "title": "购物车模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
+      "pageNumber": "69"
+    },
+    {
+      "id": "5.2.5",
+      "title": "首页推荐模块实现",
+      "level": 3,
+      "parent": "5.2",
+      "children": [],
+      "pageNumber": "70"
+    },
+    {
+      "id": "5.3",
+      "title": "微服务治理与基础设施实现",
+      "level": 2,
+      "parent": "5",
+      "children": [],
+      "pageNumber": "70"
+    },
+    {
+      "id": "5.4",
+      "title": "系统高并发保障实现",
+      "level": 2,
+      "parent": "5",
+      "children": [],
+      "pageNumber": "75"
+    },
+    {
+      "id": "6",
+      "title": "系统测试与验证",
+      "level": 1,
+      "parent": null,
+      "children": [
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4"
+      ],
+      "pageNumber": "85"
+    },
+    {
+      "id": "6.1",
+      "title": "测试环境与策略",
+      "level": 2,
+      "parent": "6",
+      "children": [],
+      "pageNumber": "85"
+    },
+    {
+      "id": "6.2",
+      "title": "功能测试",
+      "level": 2,
+      "parent": "6",
+      "children": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3",
+        "6.2.4",
+        "6.2.5"
+      ],
+      "pageNumber": "87"
+    },
+    {
+      "id": "6.2.1",
+      "title": "用户管理功能测试",
+      "level": 3,
+      "parent": "6.2",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "user-service功能模块"
+      ]
+    },
+    {
+      "id": "6.2.2",
+      "title": "商品管理功能测试",
+      "level": 3,
+      "parent": "6.2",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "goods-service功能模块"
+      ]
+    },
+    {
+      "id": "6.2.3",
+      "title": "订单管理功能测试",
+      "level": 3,
+      "parent": "6.2",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "order-service功能模块"
+      ]
+    },
+    {
+      "id": "6.2.4",
+      "title": "购物车功能测试",
+      "level": 3,
+      "parent": "6.2",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "shop-cart-service功能模块"
+      ]
+    },
+    {
+      "id": "6.2.5",
+      "title": "首页推荐功能测试",
+      "level": 3,
+      "parent": "6.2",
+      "children": [],
+      "autoGenerated": true,
+      "evidence": [
+        "recommend-service功能模块"
+      ]
+    },
+    {
+      "id": "6.3",
+      "title": "性能测试",
+      "level": 2,
+      "parent": "6",
+      "children": [],
+      "pageNumber": "90"
+    },
+    {
+      "id": "6.4",
+      "title": "可靠性测试",
+      "level": 2,
+      "parent": "6",
+      "children": [],
+      "pageNumber": "93"
+    },
+    {
+      "id": "7",
+      "title": "结语",
+      "level": 1,
+      "parent": null,
+      "children": [
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.4"
+      ],
+      "pageNumber": "96"
+    },
+    {
+      "id": "7.1",
+      "title": "研究成果总结",
+      "level": 2,
+      "parent": "7",
+      "children": [],
+      "pageNumber": "96"
+    },
+    {
+      "id": "7.2",
+      "title": "系统特色与创新",
+      "level": 2,
+      "parent": "7",
+      "children": [],
+      "pageNumber": "98"
+    },
+    {
+      "id": "7.3",
+      "title": "存在问题与不足",
+      "level": 2,
+      "parent": "7",
+      "children": [],
+      "pageNumber": "100"
+    },
+    {
+      "id": "7.4",
+      "title": "未来发展方向",
+      "level": 2,
+      "parent": "7",
+      "children": [],
+      "pageNumber": "102"
+    },
+    {
+      "id": "10",
+      "title": "参考文献",
+      "level": 0,
+      "parent": null,
+      "children": [],
+      "pageNumber": "104"
+    },
+    {
+      "id": "11",
+      "title": "致谢",
+      "level": 0,
+      "parent": null,
+      "children": [],
+      "pageNumber": "106"
+    }
+  ]
+}

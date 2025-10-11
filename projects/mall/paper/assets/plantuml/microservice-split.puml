@@ -1,0 +1,60 @@
+@startuml microservice-split
+
+!define RECTANGLE class
+
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+
+title 微服务拆分结构
+
+package "微服务拆分" {
+
+  component "用户服务\n(User Service)" as UserService
+  component "商品服务\n(Goods Service)" as GoodsService
+  component "订单服务\n(Order Service)" as OrderService
+  component "购物车服务\n(Cart Service)" as CartService
+  component "推荐服务\n(Recommend Service)" as RecommendService
+
+  database "用户数据库\nnewbee_mall_cloud_user_db" as UserDB
+  database "商品数据库\nnewbee_mall_cloud_goods_db" as GoodsDB
+  database "订单数据库\nnewbee_mall_cloud_order_db" as OrderDB
+  database "购物车数据库\nnewbee_mall_cloud_cart_db" as CartDB
+  database "推荐数据库\nnewbee_mall_cloud_recommend_db" as RecommendDB
+
+  cloud "Redis缓存" as Redis
+
+  UserService -down-> UserDB : 数据自治
+  GoodsService -down-> GoodsDB : 数据自治
+  OrderService -down-> OrderDB : 数据自治
+  CartService -down-> CartDB : 数据自治
+  RecommendService -down-> RecommendDB : 数据自治
+
+  OrderService --> UserService : 用户验证
+  OrderService --> GoodsService : 检查库存
+  OrderService --> CartService : 清空购物车
+  RecommendService --> GoodsService : 获取商品信息
+
+  GoodsService .down.> Redis : 缓存商品
+  CartService .down.> Redis : 缓存购物车
+  RecommendService .down.> Redis : 缓存推荐
+
+}
+
+note right of UserService
+  单一职责: 用户相关功能
+  高内聚低耦合
+  数据自治原则
+end note
+
+note right of OrderService
+  协调多服务
+  分布式事务处理
+  业务完整性
+end note
+
+note bottom of Redis
+  热点数据缓存
+  提升查询性能
+end note
+
+@enduml

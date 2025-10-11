@@ -1,0 +1,9 @@
+{
+  "id": "6.2.1",
+  "title": "用户管理功能测试",
+  "word_limit": 300,
+  "text": "placeholder",
+  "tablePath": "${tables}/test-user.json",
+  "_note": "三级章节，必须有text，包含测试用例表",
+  "content": "用户管理功能测试验证用户注册、登录、信息管理、地址管理等功能的正确性。详细测试用例如表6-1所示。"
+}

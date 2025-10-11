@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#ffffff"/>
+  <rect x="510.0" y="410.0" width="180" height="80" fill="#fff" stroke="#333" stroke-width="3"/>
+  <text x="600.0" y="456.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" font-weight="bold" fill="#333">购物车商品表</text>
+  <line x1="600.0" y1="410.0" x2="600.0" y2="168.0" stroke="#666" stroke-width="2"/>
+  <ellipse cx="600.0" cy="200.0" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="600.0" y="206.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">购物车项编号</text>
+  <line x1="650.1584135065082" y1="410.0" x2="861.91354662679" y2="274.17587587583716" stroke="#666" stroke-width="2"/>
+  <ellipse cx="795.4578706170074" cy="294.12754953531663" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="795.4578706170074" y="300.12754953531663" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">用户编号</text>
+  <line x1="690.0" y1="470.54191269511347" x2="926.6008505809109" y2="512.7509033756807" stroke="#666" stroke-width="2"/>
+  <ellipse cx="843.7319780454559" cy="505.6302334890786" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="843.7319780454559" y="511.6302334890786" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品编号</text>
+  <line x1="619.2629847523011" y1="490.0" x2="745.351052604382" y2="704.0732207484823" stroke="#666" stroke-width="2"/>
+  <ellipse cx="708.4709347793895" cy="675.2422169756048" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="708.4709347793895" y="681.2422169756048" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品数量</text>
+  <line x1="580.7370152476989" y1="490.0" x2="454.64894739561805" y2="704.0732207484823" stroke="#666" stroke-width="2"/>
+  <ellipse cx="491.5290652206105" cy="675.2422169756048" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="491.5290652206105" y="681.2422169756048" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">删除标记</text>
+  <line x1="510.0" y1="470.5419126951135" x2="273.3991494190891" y2="512.7509033756808" stroke="#666" stroke-width="2"/>
+  <ellipse cx="356.2680219545441" cy="505.63023348907865" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="356.2680219545441" y="511.63023348907865" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建时间</text>
+  <line x1="549.8415864934918" y1="410.0" x2="338.08645337320996" y2="274.1758758758372" stroke="#666" stroke-width="2"/>
+  <ellipse cx="404.5421293829925" cy="294.1275495353167" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="404.5421293829925" y="300.1275495353167" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新时间</text>
+</svg>

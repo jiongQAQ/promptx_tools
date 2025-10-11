@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "project": "newbee-mall-cloud",
+  "outlinePath": "paper/outline.json",
+  "contentPath": "paper/content.json",
+  "nodeCount": 37,
+  "rootIds": ["0.1", "0.2", "1", "2", "3", "4", "5", "6", "7", "10", "11"],
+  "mode": "custom",
+  "addedNodes": [],
+  "functions": ["用户管理", "商品管理", "订单管理", "购物车", "首页推荐"],
+  "expandedChapters": {
+    "微服务核心功能模块设计": ["4.2.1 用户管理模块设计", "4.2.2 商品管理模块设计", "4.2.3 订单管理模块设计", "4.2.4 购物车模块设计", "4.2.5 首页推荐模块设计"],
+    "微服务基础功能模块实现": ["5.2.1 用户管理模块实现", "5.2.2 商品管理模块实现", "5.2.3 订单管理模块实现", "5.2.4 购物车模块实现", "5.2.5 首页推荐模块实现"],
+    "功能测试": ["6.2.1 用户管理功能测试", "6.2.2 商品管理功能测试", "6.2.3 订单管理功能测试", "6.2.4 购物车功能测试", "6.2.5 首页推荐功能测试"]
+  },
+  "techPlaceholders": null,
+  "totalWordLimit": 28720,
+  "imageCount": 19,
+  "tableCount": 6,
+  "referencePaperUsed": true,
+  "referencePaperSource": "reference-papers/NJUT_毕业论文_初稿.md"
+}

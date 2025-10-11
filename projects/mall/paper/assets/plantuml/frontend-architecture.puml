@@ -1,0 +1,122 @@
+@startuml frontend-architecture
+
+
+title 前端系统架构
+
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+
+package "用户端应用 (User Frontend)" {
+
+  component "Vue.js 3.2\n核心框架" as VueUser
+  component "Vue Router 4\n路由管理" as RouterUser
+  component "Pinia 2.0\n状态管理" as Pinia
+  component "Vant 4.0\nUI组件库" as Vant
+  component "Axios 1.2\nHTTP客户端" as AxiosUser
+
+  package "页面模块" {
+    [首页\nHome]
+    [商品列表\nGoods List]
+    [商品详情\nGoods Detail]
+    [购物车\nCart]
+    [订单\nOrder]
+    [个人中心\nProfile]
+  }
+
+  note right of VueUser
+    技术特性:
+    • 单页应用(SPA)
+    • 响应式设计
+    • 移动端H5
+    • Vite 4.0构建
+  end note
+}
+
+package "管理端应用 (Admin Frontend)" {
+
+  component "Vue.js 3.2\n核心框架" as VueAdmin
+  component "Vue Router 4\n路由管理" as RouterAdmin
+  component "Vuex\n状态管理" as Vuex
+  component "Element Plus 2.2\nUI组件库" as ElementPlus
+  component "Axios 0.21\nHTTP客户端" as AxiosAdmin
+
+  package "后台模块" {
+    [商品管理\nGoods Management]
+    [订单管理\nOrder Management]
+    [用户管理\nUser Management]
+    [统计分析\nAnalytics]
+  }
+
+  note right of VueAdmin
+    技术特性:
+    • PC管理后台
+    • 表格增删改查
+    • 权限控制
+    • 数据可视化
+  end note
+}
+
+package "前端性能优化" {
+  component "懒加载" as LazyLoad
+  component "缓存优化" as Cache
+  component "代码优化" as CodeOpt
+  component "资源优化" as ResourceOpt
+
+  note right of ResourceOpt
+    构建优化:
+    • Webpack优化
+    • 减小bundle体积
+    • 首屏加载优化
+    • 白屏时间控制
+  end note
+}
+
+package "后端API网关" {
+  component "Spring Cloud Gateway" as Gateway
+}
+
+cloud "CDN\n静态资源" as CDN
+
+' 用户端应用关系
+VueUser --> RouterUser
+VueUser --> Pinia
+VueUser --> Vant
+VueUser --> AxiosUser
+
+RouterUser --> [首页\nHome]
+RouterUser --> [商品列表\nGoods List]
+RouterUser --> [商品详情\nGoods Detail]
+RouterUser --> [购物车\nCart]
+RouterUser --> [订单\nOrder]
+RouterUser --> [个人中心\nProfile]
+
+' 管理端应用关系
+VueAdmin --> RouterAdmin
+VueAdmin --> Vuex
+VueAdmin --> ElementPlus
+VueAdmin --> AxiosAdmin
+
+RouterAdmin --> [商品管理\nGoods Management]
+RouterAdmin --> [订单管理\nOrder Management]
+RouterAdmin --> [用户管理\nUser Management]
+RouterAdmin --> [统计分析\nAnalytics]
+
+' 性能优化应用
+VueUser .down.> LazyLoad
+VueUser .down.> Cache
+VueUser .down.> CodeOpt
+
+VueAdmin .down.> LazyLoad
+VueAdmin .down.> Cache
+VueAdmin .down.> CodeOpt
+
+' API调用
+AxiosUser --> Gateway : HTTP/HTTPS
+AxiosAdmin --> Gateway : HTTP/HTTPS
+
+' CDN部署
+VueUser .up.> CDN : 部署
+VueAdmin .up.> CDN : 部署
+CDN .down.> ResourceOpt : 优化
+
+@enduml

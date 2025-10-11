@@ -1,0 +1,9 @@
+{
+  "id": "6.2.4",
+  "title": "购物车功能测试",
+  "word_limit": 300,
+  "text": "placeholder",
+  "tablePath": "${tables}/test-cart.json",
+  "_note": "三级章节，必须有text，包含测试用例表",
+  "content": "购物车功能测试验证购物车的增删改查操作以及Redis缓存的正确性和数据一致性。详细测试用例如表6-4所示。"
+}

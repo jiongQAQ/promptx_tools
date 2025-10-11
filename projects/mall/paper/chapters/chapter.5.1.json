@@ -1,0 +1,8 @@
+{
+  "id": "5.1",
+  "title": "开发环境与工具配置",
+  "word_limit": 500,
+  "text": "placeholder",
+  "_note": "二级章节，无子节点，需要text",
+  "content": "系统开发前需要搭建完整的开发环境，配置必要的开发工具和运行环境，为后续开发工作奠定基础。\n\n开发工具方面，后端开发采用IntelliJ IDEA 2021版本，这是Java开发的主流IDE，提供了智能代码补全、代码重构、调试等强大功能。安装Maven插件用于项目构建和依赖管理，安装Lombok插件简化Java代码编写。前端开发采用Visual Studio Code，安装Vetur插件支持Vue开发，安装ESLint插件进行代码规范检查。数据库管理工具采用Navicat或DBeaver，用于数据库设计和SQL语句调试。接口测试工具使用Postman，方便进行接口的调试和测试。版本控制工具使用Git，代码托管在GitHub或GitLab上，通过分支管理实现多人协作开发。\n\n运行环境方面，开发机器需要安装JDK 1.8或更高版本，配置JAVA_HOME环境变量。安装Maven 3.6版本，配置settings.xml文件，设置阿里云镜像加速依赖下载。安装MySQL 8.0数据库，创建数据库实例，设置字符集为UTF-8。安装Redis 6.0，配置持久化参数，启动Redis服务。安装Node.js 14版本和npm包管理器，用于前端项目的构建和运行。\n\n微服务基础设施方面，本地开发环境需要部署Nacos服务器。下载Nacos安装包，解压后修改配置文件，配置数据库连接信息。以standalone模式启动Nacos，访问控制台http://localhost:8848/nacos，使用默认账号nacos/nacos登录，创建命名空间用于环境隔离。Sentinel控制台需要单独部署，下载Sentinel Dashboard的jar包，通过java -jar命令启动，访问http://localhost:8080进入控制台。Seata服务器同样需要部署，配置file.conf和registry.conf文件，指定事务日志的存储方式和服务注册方式，启动Seata Server。\n\n项目工程结构采用Maven多模块项目组织。创建父工程mall-parent，在pom.xml中定义Spring Boot、Spring Cloud、Spring Cloud Alibaba的版本号，统一管理依赖版本。创建子模块mall-common存放公共代码，mall-user、mall-product、mall-order、mall-cart、mall-recommend分别对应各个微服务，mall-gateway对应网关服务。每个微服务模块包含controller、service、mapper、entity等包，遵循分层架构设计。\n\n配置文件管理方面，每个微服务的配置分为本地配置和远程配置。本地配置文件bootstrap.yml配置Nacos地址和应用名称，application.yml配置本地特有的参数。远程配置存储在Nacos配置中心，包括数据库连接、Redis连接、日志级别等可动态调整的配置。通过Profile机制区分开发、测试、生产环境的配置。\n\n完成开发环境配置后，启动各个微服务，在Nacos控制台查看服务注册情况，确保所有服务正常注册。前端项目通过npm install安装依赖，通过npm run serve启动开发服务器，访问http://localhost:8080查看页面效果。至此，开发环境搭建完成，可以进行系统功能的开发和调试。"
+}

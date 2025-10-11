@@ -1,0 +1,11 @@
+{
+  "id": "4.2.3",
+  "title": "订单管理模块设计",
+  "word_limit": 500,
+  "text": "placeholder",
+  "imagePath": "${uml}/activity-order.png",
+  "imagePathSequence": "${uml}/sequence-order.png",
+  "_note": "三级章节，必须有text，包含活动图和时序图",
+  "sourceFile": "chapter.4.2.3.json",
+  "extractedAt": "2025-10-01T17:57:42.300Z"
+}

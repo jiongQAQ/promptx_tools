@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#ffffff"/>
+  <rect x="510.0" y="410.0" width="180" height="80" fill="#fff" stroke="#333" stroke-width="3"/>
+  <text x="600.0" y="456.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" font-weight="bold" fill="#333">管理员用户表</text>
+  <line x1="600.0" y1="410.0" x2="600.0" y2="155.0" stroke="#666" stroke-width="2"/>
+  <ellipse cx="600.0" cy="190.0" rx="90" ry="35" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="600.0" y="196.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">管理员编号</text>
+  <line x1="690.0" y1="420.7572273390384" x2="932.8697807033038" y2="358.83998665939055" stroke="#666" stroke-width="2"/>
+  <ellipse cx="847.27469423674" cy="369.6555814625137" rx="90" ry="35" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="847.27469423674" y="375.6555814625137" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">登录用户名</text>
+  <line x1="629.0617011202145" y1="490.0" x2="805.7248383023656" y2="688.6600133406096" stroke="#666" stroke-width="2"/>
+  <ellipse cx="752.824165596043" cy="660.3444185374864" rx="90" ry="35" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="752.824165596043" y="666.3444185374864" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">登录密码</text>
+  <line x1="570.9382988797855" y1="490.0" x2="394.2751616976345" y2="688.6600133406096" stroke="#666" stroke-width="2"/>
+  <ellipse cx="447.175834403957" cy="660.3444185374864" rx="90" ry="35" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="447.175834403957" y="666.3444185374864" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">昵称</text>
+  <line x1="510.0" y1="420.7572273390385" x2="267.1302192966962" y2="358.8399866593906" stroke="#666" stroke-width="2"/>
+  <ellipse cx="352.72530576326005" cy="369.65558146251374" rx="90" ry="35" fill="#fff" stroke="#666" stroke-width="2"/>
+  <text x="352.72530576326005" y="375.65558146251374" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">锁定状态</text>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "tableName": "tb_newbee_mall_goods_category",
+  "tableCnName": "商品分类表",
+  "columns": [
+    ["字段名", "字段中文名", "类型", "约束", "说明"],
+    ["category_id", "分类编号", "BIGINT", "PK, NOT NULL", "主键，分类唯一标识"],
+    ["category_level", "分类层级", "TINYINT(1)", "NOT NULL", "分类级别 1-一级 2-二级 3-三级"],
+    ["parent_id", "父分类编号", "BIGINT", "DEFAULT 0", "父级分类ID，顶级分类为0"],
+    ["category_name", "分类名称", "VARCHAR(50)", "NOT NULL", "分类名称"],
+    ["category_rank", "分类排序", "INT", "DEFAULT 0", "分类排序值，数值越小越靠前"],
+    ["is_deleted", "删除标记", "TINYINT(1)", "DEFAULT 0", "逻辑删除标记 0-未删除 1-已删除"],
+    ["create_time", "创建时间", "DATETIME", "NOT NULL", "记录创建时间"],
+    ["create_user", "创建人", "INT", "", "创建该分类的用户ID"],
+    ["update_time", "更新时间", "DATETIME", "", "记录更新时间"],
+    ["update_user", "更新人", "INT", "", "最后更新该分类的用户ID"]
+  ]
+}

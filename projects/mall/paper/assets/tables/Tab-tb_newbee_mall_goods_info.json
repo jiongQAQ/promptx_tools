@@ -1,0 +1,23 @@
+{
+  "tableName": "tb_newbee_mall_goods_info",
+  "tableCnName": "商品信息表",
+  "columns": [
+    ["字段名", "字段中文名", "类型", "约束", "说明"],
+    ["goods_id", "商品编号", "BIGINT", "PK, NOT NULL", "主键，商品唯一标识"],
+    ["goods_name", "商品名称", "VARCHAR(200)", "NOT NULL", "商品名称"],
+    ["goods_intro", "商品简介", "VARCHAR(500)", "", "商品简短描述"],
+    ["goods_category_id", "商品分类编号", "BIGINT", "NOT NULL", "关联商品分类表"],
+    ["goods_cover_img", "商品封面图", "VARCHAR(200)", "", "商品主图URL"],
+    ["goods_carousel", "商品轮播图", "VARCHAR(500)", "", "商品详情轮播图，多张用逗号分隔"],
+    ["original_price", "原价", "INT", "", "商品原价（分为单位）"],
+    ["selling_price", "销售价", "INT", "NOT NULL", "商品售价（分为单位）"],
+    ["stock_num", "库存数量", "INT", "NOT NULL, DEFAULT 0", "商品库存数量"],
+    ["tag", "商品标签", "VARCHAR(20)", "", "商品标签，如新品、热卖等"],
+    ["goods_sell_status", "销售状态", "TINYINT(1)", "DEFAULT 0", "0-下架 1-上架"],
+    ["create_user", "创建人", "INT", "", "创建该商品的用户ID"],
+    ["create_time", "创建时间", "DATETIME", "NOT NULL", "记录创建时间"],
+    ["update_user", "更新人", "INT", "", "最后更新该商品的用户ID"],
+    ["update_time", "更新时间", "DATETIME", "", "记录更新时间"],
+    ["goods_detail_content", "商品详情", "TEXT", "", "商品详细描述（富文本）"]
+  ]
+}

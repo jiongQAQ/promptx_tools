@@ -1,0 +1,87 @@
+@startuml activity-user
+
+
+title 用户管理模块活动流程
+
+|用户|
+start
+:输入手机号/密码;
+
+|系统|
+:验证输入格式;
+
+if (验证通过?) then (yes)
+
+  if (操作类型?) then (注册)
+    |系统|
+    :发送短信验证码;
+
+    |用户|
+    :输入验证码;
+
+    |系统|
+    :验证验证码;
+
+    if (验证码正确?) then (yes)
+      :检查手机号是否已注册;
+
+      if (未注册?) then (yes)
+        :BCrypt加密密码;
+        :创建用户记录;
+        :分配默认角色;
+        :注册成功;
+      else (已注册)
+        :返回"手机号已注册";
+        stop
+      endif
+
+    else (no)
+      :返回"验证码错误";
+      stop
+    endif
+
+  else (登录)
+    if (登录方式?) then (账号密码)
+      :查询用户信息;
+      :验证密码;
+
+      if (密码正确?) then (yes)
+        :生成JWT令牌;
+        :返回令牌;
+        :登录成功;
+      else (no)
+        :返回"密码错误";
+        stop
+      endif
+
+    else (手机验证码)
+      :发送验证码;
+
+      |用户|
+      :输入验证码;
+
+      |系统|
+      :验证验证码;
+
+      if (验证码正确?) then (yes)
+        :生成JWT令牌;
+        :返回令牌;
+        :登录成功;
+      else (no)
+        :返回"验证码错误";
+        stop
+      endif
+    endif
+  endif
+
+  |用户|
+  :访问系统功能;
+
+else (no)
+  :返回"格式错误";
+  stop
+endif
+
+stop
+
+@enduml

@@ -1,0 +1,95 @@
+@startuml sequence-user
+
+
+title 用户管理模块服务间调用时序
+
+actor "用户" as User
+participant "Gateway" as Gateway
+participant "用户服务\n(User Service)" as UserService
+database "MySQL\n(用户库)" as UserDB
+database "Redis" as Redis
+
+== 用户注册流程 ==
+
+User -> Gateway: POST /api/user/register\n{phone, password}
+activate Gateway
+
+Gateway -> UserService: 转发注册请求
+activate UserService
+
+UserService -> UserService: 验证手机号格式
+UserService -> UserService: 发送短信验证码
+
+UserService --> User: 返回验证码发送成功
+deactivate UserService
+
+User -> Gateway: POST /api/user/verify\n{phone, code}
+Gateway -> UserService: 转发验证请求
+activate UserService
+
+UserService -> Redis: 验证验证码
+Redis --> UserService: 验证码正确
+
+UserService -> UserDB: 检查手机号是否存在
+UserDB --> UserService: 未注册
+
+UserService -> UserService: BCrypt加密密码
+UserService -> UserDB: INSERT用户记录
+UserDB --> UserService: 创建成功
+
+UserService --> Gateway: 注册成功
+deactivate UserService
+Gateway --> User: 200 OK
+deactivate Gateway
+
+== 用户登录流程 ==
+
+User -> Gateway: POST /api/user/login\n{username, password}
+activate Gateway
+
+Gateway -> UserService: 转发登录请求
+activate UserService
+
+UserService -> UserDB: SELECT用户信息\nWHERE loginName=?
+UserDB --> UserService: 用户数据
+
+UserService -> UserService: BCrypt验证密码
+
+alt 密码正确
+  UserService -> UserService: 生成JWT令牌\n(userId, role)
+  UserService -> Redis: 缓存用户会话\nKEY: token
+  Redis --> UserService: OK
+
+  UserService --> Gateway: {token, userInfo}
+  Gateway --> User: 200 OK, JWT Token
+
+else 密码错误
+  UserService --> Gateway: 401 Unauthorized
+  Gateway --> User: 密码错误
+end
+
+deactivate UserService
+deactivate Gateway
+
+== 个人信息管理 ==
+
+User -> Gateway: PUT /api/user/profile\nHeader: Authorization
+activate Gateway
+
+Gateway -> Gateway: 解析JWT令牌\n验证用户身份
+
+Gateway -> UserService: 转发更新请求\n{userId, nickName, avatar}
+activate UserService
+
+UserService -> UserDB: UPDATE用户信息\nWHERE userId=?
+UserDB --> UserService: 更新成功
+
+UserService -> Redis: 删除用户缓存
+Redis --> UserService: OK
+
+UserService --> Gateway: 更新成功
+deactivate UserService
+Gateway --> User: 200 OK
+deactivate Gateway
+
+@enduml

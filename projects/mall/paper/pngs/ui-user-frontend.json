@@ -1,0 +1,11 @@
+{
+  "id": "5.5",
+  "title": "前端系统实现",
+  "word_limit": 600,
+  "text": "placeholder",
+  "imagePath": "${impl}/ui-user-frontend.png",
+  "imagePath2": "${impl}/ui-admin-frontend.png",
+  "_note": "二级章节，无子节点，需要text，包含前端界面截图",
+  "sourceFile": "chapter.5.5.json",
+  "extractedAt": "2025-10-01T17:57:42.302Z"
+}
