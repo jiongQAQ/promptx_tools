@@ -4,5 +4,7 @@
   "word_limit": 600,
   "text": "placeholder",
   "_note": "二级章节，无子节点，需要text，重要框架",
-  "content": "SSM框架是Spring、Spring MVC和MyBatis三个开源框架的整合，是Java企业级开发的经典技术组合。\n\nSpring是轻量级IoC和AOP容器框架。IoC容器通过依赖注入管理对象，降低组件耦合度；AOP将日志、事务等横切关注点从业务逻辑中分离；提供强大的声明式事务管理功能。\n\nSpring MVC基于MVC模式，通过DispatcherServlet统一处理HTTP请求并分发到Controller。支持JSP、Thymeleaf等多种视图技术，注解驱动简化配置。\n\nMyBatis是持久层框架，封装JDBC操作，通过XML或注解配置SQL。支持自定义SQL和存储过程，提供灵活的SQL控制能力，性能优化方面具有优势。\n\nSSM框架遵循分层架构：Spring MVC处理请求响应，Spring管理业务逻辑，MyBatis完成数据访问。这种分层使系统结构清晰，是微服务内部实现的理想选择。"
+  "content": "SSM框架是Spring、SpringMVC和MyBatis三个开源框架的整合，是Java企业级开发的经典技术组合。SSM框架体系组件构成如图2-1所示。\n\nSpring是轻量级IoC和AOP容器框架。IoC容器通过依赖注入管理对象，降低组件耦合度；AOP将日志、事务等横切关注点从业务逻辑中分离；提供强大的声明式事务管理功能。\n\nSpringMVC基于MVC模式，通过DispatcherServlet统一处理HTTP请求并分发到Controller。支持JSP、Thymeleaf等多种视图技术，注解驱动简化配置。\n\nMyBatis是持久层框架，封装JDBC操作，通过XML或注解配置SQL。支持自定义SQL和存储过程，提供灵活的SQL控制能力，性能优化方面具有优势。\n\nSSM框架遵循分层架构：SpringMVC处理请求响应，Spring管理业务逻辑，MyBatis完成数据访问。这种分层使系统结构清晰，是微服务内部实现的理想选择。",
+  "imagePath": "${uml}/SSM-Framework.svg",
+  "imageCaption": "图2-1 SSM框架体系组件构成"
 }

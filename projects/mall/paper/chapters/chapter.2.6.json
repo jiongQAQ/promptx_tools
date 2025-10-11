@@ -4,5 +4,7 @@
   "word_limit": 800,
   "text": "placeholder",
   "_note": "二级章节,无子节点,核心技术栈,需要详细介绍",
-  "content": "SpringCloud是基于SpringBoot的微服务开发框架,整合了服务注册与发现、配置管理、负载均衡、熔断降级等分布式系统常见模式。SpringCloud Alibaba结合阿里巴巴多年实践经验,特别适合国内技术环境和业务场景。\n\n核心组件包括:Nacos集成了服务注册与发现和配置管理功能,支持动态注册、健康检查和配置热更新;Sentinel提供流量控制、熔断降级、系统负载保护等服务保障能力,防止服务雪崩;Seata是高性能分布式事务解决方案,提供AT、TCC、SAGA等事务模式,保证跨服务操作的数据一致性;SpringCloud Gateway作为API网关,负责请求路由、负载均衡、权限认证等功能,基于WebFlux实现异步非阻塞处理;OpenFeign是声明式HTTP客户端,简化微服务间调用;Ribbon提供客户端负载均衡,支持多种分发策略。\n\n这些组件相互配合,构成了完整的微服务技术栈。本系统充分利用SpringCloud Alibaba的技术优势,构建了高性能、高可用的微服务架构电商系统。"
+  "content": "SpringCloud是基于SpringBoot的微服务开发框架,整合了服务注册与发现、配置管理、负载均衡、熔断降级等分布式系统常见模式。SpringCloudAlibaba结合阿里巴巴多年实践经验,特别适合国内技术环境和业务场景。SpringCloud技术栈组件选型如图2-2所示。\n\n核心组件包括:Nacos集成了服务注册与发现和配置管理功能,支持动态注册、健康检查和配置热更新;Sentinel提供流量控制、熔断降级、系统负载保护等服务保障能力,防止服务雪崩;Seata是高性能分布式事务解决方案,提供AT、TCC、SAGA等事务模式,保证跨服务操作的数据一致性;SpringCloud Gateway作为API网关,负责请求路由、负载均衡、权限认证等功能,基于WebFlux实现异步非阻塞处理;OpenFeign是声明式HTTP客户端,简化微服务间调用;Ribbon提供客户端负载均衡,支持多种分发策略;SpringBootAdmin提供微服务监控和管理功能,实时监控服务健康状态。\n\n这些组件相互配合,构成了完整的微服务技术栈。本系统充分利用SpringCloudAlibaba的技术优势,构建了高性能、高可用的微服务架构电商系统。",
+  "imagePath": "${uml}/SpringCloud-Components.svg",
+  "imageCaption": "图2-2 SpringCloud技术栈组件选型"
 }
