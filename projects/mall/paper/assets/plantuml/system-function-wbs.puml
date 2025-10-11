@@ -7,7 +7,7 @@ skinparam wbs {
   FontSize 11
 }
 
-* newbee-mall-cloud微服务电商系统
+* 微服务电商系统
 ** 用户端功能
 *** 用户管理
 **** 用户注册

@@ -153,7 +153,7 @@
     },
     {
       "id": "3",
-      "title": "系统需求分析与总体规划",
+      "title": "系统分析与总体规划",
       "level": 1,
       "parent": null,
       "children": [
@@ -207,7 +207,7 @@
     },
     {
       "id": "4",
-      "title": "系统详细设计",
+      "title": "系统设计",
       "level": 1,
       "parent": null,
       "children": [
@@ -221,7 +221,7 @@
     },
     {
       "id": "4.1",
-      "title": "技术栈选型与设计原则",
+      "title": "技术栈选型与总体功能设计",
       "level": 2,
       "parent": "4",
       "children": [],
