@@ -1,0 +1,160 @@
+@startuml 系统业务总流程图
+!theme plain
+skinparam backgroundColor white
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+  FontName Microsoft YaHei
+  FontSize 12
+}
+skinparam diamond {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam partition {
+  BackgroundColor #f5f5f5
+  BorderColor black
+}
+
+start
+
+:访问系统;
+
+if (是否注册?) then (否)
+  :注册账号;
+  note right
+    user-service
+    用户信息验证
+    密码MD5加密
+  end note
+else (是)
+endif
+
+:系统登录;
+
+partition 普通用户端 {
+  :输入用户名和密码;
+  note right
+    user-service
+    Token生成
+    Redis缓存(7天)
+  end note
+
+  if (验证登录合法性?) then (否)
+    :重新输入;
+    detach
+  else (是)
+  endif
+
+  :商品展示;
+  note right
+    recommend-service
+    首页轮播图
+    推荐商品配置
+  end note
+
+  :选择商品;
+
+  :查看商品详情;
+  note right
+    goods-service
+    商品信息查询
+    库存查询
+  end note
+
+  if (是否购买?) then (是)
+    :加入购物车;
+    note right
+      shop-cart-service
+      购物车数据管理
+      商品数量修改
+    end note
+
+    :查看购物车;
+
+    if (是否下单?) then (是)
+      :选择收货地址;
+      note right
+        user-service
+        地址管理
+      end note
+
+      :提交订单;
+      note right
+        order-service
+        Seata分布式事务
+        库存扣减(Feign调用)
+        购物车清空
+      end note
+
+      :订单支付;
+
+      :查看订单状态;
+
+      :确认收货;
+
+      :完成订单;
+    else (否)
+      :继续浏览;
+      detach
+    endif
+  else (否)
+    :继续浏览;
+    detach
+  endif
+}
+
+partition 管理端 {
+  :管理员登录;
+  note right
+    user-service
+    管理员权限验证
+    Token生成
+  end note
+
+  if (验证管理员合法性?) then (否)
+    :重新输入;
+    detach
+  else (是)
+  endif
+
+  fork
+    :用户信息管理;
+    note right
+      user-service
+      用户列表查询
+      用户状态管理
+      用户锁定/解锁
+    end note
+  fork again
+    :商品信息管理;
+    note right
+      goods-service
+      商品CRUD操作
+      分类管理
+      商品上下架
+    end note
+  fork again
+    :订单管理;
+    note right
+      order-service
+      订单列表查询
+      订单状态管理
+      订单发货
+      订单关闭
+    end note
+  fork again
+    :首页配置管理;
+    note right
+      recommend-service
+      轮播图配置
+      推荐商品配置
+    end note
+  end fork
+}
+
+:退出登录;
+
+stop
+
+@enduml

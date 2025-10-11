@@ -1,0 +1,12 @@
+{
+  "id": "4.3",
+  "title": "微服务核心功能模块设计",
+  "text": "placeholder",
+  "images": [
+    {
+      "path": "${uml}/system-business-flow.svg",
+      "caption": "图4-X 系统业务总流程图",
+      "width": "100%"
+    }
+  ]
+}

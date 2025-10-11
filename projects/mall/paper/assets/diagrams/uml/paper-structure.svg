@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1400" height="2400" viewBox="0 0 1400 2400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="2400" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+    </marker>
+  </defs>
+  <rect x="50" y="50" width="1300" height="230" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8,4" rx="0"/>
+  <rect x="450.0" y="70" width="500" height="80" fill="#ffffff" stroke="#333" stroke-width="3" rx="0"/>
+  <text x="700.0" y="118.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">绪论</text>
+  <line x1="700.0" y1="150" x2="700.0" y2="190" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="215.0" y="200" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="325.0" y="231.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">研究背景与意义</text>
+  <rect x="465.0" y="200" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="575.0" y="231.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">国内外研究现状</text>
+  <rect x="715.0" y="200" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="825.0" y="231.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">研究目标与内容</text>
+  <rect x="965.0" y="200" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="1075.0" y="231.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">论文组织结构</text>
+  <line x1="700.0" y1="290.0" x2="700.0" y2="320.0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="50" y="330" width="1300" height="350" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8,4" rx="0"/>
+  <rect x="450.0" y="350" width="500" height="80" fill="#ffffff" stroke="#333" stroke-width="3" rx="0"/>
+  <text x="700.0" y="398.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">系统相关技术与理论基础</text>
+  <line x1="700.0" y1="430" x2="700.0" y2="470" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="340.0" y="480" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="450.0" y="511.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">B/S架构</text>
+  <rect x="590.0" y="480" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="700.0" y="511.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">Java语言简介</text>
+  <rect x="840.0" y="480" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="950.0" y="511.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">MySQL数据库</text>
+  <rect x="340.0" y="540" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="450.0" y="571.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">SSM框架体系</text>
+  <rect x="590.0" y="540" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="700.0" y="571.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">微服务架构概述</text>
+  <rect x="840.0" y="540" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="950.0" y="560.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">SpringC</text>
+  <text x="950.0" y="580.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">loud技术栈</text>
+  <rect x="465.0" y="600" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="575.0" y="631.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">分布式系统理论</text>
+  <rect x="715.0" y="600" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="825.0" y="631.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">Vue前端技术</text>
+  <line x1="700.0" y1="690.0" x2="700.0" y2="720.0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="50" y="730" width="1300" height="290" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8,4" rx="0"/>
+  <rect x="450.0" y="750" width="500" height="80" fill="#ffffff" stroke="#333" stroke-width="3" rx="0"/>
+  <text x="700.0" y="798.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">系统分析与总体规划</text>
+  <line x1="700.0" y1="830" x2="700.0" y2="870" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="340.0" y="880" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="450.0" y="911.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">系统可行性分析</text>
+  <rect x="590.0" y="880" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="700.0" y="911.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">功能需求分析</text>
+  <rect x="840.0" y="880" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="950.0" y="911.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">非功能需求分析</text>
+  <rect x="465.0" y="940" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="575.0" y="971.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">系统架构规划</text>
+  <rect x="715.0" y="940" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="825.0" y="971.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">微服务拆分策略</text>
+  <line x1="700.0" y1="1030.0" x2="700.0" y2="1060.0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="50" y="1070" width="1300" height="290" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8,4" rx="0"/>
+  <rect x="450.0" y="1090" width="500" height="80" fill="#ffffff" stroke="#333" stroke-width="3" rx="0"/>
+  <text x="700.0" y="1138.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">系统设计</text>
+  <line x1="700.0" y1="1170" x2="700.0" y2="1210" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="340.0" y="1220" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="450.0" y="1240.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">技术栈选型与</text>
+  <text x="450.0" y="1260.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">总体功能设计</text>
+  <rect x="590.0" y="1220" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="700.0" y="1251.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">数据库设计</text>
+  <rect x="840.0" y="1220" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="950.0" y="1240.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">微服务核心</text>
+  <text x="950.0" y="1260.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">功能模块设计</text>
+  <rect x="465.0" y="1280" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="575.0" y="1300.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">微服务治理与</text>
+  <text x="575.0" y="1320.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">基础设施设计</text>
+  <rect x="715.0" y="1280" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="825.0" y="1311.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">系统高并发保障设计</text>
+  <line x1="700.0" y1="1370.0" x2="700.0" y2="1400.0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="50" y="1410" width="1300" height="230" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8,4" rx="0"/>
+  <rect x="450.0" y="1430" width="500" height="80" fill="#ffffff" stroke="#333" stroke-width="3" rx="0"/>
+  <text x="700.0" y="1478.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">系统核心功能实现</text>
+  <line x1="700.0" y1="1510" x2="700.0" y2="1550" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="215.0" y="1560" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="325.0" y="1591.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">开发环境与工具配置</text>
+  <rect x="465.0" y="1560" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="575.0" y="1580.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">微服务基础</text>
+  <text x="575.0" y="1600.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">功能模块实现</text>
+  <rect x="715.0" y="1560" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="825.0" y="1580.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">微服务治理与</text>
+  <text x="825.0" y="1600.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">基础设施实现</text>
+  <rect x="965.0" y="1560" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="1075.0" y="1591.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">系统高并发保障实现</text>
+  <line x1="700.0" y1="1650.0" x2="700.0" y2="1680.0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="50" y="1690" width="1300" height="230" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8,4" rx="0"/>
+  <rect x="450.0" y="1710" width="500" height="80" fill="#ffffff" stroke="#333" stroke-width="3" rx="0"/>
+  <text x="700.0" y="1758.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">系统测试与验证</text>
+  <line x1="700.0" y1="1790" x2="700.0" y2="1830" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="215.0" y="1840" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="325.0" y="1871.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">测试环境与策略</text>
+  <rect x="465.0" y="1840" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="575.0" y="1871.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">功能测试</text>
+  <rect x="715.0" y="1840" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="825.0" y="1871.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">性能测试</text>
+  <rect x="965.0" y="1840" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="1075.0" y="1871.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">可靠性测试</text>
+  <line x1="700.0" y1="1930.0" x2="700.0" y2="1960.0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="50" y="1970" width="1300" height="230" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="8,4" rx="0"/>
+  <rect x="450.0" y="1990" width="500" height="80" fill="#ffffff" stroke="#333" stroke-width="3" rx="0"/>
+  <text x="700.0" y="2038.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">结语</text>
+  <line x1="700.0" y1="2070" x2="700.0" y2="2110" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <rect x="215.0" y="2120" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="325.0" y="2151.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">研究成果总结</text>
+  <rect x="465.0" y="2120" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="575.0" y="2151.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">系统特色与创新</text>
+  <rect x="715.0" y="2120" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="825.0" y="2151.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">存在问题与不足</text>
+  <rect x="965.0" y="2120" width="220" height="50" fill="#ffffff" stroke="#333" stroke-width="2" rx="0"/>
+  <text x="1075.0" y="2151.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#333">未来发展方向</text>
+</svg>

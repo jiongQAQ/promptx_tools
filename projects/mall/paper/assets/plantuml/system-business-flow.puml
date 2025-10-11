@@ -1,0 +1,106 @@
+@startuml 电商系统业务流程图
+!theme plain
+skinparam backgroundColor white
+skinparam activity {
+  BackgroundColor white
+  BorderColor black
+  FontName Microsoft YaHei
+  FontSize 12
+}
+skinparam diamond {
+  BackgroundColor white
+  BorderColor black
+}
+
+start
+
+:访问系统;
+
+if (是否注册?) then (否)
+  :用户注册;
+else (是)
+endif
+
+:系统登录;
+
+if (普通用户/管理员?) then (普通用户)
+
+  partition "普通用户端" {
+    :输入用户名密码;
+
+    if (验证登录合法性?) then (否)
+      :重新输入;
+      detach
+    else (是)
+    endif
+
+    :商品展示;
+
+    :选择商品;
+
+    :查看商品详情;
+
+    if (是否购买?) then (是)
+      :加入购物车;
+
+      :查看购物车;
+
+      if (是否下单?) then (是)
+        :选择收货地址;
+
+        :提交订单;
+
+        :订单支付;
+
+        :查看订单状态;
+
+        :确认收货;
+
+        :完成订单;
+      else (否)
+        :继续浏览;
+        detach
+      endif
+    else (否)
+      :继续浏览;
+      detach
+    endif
+  }
+
+else (管理员)
+
+  partition "管理端" {
+    :输入管理员账号密码;
+
+    if (验证管理员合法性?) then (否)
+      :重新输入;
+      detach
+    else (是)
+    endif
+
+    :用户信息管理;
+
+    :商品信息管理;
+
+    :订单管理;
+
+    fork
+      :查看订单;
+    fork again
+      :订单状态;
+    fork again
+      :删除订单;
+    fork again
+      :完成订单;
+    end fork
+
+    :首页配置管理;
+  }
+
+endif
+
+:退出登录;
+
+stop
+
+@enduml
