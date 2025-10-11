@@ -243,7 +243,7 @@ class ThesisBuilder:
         with open(chapter_file, 'r', encoding='utf-8') as f:
             return json.load(f)
 
-    def insert_image(self, image_path, caption=None, width_cm=14):
+    def insert_image(self, image_path, caption=None, width_cm=15):
         """插入图片"""
         if not image_path or not image_path.exists():
             print(f"  ⚠️  图片不存在: {image_path}")
@@ -397,8 +397,11 @@ class ThesisBuilder:
             item_title = item.get('title', '')
             item_text = item.get('text', '')
 
-            # 添加子项标题
-            if item_title:
+            # 特殊处理：4.2.1概念结构设计的ER实体图不显示子项标题
+            skip_item_title = (chapter_id == '4.2.1')
+
+            # 添加子项标题（4.2.1章节跳过）
+            if item_title and not skip_item_title:
                 p = self.doc.add_paragraph(item_title)
                 self.style_manager.apply_style_to_paragraph(p, 'subsection_title')
 

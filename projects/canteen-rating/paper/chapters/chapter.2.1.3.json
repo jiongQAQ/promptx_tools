@@ -1,9 +1,9 @@
 {
   "id": "2.1.3",
   "title": "Spring Security安全框架",
-  "text": "Spring Security是Spring生态中用于身份认证和访问控制的安全框架，提供了完善的认证（Authentication）和授权（Authorization）机制。其核心是一系列过滤器链，通过配置SecurityFilterChain来定义安全策略。本系统使用Spring Security实现基于角色的访问控制（RBAC），配置了自定义的用户详情服务接口加载用户信息，通过密码编码器进行密码加密存储，使用认证过滤器处理登录请求。Spring Security与JWT令牌技术结合，实现了无状态的前后端分离认证方案，在保证安全性的同时提升了系统的可扩展性。",
+  "text": "Spring Security是Spring生态中用于身份认证和访问控制的安全框架，基于过滤器链架构提供认证和授权机制。本系统使用Spring Security实现基于角色的访问控制，配置自定义用户详情服务从数据库加载用户信息，使用密码编码器加密存储密码，定义不同角色的资源访问权限。结合JWT令牌技术实现无状态的前后端分离认证方案，提升了系统的可扩展性。",
   "word_limit": 200,
-  "content": "Spring Security是Spring生态系统中用于身份认证和访问控制的安全框架，为Java应用提供了全面的安全保护方案。作为Spring项目的核心组件之一，Spring Security提供了完善的认证（Authentication）和授权（Authorization）机制，能够有效防范常见的安全威胁，如跨站请求伪造（CSRF）、会话固定攻击等。\n\nSpring Security的核心架构基于一系列过滤器链（Security Filter Chain），请求在到达目标资源之前会经过多个安全过滤器的处理。开发者可以通过配置SecurityFilterChain来定义安全策略，包括哪些URL需要认证、哪些角色可以访问特定资源等。其主要组件包括：认证管理器负责处理认证请求；用户详情服务接口用于加载用户信息；密码编码器用于密码加密和验证；认证提供者提供具体的认证逻辑。\n\n本系统使用Spring Security实现基于角色的访问控制（RBAC）。配置了自定义的用户详情服务接口实现类，从数据库加载用户信息和角色权限；使用密码编码器（BCrypt算法）对用户密码进行加密存储，确保密码安全；配置认证过滤器处理用户登录请求，验证用户名和密码；定义了不同角色（管理员、用户）对系统资源的访问权限。Spring Security与JWT令牌技术相结合，实现了无状态的前后端分离认证方案。前端登录成功后获得JWT令牌，后续请求携带令牌进行身份验证，服务器无需维护会话状态，在保证安全性的同时提升了系统的可扩展性和性能。",
+  "content": "Spring Security是Spring生态中用于身份认证和访问控制的安全框架，基于过滤器链架构提供认证和授权机制，能够有效防范常见的安全威胁。\n\n本系统使用Spring Security实现基于角色的访问控制，配置自定义用户详情服务从数据库加载用户信息，使用密码编码器加密存储密码，定义不同角色的资源访问权限。结合JWT令牌技术实现无状态的前后端分离认证方案，提升了系统的可扩展性。",
   "docx_type": "subsection_title",
   "docx_type_text": "body_text",
   "docx_type_desc": "body_text"

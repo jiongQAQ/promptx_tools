@@ -1,49 +1,49 @@
 {
   "id": "4.2.3",
   "title": "物理结构设计",
-  "text": "数据库物理设计确定表结构的实现细节。本系统采用InnoDB存储引擎支持事务和行级锁,字符集使用utf8mb4支持emoji表情。字段类型规范:主键id为BIGINT自增,字符串使用VARCHAR(长度按需设置),价格使用DECIMAL(10,2),布尔类型使用TINYINT(1),时间使用DATETIME。各表物理结构如下。",
+  "text": "数据库物理设计确定表结构的实现细节。本系统采用InnoDB存储引擎支持事务和行级锁，字符集使用utf8mb4支持emoji表情。字段类型规范：主键id为BIGINT自增，字符串使用VARCHAR（长度按需设置），价格使用DECIMAL(10,2)，布尔类型使用TINYINT(1)，时间使用DATETIME。各表物理结构如下。",
   "word_limit": 220,
-  "content": "数据库物理设计确定具体实现细节。采用InnoDB存储引擎支持事务和行级锁,utf8mb4字符集支持emoji表情。字段类型规范:主键id为BIGINT自增,字符串使用VARCHAR(如username为50,password为255,content为1000),价格使用DECIMAL(10,2),布尔字段使用TINYINT(1),时间使用DATETIME。各表详细物理结构如下。",
+  "content": "数据库物理设计阶段确定具体的表结构实现细节。本系统采用InnoDB存储引擎支持事务和行级锁，字符集使用utf8mb4支持emoji表情。字段类型规范：主键id为BIGINT自增，字符串使用VARCHAR，价格使用DECIMAL(10,2)，布尔字段使用TINYINT(1)，时间使用DATETIME。各表详细物理结构如下。",
   "items": [
     {
-      "title": "用户表(user)",
-      "text": "用户表(user),主要存储了本系统用户基本信息和认证信息的相关数据,其中包含用户ID(id)、用户名(username)、密码(password)、昵称(nickname)、头像(avatar)、邮箱(email)、手机号(phone)、角色(role)、状态(status)、创建时间(create_time)、更新时间(update_time)、逻辑删除标记(is_deleted)。用户表的数据库设计如下表,表4-1 用户表 user所示。",
+      "title": "用户表（user）",
+      "text": "用户信息表（user）详细设计如表4-1所示。",
       "word_limit": 70,
       "tablePath": "${tables}/Tab-users.json"
     },
     {
-      "title": "食堂表(canteen)",
-      "text": "食堂表(canteen),主要存储了本系统食堂基本信息的相关数据,其中包含食堂ID(id)、食堂名称(name)、位置(location)、简介(description)、图片(image)、营业时间(opening_hours)、联系电话(phone)、状态(status)、创建时间(create_time)、更新时间(update_time)、逻辑删除标记(is_deleted)。食堂表的数据库设计如下表,表4-2 食堂表 canteen所示。",
+      "title": "食堂表（canteen）",
+      "text": "食堂信息表（canteen）详细设计如表4-2所示。",
       "word_limit": 70,
       "tablePath": "${tables}/Tab-canteens.json"
     },
     {
-      "title": "档口表(stall)",
-      "text": "档口表(stall),主要存储了本系统档口信息的相关数据,其中包含档口ID(id)、档口名称(name)、所属食堂ID(canteen_id)、简介(description)、图片(image)、位置(location)、联系方式(contact)、状态(status)、创建时间(create_time)、更新时间(update_time)、逻辑删除标记(is_deleted)。档口表的数据库设计如下表,表4-3 档口表 stall所示。",
+      "title": "档口表（stall）",
+      "text": "档口信息表（stall）详细设计如表4-3所示。",
       "word_limit": 70,
       "tablePath": "${tables}/Tab-stalls.json"
     },
     {
-      "title": "菜品表(dish)",
-      "text": "菜品表(dish),主要存储了本系统菜品信息的相关数据,其中包含菜品ID(id)、菜品名称(name)、所属档口ID(stall_id)、分类(category)、价格(price)、图片(image)、描述(description)、是否推荐(is_recommended)、上架状态(status)、创建时间(create_time)、更新时间(update_time)、逻辑删除标记(is_deleted)。菜品表的数据库设计如下表,表4-4 菜品表 dish所示。",
+      "title": "菜品表（dish）",
+      "text": "菜品信息表（dish）详细设计如表4-4所示。",
       "word_limit": 70,
       "tablePath": "${tables}/Tab-dishes.json"
     },
     {
-      "title": "评价表(rating)",
-      "text": "评价表(rating),主要存储了本系统用户评价信息的相关数据,其中包含评价ID(id)、用户ID(user_id)、菜品ID(dish_id)、评分(score)、评价内容(content)、图片(images)、审核状态(status)、创建时间(create_time)、更新时间(update_time)、逻辑删除标记(is_deleted)。评价表的数据库设计如下表,表4-5 评价表 rating所示。",
+      "title": "评价表（rating）",
+      "text": "评价信息表（rating）详细设计如表4-5所示。",
       "word_limit": 70,
       "tablePath": "${tables}/Tab-ratings.json"
     },
     {
-      "title": "投诉表(complaint)",
-      "text": "投诉表(complaint),主要存储了本系统用户投诉信息的相关数据,其中包含投诉ID(id)、用户ID(user_id)、投诉类型(type)、投诉对象ID(target_id)、投诉内容(content)、图片(images)、处理状态(status)、处理结果(result)、处理时间(handle_time)、创建时间(create_time)、更新时间(update_time)、逻辑删除标记(is_deleted)。投诉表的数据库设计如下表,表4-6 投诉表 complaint所示。",
+      "title": "投诉表（complaint）",
+      "text": "投诉信息表（complaint）详细设计如表4-6所示。",
       "word_limit": 70,
       "tablePath": "${tables}/Tab-complaints.json"
     },
     {
-      "title": "敏感词表(sensitive_word)",
-      "text": "敏感词表(sensitive_word),主要存储了本系统敏感词管理的相关数据,其中包含敏感词ID(id)、敏感词内容(word)、类型(type)、状态(status)、创建时间(create_time)、更新时间(update_time)、逻辑删除标记(is_deleted)。敏感词表的数据库设计如下表,表4-7 敏感词表 sensitive_word所示。",
+      "title": "敏感词表（sensitive_word）",
+      "text": "敏感词信息表（sensitive_word）详细设计如表4-7所示。",
       "word_limit": 70,
       "tablePath": "${tables}/Tab-sensitive_words.json"
     }
