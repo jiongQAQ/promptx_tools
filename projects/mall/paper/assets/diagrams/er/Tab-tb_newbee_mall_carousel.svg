@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="900" fill="#ffffff"/>
-  <rect x="510.0" y="410.0" width="180" height="80" fill="#fff" stroke="#333" stroke-width="3"/>
-  <text x="600.0" y="456.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" font-weight="bold" fill="#333">轮播图配置表</text>
-  <line x1="600.0" y1="410.0" x2="600.0" y2="98.0" stroke="#666" stroke-width="2"/>
-  <ellipse cx="600.0" cy="130.0" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="600.0" y="136.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">轮播图编号</text>
-  <line x1="633.5639852470912" y1="410.0" x2="860.3289819230484" y2="180.35235602211975" stroke="#666" stroke-width="2"/>
-  <ellipse cx="805.6920350996926" cy="204.86577820192704" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="805.6920350996926" y="210.86577820192704" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">轮播图图片URL</text>
-  <line x1="690.0" y1="434.13057173623815" x2="998.8471399699442" y2="388.8758414612405" stroke="#666" stroke-width="2"/>
-  <ellipse cx="915.1384809639065" cy="394.43258314658226" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="915.1384809639065" y="400.43258314658226" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">跳转链接</text>
-  <line x1="669.2820323027552" y1="490.0" x2="950.7402885326977" y2="626.0" stroke="#666" stroke-width="2"/>
-  <ellipse cx="877.1281292110205" cy="610.0" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="877.1281292110205" y="616.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">轮播图排序</text>
-  <line x1="614.5588093706481" y1="490.0" x2="738.5181580468959" y2="780.7718025166397" stroke="#666" stroke-width="2"/>
-  <ellipse cx="709.4464458642141" cy="750.7016386514906" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="709.4464458642141" y="756.7016386514906" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">删除标记</text>
-  <line x1="585.4411906293519" y1="490.0" x2="461.4818419531042" y2="780.7718025166398" stroke="#666" stroke-width="2"/>
-  <ellipse cx="490.55355413578604" cy="750.7016386514907" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="490.55355413578604" y="756.7016386514907" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建时间</text>
-  <line x1="530.717967697245" y1="490.0" x2="249.2597114673024" y2="626.0000000000001" stroke="#666" stroke-width="2"/>
-  <ellipse cx="322.87187078897966" cy="610.0000000000001" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="322.87187078897966" y="616.0000000000001" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建人</text>
-  <line x1="510.0" y1="434.13057173623815" x2="201.1528600300557" y2="388.8758414612406" stroke="#666" stroke-width="2"/>
-  <ellipse cx="284.8615190360934" cy="394.4325831465824" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="284.8615190360934" y="400.4325831465824" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新时间</text>
-  <line x1="566.4360147529088" y1="410.0" x2="339.6710180769515" y2="180.35235602211978" stroke="#666" stroke-width="2"/>
-  <ellipse cx="394.30796490030735" cy="204.86577820192707" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="394.30796490030735" y="210.86577820192707" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新人</text>
+<svg width="1620" height="1620" viewBox="0 0 1620 1620" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1620" height="1620" fill="#ffffff"/>
+  <rect x="650.0" y="740.0" width="320" height="140" fill="#fff" stroke="#333" stroke-width="5"/>
+  <text x="810.0" y="822.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="32" font-weight="bold" fill="#333">轮播图配置表</text>
+  <line x1="810.0" y1="740.0" x2="810.0" y2="175.0" stroke="#666" stroke-width="3"/>
+  <ellipse cx="810.0" cy="230.0" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="810.0" y="238.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">轮播图编号</text>
+  <line x1="868.7369741824095" y1="740.0" x2="1279.2349550711738" y2="323.56177861944894" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1182.8168136181928" cy="365.6942229909927" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1182.8168136181928" y="373.6942229909927" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">轮播图图片URL</text>
+  <line x1="970.0" y1="781.7876830866456" x2="1528.9096596989118" y2="699.7334071814993" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1381.1884967470805" cy="709.2840569531804" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1381.1884967470805" y="717.2840569531804" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">跳转链接</text>
+  <line x1="931.2435565298214" y1="880.0" x2="1442.1985447626403" y2="1127.5" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1312.2947341949744" cy="1100.0" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1312.2947341949744" y="1108.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">轮播图排序</text>
+  <line x1="835.4779163986342" y1="880.0" x2="1059.6747046277383" y2="1406.7048141990517" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1008.371683128888" cy="1355.0217200558268" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1008.371683128888" y="1363.0217200558268" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">删除标记</text>
+  <line x1="784.5220836013658" y1="880.0" x2="560.3252953722618" y2="1406.7048141990517" stroke="#666" stroke-width="3"/>
+  <ellipse cx="611.6283168711121" cy="1355.0217200558268" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="611.6283168711121" y="1363.0217200558268" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">创建时间</text>
+  <line x1="688.7564434701787" y1="880.0" x2="177.80145523735993" y2="1127.5000000000002" stroke="#666" stroke-width="3"/>
+  <ellipse cx="307.7052658050257" cy="1100.0000000000002" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="307.7052658050257" y="1108.0000000000002" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">创建人</text>
+  <line x1="650.0" y1="781.7876830866456" x2="91.09034030108805" y2="699.7334071814994" stroke="#666" stroke-width="3"/>
+  <ellipse cx="238.81150325291924" cy="709.2840569531805" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="238.81150325291924" y="717.2840569531805" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">更新时间</text>
+  <line x1="751.2630258175905" y1="740.0" x2="340.7650449288261" y2="323.56177861944906" stroke="#666" stroke-width="3"/>
+  <ellipse cx="437.1831863818071" cy="365.69422299099284" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="437.1831863818071" y="373.69422299099284" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">更新人</text>
 </svg>

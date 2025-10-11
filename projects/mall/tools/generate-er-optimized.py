@@ -39,26 +39,26 @@ def generate_single_er(table_json_path, output_dir):
         print(f"警告：{table_name} 没有字段数据")
         return False
 
-    # 动态半径策略（单层布局，根据字段数量调整半径）
+    # 动态半径策略（单层布局，根据字段数量调整半径）- 增大1.8倍
     if field_count <= 8:
-        radius = 250  # 紧凑
+        radius = 450  # 紧凑 (原250 * 1.8)
     elif field_count <= 12:
-        radius = 320  # 适中
+        radius = 580  # 适中 (原320 * 1.8)
     elif field_count <= 16:
-        radius = 380  # 宽松
+        radius = 680  # 宽松 (原380 * 1.8)
     else:
-        radius = 420  # 超多字段
+        radius = 760  # 超多字段 (原420 * 1.8)
 
-    # 中心矩形（表实体）
-    rect_width = 180
-    rect_height = 80
+    # 中心矩形（表实体）- 增大1.8倍
+    rect_width = 320
+    rect_height = 140
 
-    # 椭圆（字段属性）
-    ellipse_rx = 85
-    ellipse_ry = 32
+    # 椭圆（字段属性）- 增大1.8倍
+    ellipse_rx = 150
+    ellipse_ry = 55
 
-    # 计算实际需要的画布尺寸（紧凑布局，留50px边距）
-    margin = 50
+    # 计算实际需要的画布尺寸（紧凑布局，留80px边距）
+    margin = 80
     max_extent = radius + ellipse_rx + margin  # 最远点距离中心
     width = max_extent * 2
     height = max_extent * 2
@@ -75,8 +75,8 @@ def generate_single_er(table_json_path, output_dir):
     # 绘制中心矩形
     rect_x = rect_cx - rect_width / 2
     rect_y = rect_cy - rect_height / 2
-    svg_lines.append(f'  <rect x="{rect_x}" y="{rect_y}" width="{rect_width}" height="{rect_height}" fill="#fff" stroke="#333" stroke-width="3"/>')
-    svg_lines.append(f'  <text x="{rect_cx}" y="{rect_cy + 6}" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" font-weight="bold" fill="#333">{table_cn_name}</text>')
+    svg_lines.append(f'  <rect x="{rect_x}" y="{rect_y}" width="{rect_width}" height="{rect_height}" fill="#fff" stroke="#333" stroke-width="5"/>')
+    svg_lines.append(f'  <text x="{rect_cx}" y="{rect_cy + 12}" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="32" font-weight="bold" fill="#333">{table_cn_name}</text>')
 
     # 绘制椭圆（单层布局，动态半径）
     for i, field in enumerate(fields):
@@ -125,13 +125,13 @@ def generate_single_er(table_json_path, output_dir):
         )
 
         # 绘制连线（从矩形边缘到椭圆边缘）
-        svg_lines.append(f'  <line x1="{line_start_x}" y1="{line_start_y}" x2="{ellipse_edge_x}" y2="{ellipse_edge_y}" stroke="#666" stroke-width="2"/>')
+        svg_lines.append(f'  <line x1="{line_start_x}" y1="{line_start_y}" x2="{ellipse_edge_x}" y2="{ellipse_edge_y}" stroke="#666" stroke-width="3"/>')
 
         # 绘制椭圆
-        svg_lines.append(f'  <ellipse cx="{ellipse_cx}" cy="{ellipse_cy}" rx="{ellipse_rx}" ry="{ellipse_ry}" fill="#fff" stroke="#666" stroke-width="2"/>')
+        svg_lines.append(f'  <ellipse cx="{ellipse_cx}" cy="{ellipse_cy}" rx="{ellipse_rx}" ry="{ellipse_ry}" fill="#fff" stroke="#666" stroke-width="3"/>')
 
         # 绘制字段名文本
-        svg_lines.append(f'  <text x="{ellipse_cx}" y="{ellipse_cy + 6}" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">{field_cn_name}</text>')
+        svg_lines.append(f'  <text x="{ellipse_cx}" y="{ellipse_cy + 8}" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">{field_cn_name}</text>')
 
     svg_lines.append('</svg>')
 

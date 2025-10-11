@@ -11,7 +11,7 @@
   <text x="170.0" y="248" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="15" fill="#666">IoC容器 / AOP</text>
   <rect x="330.0" y="170" width="240" height="120" fill="#fff" stroke="#333" stroke-width="2" rx="5"/>
   <text x="450.0" y="215" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">SpringMVC</text>
-  <text x="450.0" y="248" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="15" fill="#666">MVC框架</text>
+  <text x="450.0" y="248" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="15" fill="#666">Web框架</text>
   <rect x="610.0" y="170" width="240" height="120" fill="#fff" stroke="#333" stroke-width="2" rx="5"/>
   <text x="730.0" y="215" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">MyBatis</text>
   <text x="730.0" y="248" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="15" fill="#666">持久层框架</text>

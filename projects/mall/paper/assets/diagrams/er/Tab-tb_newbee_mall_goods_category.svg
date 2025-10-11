@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="900" fill="#ffffff"/>
-  <rect x="510.0" y="410.0" width="180" height="80" fill="#fff" stroke="#333" stroke-width="3"/>
-  <text x="600.0" y="456.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" font-weight="bold" fill="#333">商品分类表</text>
-  <line x1="600.0" y1="410.0" x2="600.0" y2="98.0" stroke="#666" stroke-width="2"/>
-  <ellipse cx="600.0" cy="130.0" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="600.0" y="136.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">分类编号</text>
-  <line x1="629.0617011202145" y1="410.0" x2="838.0530271784517" y2="165.2260179800185" stroke="#666" stroke-width="2"/>
-  <ellipse cx="788.0912807335915" cy="191.11456180001682" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="788.0912807335915" y="197.11456180001682" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">分类层级</text>
-  <line x1="690.0" y1="420.7572273390384" x2="985.1778890995372" y2="341.2260179800185" stroke="#666" stroke-width="2"/>
-  <ellipse cx="904.3380852144492" cy="351.1145618000168" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="904.3380852144492" y="357.1145618000168" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">父分类编号</text>
-  <line x1="690.0" y1="479.2427726609616" x2="985.1778890995372" y2="558.7739820199814" stroke="#666" stroke-width="2"/>
-  <ellipse cx="904.3380852144492" cy="548.8854381999831" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="904.3380852144492" y="554.8854381999831" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">分类名称</text>
-  <line x1="629.0617011202145" y1="490.0" x2="838.0530271784517" y2="734.7739820199814" stroke="#666" stroke-width="2"/>
-  <ellipse cx="788.0912807335915" cy="708.8854381999831" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="788.0912807335915" y="714.8854381999831" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">分类排序</text>
-  <line x1="600.0" y1="490.0" x2="600.0" y2="802.0" stroke="#666" stroke-width="2"/>
-  <ellipse cx="600.0" cy="770.0" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="600.0" y="776.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">删除标记</text>
-  <line x1="570.9382988797855" y1="490.0" x2="361.94697282154846" y2="734.7739820199814" stroke="#666" stroke-width="2"/>
-  <ellipse cx="411.90871926640864" cy="708.8854381999831" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="411.90871926640864" y="714.8854381999831" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建时间</text>
-  <line x1="510.0" y1="479.2427726609616" x2="214.82211090046286" y2="558.7739820199815" stroke="#666" stroke-width="2"/>
-  <ellipse cx="295.6619147855509" cy="548.8854381999832" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="295.6619147855509" y="554.8854381999832" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建人</text>
-  <line x1="510.0" y1="420.7572273390385" x2="214.8221109004628" y2="341.2260179800185" stroke="#666" stroke-width="2"/>
-  <ellipse cx="295.66191478555083" cy="351.1145618000169" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="295.66191478555083" y="357.1145618000169" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新时间</text>
-  <line x1="570.9382988797855" y1="410.0" x2="361.9469728215483" y2="165.22601798001855" stroke="#666" stroke-width="2"/>
-  <ellipse cx="411.9087192664085" cy="191.11456180001687" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="411.9087192664085" y="197.11456180001687" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新人</text>
+<svg width="1620" height="1620" viewBox="0 0 1620 1620" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1620" height="1620" fill="#ffffff"/>
+  <rect x="650.0" y="740.0" width="320" height="140" fill="#fff" stroke="#333" stroke-width="5"/>
+  <text x="810.0" y="822.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="32" font-weight="bold" fill="#333">商品分类表</text>
+  <line x1="810.0" y1="740.0" x2="810.0" y2="175.0" stroke="#666" stroke-width="3"/>
+  <ellipse cx="810.0" cy="230.0" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="810.0" y="238.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">分类编号</text>
+  <line x1="860.8579769603753" y1="740.0" x2="1239.0832341735054" y2="296.2742085719084" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1150.9154463296345" cy="340.7701432625305" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1150.9154463296345" y="348.7701432625305" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">分类层级</text>
+  <line x1="970.0" y1="758.012848602735" x2="1504.271256895462" y2="613.7742085719084" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1361.612779451189" cy="630.7701432625305" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1361.612779451189" y="638.7701432625305" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">父分类编号</text>
+  <line x1="970.0" y1="861.987151397265" x2="1504.271256895462" y2="1006.2257914280916" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1361.612779451189" cy="989.2298567374695" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1361.612779451189" y="997.2298567374695" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">分类名称</text>
+  <line x1="860.8579769603753" y1="880.0" x2="1239.0832341735054" y2="1323.7257914280917" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1150.9154463296345" cy="1279.2298567374696" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1150.9154463296345" y="1287.2298567374696" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">分类排序</text>
+  <line x1="810.0" y1="880.0" x2="810.0" y2="1445.0" stroke="#666" stroke-width="3"/>
+  <ellipse cx="810.0" cy="1390.0" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="810.0" y="1398.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">删除标记</text>
+  <line x1="759.1420230396247" y1="880.0" x2="380.9167658264947" y2="1323.7257914280917" stroke="#666" stroke-width="3"/>
+  <ellipse cx="469.08455367036566" cy="1279.2298567374696" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="469.08455367036566" y="1287.2298567374696" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">创建时间</text>
+  <line x1="650.0" y1="861.987151397265" x2="115.72874310453798" y2="1006.2257914280917" stroke="#666" stroke-width="3"/>
+  <ellipse cx="258.387220548811" cy="989.2298567374696" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="258.387220548811" y="997.2298567374696" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">创建人</text>
+  <line x1="650.0" y1="758.0128486027351" x2="115.72874310453784" y2="613.7742085719085" stroke="#666" stroke-width="3"/>
+  <ellipse cx="258.3872205488109" cy="630.7701432625306" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="258.3872205488109" y="638.7701432625306" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">更新时间</text>
+  <line x1="759.1420230396247" y1="740.0" x2="380.9167658264945" y2="296.27420857190845" stroke="#666" stroke-width="3"/>
+  <ellipse cx="469.0845536703655" cy="340.77014326253055" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="469.0845536703655" y="348.77014326253055" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">更新人</text>
 </svg>

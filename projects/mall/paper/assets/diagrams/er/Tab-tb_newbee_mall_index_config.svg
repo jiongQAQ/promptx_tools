@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="900" fill="#ffffff"/>
-  <rect x="510.0" y="410.0" width="180" height="80" fill="#fff" stroke="#333" stroke-width="3"/>
-  <text x="600.0" y="456.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" font-weight="bold" fill="#333">首页配置表</text>
-  <line x1="600.0" y1="410.0" x2="600.0" y2="98.0" stroke="#666" stroke-width="2"/>
-  <ellipse cx="600.0" cy="130.0" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="600.0" y="136.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">配置编号</text>
-  <line x1="625.7064390867332" y1="410.0" x2="818.9595310695171" y2="153.87875644342424" stroke="#666" stroke-width="2"/>
-  <ellipse cx="773.0050615857913" cy="180.79886949402203" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="773.0050615857913" y="186.79886949402203" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">配置名称</text>
-  <line x1="687.5877825195873" y1="410.0" x2="968.40095811858" y2="303.773915423336" stroke="#666" stroke-width="2"/>
-  <ellipse cx="891.0822385134459" cy="317.0671958393964" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="891.0822385134459" y="323.0671958393964" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">配置类型</text>
-  <line x1="690.0" y1="462.9400464595476" x2="1000.8776839617777" y2="500.09482307219633" stroke="#666" stroke-width="2"/>
-  <ellipse cx="916.7428614018985" cy="495.54074824745123" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="916.7428614018985" y="501.54074824745123" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品编号</text>
-  <line x1="646.1624608213203" y1="490.0" x2="906.0785776134745" y2="680.5109783487403" stroke="#666" stroke-width="2"/>
-  <ellipse cx="841.8398637933626" cy="659.5554348624912" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="841.8398637933626" y="665.5554348624912" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">跳转链接</text>
-  <line x1="611.7450597175347" y1="490.0" x2="714.101685520779" y2="787.7415267123031" stroke="#666" stroke-width="2"/>
-  <ellipse cx="690.1544181892575" cy="757.0377515566391" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="690.1544181892575" y="763.0377515566391" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">配置排序</text>
-  <line x1="588.2549402824653" y1="490.0" x2="485.8983144792211" y2="787.7415267123032" stroke="#666" stroke-width="2"/>
-  <ellipse cx="509.8455818107426" cy="757.0377515566393" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="509.8455818107426" y="763.0377515566393" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">删除标记</text>
-  <line x1="553.8375391786797" y1="490.0" x2="293.9214223865255" y2="680.5109783487403" stroke="#666" stroke-width="2"/>
-  <ellipse cx="358.1601362066374" cy="659.5554348624912" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="358.1601362066374" y="665.5554348624912" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建时间</text>
-  <line x1="510.0" y1="462.9400464595476" x2="199.12231603822227" y2="500.09482307219633" stroke="#666" stroke-width="2"/>
-  <ellipse cx="283.25713859810156" cy="495.54074824745123" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="283.25713859810156" y="501.54074824745123" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建人</text>
-  <line x1="512.4122174804127" y1="410.0" x2="231.59904188142002" y2="303.77391542333606" stroke="#666" stroke-width="2"/>
-  <ellipse cx="308.91776148655407" cy="317.06719583939645" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="308.91776148655407" y="323.06719583939645" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新时间</text>
-  <line x1="574.2935609132668" y1="410.0" x2="381.04046893048303" y2="153.87875644342424" stroke="#666" stroke-width="2"/>
-  <ellipse cx="426.99493841420883" cy="180.79886949402203" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="426.99493841420883" y="186.79886949402203" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新人</text>
+<svg width="1620" height="1620" viewBox="0 0 1620 1620" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1620" height="1620" fill="#ffffff"/>
+  <rect x="650.0" y="740.0" width="320" height="140" fill="#fff" stroke="#333" stroke-width="5"/>
+  <text x="810.0" y="822.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="32" font-weight="bold" fill="#333">首页配置表</text>
+  <line x1="810.0" y1="740.0" x2="810.0" y2="175.0" stroke="#666" stroke-width="3"/>
+  <ellipse cx="810.0" cy="230.0" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="810.0" y="238.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">配置编号</text>
+  <line x1="854.9862684017833" y1="740.0" x2="1204.6677967425865" y2="275.8040066522" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1123.5716741242468" cy="322.07295095791494" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1123.5716741242468" y="330.07295095791494" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">配置名称</text>
+  <line x1="963.2786194092778" y1="740.0" x2="1474.0313566087984" y2="546.2114667438021" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1337.5865573056208" cy="569.0592924589059" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1337.5865573056208" y="577.0592924589059" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">配置类型</text>
+  <line x1="970.0" y1="833.0045270391958" x2="1532.569652573081" y2="900.3699223035361" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1384.096436290941" cy="892.5426061985054" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1384.096436290941" y="900.5426061985054" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">商品编号</text>
+  <line x1="890.7843064373106" y1="880.0" x2="1361.6971892786087" y2="1225.836566055256" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1248.33475312547" cy="1189.8192256882653" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1248.33475312547" y="1197.8192256882653" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">跳转链接</text>
+  <line x1="830.5538545056856" y1="880.0" x2="1015.6647664942436" y2="1419.2780382452056" stroke="#666" stroke-width="3"/>
+  <ellipse cx="973.4048829680291" cy="1366.5059246964083" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="973.4048829680291" y="1374.5059246964083" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">配置排序</text>
+  <line x1="789.4461454943144" y1="880.0" x2="604.3352335057565" y2="1419.2780382452058" stroke="#666" stroke-width="3"/>
+  <ellipse cx="646.5951170319709" cy="1366.5059246964086" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="646.5951170319709" y="1374.5059246964086" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">删除标记</text>
+  <line x1="729.2156935626894" y1="880.0" x2="258.30281072139155" y2="1225.836566055256" stroke="#666" stroke-width="3"/>
+  <ellipse cx="371.6652468745303" cy="1189.8192256882653" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="371.6652468745303" y="1197.8192256882653" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">创建时间</text>
+  <line x1="650.0" y1="833.0045270391958" x2="87.43034742691918" y2="900.3699223035361" stroke="#666" stroke-width="3"/>
+  <ellipse cx="235.90356370905909" cy="892.5426061985054" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="235.90356370905909" y="900.5426061985054" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">创建人</text>
+  <line x1="656.7213805907222" y1="740.0" x2="145.96864339120145" y2="546.2114667438024" stroke="#666" stroke-width="3"/>
+  <ellipse cx="282.4134426943792" cy="569.059292458906" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="282.4134426943792" y="577.059292458906" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">更新时间</text>
+  <line x1="765.0137315982169" y1="740.0" x2="415.3322032574139" y2="275.8040066521999" stroke="#666" stroke-width="3"/>
+  <ellipse cx="496.4283258757535" cy="322.0729509579149" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="496.4283258757535" y="330.0729509579149" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">更新人</text>
 </svg>

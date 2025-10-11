@@ -41,7 +41,7 @@ def generate_ssm_diagram():
 
     modules = [
         {"name": "Spring", "desc": "IoC容器 / AOP", "x": start_x},
-        {"name": "SpringMVC", "desc": "MVC框架", "x": start_x + module_width + module_spacing},
+        {"name": "SpringMVC", "desc": "Web框架", "x": start_x + module_width + module_spacing},
         {"name": "MyBatis", "desc": "持久层框架", "x": start_x + (module_width + module_spacing) * 2}
     ]
 
@@ -93,28 +93,27 @@ def generate_springcloud_diagram():
     svg_lines.append(f'  <rect x="{title_x}" y="{title_y}" width="{title_width}" height="{title_height}" fill="#f0f0f0" stroke="#333" stroke-width="3" rx="5"/>')
     svg_lines.append(f'  <text x="{width/2}" y="{title_y + title_height/2 + 10}" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">SpringCloud组件选型</text>')
 
-    # 8大功能模块（单行排列）
+    # 7大功能模块（单行排列）
     module_width = 200
     module_height = 150
-    spacing_x = 15
+    spacing_x = 50
 
     modules_y = 145
     modules = [
         {"category": "服务注册中心", "components": [{"name": "Nacos", "selected": True}, {"name": "Eureka", "selected": False}]},
-        {"category": "服务负载均衡", "components": [{"name": "Ribbon", "selected": True}, {"name": "LoadBalancer", "selected": False}]},
+        {"category": "服务负载均衡", "components": [{"name": "LoadBalancer", "selected": True}, {"name": "Ribbon", "selected": False}]},
         {"category": "服务熔断降级", "components": [{"name": "Sentinel", "selected": True}, {"name": "Hystrix", "selected": False}]},
         {"category": "服务调用", "components": [{"name": "OpenFeign", "selected": True}, {"name": "Feign", "selected": False}]},
         {"category": "服务网关", "components": [{"name": "GateWay", "selected": True}, {"name": "Zuul", "selected": False}]},
-        {"category": "服务配置", "components": [{"name": "Nacos", "selected": True}, {"name": "Config", "selected": False}]},
         {"category": "分布式事务", "components": [{"name": "Seata", "selected": True}, {"name": "TCC", "selected": False}]},
         {"category": "服务监控", "components": [{"name": "SpringBootAdmin", "selected": True}, {"name": "Zipkin", "selected": False}]}
     ]
 
     # 计算起始位置（居中）
-    total_width = module_width * 8 + spacing_x * 7
+    total_width = module_width * 7 + spacing_x * 6
     start_x = (width - total_width) / 2
 
-    # 绘制8个模块
+    # 绘制7个模块
     for i, module in enumerate(modules):
         x = start_x + i * (module_width + spacing_x)
         y = modules_y

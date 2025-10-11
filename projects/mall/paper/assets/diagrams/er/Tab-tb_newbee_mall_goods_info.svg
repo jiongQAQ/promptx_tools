@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="900" fill="#ffffff"/>
-  <rect x="510.0" y="410.0" width="180" height="80" fill="#fff" stroke="#333" stroke-width="3"/>
-  <text x="600.0" y="456.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" font-weight="bold" fill="#333">商品信息表</text>
-  <line x1="600.0" y1="410.0" x2="600.0" y2="38.0" stroke="#666" stroke-width="2"/>
-  <ellipse cx="600.0" cy="70.0" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="600.0" y="76.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品编号</text>
-  <line x1="616.5685424949238" y1="410.0" x2="777.9477960497668" y2="69.36163260534985" stroke="#666" stroke-width="2"/>
-  <ellipse cx="745.4197042987341" cy="98.92577764571104" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="745.4197042987341" y="104.92577764571104" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品名称</text>
-  <line x1="640.0" y1="410.0" x2="928.8046532517446" y2="158.67200615114245" stroke="#666" stroke-width="2"/>
-  <ellipse cx="868.7005768508881" cy="181.299423149112" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="868.7005768508881" y="187.299423149112" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品简介</text>
-  <line x1="690.0" y1="412.72077938642144" x2="1029.6039826177484" y2="292.334425865583" stroke="#666" stroke-width="2"/>
-  <ellipse cx="951.074222354289" cy="304.58029570126587" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="951.074222354289" y="310.58029570126587" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品分类编号</text>
-  <line x1="690.0" y1="450.0" x2="1065.0" y2="450.0" stroke="#666" stroke-width="2"/>
-  <ellipse cx="980.0" cy="450.0" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="980.0" y="456.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品封面图</text>
-  <line x1="690.0" y1="487.27922061357856" x2="1029.6039826177484" y2="607.665574134417" stroke="#666" stroke-width="2"/>
-  <ellipse cx="951.074222354289" cy="595.4197042987341" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="951.074222354289" y="601.4197042987341" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品轮播图</text>
-  <line x1="640.0" y1="490.0" x2="928.8046532517446" y2="741.3279938488574" stroke="#666" stroke-width="2"/>
-  <ellipse cx="868.7005768508881" cy="718.700576850888" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="868.7005768508881" y="724.700576850888" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">原价</text>
-  <line x1="616.5685424949238" y1="490.0" x2="777.9477960497668" y2="830.6383673946501" stroke="#666" stroke-width="2"/>
-  <ellipse cx="745.4197042987341" cy="801.074222354289" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="745.4197042987341" y="807.074222354289" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">销售价</text>
-  <line x1="600.0" y1="490.0" x2="600.0" y2="862.0" stroke="#666" stroke-width="2"/>
-  <ellipse cx="600.0" cy="830.0" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="600.0" y="836.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">库存数量</text>
-  <line x1="583.4314575050762" y1="490.0" x2="422.0522039502332" y2="830.6383673946501" stroke="#666" stroke-width="2"/>
-  <ellipse cx="454.58029570126587" cy="801.074222354289" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="454.58029570126587" y="807.074222354289" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品标签</text>
-  <line x1="560.0" y1="490.0" x2="271.1953467482555" y2="741.3279938488575" stroke="#666" stroke-width="2"/>
-  <ellipse cx="331.299423149112" cy="718.7005768508881" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="331.299423149112" y="724.7005768508881" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">销售状态</text>
-  <line x1="510.0" y1="487.2792206135786" x2="170.39601738225178" y2="607.6655741344173" stroke="#666" stroke-width="2"/>
-  <ellipse cx="248.92577764571115" cy="595.4197042987344" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="248.92577764571115" y="601.4197042987344" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建人</text>
-  <line x1="510.0" y1="450.0" x2="135.0" y2="450.00000000000006" stroke="#666" stroke-width="2"/>
-  <ellipse cx="220.0" cy="450.00000000000006" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="220.0" y="456.00000000000006" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">创建时间</text>
-  <line x1="510.0" y1="412.7207793864214" x2="170.39601738225173" y2="292.3344258655829" stroke="#666" stroke-width="2"/>
-  <ellipse cx="248.9257776457111" cy="304.58029570126575" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="248.9257776457111" y="310.58029570126575" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新人</text>
-  <line x1="560.0" y1="410.0" x2="271.1953467482553" y2="158.67200615114248" stroke="#666" stroke-width="2"/>
-  <ellipse cx="331.2994231491119" cy="181.299423149112" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="331.2994231491119" y="187.299423149112" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">更新时间</text>
-  <line x1="583.4314575050762" y1="410.0" x2="422.052203950233" y2="69.36163260534998" stroke="#666" stroke-width="2"/>
-  <ellipse cx="454.58029570126564" cy="98.92577764571115" rx="85" ry="32" fill="#fff" stroke="#666" stroke-width="2"/>
-  <text x="454.58029570126564" y="104.92577764571115" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="14" fill="#333">商品详情</text>
+<svg width="1820" height="1820" viewBox="0 0 1820 1820" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1820" height="1820" fill="#ffffff"/>
+  <rect x="750.0" y="840.0" width="320" height="140" fill="#fff" stroke="#333" stroke-width="5"/>
+  <text x="910.0" y="922.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="32" font-weight="bold" fill="#333">商品信息表</text>
+  <line x1="910.0" y1="840.0" x2="910.0" y2="175.0" stroke="#666" stroke-width="3"/>
+  <ellipse cx="910.0" cy="230.0" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="910.0" y="238.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">商品编号</text>
+  <line x1="938.9949493661167" y1="840.0" x2="1227.6272488630245" y2="230.9485436042043" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1170.224734008261" cy="281.7619178923251" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1170.224734008261" y="289.7619178923251" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">商品名称</text>
+  <line x1="980.0" y1="840.0" x2="1496.8986283848344" y2="390.27651582788764" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1390.8326112068523" cy="429.1673887931477" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1390.8326112068523" y="437.1673887931477" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">商品简介</text>
+  <line x1="1070.0" y1="843.7258300203048" x2="1676.820011984368" y2="628.7276772116589" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1538.238082107675" cy="649.7752659917389" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1538.238082107675" y="657.7752659917389" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">商品分类编号</text>
+  <line x1="1070.0" y1="910.0" x2="1740.0" y2="910.0" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1590.0" cy="910.0" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1590.0" y="918.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">商品封面图</text>
+  <line x1="1070.0" y1="976.2741699796952" x2="1676.820011984368" y2="1191.272322788341" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1538.238082107675" cy="1170.224734008261" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1538.238082107675" y="1178.224734008261" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">商品轮播图</text>
+  <line x1="980.0" y1="980.0" x2="1496.8986283848344" y2="1429.7234841721124" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1390.8326112068523" cy="1390.8326112068523" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1390.8326112068523" y="1398.8326112068523" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">原价</text>
+  <line x1="938.9949493661167" y1="980.0" x2="1227.6272488630245" y2="1589.0514563957956" stroke="#666" stroke-width="3"/>
+  <ellipse cx="1170.224734008261" cy="1538.238082107675" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="1170.224734008261" y="1546.238082107675" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">销售价</text>
+  <line x1="910.0" y1="980.0" x2="910.0" y2="1645.0" stroke="#666" stroke-width="3"/>
+  <ellipse cx="910.0" cy="1590.0" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="910.0" y="1598.0" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">库存数量</text>
+  <line x1="881.0050506338833" y1="980.0" x2="592.3727511369755" y2="1589.0514563957956" stroke="#666" stroke-width="3"/>
+  <ellipse cx="649.7752659917389" cy="1538.238082107675" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="649.7752659917389" y="1546.238082107675" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">商品标签</text>
+  <line x1="840.0" y1="980.0" x2="323.1013716151656" y2="1429.7234841721124" stroke="#666" stroke-width="3"/>
+  <ellipse cx="429.1673887931477" cy="1390.8326112068523" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="429.1673887931477" y="1398.8326112068523" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">销售状态</text>
+  <line x1="750.0" y1="976.2741699796953" x2="143.1799880156322" y2="1191.2723227883412" stroke="#666" stroke-width="3"/>
+  <ellipse cx="281.7619178923252" cy="1170.2247340082613" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="281.7619178923252" y="1178.2247340082613" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">创建人</text>
+  <line x1="750.0" y1="910.0" x2="80.0" y2="910.0000000000001" stroke="#666" stroke-width="3"/>
+  <ellipse cx="230.0" cy="910.0000000000001" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="230.0" y="918.0000000000001" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">创建时间</text>
+  <line x1="750.0" y1="843.7258300203047" x2="143.17998801563206" y2="628.7276772116587" stroke="#666" stroke-width="3"/>
+  <ellipse cx="281.7619178923251" cy="649.7752659917387" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="281.7619178923251" y="657.7752659917387" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">更新人</text>
+  <line x1="840.0" y1="840.0" x2="323.10137161516536" y2="390.27651582788764" stroke="#666" stroke-width="3"/>
+  <ellipse cx="429.16738879314755" cy="429.1673887931477" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="429.16738879314755" y="437.1673887931477" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">更新时间</text>
+  <line x1="881.0050506338833" y1="840.0" x2="592.372751136975" y2="230.94854360420442" stroke="#666" stroke-width="3"/>
+  <ellipse cx="649.7752659917386" cy="281.7619178923252" rx="150" ry="55" fill="#fff" stroke="#666" stroke-width="3"/>
+  <text x="649.7752659917386" y="289.7619178923252" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#333">商品详情</text>
 </svg>
