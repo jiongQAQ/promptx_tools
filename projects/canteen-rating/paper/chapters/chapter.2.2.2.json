@@ -1,9 +1,9 @@
 {
   "id": "2.2.2",
   "title": "Element Plus组件库",
-  "text": "Element Plus是饿了么前端团队为Vue 3开发的桌面端组件库，是Element UI的升级版本。Element Plus提供了60+高质量组件，包括表单、表格、弹窗、导航、数据展示等，支持按需引入和自动导入，采用TypeScript编写，提供了完善的类型定义。本系统采用Element Plus 2.3.8版本，通过unplugin-vue-components和unplugin-auto-import插件实现组件和API的自动导入，使用el-table实现数据列表展示和分页，使用el-form和el-form-item实现表单验证，使用el-dialog实现弹窗交互，使用el-menu和el-breadcrumb实现后台管理界面的导航结构。Element Plus的主题定制功能通过SCSS变量实现，可轻松适配不同的视觉风格。",
+  "text": "Element Plus是饿了么前端团队为Vue 3开发的桌面端组件库，是Element UI的升级版本。Element Plus提供了60+高质量组件，包括表单、表格、弹窗、导航、数据展示等，支持按需引入和自动导入，采用TypeScript编写，提供了完善的类型定义。本系统采用Element Plus 2.3.8版本，通过unplugin-vue-components和unplugin-auto-import插件实现组件和API的自动导入，使用表格组件实现数据列表展示和分页，使用表单组件实现表单验证，使用对话框组件实现弹窗交互，使用菜单组件和面包屑组件实现后台管理界面的导航结构。Element Plus的主题定制功能通过SCSS变量实现，可轻松适配不同的视觉风格。",
   "word_limit": 200,
-  "content": "Element Plus是饿了么前端团队专为Vue 3开发的桌面端UI组件库，是广受欢迎的Element UI在Vue 3时代的升级版本。作为一套成熟的组件库，Element Plus为开发者提供了一致的设计语言和开箱即用的高质量组件，大幅提升了前端开发效率。\n\nElement Plus提供了60多个高质量组件，覆盖了Web应用开发的各个方面，包括基础组件（按钮、图标、链接等）、表单组件（输入框、选择器、日期选择器等）、数据展示组件（表格、分页、标签等）、导航组件（菜单、面包屑、标签页等）、反馈组件（弹窗、消息提示、加载等）。组件库采用TypeScript编写，提供了完善的类型定义，支持按需引入减小打包体积，兼容现代浏览器和IE11+。\n\n本系统采用Element Plus 2.3.8版本构建管理后台界面。通过配置unplugin-vue-components和unplugin-auto-import插件，实现了组件和API的自动导入，无需手动import即可使用组件，提升了开发体验。在具体应用中：使用el-table组件展示数据列表，配合el-pagination实现分页功能；使用el-form和el-form-item组件构建表单，通过rules属性配置验证规则，实现了表单的自动验证和错误提示；使用el-dialog组件实现弹窗交互，用于新增、编辑和详情查看；使用el-menu组件实现侧边栏导航菜单，配合el-breadcrumb组件显示面包屑导航，构建了清晰的后台管理界面结构。Element Plus的主题定制功能通过覆盖SCSS变量实现，系统根据需求调整了主题色和组件样式，形成了统一的视觉风格。",
+  "content": "Element Plus是饿了么前端团队专为Vue 3开发的桌面端UI组件库，是广受欢迎的Element UI在Vue 3时代的升级版本。作为一套成熟的组件库，Element Plus为开发者提供了一致的设计语言和开箱即用的高质量组件，大幅提升了前端开发效率。\n\nElement Plus提供了60多个高质量组件，覆盖了Web应用开发的各个方面，包括基础组件（按钮、图标、链接等）、表单组件（输入框、选择器、日期选择器等）、数据展示组件（表格、分页、标签等）、导航组件（菜单、面包屑、标签页等）、反馈组件（弹窗、消息提示、加载等）。组件库采用TypeScript编写，提供了完善的类型定义，支持按需引入减小打包体积，兼容现代浏览器和IE11+。\n\n本系统采用Element Plus 2.3.8版本构建管理后台界面。通过配置unplugin-vue-components和unplugin-auto-import插件，实现了组件和API的自动导入，无需手动import即可使用组件，提升了开发体验。在具体应用中：使用表格组件展示数据列表，配合分页组件实现分页功能；使用表单组件构建表单，通过验证规则配置，实现了表单的自动验证和错误提示；使用对话框组件实现弹窗交互，用于新增、编辑和详情查看；使用菜单组件实现侧边栏导航菜单，配合面包屑组件显示面包屑导航，构建了清晰的后台管理界面结构。Element Plus的主题定制功能通过覆盖SCSS变量实现，系统根据需求调整了主题色和组件样式，形成了统一的视觉风格。",
   "docx_type": "subsection_title",
   "docx_type_text": "body_text",
   "docx_type_desc": "body_text"

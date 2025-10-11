@@ -232,7 +232,7 @@ class ThesisBuilder:
         outline_file = self.project_root / 'paper' / 'outline.json'
         with open(outline_file, 'r', encoding='utf-8') as f:
             outline = json.load(f)
-        return outline.get('nodes', [])
+        return outline.get('outline', [])
 
     def load_chapter(self, chapter_id):
         """加载章节内容"""
@@ -457,6 +457,9 @@ class ThesisBuilder:
 
     def build_from_outline(self, outline_nodes):
         """根据大纲构建论文"""
+        # 构建ID到节点的映射
+        node_map = {node['id']: node for node in outline_nodes}
+
         def process_node(node):
             node_id = node.get('id', '')
             node_title = node.get('title', '')
@@ -474,7 +477,7 @@ class ThesisBuilder:
                     # 格式化标题：添加章节编号
                     if level == 1:
                         # 一级标题已经包含"第X章"，直接使用
-                        formatted_title = node_title
+                        formatted_title = f"第{node_id}章 {node_title}"
                     elif level == 2:
                         # 二级标题：5.1 标题
                         formatted_title = f"{node_id} {node_title}"
@@ -482,7 +485,7 @@ class ThesisBuilder:
                         # 三级标题：5.1.1 标题
                         formatted_title = f"{node_id} {node_title}"
                     else:
-                        formatted_title = node_title
+                        formatted_title = f"第{node_id}章 {node_title}"
 
                     # 添加标题段落
                     p = self.doc.add_paragraph(formatted_title)
@@ -491,17 +494,19 @@ class ThesisBuilder:
                 else:
                     print(f"  ⚠️  {node_id} {node_title} - 未找到章节文件")
 
-            # 处理子节点
+            # 处理子节点（children是ID字符串数组）
             children = node.get('children', [])
-            for child in children:
-                process_node(child)
+            for child_id in children:
+                if child_id in node_map:
+                    process_node(node_map[child_id])
 
             # 一级章节后添加分页
             if '.' not in node_id and node_id not in ['0.1', '0.2']:
                 self.doc.add_page_break()
 
-        # 处理所有节点
-        for node in outline_nodes:
+        # 只处理顶层节点（避免重复）
+        top_nodes = [n for n in outline_nodes if n.get('parent') is None]
+        for node in top_nodes:
             process_node(node)
 
     def save(self, output_path):
