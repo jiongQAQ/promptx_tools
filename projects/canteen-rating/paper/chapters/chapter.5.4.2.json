@@ -1,0 +1,11 @@
+{
+  "id": "5.4.2",
+  "title": "实现过程",
+  "text": "评价管理模块的后端实现在RatingController中，提供/api/user/rating和/api/admin/rating两套接口，分别面向用户和管理员。用户提交评价时，RatingServiceImpl首先调用SensitiveWordService检测内容中的敏感词，使用DFA（Deterministic Finite Automaton）算法实现高效匹配。检测通过的评价状态设为已发布，否则设为待审核。评价保存后异步更新菜品表的平均分和评价数，使用@Async注解实现异步调用。前端用户界面使用el-rate组件实现星级评分，el-input type=\"textarea\"输入评价内容，el-upload上传图片。评价列表使用el-timeline展示时间轴样式，显示用户头像、昵称、评分、内容、图片、时间。管理员审核界面使用el-table展示待审核评价，提供通过/拒绝操作按钮。实现效果如图所示。",
+  "word_limit": 300,
+  "imagePath": "${impl}/impl-rating.png",
+  "content": "评价管理模块的实现涉及复杂的业务逻辑和性能优化，包括评价提交、敏感词过滤、异步统计、前端交互等多个技术要点。\n\n后端实现在RatingController中，路径分为/api/user/rating（用户接口）和/api/admin/rating（管理员接口）两部分。用户提交评价接口（POST /api/user/rating）接收RatingDTO对象，包含菜品ID、评分（1-5的整数）、评价内容、图片URL数组等。在RatingServiceImpl中，首先验证菜品是否存在且已上架，验证用户是否已经评价过该菜品（一个用户只能评价一个菜品一次）。然后调用SensitiveWordService的checkContent方法检测评价内容中的敏感词。SensitiveWordService使用DFA（Deterministic Finite Automaton，确定性有限自动机）算法实现敏感词匹配，该算法将敏感词构建成一棵多叉树，匹配时只需遍历一次文本即可检测所有敏感词，时间复杂度为O(n)，比朴素的多次字符串匹配高效得多。如果检测到敏感词，返回敏感词列表，评价状态设为待审核（PENDING），否则状态设为已发布（PUBLISHED）。评价保存后，使用@Async注解标注的方法异步更新菜品的评分统计，避免阻塞主线程，提升响应速度。异步方法中，使用SQL聚合函数SELECT AVG(score), COUNT(*) FROM rating WHERE dish_id=? AND status='PUBLISHED'计算平均分和评价数，更新dish表的对应字段。\n\n管理员审核接口（PUT /api/admin/rating/{id}/audit）接收审核动作（通过或拒绝），更新评价状态。如果审核通过，状态改为已发布，触发菜品评分的重新统计；如果拒绝，状态改为已拒绝，评价不对外展示。管理员删除评价接口执行逻辑删除，删除后也需要重新统计评分，确保数据准确性。\n\n前端用户界面的实现使用Vue 3组合式API。菜品详情页组件中，使用ref定义响应式变量存储菜品信息和评价列表，使用onMounted生命周期钩子加载数据。评价提交对话框使用el-dialog组件，visible属性控制显示隐藏。评分输入使用el-rate组件，配置max为5，show-score显示分数，v-model绑定评分值。评价内容使用el-input type=\"textarea\"，配置maxlength为500，show-word-limit显示字数统计。图片上传使用el-upload组件，配置action为图片上传接口，list-type为\"picture-card\"以卡片形式展示，limit为3限制最多3张，on-exceed钩子提示超出限制。点击提交按钮时，调用Axios发送评价数据，使用async/await语法简化异步处理，成功后关闭对话框，调用ElMessage显示成功提示，刷新评价列表。\n\n评价列表展示使用el-timeline时间轴组件，每个评价作为一个timeline-item，显示用户头像（el-avatar）、昵称、评分（el-rate只读）、评价时间（使用dayjs库格式化）、评价内容、图片（el-image支持预览）。列表支持下拉加载更多，使用IntersectionObserver API监听滚动到底部，触发下一页数据加载。\n\n管理员审核界面使用el-table展示待审核评价列表，每行包括用户昵称、菜品名称、评分、评价内容（超长文本省略显示）、提交时间、操作列。操作列提供通过和拒绝按钮，使用el-popconfirm组件确认操作，避免误操作。点击查看详情按钮，使用el-drawer抽屉组件从右侧滑出，显示评价的完整信息和图片，管理员填写审核意见并提交。\n\n模块实现效果如图所示，展示了用户评价提交界面、评价列表展示、敏感词过滤提示、管理员审核界面等关键页面的实际效果，验证了评价管理功能的完整性和易用性。",
+  "docx_type": "subsection_title",
+  "docx_type_text": "body_text",
+  "docx_type_desc": "body_text"
+}

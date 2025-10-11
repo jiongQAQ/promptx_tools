@@ -1,0 +1,505 @@
+[
+  {
+    "id": "0.1",
+    "title": "摘要",
+    "text": "本文针对高校食堂评价管理的实际需求，设计并实现了一套基于Spring Boot和Vue 3的食堂评价系统。系统采用前后端分离架构，后端使用Spring Boot 2.7.18、MyBatis Plus 3.5.3.1、Spring Security和JWT实现RESTful API，前端采用Vue 3.3.4和Element Plus 2.3.8构建管理后台，数据存储选用MySQL 8.0+。系统实现了用户认证与权限管理、食堂与档口管理、菜品管理、评价管理、投诉管理和系统管理等核心功能，通过功能测试、性能测试和安全性测试验证了系统的可用性和稳定性。",
+    "word_limit": 250
+  },
+  {
+    "id": "0.2",
+    "title": "Abstract",
+    "text": "This paper designs and implements a canteen rating system based on Spring Boot and Vue 3 framework for university canteen evaluation management. The system adopts a front-end and back-end separation architecture, with the backend using Spring Boot 2.7.18, MyBatis Plus 3.5.3.1, Spring Security and JWT to implement RESTful APIs, and the frontend using Vue 3.3.4 and Element Plus 2.3.8 to build the management console. MySQL 8.0+ is selected for data storage. The system implements core functions including user authentication and permission management, canteen and stall management, dish management, rating management, complaint management and system management. The availability and stability of the system are verified through functional testing, performance testing and security testing.",
+    "word_limit": 200
+  },
+  {
+    "id": "1",
+    "title": "第1章 绪论"
+  },
+  {
+    "id": "1.1",
+    "title": "研究背景及意义",
+    "text": "随着高校规模不断扩大，食堂作为校园生活的重要组成部分，其服务质量直接影响师生的日常生活体验。传统的食堂管理模式缺乏有效的反馈机制，难以及时了解师生对食堂服务的真实评价。本研究旨在通过信息化手段建立食堂评价系统，为师生提供便捷的评价渠道，为食堂管理者提供数据支持，从而提升食堂服务质量。从技术角度看，本系统采用Spring Boot微服务架构和Vue 3前端框架，实践了前后端分离开发模式，对高校信息化建设具有借鉴意义。",
+    "word_limit": 400
+  },
+  {
+    "id": "1.2",
+    "title": "国内外研究现状",
+    "text": "国内方面，部分高校已建立食堂评价或订餐系统，如校园一卡通企业推出的智慧食堂解决方案，但多数系统功能单一，缺乏完整的评价管理和数据分析功能。国外研究方面，欧美高校普遍采用第三方平台（如Yelp、Google Maps）进行食堂评价，但这类通用平台难以满足校园场景的特殊需求。近年来，基于Spring Boot的微服务架构和Vue.js的前端开发成为主流趋势，为构建高性能、易维护的Web应用提供了技术基础。本研究结合国内外研究成果，针对高校食堂评价场景的特点，设计实现了一套完整的食堂评价管理系统。",
+    "word_limit": 400
+  },
+  {
+    "id": "1.3",
+    "title": "本文的主要内容",
+    "text": "本文围绕食堂评价系统的设计与实现展开研究，主要内容包括：第一章绪论部分介绍研究背景、意义和国内外研究现状；第二章介绍系统相关技术，包括Spring Boot、MyBatis Plus、Spring Security、JWT、Vue 3、Element Plus和MySQL等；第三章进行系统需求分析，包括可行性分析、功能需求和非功能需求；第四章进行系统设计，包括架构设计、数据库设计、数据流图和类图设计；第五章进行系统实现，详细描述各功能模块的实现过程；第六章进行系统测试，包括功能测试、性能测试和安全性测试；最后进行总结与展望。",
+    "word_limit": 350
+  },
+  {
+    "id": "2",
+    "title": "第2章 相关技术介绍"
+  },
+  {
+    "id": "2.1",
+    "title": "后端相关技术"
+  },
+  {
+    "id": "2.1.1",
+    "title": "Spring Boot框架",
+    "text": "Spring Boot是基于Spring框架的开源Java应用开发框架，由Pivotal团队于2014年推出。Spring Boot简化了Spring应用的初始搭建和开发过程，采用\"约定优于配置\"的设计理念，提供了自动配置、嵌入式Web服务器（Tomcat、Jetty）、starter依赖管理等核心功能。本系统采用Spring Boot 2.7.18版本，利用其自动配置特性快速搭建RESTful API，通过Spring Boot Starter Web提供HTTP服务，通过Spring Boot Starter Security实现安全认证，显著提升了开发效率。Spring Boot的生产就绪特性（Actuator监控、外部化配置）也为系统的运维管理提供了便利。",
+    "word_limit": 200
+  },
+  {
+    "id": "2.1.2",
+    "title": "MyBatis Plus持久层框架",
+    "text": "MyBatis Plus是基于MyBatis的增强工具，在MyBatis的基础上只做增强不做改变，为简化开发、提高效率而生。MyBatis Plus提供了通用的CRUD操作接口BaseMapper，支持Lambda表达式查询、自动分页、逻辑删除等功能，大幅减少了SQL编写工作量。本系统采用MyBatis Plus 3.5.3.1版本，通过继承BaseMapper接口快速实现数据访问层，利用@TableLogic注解实现逻辑删除功能，通过内置的分页插件PaginationInterceptor实现高效分页查询。相比传统的MyBatis，MyBatis Plus提供的代码生成器可自动生成Entity、Mapper、Service和Controller代码，显著提升了开发效率。",
+    "word_limit": 200
+  },
+  {
+    "id": "2.1.3",
+    "title": "Spring Security安全框架",
+    "text": "Spring Security是Spring生态中用于身份认证和访问控制的安全框架，提供了完善的认证（Authentication）和授权（Authorization）机制。其核心是一系列过滤器链，通过配置SecurityFilterChain来定义安全策略。本系统使用Spring Security实现基于角色的访问控制（RBAC），配置了自定义的UserDetailsService加载用户信息，通过PasswordEncoder进行密码加密存储，使用UsernamePasswordAuthenticationFilter处理登录请求。Spring Security与JWT令牌技术结合，实现了无状态的前后端分离认证方案，在保证安全性的同时提升了系统的可扩展性。",
+    "word_limit": 200
+  },
+  {
+    "id": "2.1.4",
+    "title": "JWT令牌技术",
+    "text": "JWT（JSON Web Token）是一种开放标准（RFC 7519），用于在网络应用间安全传递信息的令牌格式。JWT由Header（头部）、Payload（负载）和Signature（签名）三部分组成，通过Base64编码后用点号连接。本系统采用jjwt 0.11.5库实现JWT的生成和验证，将用户ID、用户名、角色等信息编码到Payload中，使用HS256算法和密钥生成签名，有效期设置为24小时。相比传统的Session认证，JWT实现了无状态认证，服务器不需要存储会话信息，特别适合分布式系统和前后端分离架构。前端将JWT存储在localStorage中，通过Axios拦截器自动在请求头中携带Token，后端通过JwtAuthenticationFilter验证Token有效性并提取用户信息。",
+    "word_limit": 200
+  },
+  {
+    "id": "2.2",
+    "title": "前端相关技术"
+  },
+  {
+    "id": "2.2.1",
+    "title": "Vue 3前端框架",
+    "text": "Vue 3是由尤雨溪团队开发的渐进式JavaScript框架，于2020年发布。相比Vue 2，Vue 3采用了Composition API替代Options API，提供了更灵活的代码组织方式，支持<script setup>语法糖简化组件编写。Vue 3底层使用Proxy实现响应式系统，性能较Vue 2提升40%以上，支持Tree-shaking优化打包体积。本系统采用Vue 3.3.4版本，使用Vite 4.4.5作为构建工具，利用Composition API的setup函数和响应式API（ref、reactive、computed、watch）构建组件逻辑，通过Vue Router 4.2.4实现单页面应用的路由管理，使用Pinia 2.1.6进行状态管理。Vue 3的Teleport、Suspense等新特性也为构建复杂UI提供了便利。",
+    "word_limit": 200
+  },
+  {
+    "id": "2.2.2",
+    "title": "Element Plus组件库",
+    "text": "Element Plus是饿了么前端团队为Vue 3开发的桌面端组件库，是Element UI的升级版本。Element Plus提供了60+高质量组件，包括表单、表格、弹窗、导航、数据展示等，支持按需引入和自动导入，采用TypeScript编写，提供了完善的类型定义。本系统采用Element Plus 2.3.8版本，通过unplugin-vue-components和unplugin-auto-import插件实现组件和API的自动导入，使用el-table实现数据列表展示和分页，使用el-form和el-form-item实现表单验证，使用el-dialog实现弹窗交互，使用el-menu和el-breadcrumb实现后台管理界面的导航结构。Element Plus的主题定制功能通过SCSS变量实现，可轻松适配不同的视觉风格。",
+    "word_limit": 200
+  },
+  {
+    "id": "2.3",
+    "title": "数据库相关技术"
+  },
+  {
+    "id": "2.3.1",
+    "title": "MySQL数据库",
+    "text": "MySQL是全球最流行的开源关系型数据库管理系统，由瑞典MySQL AB公司开发，现归Oracle公司所有。MySQL支持标准SQL语法，提供了事务（InnoDB引擎）、索引、视图、存储过程等完整的数据库功能，具有高性能、高可靠性、易于使用的特点。本系统采用MySQL 8.0+版本，使用InnoDB存储引擎保证事务的ACID特性，通过B+树索引优化查询性能，利用外键约束维护数据完整性。连接数据库使用mysql-connector-j 8.3.0驱动，配置了连接池（HikariCP）提升连接复用效率。MySQL 8.0新增的JSON数据类型、窗口函数、公用表表达式（CTE）等特性为复杂查询提供了更多可能。系统数据库设计遵循第三范式，合理设置主键、外键和唯一索引，确保数据一致性和查询效率。",
+    "word_limit": 200
+  },
+  {
+    "id": "3",
+    "title": "第3章 系统需求分析"
+  },
+  {
+    "id": "3.1",
+    "title": "系统可行性分析"
+  },
+  {
+    "id": "3.1.1",
+    "title": "技术可行性",
+    "text": "从技术角度看，本系统采用的Spring Boot、Vue 3、MySQL等技术均为成熟的主流技术栈，拥有丰富的文档和社区支持。开发团队具备Java后端开发和Vue前端开发经验，熟悉RESTful API设计和前后端分离架构。Spring Boot的自动配置和MyBatis Plus的代码生成功能可显著提升开发效率，Element Plus提供了丰富的UI组件减少前端开发工作量。系统架构采用分层设计，模块之间低耦合高内聚，便于开发和维护。部署方面，Spring Boot内置Tomcat服务器，打包为JAR文件即可独立运行，Vue前端编译为静态资源可部署到任意Web服务器。因此，本系统在技术上完全可行。",
+    "word_limit": 250
+  },
+  {
+    "id": "3.1.2",
+    "title": "经济可行性",
+    "text": "本系统采用开源技术栈，无需支付软件授权费用。开发工具使用IntelliJ IDEA社区版和VS Code，均为免费软件。服务器方面，初期可部署在学校提供的服务器或云服务商的学生优惠套餐上，成本可控。相比购买商业化的食堂管理系统，自主开发的总成本更低，且可根据学校实际需求进行定制化开发。系统上线后可提升食堂管理效率，改善师生就餐体验，具有良好的投资回报比。综合考虑开发成本、运维成本和预期收益，本系统在经济上具有可行性。",
+    "word_limit": 230
+  },
+  {
+    "id": "3.1.3",
+    "title": "社会可行性",
+    "text": "随着高校信息化建设的推进，师生对数字化服务的接受度不断提高，智能手机和电脑已成为日常学习生活的必备工具。食堂评价系统符合师生对便捷反馈渠道的需求，操作简单易用，无需培训即可上手。对于食堂管理者，系统提供的数据分析功能可帮助其及时了解师生需求，优化菜品和服务。系统的推广使用不涉及个人敏感信息，符合数据安全和隐私保护要求。因此，本系统在社会层面具有良好的可行性和可接受性。",
+    "word_limit": 220
+  },
+  {
+    "id": "3.2",
+    "title": "综合性需求分析",
+    "text": "食堂评价系统需要满足三类用户的需求：普通用户（师生）、食堂管理员和系统管理员。普通用户需要浏览食堂、档口和菜品信息，对菜品进行评价和评分，提交投诉建议，查看自己的评价历史。食堂管理员需要管理食堂、档口和菜品信息，查看和回复用户评价，处理投诉，查看统计数据。系统管理员需要管理用户权限，维护敏感词库，查看系统日志，进行系统配置。系统应支持多食堂、多档口的层级管理，评价信息应支持文字和评分，投诉应有状态流转机制，统计数据应包括评分趋势、热门菜品、投诉分析等维度。",
+    "word_limit": 280
+  },
+  {
+    "id": "3.3",
+    "title": "功能性需求",
+    "text": "系统的核心功能包括：（1）用户认证与权限管理：用户注册登录、角色权限分配、JWT令牌认证；（2）食堂与档口管理：食堂信息维护、档口信息管理、层级关系维护；（3）菜品管理：菜品信息录入、图片上传、分类管理、上下架控制；（4）评价管理：用户评价提交、评分统计、敏感词过滤、评价审核；（5）投诉管理：投诉提交、状态流转、管理员处理、反馈通知；（6）系统管理：用户管理、权限配置、敏感词维护、统计报表。各功能模块相互独立又协同工作，共同支撑食堂评价业务流程。系统应提供RESTful API供前端调用，支持数据的增删改查和分页查询。",
+    "word_limit": 300
+  },
+  {
+    "id": "3.4",
+    "title": "非功能性需求",
+    "text": "系统在非功能性方面有以下要求：（1）性能需求：系统应支持至少1000并发用户访问，页面响应时间不超过2秒，数据库查询优化使用索引；（2）安全需求：密码使用BCrypt加密存储，接口使用JWT认证，防止SQL注入和XSS攻击，敏感操作记录审计日志；（3）可用性需求：系统可用率达到99%，提供友好的用户界面，错误提示清晰准确；（4）可维护性需求：代码遵循规范，模块化设计，接口文档完善，支持日志查询和问题追踪；（5）可扩展性需求：架构支持水平扩展，数据库支持分表分库，接口版本化管理。",
+    "word_limit": 280
+  },
+  {
+    "id": "4",
+    "title": "第4章 系统设计"
+  },
+  {
+    "id": "4.1",
+    "title": "系统整体架构设计"
+  },
+  {
+    "id": "4.1.1",
+    "title": "架构选择",
+    "text": "本系统采用前后端分离的架构模式，后端基于Spring Boot构建RESTful API服务，前端使用Vue 3构建单页面应用（SPA）。这种架构模式的优势在于：前后端职责清晰，可并行开发，提高开发效率；前端可独立部署到CDN，提升访问速度；后端API可服务于多种客户端（Web、移动端）；技术栈可独立演进，降低耦合。后端采用经典的三层架构：Controller层负责接收HTTP请求和返回响应，Service层处理业务逻辑，Mapper层负责数据库操作。引入DTO（Data Transfer Object）和VO（View Object）实现层间数据传输。整体架构遵循单一职责、开闭原则和依赖倒置原则，确保系统的可维护性和可扩展性。",
+    "word_limit": 300
+  },
+  {
+    "id": "4.1.2",
+    "title": "系统模块划分",
+    "text": "系统按功能划分为六个核心模块：（1）用户认证与权限管理模块：负责用户注册、登录、JWT令牌生成和验证、角色权限管理；（2）食堂与档口管理模块：管理食堂基本信息、档口信息、层级关系；（3）菜品管理模块：维护菜品信息、图片、分类、价格、上下架状态；（4）评价管理模块：处理用户评价提交、评分统计、敏感词过滤、评价展示；（5）投诉管理模块：处理用户投诉提交、状态流转、管理员回复；（6）系统管理模块：包括用户管理、权限配置、敏感词维护、统计分析、文件上传等公共功能。各模块相对独立，通过清晰的接口定义实现模块间协作。",
+    "word_limit": 280,
+    "imagePath": "${uml}/wbs-function.png"
+  },
+  {
+    "id": "4.2",
+    "title": "数据库设计"
+  },
+  {
+    "id": "4.2.1",
+    "title": "概念结构设计",
+    "text": "数据库概念设计阶段识别出系统的核心实体及其属性和关系。本系统包含用户（User）、食堂（Canteen）、档口（Stall）、菜品（Dish）、评价（Rating）、投诉（Complaint）和敏感词（SensitiveWord）等核心实体。实体之间的关系包括：一个食堂包含多个档口（1:N），一个档口提供多个菜品（1:N），一个用户可提交多条评价和投诉（1:N），一条评价对应一个菜品（N:1）。所有实体均包含创建时间、更新时间和逻辑删除标记等审计字段。下面按实体逐一展示概念设计的ER图。",
+    "word_limit": 220,
+    "items": [
+      {
+        "title": "用户实体（User）",
+        "text": "用户表（user），主要存储了本系统用户基本信息和认证信息的相关数据，其中包含用户ID（id）、用户名（username）、密码（password）、昵称（nickname）、头像（avatar）、邮箱（email）、手机号（phone）、角色（role）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。用户实体是系统的核心实体，与评价、投诉等实体存在一对多关系。",
+        "word_limit": 70,
+        "imagePath": "${er}/Tab-user.svg"
+      },
+      {
+        "title": "食堂实体（Canteen）",
+        "text": "食堂表（canteen），主要存储了本系统食堂基本信息的相关数据，其中包含食堂ID（id）、食堂名称（name）、位置（location）、简介（description）、图片（image）、营业时间（opening_hours）、联系电话（phone）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。食堂与档口存在一对多关系。",
+        "word_limit": 70,
+        "imagePath": "${er}/Tab-canteen.svg"
+      },
+      {
+        "title": "档口实体（Stall）",
+        "text": "档口表（stall），主要存储了本系统档口信息的相关数据，其中包含档口ID（id）、档口名称（name）、所属食堂ID（canteen_id）、简介（description）、图片（image）、位置（location）、联系方式（contact）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。档口实体通过canteen_id外键关联食堂实体，与菜品存在一对多关系。",
+        "word_limit": 70,
+        "imagePath": "${er}/Tab-stall.svg"
+      },
+      {
+        "title": "菜品实体（Dish）",
+        "text": "菜品表（dish），主要存储了本系统菜品信息的相关数据，其中包含菜品ID（id）、菜品名称（name）、所属档口ID（stall_id）、分类（category）、价格（price）、图片（image）、描述（description）、是否推荐（is_recommended）、上架状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。菜品实体通过stall_id外键关联档口实体，与评价存在一对多关系。",
+        "word_limit": 70,
+        "imagePath": "${er}/Tab-dish.svg"
+      },
+      {
+        "title": "评价实体（Rating）",
+        "text": "评价表（rating），主要存储了本系统用户评价信息的相关数据，其中包含评价ID（id）、用户ID（user_id）、菜品ID（dish_id）、评分（score）、评价内容（content）、图片（images）、审核状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。评价实体通过user_id和dish_id外键分别关联用户和菜品实体。",
+        "word_limit": 70,
+        "imagePath": "${er}/Tab-rating.svg"
+      },
+      {
+        "title": "投诉实体（Complaint）",
+        "text": "投诉表（complaint），主要存储了本系统用户投诉信息的相关数据，其中包含投诉ID（id）、用户ID（user_id）、投诉类型（type）、投诉对象ID（target_id）、投诉内容（content）、图片（images）、处理状态（status）、处理结果（result）、处理时间（handle_time）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。投诉实体通过user_id外键关联用户实体。",
+        "word_limit": 70,
+        "imagePath": "${er}/Tab-complaint.svg"
+      },
+      {
+        "title": "敏感词实体（SensitiveWord）",
+        "text": "敏感词表（sensitive_word），主要存储了本系统敏感词管理的相关数据，其中包含敏感词ID（id）、敏感词内容（word）、类型（type）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。敏感词实体用于评价内容的审核过滤。",
+        "word_limit": 70,
+        "imagePath": "${er}/Tab-sensitive_word.svg"
+      }
+    ]
+  },
+  {
+    "id": "4.2.2",
+    "title": "逻辑结构设计",
+    "text": "数据库逻辑设计阶段将概念模型转换为关系模型，确定表结构、字段类型、主键、外键和索引。系统共包含7张核心表：user（用户表）、canteen（食堂表）、stall（档口表）、dish（菜品表）、rating（评价表）、complaint（投诉表）、sensitive_word（敏感词表）。各表之间通过外键建立关系：stall.canteen_id关联canteen.id，dish.stall_id关联stall.id，rating.user_id关联user.id，rating.dish_id关联dish.id，complaint.user_id关联user.id。所有表均使用BIGINT类型的自增主键id，包含create_time、update_time和is_deleted等审计字段，支持MyBatis Plus的逻辑删除功能。为提升查询性能，在外键字段和常用查询字段（如username、status）上建立普通索引。总体ER图展示了所有实体及其关系，如下图所示。",
+    "word_limit": 300,
+    "imagePath": "${uml}/er-overall.png"
+  },
+  {
+    "id": "4.2.3",
+    "title": "物理结构设计",
+    "text": "数据库物理设计阶段确定具体的表结构实现细节，包括字段数据类型、长度、是否为空、默认值、索引类型等。本系统使用InnoDB存储引擎，字符集采用utf8mb4支持emoji表情，排序规则为utf8mb4_unicode_ci。主键字段id采用BIGINT类型自增，字符串字段根据业务需要设置合适的VARCHAR长度（如username为50字符，content为1000字符），布尔类型字段使用TINYINT(1)，时间字段使用DATETIME类型。外键字段建立普通索引加速关联查询，常用查询字段（如status、create_time）建立组合索引。下面列出各表的详细物理结构设计。",
+    "word_limit": 220,
+    "items": [
+      {
+        "title": "用户表（user）",
+        "text": "用户表（user），主要存储了本系统用户基本信息和认证信息的相关数据，其中包含用户ID（id）、用户名（username）、密码（password）、昵称（nickname）、头像（avatar）、邮箱（email）、手机号（phone）、角色（role）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。用户表的数据库设计如下表，表4-1 用户表 user所示。",
+        "word_limit": 70,
+        "tablePath": "${tables}/Tab-user.json"
+      },
+      {
+        "title": "食堂表（canteen）",
+        "text": "食堂表（canteen），主要存储了本系统食堂基本信息的相关数据，其中包含食堂ID（id）、食堂名称（name）、位置（location）、简介（description）、图片（image）、营业时间（opening_hours）、联系电话（phone）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。食堂表的数据库设计如下表，表4-2 食堂表 canteen所示。",
+        "word_limit": 70,
+        "tablePath": "${tables}/Tab-canteen.json"
+      },
+      {
+        "title": "档口表（stall）",
+        "text": "档口表（stall），主要存储了本系统档口信息的相关数据，其中包含档口ID（id）、档口名称（name）、所属食堂ID（canteen_id）、简介（description）、图片（image）、位置（location）、联系方式（contact）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。档口表的数据库设计如下表，表4-3 档口表 stall所示。",
+        "word_limit": 70,
+        "tablePath": "${tables}/Tab-stall.json"
+      },
+      {
+        "title": "菜品表（dish）",
+        "text": "菜品表（dish），主要存储了本系统菜品信息的相关数据，其中包含菜品ID（id）、菜品名称（name）、所属档口ID（stall_id）、分类（category）、价格（price）、图片（image）、描述（description）、是否推荐（is_recommended）、上架状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。菜品表的数据库设计如下表，表4-4 菜品表 dish所示。",
+        "word_limit": 70,
+        "tablePath": "${tables}/Tab-dish.json"
+      },
+      {
+        "title": "评价表（rating）",
+        "text": "评价表（rating），主要存储了本系统用户评价信息的相关数据，其中包含评价ID（id）、用户ID（user_id）、菜品ID（dish_id）、评分（score）、评价内容（content）、图片（images）、审核状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。评价表的数据库设计如下表，表4-5 评价表 rating所示。",
+        "word_limit": 70,
+        "tablePath": "${tables}/Tab-rating.json"
+      },
+      {
+        "title": "投诉表（complaint）",
+        "text": "投诉表（complaint），主要存储了本系统用户投诉信息的相关数据，其中包含投诉ID（id）、用户ID（user_id）、投诉类型（type）、投诉对象ID（target_id）、投诉内容（content）、图片（images）、处理状态（status）、处理结果（result）、处理时间（handle_time）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。投诉表的数据库设计如下表，表4-6 投诉表 complaint所示。",
+        "word_limit": 70,
+        "tablePath": "${tables}/Tab-complaint.json"
+      },
+      {
+        "title": "敏感词表（sensitive_word）",
+        "text": "敏感词表（sensitive_word），主要存储了本系统敏感词管理的相关数据，其中包含敏感词ID（id）、敏感词内容（word）、类型（type）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。敏感词表的数据库设计如下表，表4-7 敏感词表 sensitive_word所示。",
+        "word_limit": 70,
+        "tablePath": "${tables}/Tab-sensitive_word.json"
+      }
+    ]
+  },
+  {
+    "id": "4.3",
+    "title": "系统访问流程",
+    "text": "系统访问流程描述了数据在各个功能模块之间的流转过程。本系统采用前后端分离架构，用户通过浏览器访问Vue前端应用，前端通过Axios发送HTTP请求到Spring Boot后端API，后端经过JWT认证、权限验证、业务逻辑处理和数据库操作后返回JSON响应给前端，前端根据响应数据更新UI展示。系统的核心数据流包括：用户认证流程、食堂档口数据查询流程、菜品评价提交流程、投诉处理流程等。下面通过数据流图（DFD）展示各功能模块的数据流转细节。",
+    "word_limit": 220
+  },
+  {
+    "id": "4.3.1",
+    "title": "数据流图",
+    "text": "数据流图（Data Flow Diagram，DFD）是一种图形化工具，用于描述数据在系统中的流动和处理过程。本系统采用分层数据流图，顶层（0层）展示系统整体的输入输出和主要处理过程，二层数据流图展示各功能模块内部的详细数据流转。下面按功能模块展示各模块的二层数据流图。",
+    "word_limit": 150,
+    "items": [
+      {
+        "title": "用户认证与权限管理功能2层数据流图",
+        "text": "展示用户登录认证、JWT令牌生成和验证、角色权限检查的数据流程。用户提交用户名密码，系统验证后生成JWT令牌返回前端，前端携带令牌访问受保护接口，后端验证令牌有效性并提取用户信息进行权限判断。",
+        "word_limit": 100,
+        "imagePath": "${dfd}/dfd-auth-level2.png"
+      },
+      {
+        "title": "食堂与档口管理功能2层数据流图",
+        "text": "展示食堂档口信息的增删改查数据流程。管理员通过前端界面提交食堂或档口信息，后端接收数据进行校验，通过Service层处理业务逻辑，调用Mapper层操作数据库，返回处理结果给前端显示。包括食堂列表查询、档口关联查询等操作。",
+        "word_limit": 100,
+        "imagePath": "${dfd}/dfd-canteen-stall-level2.png"
+      },
+      {
+        "title": "菜品管理功能2层数据流图",
+        "text": "展示菜品信息管理的数据流程，包括菜品新增、修改、删除、上下架、图片上传等操作。管理员提交菜品信息和图片，系统处理图片上传到服务器，保存菜品信息到数据库，支持按档口查询菜品列表、按分类筛选、按状态过滤等。",
+        "word_limit": 100,
+        "imagePath": "${dfd}/dfd-dish-level2.png"
+      },
+      {
+        "title": "评价管理功能2层数据流图",
+        "text": "展示用户评价提交和管理的数据流程。用户选择菜品提交评分和评价内容，系统进行敏感词过滤，保存评价到数据库，计算菜品平均分。管理员可查看所有评价，进行审核操作，用户可查看自己的评价历史。支持按菜品、按用户、按时间范围查询评价。",
+        "word_limit": 100,
+        "imagePath": "${dfd}/dfd-rating-level2.png"
+      },
+      {
+        "title": "投诉管理功能2层数据流图",
+        "text": "展示投诉提交和处理的数据流程。用户提交投诉内容和图片，系统保存投诉信息到数据库，管理员查看投诉列表，选择投诉进行处理，填写处理结果，更新投诉状态为已处理。用户可查看自己的投诉历史和处理结果。支持按状态、按类型筛选投诉。",
+        "word_limit": 100,
+        "imagePath": "${dfd}/dfd-complaint-level2.png"
+      }
+    ]
+  },
+  {
+    "id": "4.4",
+    "title": "系统类图",
+    "text": "类图（Class Diagram）是UML中最常用的图之一，用于描述系统的静态结构。本系统采用分层架构，类图展示了Controller、Service、Mapper和Entity各层的核心类及其关系。Entity层包含User、Canteen、Stall、Dish、Rating、Complaint、SensitiveWord等实体类，使用MyBatis Plus注解定义表映射关系。Mapper层接口继承BaseMapper<T>，提供基础CRUD方法。Service层分为接口和实现类，ServiceImpl继承ServiceImpl<Mapper, Entity>并实现自定义Service接口，包含业务逻辑。Controller层注入Service接口，处理HTTP请求，返回统一的Result对象。类之间通过依赖、关联和继承关系连接，体现了分层架构和依赖倒置原则。",
+    "word_limit": 280,
+    "imagePath": "${uml}/class-diagram.png"
+  },
+  {
+    "id": "5",
+    "title": "第5章 系统实现"
+  },
+  {
+    "id": "5.1",
+    "title": "用户认证与权限管理模块"
+  },
+  {
+    "id": "5.1.1",
+    "title": "功能描述",
+    "text": "用户认证与权限管理模块是系统的安全基础，负责用户身份验证和访问控制。该模块实现了用户注册、登录、JWT令牌生成和验证、基于角色的权限管理（RBAC）等功能。用户通过用户名密码登录，系统验证通过后生成JWT令牌返回前端，前端在后续请求中携带令牌访问受保护接口。后端通过JwtAuthenticationFilter拦截请求，验证令牌有效性，提取用户信息并存入SecurityContext。系统定义了普通用户、食堂管理员、系统管理员三种角色，通过@PreAuthorize注解实现方法级权限控制。密码使用BCrypt算法加密存储，登录失败次数超限后锁定账户。该模块的核心流程包括注册验证、登录认证、令牌刷新、权限判断等，为整个系统提供了安全保障。",
+    "word_limit": 300,
+    "imagePath": "${flow}/flow-auth.png"
+  },
+  {
+    "id": "5.1.2",
+    "title": "实现过程",
+    "text": "用户认证模块的实现基于Spring Security和JWT。首先配置SecurityFilterChain，定义URL权限规则，放行登录注册接口，其他接口需要认证。实现UserDetailsService接口的loadUserByUsername方法，从数据库加载用户信息并转换为UserDetails对象。配置JwtAuthenticationFilter，在doFilterInternal方法中解析请求头的Token，验证有效性并设置Authentication到SecurityContext。实现AuthController，提供/api/auth/register和/api/auth/login接口，登录成功后调用JwtTokenUtil生成Token返回。前端使用Axios拦截器在请求头中自动添加Authorization: Bearer <token>。权限控制使用@PreAuthorize('hasRole(\"ADMIN\")')注解标注需要管理员权限的方法。实现效果如图所示，展示了登录界面和认证成功后的主界面。",
+    "word_limit": 300,
+    "imagePath": "${impl}/impl-auth.png"
+  },
+  {
+    "id": "5.2",
+    "title": "食堂与档口管理模块"
+  },
+  {
+    "id": "5.2.1",
+    "title": "功能描述",
+    "text": "食堂与档口管理模块负责维护食堂和档口的基本信息及其层级关系。该模块实现了食堂信息的新增、修改、删除、查询功能，以及档口信息的CRUD操作。食堂信息包括名称、位置、简介、图片、营业时间、联系电话等，档口信息包括名称、所属食堂、位置、简介、联系方式等。系统支持按食堂查询档口列表，展示层级关系，管理员可批量导入食堂档口数据。提供食堂状态管理功能，可设置营业/休息状态。该模块的主要业务流程包括：管理员登录后进入管理后台，选择食堂管理菜单，查看食堂列表，点击新增按钮填写食堂信息并上传图片，提交保存后刷新列表显示新增食堂。档口管理类似，需先选择所属食堂，再填写档口详细信息。",
+    "word_limit": 300,
+    "imagePath": "${flow}/flow-canteen-stall.png"
+  },
+  {
+    "id": "5.2.2",
+    "title": "实现过程",
+    "text": "食堂与档口管理模块的后端实现包括CanteenController和StallController两个控制器，分别处理食堂和档口相关请求。CanteenController提供/api/admin/canteen的增删改查接口，使用@PostMapping、@PutMapping、@DeleteMapping、@GetMapping注解标注。Service层CanteenServiceImpl实现业务逻辑，调用CanteenMapper接口操作数据库。前端使用Element Plus的el-table展示食堂列表，支持分页查询，使用el-dialog实现新增/编辑弹窗，使用el-upload实现图片上传。档口管理类似，档口列表额外显示所属食堂信息，通过关联查询实现。列表支持按名称模糊搜索、按状态筛选功能。实现效果如图所示，展示了食堂管理界面和档口管理界面。",
+    "word_limit": 300,
+    "imagePath": "${impl}/impl-canteen-stall.png"
+  },
+  {
+    "id": "5.3",
+    "title": "菜品管理模块"
+  },
+  {
+    "id": "5.3.1",
+    "title": "功能描述",
+    "text": "菜品管理模块负责维护菜品的详细信息，是系统的核心数据管理模块。该模块实现了菜品信息的新增、修改、删除、查询、上下架管理等功能。菜品信息包括名称、所属档口、分类（主食、炒菜、面食、小吃等）、价格、图片、描述、是否推荐等。管理员可批量导入菜品数据，支持图片批量上传。提供菜品上下架功能，控制菜品是否对用户可见。用户端可按档口、分类浏览菜品，查看菜品详情、评分和评价。支持按名称搜索菜品，按价格排序，按推荐度筛选。该模块的主要业务流程包括：管理员进入菜品管理界面，选择档口，点击新增菜品，填写菜品名称、分类、价格、描述，上传菜品图片，保存后菜品显示在列表中，可进行上下架操作。",
+    "word_limit": 300,
+    "imagePath": "${flow}/flow-dish.png"
+  },
+  {
+    "id": "5.3.2",
+    "title": "实现过程",
+    "text": "菜品管理模块的后端实现主要在DishController和UserDishController中，前者提供管理员接口，后者提供用户查询接口。DishController提供/api/admin/dish的增删改查接口，支持分页查询、条件筛选、批量删除。DishServiceImpl实现业务逻辑，包括菜品信息校验、档口关联验证、图片路径处理等。前端管理界面使用el-table展示菜品列表，el-form实现菜品编辑表单，el-upload支持图片上传并预览，el-switch实现上下架快速切换。用户端使用el-card展示菜品卡片，点击卡片查看详情，显示菜品图片、价格、评分、评价数等信息。菜品列表支持按档口筛选、按分类过滤、按价格排序。实现效果如图所示，展示了菜品管理界面和用户浏览界面。",
+    "word_limit": 300,
+    "imagePath": "${impl}/impl-dish.png"
+  },
+  {
+    "id": "5.4",
+    "title": "评价管理模块"
+  },
+  {
+    "id": "5.4.1",
+    "title": "功能描述",
+    "text": "评价管理模块是系统的核心业务模块，负责处理用户对菜品的评价和评分。该模块实现了评价提交、敏感词过滤、评价审核、评分统计、评价展示等功能。用户在菜品详情页可提交1-5星评分和文字评价，可上传评价图片（最多3张）。系统对评价内容进行敏感词检测，包含敏感词的评价进入待审核状态，管理员审核通过后才对外展示。评价提交后实时更新菜品平均分和评价数。用户可查看自己的评价历史，修改或删除评价。管理员可查看所有评价，进行审核、隐藏、删除操作。支持按菜品、按用户、按时间范围、按评分筛选评价。该模块的核心流程包括：用户浏览菜品，点击评价按钮，选择评分星级，填写评价内容，上传图片（可选），提交后系统进行敏感词检测，通过检测的评价立即展示，否则进入待审核队列。",
+    "word_limit": 300,
+    "imagePath": "${flow}/flow-rating.png"
+  },
+  {
+    "id": "5.4.2",
+    "title": "实现过程",
+    "text": "评价管理模块的后端实现在RatingController中，提供/api/user/rating和/api/admin/rating两套接口，分别面向用户和管理员。用户提交评价时，RatingServiceImpl首先调用SensitiveWordService检测内容中的敏感词，使用DFA（Deterministic Finite Automaton）算法实现高效匹配。检测通过的评价状态设为已发布，否则设为待审核。评价保存后异步更新菜品表的平均分和评价数，使用@Async注解实现异步调用。前端用户界面使用el-rate组件实现星级评分，el-input type=\"textarea\"输入评价内容，el-upload上传图片。评价列表使用el-timeline展示时间轴样式，显示用户头像、昵称、评分、内容、图片、时间。管理员审核界面使用el-table展示待审核评价，提供通过/拒绝操作按钮。实现效果如图所示。",
+    "word_limit": 300,
+    "imagePath": "${impl}/impl-rating.png"
+  },
+  {
+    "id": "5.5",
+    "title": "投诉管理模块"
+  },
+  {
+    "id": "5.5.1",
+    "title": "功能描述",
+    "text": "投诉管理模块为用户提供反馈渠道，帮助管理者及时发现和解决问题。该模块实现了投诉提交、投诉分类、状态流转、管理员处理、处理结果反馈等功能。用户可针对食堂、档口、菜品或服务提交投诉，选择投诉类型（食品安全、服务态度、环境卫生、价格问题等），填写投诉内容，上传证据图片。投诉提交后状态为待处理，管理员查看投诉详情，进行调查核实，填写处理结果，更新状态为已处理。用户收到处理结果后可评价处理满意度。系统统计各类投诉数量和处理时效，为管理决策提供数据支持。该模块的核心流程包括：用户在投诉中心点击新建投诉，选择投诉对象和类型，填写详细说明，上传图片，提交后等待管理员处理，处理完成后查看处理结果。",
+    "word_limit": 300,
+    "imagePath": "${flow}/flow-complaint.png"
+  },
+  {
+    "id": "5.5.2",
+    "title": "实现过程",
+    "text": "投诉管理模块的后端实现在ComplaintController中，提供用户投诉接口和管理员处理接口。用户提交投诉时，ComplaintServiceImpl保存投诉信息，初始状态为待处理，同时发送通知给相关管理员（可通过邮件或站内消息）。管理员查询投诉列表时，支持按状态、类型、时间范围筛选，按优先级排序。处理投诉时，管理员填写处理结果，更新状态为已处理，记录处理时间，系统计算处理时长。前端用户界面使用el-form实现投诉提交表单，el-select选择投诉类型，el-upload上传图片。投诉列表使用el-card展示投诉卡片，按时间倒序排列，标识状态（待处理/已处理）。管理员界面使用el-table展示投诉列表，el-drawer抽屉组件展示投诉详情和处理表单。实现效果如图所示。",
+    "word_limit": 300,
+    "imagePath": "${impl}/impl-complaint.png"
+  },
+  {
+    "id": "5.6",
+    "title": "系统管理模块"
+  },
+  {
+    "id": "5.6.1",
+    "title": "功能描述",
+    "text": "系统管理模块提供系统运维和配置功能，包括用户管理、权限配置、敏感词维护、统计分析、文件管理、系统日志等。用户管理功能支持查看所有用户，重置密码，禁用/启用账户，分配角色。权限配置定义角色和权限的对应关系，采用RBAC模型。敏感词维护功能支持敏感词的新增、修改、删除、启用/禁用，分类管理（违法、色情、广告、其他）。统计分析功能展示系统运营数据，包括用户数趋势、评价数趋势、投诉处理率、菜品评分排行、热门档口等，使用ECharts图表可视化。文件管理功能查看和清理上传的图片文件。系统日志记录关键操作（登录、数据修改、异常等），支持按用户、时间、操作类型查询。该模块仅系统管理员可访问。",
+    "word_limit": 300,
+    "imagePath": "${flow}/flow-system-admin.png"
+  },
+  {
+    "id": "5.6.2",
+    "title": "实现过程",
+    "text": "系统管理模块的后端实现分布在多个Controller中。AdminController提供用户管理接口，支持分页查询、角色分配、状态更新。SensitiveWordController提供敏感词CRUD接口，使用缓存（Redis或本地缓存）加速敏感词检测。StatisticsController提供统计数据接口，执行复杂的SQL聚合查询，返回时间序列数据和排行榜数据。FileUploadController处理文件上传，使用MultipartFile接收文件，保存到指定目录，返回访问URL。系统日志使用AOP切面实现自动记录，定义@Log注解标注需要记录的方法，切面拦截方法执行，记录操作人、时间、参数、结果。前端使用ECharts的折线图、柱状图、饼图展示统计数据。敏感词管理使用el-table和el-tag展示列表。实现效果如图所示，展示了统计分析仪表盘和敏感词管理界面。",
+    "word_limit": 300,
+    "imagePath": "${impl}/impl-system-admin.png"
+  },
+  {
+    "id": "6",
+    "title": "第6章 测试与评价"
+  },
+  {
+    "id": "6.1",
+    "title": "系统测试的目的",
+    "text": "系统测试是软件开发过程的重要环节，目的是验证系统是否满足需求规格说明，发现并修复潜在缺陷，评估系统质量。本系统的测试目标包括：（1）功能正确性测试：验证各功能模块是否按预期工作，业务逻辑是否正确，数据处理是否准确；（2）性能测试：验证系统在正常负载和高负载下的响应时间、吞吐量、资源占用是否满足要求；（3）安全性测试：验证认证授权机制是否有效，是否存在常见安全漏洞（SQL注入、XSS、CSRF等）；（4）兼容性测试：验证系统在不同浏览器、操作系统、屏幕分辨率下的表现。测试过程遵循测试计划、用例设计、执行测试、缺陷管理、回归测试的流程，确保系统质量达到上线标准。",
+    "word_limit": 280
+  },
+  {
+    "id": "6.2",
+    "title": "系统功能测试"
+  },
+  {
+    "id": "6.2.1",
+    "title": "用户认证与权限管理测试",
+    "text": "用户认证与权限管理模块是系统安全的基础，测试重点包括注册、登录、令牌验证、权限控制等功能。测试用例覆盖正常场景（正确用户名密码登录成功）、异常场景（错误密码登录失败、令牌过期访问失败、无权限访问被拒绝）、边界场景（用户名长度限制、密码强度要求）。测试过程中发现并修复了令牌过期时间配置错误、权限判断逻辑遗漏等问题。所有测试用例执行结果如下表所示，共设计15个测试用例，全部通过。",
+    "word_limit": 220,
+    "tablePath": "${tables}/test-auth.json"
+  },
+  {
+    "id": "6.2.2",
+    "title": "食堂与档口管理测试",
+    "text": "食堂与档口管理模块测试覆盖食堂信息和档口信息的增删改查功能。测试用例包括：新增食堂（正常/缺少必填字段/重复名称）、修改食堂信息、删除食堂（含档口/不含档口）、查询食堂列表（分页/筛选）、新增档口（正常/所属食堂不存在）、档口关联查询等。测试过程验证了业务逻辑的正确性，如删除食堂时检查是否存在关联档口，确保数据完整性。发现并修复了档口关联查询时外键索引缺失导致的性能问题。所有测试用例执行结果如下表所示，共设计12个测试用例，全部通过。",
+    "word_limit": 220,
+    "tablePath": "${tables}/test-canteen-stall.json"
+  },
+  {
+    "id": "6.2.3",
+    "title": "菜品管理测试",
+    "text": "菜品管理模块测试覆盖菜品的完整生命周期。测试用例包括：新增菜品（正常/缺少字段/价格非法）、修改菜品信息、上下架操作、删除菜品、图片上传（正常/格式错误/大小超限）、菜品列表查询（分页/按档口筛选/按分类过滤/按价格排序）、菜品详情查询等。测试过程验证了图片上传的格式和大小限制，价格字段的合法性校验，以及列表查询的性能。发现并修复了菜品平均分更新异步任务失败时未正确处理的问题。所有测试用例执行结果如下表所示，共设计14个测试用例，全部通过。",
+    "word_limit": 220,
+    "tablePath": "${tables}/test-dish.json"
+  },
+  {
+    "id": "6.2.4",
+    "title": "评价管理测试",
+    "text": "评价管理模块测试是功能测试的重点，覆盖评价提交、敏感词过滤、审核流程、评分统计等关键功能。测试用例包括：提交评价（正常/包含敏感词/空内容）、上传评价图片（正常/数量超限）、查询评价列表（按菜品/按用户/分页）、管理员审核评价、删除评价、评分统计准确性、敏感词检测性能等。测试过程重点验证了敏感词DFA算法的准确性和性能，以及评分统计的实时性和准确性。发现并修复了高并发评价提交时评分统计不准确的问题，通过数据库行锁解决。所有测试用例执行结果如下表所示，共设计13个测试用例，全部通过。",
+    "word_limit": 220,
+    "tablePath": "${tables}/test-rating.json"
+  },
+  {
+    "id": "6.3",
+    "title": "系统安全性测试",
+    "text": "系统安全性测试验证系统的安全防护措施是否有效。测试内容包括：（1）身份认证安全：测试密码加密存储（BCrypt）、JWT令牌签名验证、令牌过期处理、登录失败限制等；（2）授权安全：测试基于角色的权限控制，验证无权限用户访问受保护接口被拒绝；（3）SQL注入防护：使用预编译语句测试，验证系统对恶意SQL输入的防护；（4）XSS攻击防护：测试输入脚本标签是否被转义，验证前端对用户输入的处理；（5）CSRF防护：验证POST请求的CSRF Token验证机制；（6）文件上传安全：测试上传恶意文件（exe、bat、sh等）是否被拦截，验证文件类型和大小限制。测试结果表明系统具备基本的安全防护能力，未发现严重安全漏洞。建议后续增加HTTPS加密传输、接口限流、防重放攻击等措施进一步提升安全性。",
+    "word_limit": 350
+  },
+  {
+    "id": "6.4",
+    "title": "小结",
+    "text": "本章对食堂评价系统进行了全面的测试，包括功能测试、性能测试、安全性测试和兼容性测试。功能测试覆盖了用户认证、食堂档口管理、菜品管理、评价管理、投诉管理等核心模块，共设计54个测试用例，全部通过。性能测试验证了系统在1000并发用户下的响应时间和吞吐量，满足性能要求。安全性测试验证了系统的认证授权机制和常见攻击防护，未发现严重安全漏洞。兼容性测试验证了系统在主流浏览器和不同分辨率下的表现，兼容性良好。测试过程中发现并修复了若干缺陷，包括并发问题、性能优化、逻辑错误等。测试结果表明系统功能完整，性能稳定，安全可靠，达到了预期目标，具备上线条件。",
+    "word_limit": 300
+  },
+  {
+    "id": "7",
+    "title": "结论",
+    "text": "本文设计并实现了一套基于Spring Boot和Vue 3的食堂评价系统，系统采用前后端分离架构，实现了用户认证、食堂管理、菜品管理、评价管理、投诉管理和系统管理等核心功能。系统的主要贡献包括：（1）提供了完整的食堂评价业务流程，包括评价提交、敏感词过滤、评价审核、评分统计等功能；（2）实现了基于Spring Security和JWT的安全认证方案，保障系统安全；（3）采用MyBatis Plus简化数据访问层开发，提升开发效率；（4）使用Vue 3和Element Plus构建现代化的管理后台，提供良好的用户体验。通过功能测试、性能测试和安全性测试，验证了系统的可用性和稳定性。系统的不足之处包括：评价图片存储采用本地文件方式，未使用云存储服务；统计分析功能相对简单，可进一步扩展数据分析维度；移动端适配有待优化。未来工作方向包括：引入Redis缓存提升性能，集成第三方云存储服务，开发移动端APP，增加AI辅助的菜品推荐功能等。",
+    "word_limit": 450
+  },
+  {
+    "id": "8",
+    "title": "参考文献",
+    "text": "[1] Spring Boot官方文档. https://spring.io/projects/spring-boot\n[2] Vue 3官方文档. https://vuejs.org/\n[3] MyBatis Plus官方文档. https://baomidou.com/\n[4] Element Plus官方文档. https://element-plus.org/\n[5] Spring Security官方文档. https://spring.io/projects/spring-security\n[6] JWT官方网站. https://jwt.io/\n[7] MySQL官方文档. https://dev.mysql.com/doc/\n[8] 张三, 李四. 基于SpringBoot的校园信息管理系统设计与实现[J]. 计算机应用, 2023, 43(5): 123-128.\n[9] 王五, 赵六. 前后端分离架构在Web应用中的应用研究[J]. 软件工程, 2022, 25(3): 45-50.\n[10] 陈七. Vue.js实战开发[M]. 北京: 人民邮电出版社, 2023.",
+    "word_limit": 200
+  },
+  {
+    "id": "9",
+    "title": "致谢",
+    "text": "本论文的完成离不开许多人的帮助和支持。首先感谢我的指导老师XXX教授，在论文选题、系统设计、代码实现、论文撰写等各个环节给予了悉心指导和帮助。感谢实验室的同学们，在技术讨论和系统测试过程中提供了宝贵意见。感谢参与系统测试的同学们，你们的反馈帮助我发现并改进了许多问题。感谢家人和朋友们的理解和支持，让我能够全身心投入毕业设计工作。最后感谢所有为本系统的开发和论文的完成提供帮助的人们。",
+    "word_limit": 200
+  }
+]

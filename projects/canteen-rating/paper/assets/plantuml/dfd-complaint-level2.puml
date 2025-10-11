@@ -1,0 +1,36 @@
+@startuml
+!theme plain
+skinparam linetype ortho
+
+|用户|
+start
+:填写投诉内容;
+:上传证据图片;
+|Controller层|
+:接收投诉请求;
+|Service层|
+:验证投诉内容;
+:设置状态为待处理;
+|Mapper层|
+:保存投诉记录;
+|MySQL数据库|
+:存储投诉数据;
+|通知服务|
+:发送通知给管理员;
+|管理员|
+:查看投诉列表;
+:选择投诉处理;
+:填写处理结果;
+|Service层|
+:更新状态为已处理;
+|Mapper层|
+:更新投诉记录;
+|MySQL数据库|
+:保存处理结果;
+|Controller层|
+:返回处理完成;
+|用户|
+:查看处理结果;
+stop
+
+@enduml

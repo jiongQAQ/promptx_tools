@@ -1,0 +1,10 @@
+{
+  "title": "用户表（user）",
+  "text": "用户表（user），主要存储了本系统用户基本信息和认证信息的相关数据，其中包含用户ID（id）、用户名（username）、密码（password）、昵称（nickname）、头像（avatar）、邮箱（email）、手机号（phone）、角色（role）、状态（status）、创建时间（create_time）、更新时间（update_time）、逻辑删除标记（is_deleted）。用户表的数据库设计如下表，表4-1 用户表 user所示。",
+  "word_limit": 70,
+  "tablePath": "${tables}/Tab-user.json",
+  "id": "4.2.3.1",
+  "parentChapter": "4.2.3",
+  "sourceFile": "chapter.4.2.3.json",
+  "extractedAt": "2025-09-30T10:25:51.840Z"
+}

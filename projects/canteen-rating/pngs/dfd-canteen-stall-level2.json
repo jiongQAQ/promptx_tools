@@ -1,0 +1,10 @@
+{
+  "title": "食堂与档口管理功能2层数据流图",
+  "text": "展示食堂档口信息的增删改查数据流程。管理员通过前端界面提交食堂或档口信息，后端接收数据进行校验，通过Service层处理业务逻辑，调用Mapper层操作数据库，返回处理结果给前端显示。包括食堂列表查询、档口关联查询等操作。",
+  "word_limit": 100,
+  "imagePath": "${dfd}/dfd-canteen-stall-level2.png",
+  "id": "4.3.1.2",
+  "parentChapter": "4.3.1",
+  "sourceFile": "chapter.4.3.1.json",
+  "extractedAt": "2025-09-30T10:25:51.841Z"
+}

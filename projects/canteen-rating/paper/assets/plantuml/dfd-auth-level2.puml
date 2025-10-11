@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+skinparam linetype ortho
+
+|用户|
+start
+:提交用户名密码;
+|后端系统|
+:接收登录请求;
+:验证用户名密码;
+if (验证通过?) then (是)
+  :生成JWT令牌;
+  :返回Token;
+  |用户|
+  :保存Token到localStorage;
+  :携带Token访问接口;
+  |后端系统|
+  :JwtAuthenticationFilter\n提取Token;
+  :验证Token签名和有效期;
+  :提取用户信息;
+  :权限判断;
+  :执行业务逻辑;
+  :返回响应数据;
+else (否)
+  :返回错误信息;
+endif
+stop
+
+@enduml

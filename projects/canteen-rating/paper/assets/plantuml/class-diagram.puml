@@ -1,0 +1,93 @@
+@startuml
+!theme plain
+
+entity "User\n用户" as User {
+  + 用户ID
+  + 用户名
+  + 密码
+  + 角色
+  --
+  + 创建时间
+  + 更新时间
+  + 逻辑删除
+}
+
+entity "Canteen\n食堂" as Canteen {
+  + 食堂ID
+  + 食堂名称
+  + 位置
+  + 营业时间
+  --
+  + 创建时间
+  + 更新时间
+  + 逻辑删除
+}
+
+entity "Stall\n档口" as Stall {
+  + 档口ID
+  + 档口名称
+  + 所属食堂ID
+  + 描述
+  --
+  + 创建时间
+  + 更新时间
+  + 逻辑删除
+}
+
+entity "Dish\n菜品" as Dish {
+  + 菜品ID
+  + 菜品名称
+  + 所属档口ID
+  + 价格
+  + 图片路径
+  + 平均评分
+  + 评价数量
+  --
+  + 创建时间
+  + 更新时间
+  + 逻辑删除
+}
+
+entity "Rating\n评价" as Rating {
+  + 评价ID
+  + 用户ID
+  + 菜品ID
+  + 评分
+  + 评价内容
+  --
+  + 创建时间
+  + 更新时间
+  + 逻辑删除
+}
+
+entity "Complaint\n投诉" as Complaint {
+  + 投诉ID
+  + 用户ID
+  + 档口ID
+  + 投诉类型
+  + 投诉内容
+  + 处理状态
+  --
+  + 创建时间
+  + 更新时间
+  + 逻辑删除
+}
+
+entity "SensitiveWord\n敏感词" as SensitiveWord {
+  + 敏感词ID
+  + 敏感词内容
+  + 敏感词等级
+  --
+  + 创建时间
+  + 更新时间
+  + 逻辑删除
+}
+
+Canteen ||--o{ Stall
+Stall ||--o{ Dish
+User ||--o{ Rating
+Dish ||--o{ Rating
+User ||--o{ Complaint
+Stall ||--o{ Complaint
+
+@enduml

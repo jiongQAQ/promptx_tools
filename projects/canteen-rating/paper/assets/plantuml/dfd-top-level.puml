@@ -1,0 +1,23 @@
+@startuml dfd-top-level
+!theme plain
+skinparam defaultFontName "Microsoft YaHei"
+skinparam dpi 400
+skinparam defaultFontSize 16
+skinparam ArrowFontSize 14
+skinparam padding 120
+skinparam nodesep 180
+skinparam ranksep 180
+
+!pragma layout smetana
+
+rectangle "    管理员    " as Admin
+usecase "食堂评价管理系统" as System
+rectangle "    用户    " as User
+
+Admin -r-> System : 管理员指令
+System -l-> Admin : 指令执行结果
+
+System -r-> User : 用户指令
+User -l-> System : 指令执行结果
+
+@enduml
