@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="1300" viewBox="0 0 2000 1300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="2000" height="1300" fill="#ffffff"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+    </marker>
+  </defs>
+  <text x="1000.0" y="60" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="36" font-weight="bold" fill="#333">系统高并发保障设计</text>
+  <rect x="900.0" y="150" width="200" height="80" fill="#ffffff" stroke="#333" stroke-width="3" rx="8"/>
+  <text x="1000.0" y="185" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" font-weight="bold" fill="#333">客户端请求</text>
+  <text x="1000.0" y="210" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">高并发流量</text>
+  <line x1="1000.0" y1="230" x2="1000.0" y2="320" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <rect x="840.0" y="320" width="320" height="100" fill="#f5f5f5" stroke="#333" stroke-width="3" rx="8"/>
+  <text x="1000.0" y="360" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="26" font-weight="bold" fill="#333">API网关</text>
+  <text x="1000.0" y="390" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="18" fill="#666">SpringCloud Gateway</text>
+  <line x1="1000.0" y1="420" x2="1000.0" y2="500" stroke="#333" stroke-width="3"/>
+  <line x1="1000.0" y1="500" x2="310.0" y2="500" stroke="#333" stroke-width="3"/>
+  <line x1="310.0" y1="500" x2="310.0" y2="550" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <line x1="1000.0" y1="500" x2="770.0" y2="500" stroke="#333" stroke-width="3"/>
+  <line x1="770.0" y1="500" x2="770.0" y2="550" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <line x1="1000.0" y1="500" x2="1230.0" y2="500" stroke="#333" stroke-width="3"/>
+  <line x1="1230.0" y1="500" x2="1230.0" y2="550" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <line x1="1000.0" y1="500" x2="1690.0" y2="500" stroke="#333" stroke-width="3"/>
+  <line x1="1690.0" y1="500" x2="1690.0" y2="550" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <rect x="120.0" y="550" width="380" height="650" fill="#f9f9f9" stroke="#333" stroke-width="4" rx="10"/>
+  <text x="310.0" y="600" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">Sentinel限流</text>
+  <line x1="150.0" y1="630" x2="470.0" y2="630" stroke="#666" stroke-width="2"/>
+  <rect x="150.0" y="690" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="310.0" y="725" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">SentinelWebInterceptor</text>
+  <text x="310.0" y="755" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">Web拦截器</text>
+  <rect x="150.0" y="810" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="310.0" y="845" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">流量控制</text>
+  <text x="310.0" y="875" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">QPS限流</text>
+  <rect x="150.0" y="930" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="310.0" y="965" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">熔断降级</text>
+  <text x="310.0" y="995" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">快速失败</text>
+  <rect x="150.0" y="1050" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="310.0" y="1085" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">系统保护</text>
+  <text x="310.0" y="1115" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">负载保护</text>
+  <rect x="580.0" y="550" width="380" height="650" fill="#f9f9f9" stroke="#333" stroke-width="4" rx="10"/>
+  <text x="770.0" y="600" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">Redis缓存</text>
+  <line x1="610.0" y1="630" x2="930.0" y2="630" stroke="#666" stroke-width="2"/>
+  <rect x="610.0" y="690" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="770.0" y="725" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">Token缓存</text>
+  <text x="770.0" y="755" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">7天过期</text>
+  <rect x="610.0" y="810" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="770.0" y="845" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">用户信息缓存</text>
+  <text x="770.0" y="875" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">减少DB查询</text>
+  <rect x="610.0" y="930" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="770.0" y="965" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">RedisTemplate</text>
+  <text x="770.0" y="995" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">统一操作接口</text>
+  <rect x="610.0" y="1050" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="770.0" y="1085" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">Jedis连接池</text>
+  <text x="770.0" y="1115" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">连接复用</text>
+  <rect x="1040.0" y="550" width="380" height="650" fill="#f9f9f9" stroke="#333" stroke-width="4" rx="10"/>
+  <text x="1230.0" y="600" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">RabbitMQ异步</text>
+  <line x1="1070.0" y1="630" x2="1390.0" y2="630" stroke="#666" stroke-width="2"/>
+  <rect x="1070.0" y="690" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="1230.0" y="725" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">延迟队列</text>
+  <text x="1230.0" y="755" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">订单超时</text>
+  <rect x="1070.0" y="810" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="1230.0" y="845" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">死信队列</text>
+  <text x="1230.0" y="875" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">自动取消</text>
+  <rect x="1070.0" y="930" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="1230.0" y="965" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">库存恢复</text>
+  <text x="1230.0" y="995" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">异步处理</text>
+  <rect x="1070.0" y="1050" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="1230.0" y="1085" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">消息确认机制</text>
+  <text x="1230.0" y="1115" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">可靠投递</text>
+  <rect x="1500.0" y="550" width="380" height="650" fill="#f9f9f9" stroke="#333" stroke-width="4" rx="10"/>
+  <text x="1690.0" y="600" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" font-weight="bold" fill="#333">数据库优化</text>
+  <line x1="1530.0" y1="630" x2="1850.0" y2="630" stroke="#666" stroke-width="2"/>
+  <rect x="1530.0" y="690" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="1690.0" y="725" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">HikariCP连接池</text>
+  <text x="1690.0" y="755" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">最大15连接</text>
+  <rect x="1530.0" y="810" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="1690.0" y="845" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">服务拆分隔离</text>
+  <text x="1690.0" y="875" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">5个独立库</text>
+  <rect x="1530.0" y="930" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="1690.0" y="965" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">索引优化</text>
+  <text x="1690.0" y="995" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">查询加速</text>
+  <rect x="1530.0" y="1050" width="320" height="100" fill="#ffffff" stroke="#666" stroke-width="2" rx="6"/>
+  <text x="1690.0" y="1085" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="20" font-weight="bold" fill="#333">MyBatis缓存</text>
+  <text x="1690.0" y="1115" text-anchor="middle" font-family="Microsoft YaHei, SimHei, Arial" font-size="16" fill="#666">SQL优化</text>
+</svg>

@@ -3,7 +3,7 @@
   "title": "系统高并发保障设计",
   "word_limit": 1000,
   "text": "placeholder",
-  "imagePath": "${uml}/high-concurrency-design.png",
+  "imagePath": "${uml}/high-concurrency-design.svg",
   "_note": "二级章节，无子节点，包含高并发方案图",
   "content": "电商系统面临高并发访问的挑战，特别是在促销活动和秒杀场景下，瞬时流量可能达到平时的数十倍甚至数百倍。为应对高并发场景，本系统从缓存优化、异步处理、数据库优化、限流降级等多个方面进行设计，系统高并发保障方案如图4-19所示。"
 }
