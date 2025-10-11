@@ -1,359 +1,557 @@
 {
-  "title": "食堂评价系统论文大纲",
-  "nodes": [
+  "metadata": {
+    "project": "canteen-rating",
+    "title": "食堂评价系统",
+    "university": "玉溪师范学院",
+    "major": "计算机科学与技术",
+    "createdDate": "2025-09-30",
+    "mode": "custom",
+    "sourceType": "custom_outline"
+  },
+  "outline": [
     {
       "id": "0.1",
       "title": "摘要",
+      "level": 0,
+      "parent": null,
       "children": []
     },
     {
       "id": "0.2",
       "title": "Abstract",
+      "level": 0,
+      "parent": null,
       "children": []
     },
     {
       "id": "1",
       "title": "第1章 绪论",
+      "level": 1,
+      "parent": null,
       "children": [
-        {
-          "id": "1.1",
-          "title": "研究背景及意义",
-          "children": []
-        },
-        {
-          "id": "1.2",
-          "title": "国内外研究现状",
-          "children": []
-        },
-        {
-          "id": "1.3",
-          "title": "本文的主要内容",
-          "children": []
-        }
+        "1.1",
+        "1.2",
+        "1.3"
       ]
+    },
+    {
+      "id": "1.1",
+      "title": "研究背景及意义",
+      "level": 2,
+      "parent": "1",
+      "children": []
+    },
+    {
+      "id": "1.2",
+      "title": "国内外研究现状",
+      "level": 2,
+      "parent": "1",
+      "children": []
+    },
+    {
+      "id": "1.3",
+      "title": "本文的主要内容",
+      "level": 2,
+      "parent": "1",
+      "children": []
     },
     {
       "id": "2",
       "title": "第2章 相关技术介绍",
+      "level": 1,
+      "parent": null,
       "children": [
-        {
-          "id": "2.1",
-          "title": "后端相关技术",
-          "children": [
-            {
-              "id": "2.1.1",
-              "title": "Spring Boot框架",
-              "children": []
-            },
-            {
-              "id": "2.1.2",
-              "title": "MyBatis Plus持久层框架",
-              "children": []
-            },
-            {
-              "id": "2.1.3",
-              "title": "Spring Security安全框架",
-              "children": []
-            },
-            {
-              "id": "2.1.4",
-              "title": "JWT令牌技术",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "2.2",
-          "title": "前端相关技术",
-          "children": [
-            {
-              "id": "2.2.1",
-              "title": "Vue 3前端框架",
-              "children": []
-            },
-            {
-              "id": "2.2.2",
-              "title": "Element Plus组件库",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "2.3",
-          "title": "数据库相关技术",
-          "children": [
-            {
-              "id": "2.3.1",
-              "title": "MySQL数据库",
-              "children": []
-            }
-          ]
-        }
+        "2.1",
+        "2.2",
+        "2.3"
       ]
+    },
+    {
+      "id": "2.1",
+      "title": "后端相关技术",
+      "level": 2,
+      "parent": "2",
+      "children": [
+        "2.1.1",
+        "2.1.2",
+        "2.1.3",
+        "2.1.4"
+      ]
+    },
+    {
+      "id": "2.1.1",
+      "title": "Spring Boot框架",
+      "level": 3,
+      "parent": "2.1",
+      "children": []
+    },
+    {
+      "id": "2.1.2",
+      "title": "MyBatis Plus持久层框架",
+      "level": 3,
+      "parent": "2.1",
+      "children": []
+    },
+    {
+      "id": "2.1.3",
+      "title": "Spring Security安全框架",
+      "level": 3,
+      "parent": "2.1",
+      "children": []
+    },
+    {
+      "id": "2.1.4",
+      "title": "JWT令牌技术",
+      "level": 3,
+      "parent": "2.1",
+      "children": []
+    },
+    {
+      "id": "2.2",
+      "title": "前端相关技术",
+      "level": 2,
+      "parent": "2",
+      "children": [
+        "2.2.1",
+        "2.2.2"
+      ]
+    },
+    {
+      "id": "2.2.1",
+      "title": "Vue 3前端框架",
+      "level": 3,
+      "parent": "2.2",
+      "children": []
+    },
+    {
+      "id": "2.2.2",
+      "title": "Element Plus组件库",
+      "level": 3,
+      "parent": "2.2",
+      "children": []
+    },
+    {
+      "id": "2.3",
+      "title": "数据库相关技术",
+      "level": 2,
+      "parent": "2",
+      "children": [
+        "2.3.1"
+      ]
+    },
+    {
+      "id": "2.3.1",
+      "title": "MySQL数据库",
+      "level": 3,
+      "parent": "2.3",
+      "children": []
     },
     {
       "id": "3",
       "title": "第3章 系统需求分析",
+      "level": 1,
+      "parent": null,
       "children": [
-        {
-          "id": "3.1",
-          "title": "系统可行性分析",
-          "children": [
-            {
-              "id": "3.1.1",
-              "title": "技术可行性",
-              "children": []
-            },
-            {
-              "id": "3.1.2",
-              "title": "经济可行性",
-              "children": []
-            },
-            {
-              "id": "3.1.3",
-              "title": "社会可行性",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "3.2",
-          "title": "综合性需求分析",
-          "children": []
-        },
-        {
-          "id": "3.3",
-          "title": "功能性需求",
-          "children": []
-        },
-        {
-          "id": "3.4",
-          "title": "非功能性需求",
-          "children": []
-        }
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4"
       ]
+    },
+    {
+      "id": "3.1",
+      "title": "系统可行性分析",
+      "level": 2,
+      "parent": "3",
+      "children": [
+        "3.1.1",
+        "3.1.2",
+        "3.1.3"
+      ]
+    },
+    {
+      "id": "3.1.1",
+      "title": "技术可行性",
+      "level": 3,
+      "parent": "3.1",
+      "children": []
+    },
+    {
+      "id": "3.1.2",
+      "title": "经济可行性",
+      "level": 3,
+      "parent": "3.1",
+      "children": []
+    },
+    {
+      "id": "3.1.3",
+      "title": "社会可行性",
+      "level": 3,
+      "parent": "3.1",
+      "children": []
+    },
+    {
+      "id": "3.2",
+      "title": "综合性需求分析",
+      "level": 2,
+      "parent": "3",
+      "children": []
+    },
+    {
+      "id": "3.3",
+      "title": "功能性需求",
+      "level": 2,
+      "parent": "3",
+      "children": []
+    },
+    {
+      "id": "3.4",
+      "title": "非功能性需求",
+      "level": 2,
+      "parent": "3",
+      "children": []
     },
     {
       "id": "4",
       "title": "第4章 系统设计",
+      "level": 1,
+      "parent": null,
       "children": [
-        {
-          "id": "4.1",
-          "title": "系统整体架构设计",
-          "children": [
-            {
-              "id": "4.1.1",
-              "title": "架构选择",
-              "children": []
-            },
-            {
-              "id": "4.1.2",
-              "title": "系统模块划分",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "4.2",
-          "title": "数据库设计",
-          "children": [
-            {
-              "id": "4.2.1",
-              "title": "概念结构设计",
-              "children": []
-            },
-            {
-              "id": "4.2.2",
-              "title": "逻辑结构设计",
-              "children": []
-            },
-            {
-              "id": "4.2.3",
-              "title": "物理结构设计",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "4.3",
-          "title": "系统访问流程",
-          "children": [
-            {
-              "id": "4.3.1",
-              "title": "数据流图",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "4.4",
-          "title": "系统类图",
-          "children": []
-        }
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4"
       ]
+    },
+    {
+      "id": "4.1",
+      "title": "系统整体架构设计",
+      "level": 2,
+      "parent": "4",
+      "children": [
+        "4.1.1",
+        "4.1.2"
+      ]
+    },
+    {
+      "id": "4.1.1",
+      "title": "架构选择",
+      "level": 3,
+      "parent": "4.1",
+      "children": []
+    },
+    {
+      "id": "4.1.2",
+      "title": "系统模块划分",
+      "level": 3,
+      "parent": "4.1",
+      "children": []
+    },
+    {
+      "id": "4.2",
+      "title": "数据库设计",
+      "level": 2,
+      "parent": "4",
+      "children": [
+        "4.2.1",
+        "4.2.2",
+        "4.2.3"
+      ]
+    },
+    {
+      "id": "4.2.1",
+      "title": "概念结构设计",
+      "level": 3,
+      "parent": "4.2",
+      "children": []
+    },
+    {
+      "id": "4.2.2",
+      "title": "逻辑结构设计",
+      "level": 3,
+      "parent": "4.2",
+      "children": []
+    },
+    {
+      "id": "4.2.3",
+      "title": "物理结构设计",
+      "level": 3,
+      "parent": "4.2",
+      "children": []
+    },
+    {
+      "id": "4.3",
+      "title": "系统访问流程",
+      "level": 2,
+      "parent": "4",
+      "children": [
+        "4.3.1"
+      ]
+    },
+    {
+      "id": "4.3.1",
+      "title": "数据流图",
+      "level": 3,
+      "parent": "4.3",
+      "children": []
+    },
+    {
+      "id": "4.4",
+      "title": "系统类图",
+      "level": 2,
+      "parent": "4",
+      "children": []
     },
     {
       "id": "5",
       "title": "第5章 系统实现",
+      "level": 1,
+      "parent": null,
       "children": [
-        {
-          "id": "5.1",
-          "title": "用户认证与权限管理模块",
-          "children": [
-            {
-              "id": "5.1.1",
-              "title": "功能描述",
-              "children": []
-            },
-            {
-              "id": "5.1.2",
-              "title": "实现过程",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "5.2",
-          "title": "食堂与档口管理模块",
-          "children": [
-            {
-              "id": "5.2.1",
-              "title": "功能描述",
-              "children": []
-            },
-            {
-              "id": "5.2.2",
-              "title": "实现过程",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "5.3",
-          "title": "菜品管理模块",
-          "children": [
-            {
-              "id": "5.3.1",
-              "title": "功能描述",
-              "children": []
-            },
-            {
-              "id": "5.3.2",
-              "title": "实现过程",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "5.4",
-          "title": "评价管理模块",
-          "children": [
-            {
-              "id": "5.4.1",
-              "title": "功能描述",
-              "children": []
-            },
-            {
-              "id": "5.4.2",
-              "title": "实现过程",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "5.5",
-          "title": "投诉管理模块",
-          "children": [
-            {
-              "id": "5.5.1",
-              "title": "功能描述",
-              "children": []
-            },
-            {
-              "id": "5.5.2",
-              "title": "实现过程",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "5.6",
-          "title": "系统管理模块",
-          "children": [
-            {
-              "id": "5.6.1",
-              "title": "功能描述",
-              "children": []
-            },
-            {
-              "id": "5.6.2",
-              "title": "实现过程",
-              "children": []
-            }
-          ]
-        }
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4",
+        "5.5",
+        "5.6"
       ]
+    },
+    {
+      "id": "5.1",
+      "title": "用户认证与权限管理模块",
+      "level": 2,
+      "parent": "5",
+      "children": [
+        "5.1.1",
+        "5.1.2"
+      ]
+    },
+    {
+      "id": "5.1.1",
+      "title": "功能描述",
+      "level": 3,
+      "parent": "5.1",
+      "children": []
+    },
+    {
+      "id": "5.1.2",
+      "title": "实现过程",
+      "level": 3,
+      "parent": "5.1",
+      "children": []
+    },
+    {
+      "id": "5.2",
+      "title": "食堂与档口管理模块",
+      "level": 2,
+      "parent": "5",
+      "children": [
+        "5.2.1",
+        "5.2.2"
+      ]
+    },
+    {
+      "id": "5.2.1",
+      "title": "功能描述",
+      "level": 3,
+      "parent": "5.2",
+      "children": []
+    },
+    {
+      "id": "5.2.2",
+      "title": "实现过程",
+      "level": 3,
+      "parent": "5.2",
+      "children": []
+    },
+    {
+      "id": "5.3",
+      "title": "菜品管理模块",
+      "level": 2,
+      "parent": "5",
+      "children": [
+        "5.3.1",
+        "5.3.2"
+      ]
+    },
+    {
+      "id": "5.3.1",
+      "title": "功能描述",
+      "level": 3,
+      "parent": "5.3",
+      "children": []
+    },
+    {
+      "id": "5.3.2",
+      "title": "实现过程",
+      "level": 3,
+      "parent": "5.3",
+      "children": []
+    },
+    {
+      "id": "5.4",
+      "title": "评价管理模块",
+      "level": 2,
+      "parent": "5",
+      "children": [
+        "5.4.1",
+        "5.4.2"
+      ]
+    },
+    {
+      "id": "5.4.1",
+      "title": "功能描述",
+      "level": 3,
+      "parent": "5.4",
+      "children": []
+    },
+    {
+      "id": "5.4.2",
+      "title": "实现过程",
+      "level": 3,
+      "parent": "5.4",
+      "children": []
+    },
+    {
+      "id": "5.5",
+      "title": "投诉管理模块",
+      "level": 2,
+      "parent": "5",
+      "children": [
+        "5.5.1",
+        "5.5.2"
+      ]
+    },
+    {
+      "id": "5.5.1",
+      "title": "功能描述",
+      "level": 3,
+      "parent": "5.5",
+      "children": []
+    },
+    {
+      "id": "5.5.2",
+      "title": "实现过程",
+      "level": 3,
+      "parent": "5.5",
+      "children": []
+    },
+    {
+      "id": "5.6",
+      "title": "系统管理模块",
+      "level": 2,
+      "parent": "5",
+      "children": [
+        "5.6.1",
+        "5.6.2"
+      ]
+    },
+    {
+      "id": "5.6.1",
+      "title": "功能描述",
+      "level": 3,
+      "parent": "5.6",
+      "children": []
+    },
+    {
+      "id": "5.6.2",
+      "title": "实现过程",
+      "level": 3,
+      "parent": "5.6",
+      "children": []
     },
     {
       "id": "6",
       "title": "第6章 测试与评价",
+      "level": 1,
+      "parent": null,
       "children": [
-        {
-          "id": "6.1",
-          "title": "系统测试的目的",
-          "children": []
-        },
-        {
-          "id": "6.2",
-          "title": "系统功能测试",
-          "children": [
-            {
-              "id": "6.2.1",
-              "title": "用户认证与权限管理测试",
-              "children": []
-            },
-            {
-              "id": "6.2.2",
-              "title": "食堂与档口管理测试",
-              "children": []
-            },
-            {
-              "id": "6.2.3",
-              "title": "菜品管理测试",
-              "children": []
-            },
-            {
-              "id": "6.2.4",
-              "title": "评价管理测试",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "6.3",
-          "title": "系统安全性测试",
-          "children": []
-        },
-        {
-          "id": "6.4",
-          "title": "小结",
-          "children": []
-        }
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4"
       ]
+    },
+    {
+      "id": "6.1",
+      "title": "系统测试的目的",
+      "level": 2,
+      "parent": "6",
+      "children": []
+    },
+    {
+      "id": "6.2",
+      "title": "系统功能测试",
+      "level": 2,
+      "parent": "6",
+      "children": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3",
+        "6.2.4"
+      ]
+    },
+    {
+      "id": "6.2.1",
+      "title": "用户认证与权限管理测试",
+      "level": 3,
+      "parent": "6.2",
+      "children": []
+    },
+    {
+      "id": "6.2.2",
+      "title": "食堂与档口管理测试",
+      "level": 3,
+      "parent": "6.2",
+      "children": []
+    },
+    {
+      "id": "6.2.3",
+      "title": "菜品管理测试",
+      "level": 3,
+      "parent": "6.2",
+      "children": []
+    },
+    {
+      "id": "6.2.4",
+      "title": "评价管理测试",
+      "level": 3,
+      "parent": "6.2",
+      "children": []
+    },
+    {
+      "id": "6.3",
+      "title": "系统安全性测试",
+      "level": 2,
+      "parent": "6",
+      "children": []
+    },
+    {
+      "id": "6.4",
+      "title": "小结",
+      "level": 2,
+      "parent": "6",
+      "children": []
     },
     {
       "id": "7",
       "title": "结论",
+      "level": 1,
+      "parent": null,
       "children": []
     },
     {
       "id": "8",
       "title": "参考文献",
+      "level": 1,
+      "parent": null,
       "children": []
     },
     {
       "id": "9",
       "title": "致谢",
+      "level": 1,
+      "parent": null,
       "children": []
     }
   ]
