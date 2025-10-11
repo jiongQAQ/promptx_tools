@@ -39,20 +39,6 @@ def generate_single_er(table_json_path, output_dir):
         print(f"警告：{table_name} 没有字段数据")
         return False
 
-    # SVG画布尺寸
-    width = 1200
-    height = 900
-
-    # 中心矩形（表实体）
-    rect_cx = width / 2
-    rect_cy = height / 2
-    rect_width = 180
-    rect_height = 80
-
-    # 椭圆（字段属性）
-    ellipse_rx = 85
-    ellipse_ry = 32
-
     # 动态半径策略（单层布局，根据字段数量调整半径）
     if field_count <= 8:
         radius = 250  # 紧凑
@@ -62,6 +48,24 @@ def generate_single_er(table_json_path, output_dir):
         radius = 380  # 宽松
     else:
         radius = 420  # 超多字段
+
+    # 中心矩形（表实体）
+    rect_width = 180
+    rect_height = 80
+
+    # 椭圆（字段属性）
+    ellipse_rx = 85
+    ellipse_ry = 32
+
+    # 计算实际需要的画布尺寸（紧凑布局，留50px边距）
+    margin = 50
+    max_extent = radius + ellipse_rx + margin  # 最远点距离中心
+    width = max_extent * 2
+    height = max_extent * 2
+
+    # 中心点位置
+    rect_cx = width / 2
+    rect_cy = height / 2
 
     svg_lines = []
     svg_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
