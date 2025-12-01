@@ -1,9 +1,0 @@
-{
-  "id": "6.2.3",
-  "title": "订单管理功能测试",
-  "word_limit": 300,
-  "text": "placeholder",
-  "tablePath": "${tables}/test-order.json",
-  "_note": "三级章节，必须有text，包含测试用例表",
-  "content": "订单管理功能测试验证订单创建、支付、状态管理等核心流程，重点测试分布式事务的正确性。详细测试用例如表6-3所示。"
-}
